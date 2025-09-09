@@ -18,6 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +27,9 @@
   <!-- Favicon & CSS -->
   <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
   <link href="/css/style.css" rel="stylesheet">
+
+  <!-- AOS CSS for Stripe-like scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -76,40 +81,45 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="hero" class="hero">
-    <!-- fixiertes Brand-Logo -->
+<!-- HERO (Split Layout à la Stripe) -->
+<header id="hero" class="hero hero-split">
+  <!-- Fixiertes Brand-Logo (Coin) -->
+  <div class="logo-coin coin-glow">
     <img class="hero-logo" src="/assets/images/JiuJitsuLogo.svg" alt="Circle of Life Jiu-Jitsu Logo" />
+  </div>
 
-    <!-- Hintergrund-Slides -->
-    <div class="hero-bg" aria-hidden="true">
-      <img class="hero-slide" src="/assets/images/Marvin_1.jpeg" alt="">
-    </div>
 
-    <div class="container py-5">
-      <span class="badge rounded-pill px-3 py-2 mb-3">Mannheim • Gi & No-Gi</span>
-      <h1>Join the Circle of Life</h1>
-      <p class="lead mb-4">Brazilian Jiu-Jitsu & Grappling für alle Levels – moderne Techniken, starke Community, klare Fortschritte.</p>
-      <a class="btn btn-brand btn-lg me-2" href="#probestunde">Jetzt Probestunde sichern</a>
-      <a class="btn btn-outline-light btn-lg" href="#zeiten">Zum Kursplan</a>
-      <div class="d-flex gap-4 mt-4 small text-white-50">
-        <div><span class="fw-semibold text-white">Gi & No-Gi</span> · neueste Systeme</div>
-        <div><span class="fw-semibold text-white">Einsteiger willkommen</span> · sichere Lernkurve</div>
+
+  <div class="container hero-offset">
+    <h1 class="hero-title">
+      <span class="join-fixed">Join the</span>
+      <span class="headline-accent"><span class="text">Circle of Life</span></span>
+    </h1>
+    <!-- Text oben links -->
+    <div class="hero-copy hero-box">
+      <p class="sub lead mb-4">Brazilian Jiu-Jitsu &amp; Grappling für alle Levels – moderne Techniken, starke Community, klare Fortschritte.</p>
+      <div class="hero-cta">
+        <a class="btn btn-brand btn-lg" href="#probestunde">Jetzt Probestunde sichern</a>
+        <a class="btn btn-outline-light btn-lg" href="#zeiten">Zum Kursplan</a>
       </div>
     </div>
+    
+  
+    <!-- Entkoppeltes Bild rechts (kleiner) -->
+    <figure class="hero-art" aria-hidden="true">
+      <img id="hero-visual-img" src="/assets/images/Marvin_1.jpeg" alt="">
+    </figure>
+  </div>
+  
+  
+</header>
 
-    <!-- Bogen unten (mittel) -->
-    <div class="hero-shape">
-      <svg viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,0 C360,90 1080,90 1440,0 L1440,150 L0,150 Z" fill="white"></path>
-      </svg>
-    </div>
-  </header>
 
   <!-- ÜBER UNS – Card unter der Hero-Kurve -->
-  <section id="ueber-uns" class="section-overlap">
+  <section id="ueber-uns" class="section-overlap section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
-      <div class="about-card">
+      <div class="about-card" data-aos="fade-up">
         <div class="row g-4">
           <div class="col-lg-4"><h3 class="mb-2">Muskelaufbau & Gelenke</h3><p class="text-secondary mb-0">Stabile Gelenke, kräftige Muskulatur, bessere Mobility – über smarte Drills.</p></div>
           <div class="col-lg-4"><h3 class="mb-2">Flexibler Kursplan</h3><p class="text-secondary mb-0">Gi & No-Gi, Open Mat & Competition – alles im Abo enthalten.</p></div>
@@ -119,95 +129,202 @@
     </div>
   </section>
 
+  <section class="py-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
+    <div class="container">
+      <h2 class="section-title mb-4" data-aos="fade-up">So startest du</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 bg-white border rounded-4 h-100 feature-card" data-aos="zoom-in">
+            <div class="mb-2">①</div>
+            <h5>Probestunde anfragen</h5>
+            <p class="text-secondary mb-0">Formular ausfüllen – wir melden uns innerhalb von 24h.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white border rounded-4 h-100 feature-card" data-aos="zoom-in" data-aos-delay="150">
+            <div class="mb-2">②</div>
+            <h5>Basics lernen</h5>
+            <p class="text-secondary mb-0">Sichere Fundamentals: Position vor Submission.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white border rounded-4 h-100 feature-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="mb-2">③</div>
+            <h5>Dranbleiben</h5>
+            <p class="text-secondary mb-0">Regelmäßig trainieren, Open Mat nutzen, Fortschritt tracken.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-4" style="background:linear-gradient(90deg,var(--gold),var(--gold-2)); color:var(--brand)">
+    <div class="container">
+      <div class="row text-center text-nowrap g-4">
+        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">150+</div><div class="small">aktive Mitglieder</div></div>
+        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">6×/Woche</div><div class="small">Training</div></div>
+        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">3</div><div class="small">Coaches</div></div>
+        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">100%</div><div class="small">Willkommen</div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY -->
-  <section id="warum" class="py-5 section-muted section-divider">
+  <section id="warum" class="py-5 section-muted section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
       <div class="row text-center mb-4">
         <div class="col">
-          <h2 class="fw-bold section-title">Join the Circle of Life</h2>
-          <p class="text-secondary">Stärker werden – technisch, mental und als Team. Das ist unser Versprechen.</p>
+          <h2 class="fw-bold section-title" data-aos="fade-up">Join the Circle of Life</h2>
+          <p class="text-secondary" data-aos="fade-up" data-aos-delay="150">Stärker werden – technisch, mental und als Team. Das ist unser Versprechen.</p>
         </div>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card"><div class="mb-2" aria-hidden="true">💪</div><h5>Muskelaufbau & Gelenke stärken</h5><p class="text-secondary mb-0">Fundamentales Training für stabile Gelenke, kräftige Muskulatur und bessere Beweglichkeit.</p></div></div>
-        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card"><div class="mb-2" aria-hidden="true">📅</div><h5>Flexibler Stundenplan</h5><p class="text-secondary mb-0">Gi (BJJ) & No-Gi Grappling. Open Mat & Competition – alles im Abo enthalten.</p></div></div>
-        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card"><div class="mb-2" aria-hidden="true">🤝</div><h5>Community & Fairness</h5><p class="text-secondary mb-0">Respektvolle Atmosphäre, klare Mattenregeln & Level-gerechtes Sparring.</p></div></div>
+        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card" data-aos="fade-up"><div class="mb-2" aria-hidden="true">💪</div><h5>Muskelaufbau & Gelenke stärken</h5><p class="text-secondary mb-0">Fundamentales Training für stabile Gelenke, kräftige Muskulatur und bessere Beweglichkeit.</p></div></div>
+        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card" data-aos="fade-up" data-aos-delay="150"><div class="mb-2" aria-hidden="true">📅</div><h5>Flexibler Stundenplan</h5><p class="text-secondary mb-0">Gi (BJJ) & No-Gi Grappling. Open Mat & Competition – alles im Abo enthalten.</p></div></div>
+        <div class="col-md-6 col-lg-4"><div class="p-4 bg-white rounded-4 h-100 border feature-card" data-aos="fade-up" data-aos-delay="300"><div class="mb-2" aria-hidden="true">🤝</div><h5>Community & Fairness</h5><p class="text-secondary mb-0">Respektvolle Atmosphäre, klare Mattenregeln & Level-gerechtes Sparring.</p></div></div>
       </div>
     </div>
   </section>
 
   <!-- KURSE -->
-  <section id="kurse" class="py-5 section-divider">
+  <section id="kurse" class="py-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
       <div class="row text-center mb-4">
-        <div class="col"><h2 class="fw-bold section-title">Kurse</h2><p class="text-secondary">Modernes BJJ – neueste Techniken aus Gi & No-Gi, klar strukturiert und praxisnah.</p></div>
+        <div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Kurse</h2><p class="text-secondary" data-aos="fade-up" data-aos-delay="150">Modernes BJJ – neueste Techniken aus Gi & No-Gi, klar strukturiert und praxisnah.</p></div>
       </div>
       <div class="row g-4">
-        <!-- Cards aus deinem Stand übernommen (Gi/No-Gi/Open Mat/Competition) -->
-        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><div class="mb-2" aria-hidden="true">🥋</div><h5 class="mb-1">Gi (BJJ)</h5><p class="text-secondary small mb-3">Griffe, Würfe, Guard, Passes – Technik pur.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1578926375605-eaf7559b1453?q=80&w=800&auto=format&fit=crop" alt="Gi Training"></div></div>
-        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><div class="mb-2" aria-hidden="true">⚡</div><h5 class="mb-1">No-Gi Grappling</h5><p class="text-secondary small mb-3">Leglocks & moderne Entries. Dynamisches Rollen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1593349481046-d8f3c9c9b9f1?q=80&w=800&auto=format&fit=crop" alt="No-Gi Grappling"></div></div>
-        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><div class="mb-2" aria-hidden="true">🧭</div><h5 class="mb-1">Open Mat</h5><p class="text-secondary small mb-3">Freies Rollen & Technik verfestigen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1620189507180-0ae1f9a6ff2b?q=80&w=800&auto=format&fit=crop" alt="Open Mat"></div></div>
-        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><div class="mb-2" aria-hidden="true">🎯</div><h5 class="mb-1">Competition</h5><p class="text-secondary small mb-3">Strategie & Score-Awareness.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1609951651527-8b9b9d054b3f?q=80&w=800&auto=format&fit=crop" alt="Competition Class"></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in"><div class="mb-2" aria-hidden="true">🥋</div><h5 class="mb-1">Gi (BJJ)</h5><p class="text-secondary small mb-3">Griffe, Würfe, Guard, Passes – Technik pur.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1578926375605-eaf7559b1453?q=80&w=800&auto=format&fit=crop" alt="Gi Training"></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="150"><div class="mb-2" aria-hidden="true">⚡</div><h5 class="mb-1">No-Gi Grappling</h5><p class="text-secondary small mb-3">Leglocks & moderne Entries. Dynamisches Rollen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1593349481046-d8f3c9c9b9f1?q=80&w=800&auto=format&fit=crop" alt="No-Gi Grappling"></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="300"><div class="mb-2" aria-hidden="true">🧭</div><h5 class="mb-1">Open Mat</h5><p class="text-secondary small mb-3">Freies Rollen & Technik verfestigen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1620189507180-0ae1f9a6ff2b?q=80&w=800&auto=format&fit=crop" alt="Open Mat"></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="450"><div class="mb-2" aria-hidden="true">🎯</div><h5 class="mb-1">Competition</h5><p class="text-secondary small mb-3">Strategie & Score-Awareness.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1609951651527-8b9b9d054b3f?q=80&w=800&auto=format&fit=crop" alt="Competition Class"></div></div>
       </div>
     </div>
   </section>
 
-  <!-- TRAININGSZEITEN -->
-  <section id="zeiten" class="py-5 section-muted section-divider">
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
-        <div><h2 class="fw-bold mb-1 section-title">Kursplan</h2><p class="text-secondary mb-0">Aktueller Wochenplan – Erwachsene (Gi / No-Gi).</p></div>
-        <a class="btn btn-brand btn-sm" href="#" id="download-pdf" aria-label="Kursplan als PDF herunterladen">Kursplan als PDF</a>
+  <section id="zeiten" class="timetable-layout my-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
+    <div class="container timetable-2col d-flex align-items-stretch flex-wrap">
+      <!-- Linke Spalte: Info, Text, Feature-Balken -->
+      <div class="zeiten-info flex-grow-1 d-flex flex-column justify-content-between pe-lg-5 mb-4 mb-lg-0">
+        <div class="zeiten-info-marker" data-aos="fade-right">
+          <h2 class="timetable-header mb-2">Kursplan und Einstieg</h2>
+          <p class="lead text-secondary mb-3">
+            Modernes BJJ für alle<br>
+            Strukturiertes Training mit Aufwärmen &amp; Mobilität, Aufbau- und Krafttraining, Technikdrills, Positionssparing, freies Rollen und gezieltes Dehnen für langfristige Gesundheit und ein starkes Fundament.
+          </p>
+          <ul class="usp-list list-unstyled mb-4">
+            <li><span class="icon-check">✔️</span> Einsteiger willkommen</li>
+            <li><span class="icon-check">✔️</span> Flexible Zeiten, 6x/Woche</li>
+            <li><span class="icon-check">✔️</span> Erfahrene Coaches</li>
+          </ul>
+        </div>
       </div>
-      <div class="table-responsive border rounded-4 bg-white">
-        <table class="table align-middle mb-0 schedule-table">
-          <thead>
-            <tr class="table-gold">
-              <th style="width:140px">Uhrzeit</th><th>Montag</th><th>Dienstag</th><th>Mittwoch</th><th>Donnerstag</th><th>Freitag</th><th>Samstag</th><th>Sonntag</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="text-secondary">18:00–19:30</td><td class="slot" data-style="nogi"><strong>No-Gi</strong></td><td class="slot">—</td><td class="slot" data-style="gi"><strong>Gi</strong></td><td class="slot">—</td><td class="slot" data-style="nogi"><strong>No-Gi</strong></td><td class="slot">—</td><td class="slot" data-style="nogi"><strong>No-Gi</strong></td></tr>
-            <tr><td class="text-secondary">19:30–21:00</td><td class="slot" data-style="gi"><strong>Gi</strong></td><td class="slot">—</td><td class="slot" data-style="nogi"><strong>No-Gi</strong></td><td class="slot">—</td><td class="slot" data-style="gi"><strong>Gi</strong></td><td class="slot">—</td><td class="slot" data-style="gi"><strong>Gi</strong></td></tr>
-          </tbody>
-        </table>
+      <!-- Rechte Spalte: Kursplan-Widget -->
+      <div class="zeiten-widget flex-shrink-0 timetable-panel" data-aos="fade-left">
+        <div class="timetable-panel-inner">
+          <div class="timetable-panel-header d-flex justify-content-between align-items-start">
+            <div>
+              <h4 class="timetable-header mb-0">Aktueller Wochenplan </h4>
+            </div>
+            <a class="btn btn-brand btn-sm timetable-pdf-btn" href="#" id="download-pdf">Kursplan als PDF</a>
+          </div>
+          <div class="table-responsive timetable-modern mt-3 mb-1">
+            <table class="table align-middle mb-0 schedule-table">
+              <thead>
+                <tr>
+                  <th>Uhrzeit</th>
+                  <th>Montag</th>
+                  <th>Dienstag</th>
+                  <th>Mittwoch</th>
+                  <th>Donnerstag</th>
+                  <th>Freitag</th>
+                  <th>Samstag</th>
+                  <th>Sonntag</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-secondary">17:00–18:00</td>
+                  <td class="slot" data-style="kids"><strong>Kids</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="kids"><strong>Kids</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="kids"><strong></strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot slot-empty"></td>
+                </tr>
+                <tr>
+                  <td class="text-secondary">18:00–19:30</td>
+                  <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot slot-empty"></td>
+                </tr>
+                <tr>
+                  <td class="text-secondary">19:30–21:00</td>
+                  <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                  <td class="slot slot-empty"></td>
+                  <td class="slot slot-empty"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="legend small d-flex align-items-center gap-3 mt-3">
+            <span><span class="dot kids"></span> Kids</span>
+            <span><span class="dot nogi"></span> No-Gi</span>
+            <span><span class="dot gi"></span> Gi</span>
+          </div>
+          <div class="timetable-notes">
+            <p class="small text-secondary mt-2 mb-0">Freies Training und Open Mats finden nach Absprache statt.</p>
+            <p class="small text-secondary mt-2 mb-0">Bitte ca. 15 Minuten vorher da sein; Flip-Flops mitbringen.</p>
+          </div>
+        </div>
       </div>
-      <div class="legend small text-secondary d-flex align-items-center gap-3 mt-3">
-        <span><span class="dot gi"></span> Gi</span><span><span class="dot nogi"></span> No-Gi</span>
-      </div>
-      <p class="small text-secondary mt-2 mb-0">Einsteiger willkommen. Bitte 5–10 Min vorher da sein; Flip-Flops mitbringen.</p>
     </div>
   </section>
 
   <!-- PREISE -->
-  <section id="preise" class="py-5 section-divider">
+  <section id="preise" class="py-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
-      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title">Ein Preis – alles drin!</h2><p class="text-secondary">Alle Klassen, Open Mat & Sparring inklusive. Monatlich kündbar.</p></div></div>
+      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Unsere Preisliste</h2><p class="text-secondary" data-aos="fade-up">Alle Klassen, Open Mat & Sparring inklusive. </p></div></div>
       <div class="row g-4 justify-content-center">
-        <div class="col-md-5"><div class="card card-pricing highlight rounded-4 h-100"><div class="card-body p-4"><div class="badge text-bg-warning mb-2">Meistgewählt</div><h5 class="card-title">All Access (Erwachsene)</h5><p class="display-5 fw-bold">80€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Gi (BJJ) & No-Gi Grappling</li><li>Open Mat & Competition Class</li><li>Alle Level – Einsteiger willkommen</li></ul><a href="#probestunde" class="btn btn-brand w-100">Probestunde</a></div></div></div>
-        <div class="col-md-5"><div class="card card-pricing rounded-4 h-100"><div class="card-body p-4"><h5 class="card-title">Kids (7–13 Jahre)</h5><p class="display-6 fw-bold">60€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Koordination & Selbstvertrauen</li><li>Spielerische Technikvermittlung</li><li>Monatlich kündbar</li></ul><a href="#probestunde" class="btn btn-brand w-100">Jetzt starten</a></div></div></div>
+        <div class="col-md-5"><div class="card card-pricing highlight rounded-4 h-100" data-aos="zoom-in"><div class="card-body p-4"><div class="badge text-bg-warning mb-2">Meistgewählt</div><h5 class="card-title">All Access (Erwachsene)</h5><p class="display-5 fw-bold">80€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Gi (BJJ) & No-Gi Grappling</li><li>Open Mat & Competition Class</li><li>Alle Level – Einsteiger willkommen</li></ul><a href="#probestunde" class="btn btn-brand w-100">Probestunde</a></div></div></div>
+        <div class="col-md-5"><div class="card card-pricing rounded-4 h-100" data-aos="zoom-in" data-aos-delay="150"><div class="card-body p-4"><h5 class="card-title">Kids (7–13 Jahre)</h5><p class="display-6 fw-bold">50€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Koordination & Selbstvertrauen</li><li>Spielerische Technikvermittlung</li><li></li></ul><a href="#probestunde" class="btn btn-brand w-100">Jetzt starten</a></div></div></div>
       </div>
       <p class="small text-secondary text-center mt-3">* Eine einmalige Anmeldegebühr kann anfallen. Änderungen vorbehalten.</p>
     </div>
   </section>
 
   <!-- COACHES -->
-  <section id="coaches" class="py-5 section-muted section-divider">
+  <section id="coaches" class="py-5 section-muted section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
-      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title">Deine Coaches</h2><p class="text-secondary">Erfahrung aus Wettkampf & Lehre.</p></div></div>
+      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Deine Coaches</h2><p class="text-secondary" data-aos="fade-up">Erfahrung aus Wettkampf & Lehre.</p></div></div>
       <div class="row g-4">
-        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=900&auto=format&fit=crop" alt="Coach A"><h5 class="mb-1">Coach A</h5><p class="text-secondary small mb-2">Brown Belt – No-Gi</p><p class="mb-0">IBJJF-Erfahrung, Fokus auf Position vor Submission und sauberes Passing.</p></div></div>
-        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=900&auto=format&fit=crop" alt="Coach B"><h5 class="mb-1">Coach B</h5><p class="text-secondary small mb-2">Black Belt – Gi & Fundamentals</p><p class="mb-0">Klares Curriculum für Einsteiger, Technik-Drills und sichere Sparringskultur.</p></div></div>
-        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=900&auto=format&fit=crop" alt="Coach C"><h5 class="mb-1">Coach C</h5><p class="text-secondary small mb-2">No-Gi – Leglock System</p><p class="mb-0">Moderne Systeme, Kontrollpositionen & sichere Submission-Entries.</p></div></div>
+        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3" data-aos="zoom-in"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=900&auto=format&fit=crop" alt="Coach A"><h5 class="mb-1">Coach A</h5><p class="text-secondary small mb-2">Brown Belt – No-Gi</p><p class="mb-0">IBJJF-Erfahrung, Fokus auf Position vor Submission und sauberes Passing.</p></div></div>
+        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3" data-aos="zoom-in" data-aos-delay="150"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=900&auto=format&fit=crop" alt="Coach B"><h5 class="mb-1">Coach B</h5><p class="text-secondary small mb-2">Black Belt – Gi & Fundamentals</p><p class="mb-0">Klares Curriculum für Einsteiger, Technik-Drills und sichere Sparringskultur.</p></div></div>
+        <div class="col-md-4"><div class="coach-card bg-white border rounded-4 h-100 p-3" data-aos="zoom-in" data-aos-delay="300"><img class="w-100 rounded-3 mb-3" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=900&auto=format&fit=crop" alt="Coach C"><h5 class="mb-1">Coach C</h5><p class="text-secondary small mb-2">No-Gi – Leglock System</p><p class="mb-0">Moderne Systeme, Kontrollpositionen & sichere Submission-Entries.</p></div></div>
       </div>
     </div>
   </section>
 
   <!-- GALERIE / Story-Slider (synchron mit Hero) -->
-  <section id="galerie" class="py-5 section-divider">
+  <section id="galerie" class="py-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
-      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title">Unsere Story – in Bildern</h2><p class="text-secondary">Einblicke ins Training & Community.</p></div></div>
-      <div class="story-slider position-relative border rounded-4 overflow-hidden">
+      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Unsere Story – in Bildern</h2><p class="text-secondary" data-aos="fade-up">Einblicke ins Training & Community.</p></div></div>
+      <div class="story-slider position-relative border rounded-4 overflow-hidden" data-aos="zoom-in">
         <figure class="m-0">
           <img id="story-slide" class="w-100 d-block" src="/assets/images/Marvin_1.jpeg" alt="">
           <figcaption id="story-caption" class="p-3 bg-white small border-top">No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.</figcaption>
@@ -221,17 +338,18 @@
   </section>
 
   <!-- STIMMEN & FAQ -->
-  <section id="stimmen" class="py-5 section-divider">
+  <section id="stimmen" class="py-5 section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-6">
-          <h2 class="fw-bold mb-3 section-title">Stimmen</h2>
-          <figure class="border rounded-4 p-4 mb-3"><blockquote class="blockquote mb-2">„Beste Atmosphäre – super Betreuung, fühlte mich direkt wohl.“</blockquote><figcaption class="blockquote-footer mb-0">Lea, Anfängerin</figcaption></figure>
-          <figure class="border rounded-4 p-4 mb-0"><blockquote class="blockquote mb-2">„Top für’s Technikverständnis, gute Sparringskultur.“</blockquote><figcaption class="blockquote-footer mb-0">Timo, Fortgeschrittener</figcaption></figure>
+          <h2 class="fw-bold mb-3 section-title" data-aos="fade-up">Stimmen</h2>
+          <figure class="border rounded-4 p-4 mb-3" data-aos="fade-up"><blockquote class="blockquote mb-2">„Beste Atmosphäre – super Betreuung, fühlte mich direkt wohl.“</blockquote><figcaption class="blockquote-footer mb-0">Lea, Anfängerin</figcaption></figure>
+          <figure class="border rounded-4 p-4 mb-0" data-aos="fade-up" data-aos-delay="150"><blockquote class="blockquote mb-2">„Top für’s Technikverständnis, gute Sparringskultur.“</blockquote><figcaption class="blockquote-footer mb-0">Timo, Fortgeschrittener</figcaption></figure>
         </div>
         <div class="col-lg-6">
-          <h2 class="fw-bold mb-3 section-title">FAQ</h2>
-          <div class="accordion" id="faq">
+          <h2 class="fw-bold mb-3 section-title" data-aos="fade-up">FAQ</h2>
+          <div class="accordion" id="faq" data-aos="fade-up" data-aos-delay="150">
             <div class="accordion-item"><h2 class="accordion-header" id="q1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true" aria-controls="a1">Brauche ich Vorerfahrung?</button></h2><div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">Nein, Einsteiger sind explizit willkommen. In „Fundamentals“ startest du sicher.</div></div></div>
             <div class="accordion-item"><h2 class="accordion-header" id="q2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">Was soll ich mitbringen?</button></h2><div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Bequeme Sportkleidung, Flip-Flops, Wasser. Gi/No-Gi wird vor Ort erklärt.</div></div></div>
             <div class="accordion-item"><h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">Gibt es eine Probestunde?</button></h2><div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Ja – kostenlos und unverbindlich. Nutze das Formular unten.</div></div></div>
@@ -242,12 +360,13 @@
   </section>
 
   <!-- PROBESTUNDE / KONTAKT -->
-  <section id="probestunde" class="py-5 section-muted section-divider">
+  <section id="probestunde" class="py-5 section-muted section-divider" style="position:relative;">
+    <div class="stripe-line"></div>
     <div class="container">
-      <div class="row mb-4 text-center"><div class="col"><h2 class="fw-bold mb-1 section-title">Kostenlose Probestunde</h2><p class="text-secondary mb-0">Wir melden uns in der Regel innerhalb von 24h.</p></div></div>
+      <div class="row mb-4 text-center"><div class="col"><h2 class="fw-bold mb-1 section-title" data-aos="fade-up">Kostenlose Probestunde</h2><p class="text-secondary mb-0" data-aos="fade-up" data-aos-delay="150">Wir melden uns in der Regel innerhalb von 24h.</p></div></div>
       <div class="row g-4">
         <div class="col-lg-7">
-          <form id="trial-form" action="#" method="post" class="bg-white border rounded-4 p-4">
+          <form id="trial-form" action="#" method="post" class="bg-white border rounded-4 p-4" data-aos="fade-up">
             <div class="row g-3">
               <div class="col-md-6"><label class="form-label" for="name">Name</label><input class="form-control" id="name" name="name" required></div>
               <div class="col-md-6"><label class="form-label" for="email">E-Mail</label><input type="email" class="form-control" id="email" name="email" required></div>
@@ -267,7 +386,7 @@
           </form>
         </div>
         <div class="col-lg-5" id="kontakt">
-          <div class="bg-white border rounded-4 p-4 h-100">
+          <div class="bg-white border rounded-4 p-4 h-100" data-aos="fade-up" data-aos-delay="200">
             <h5 class="mb-3">Kontakt</h5>
             <p class="mb-1">Circle of Life Jiu-Jitsu</p>
             <p class="mb-1">Beispielstraße 12, 68161 Mannheim</p>
@@ -304,7 +423,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" referrerpolicy="no-referrer"></script>
 
-  <!-- Your JS -->
+  <!-- AOS (Scroll Animations) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 600,
+      easing: 'ease-out'
+    });
+  </script>
+
+  <!-- Main JS -->
   <script src="/js/main.js"></script>
 </body>
 </html>

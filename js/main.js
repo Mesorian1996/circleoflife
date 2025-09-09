@@ -64,7 +64,29 @@
       }
     }
     const heroSlideEls = Array.from(document.querySelectorAll('.hero-slide'));
-  
+
+    // Neues Bild-Element im Split-Hero (rechte Spalte)
+    const heroVisualImg = document.getElementById('hero-visual-img');
+    const coinImg = document.querySelector('.logo-coin img');
+
+    function fadeSwap(imgEl, nextSrc, nextPos){
+      if(!imgEl) return;
+      imgEl.classList.add('is-fading');         // fade out
+      setTimeout(()=>{
+        // Quelle wechseln
+        const onLoaded = () => {
+          imgEl.removeEventListener('load', onLoaded);
+          if(nextPos) imgEl.style.objectPosition = nextPos;
+          imgEl.classList.remove('is-fading');  // fade in
+          imgEl.classList.add('zoom');          // kleiner Zoom-Punch
+          setTimeout(()=> imgEl.classList.remove('zoom'), 900);
+        };
+        imgEl.addEventListener('load', onLoaded, { once: true });
+        imgEl.src = nextSrc;
+      }, 120); // kleines Delay für sauberen Übergang
+    }
+    
+
     /* ===== Story/Galerie vorbereiten ===== */
     const imgEl   = document.getElementById('story-slide');
     const capEl   = document.getElementById('story-caption');
@@ -75,12 +97,46 @@
     /* ===== Gemeinsamer Index + Renderfunktionen ===== */
     let idx = 0;
   
-    function renderHero(i){
-      if (!heroSlideEls.length) return;
-      heroSlideEls.forEach(el => el.classList.remove('active'));
-      const el = heroSlideEls[i];
-      if (el) el.classList.add('active');
+    function fadeSwap(imgEl, nextSrc, nextPos){
+      if(!imgEl) return;
+      imgEl.style.opacity = '0';
+      setTimeout(()=>{
+        const onLoaded = () => {
+          imgEl.removeEventListener('load', onLoaded);
+          if(nextPos) imgEl.style.objectPosition = nextPos;
+          imgEl.style.opacity = '1';
+          imgEl.style.transform = 'scale(1.035)';
+          setTimeout(()=> imgEl.style.transform = 'scale(1)', 900);
+        };
+        imgEl.addEventListener('load', onLoaded, { once: true });
+        imgEl.src = nextSrc;
+      }, 120);
     }
+    
+    function renderHero(i){
+      // optional: alte BG-Slides ansteuern
+      if (heroSlideEls.length){
+        heroSlideEls.forEach(el => el.classList.remove('active'));
+        const el = heroSlideEls[i];
+        if (el) el.classList.add('active');
+      }
+      // Visual rechts (Offset-Hero) weich wechseln
+      if (heroVisualImg && SLIDES[i]){
+        fadeSwap(heroVisualImg, SLIDES[i].src, SLIDES[i].pos || '60% 70%');
+      }
+      // Coin-Pulse synchron zum Slide-Wechsel
+      if (coinImg){
+        coinImg.classList.remove('pulse'); // reset
+        // Reflow, damit die Animation neu triggert
+        void coinImg.offsetWidth;
+        coinImg.classList.add('pulse');
+        // Klasse wieder entfernen, falls du es sauber halten möchtest:
+        setTimeout(()=> coinImg.classList.remove('pulse'), 700);
+      }
+    }
+    
+    
+
   
     function renderStory(i){
       if (!imgEl || !capEl) return;
@@ -114,7 +170,7 @@
       timer = setInterval(()=>{
         idx = (idx + 1) % SLIDES.length;
         syncRender();
-      }, 5500);
+      }, 8000);
     }
     function stop(){ if (timer) clearInterval(timer); }
   
@@ -138,4 +194,24 @@
       img.addEventListener('click', () => { if(lightboxImg) lightboxImg.src = img.src; });
     });
   })();
-  
+
+  // Markiere automatisch den heutigen Tag im Kursplan (Spalte)
+(function(){
+  const weekday = (new Date()).getDay(); // 0 = Sonntag, 1 = Montag, ...
+  // Mapping: So = 7. Spalte, Mo = 1. Spalte
+  let col = weekday === 0 ? 7 : weekday;
+  // ths
+  const table = document.querySelector('.timetable-modern .schedule-table');
+  if(!table) return;
+  const ths = table.querySelectorAll('thead th');
+  if(ths[col]) ths[col].classList.add('active');
+  // Jede Zelle der passenden Spalte hervorheben
+  const trs = table.querySelectorAll('tbody tr');
+  trs.forEach(tr => {
+    const tds = tr.querySelectorAll('td');
+    if(tds[col]) tds[col].classList.add('active');
+  });
+  // PDF-Button Puls nach 3s entfernen
+  const pdfBtn = document.querySelector('.timetable-pdf-btn');
+  if(pdfBtn) setTimeout(()=>pdfBtn.style.animation='none', 2800);
+})();

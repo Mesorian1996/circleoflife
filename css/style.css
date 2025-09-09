@@ -1,132 +1,617 @@
-/* ========================= css/style.css ========================= */
-:root{
-    --brand:#0b0b16; --gold:#c8a03a; --gold-2:#b28a2a; --bg-muted:#f5f6f7;
-    --primary:var(--gold); --primary-dark:var(--gold-2); --dark:var(--brand);
-    --font-head:'Playfair Display',serif; --font-body:'Lato',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+/* =========================================================
+   Circle of Life BJJ — CONSOLIDATED CSS (no features removed)
+   ========================================================= */
+
+/* ---------- Tokens ---------- */
+:root {
+  --brand: #14182b;
+  --brand-dark: #101323;
+  --accent: #bfa24a;             /* Gold (Akzent) */
+  --gold: #f5c84b;               /* warmer Goldton */
+  --gold-2: #ffe17c;
+  --accent-light: #f5efe3;
+  --secondary: #3f4a60;
+  --neutral: #e4e6ec;
+  --bg-muted: #f7f8fa;
+  --white: #fff;
+  --radius: 0.8em;
+  --radius-sm: 0.5em;
+  --shadow: 0 4px 18px rgba(20,24,43,0.07);
+  --font-head: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --nav-h: 64px;
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.22);
+  --hero-line:       rgba(191,162,74, .9);   /* Gold-Linie */
+  --hero-fade-start: rgba(191,162,74, .14);  /* zarter Goldschimmer */
+  --hero-fade-end:   rgba(191,162,74, 0);    
+}
+
+
+
+/* ---------- Base ---------- */
+html, body {
+  font-family: var(--font-body);
+  color: var(--brand-dark);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100%;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--brand);
+  margin-bottom: .5em;
+}
+h1 { font-size: clamp(2.6rem, 4.8vw, 4.4rem); line-height: 1.06; }
+h2 { font-size: clamp(1.8rem, 2.8vw, 2.2rem); }
+h3 { font-size: 1.3rem; }
+a { color: var(--secondary); transition: color .2s ease; text-decoration: none; }
+a:hover, a:focus { color: var(--accent); }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--neutral);
+  box-shadow: 0 1px 8px rgba(20,24,43,0.04);
+  font-size: 1rem;
+}
+.navbar-brand strong { letter-spacing: .5px; color: var(--brand); }
+.navbar .nav-link {
+  color: var(--brand);
+  font-weight: 600;
+  margin: 0 .5em;
+  padding: .4em .8em;
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--accent);
+  background: var(--bg-muted);
+}
+.navbar .nav-link::after {
+  content: "";
+  display: block;
+  height: 2px; width: 100%;
+  margin-top: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform .18s;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after { transform: scaleX(1); }
+
+/* ---------- Buttons ---------- */
+.btn-brand {
+  background: var(--secondary);
+  color: #fff !important;
+  border: none;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: background .18s, box-shadow .18s;
+  box-shadow: var(--shadow);
+}
+.btn-brand:hover, .btn-brand:focus {
+  background: var(--accent);
+  color: var(--brand) !important;
+  box-shadow: 0 0 5px #ffe17c88;
+}
+.btn-outline-light {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.55);
+  color: #fff;
+  border-radius: var(--radius-sm);
+}
+.btn-outline-light:hover { border-color:#fff; background: rgba(255,255,255,.06); }
+
+
+/* ====== HERO – BASIS ====== */
+
+
+
+/* Hero bekommt eigenes Top-Padding */
+.hero { padding-top: clamp(64px, 8vw, 96px); }
+
+/* Erste Box hat oben keinen Margin mehr */
+.hero-copy { margin-top: 0; }
+
+/* Falls dein h1 oben noch Standard-Margin hat: */
+.hero-copy h1 { margin-top: 0; }
+.hero{
+  position: relative;
+  background: var(--brand, #14182b);
+  color: #fff;
+  min-height: 68vh;
+  overflow: auto;              /* damit Coin nie abgeschnitten wird */
+  isolation: isolate;
+}
+.hero::before{                    /* dezenter Dark-Overlay */
+  content:""; position:absolute; inset:0; z-index:1;
+  background: linear-gradient(rgba(20,24,43,.45), rgba(20,24,43,.15));
+}
+.hero > .container{ position: relative; z-index: 2; }
+
+/* Falls es noch eine alte BG-Slideshow gibt, hier abschalten */
+.hero .hero-bg{ display:none; }
+
+.hero-copy{ max-width: 62ch; margin: clamp(64px, 8vw, 96px) 0 18px; }
+.hero-copy h1{ font-weight: 800; letter-spacing:-.015em; line-height:1.06; margin:0 0 .35em; }
+.hero-copy .sub{ max-width: 60ch; opacity:.96; }
+
+.hero-visual, .hero-art{          /* Bild im Flow, ohne Overlap */
+  width: 100%;
+  max-width: 680px;
+  
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 72px rgba(0,0,0,.30);
+  margin: 8px 0 0;
+}
+.hero-visual img, .hero-art img{
+  width:100%; height:auto; object-fit:cover; object-position:60% 70%;
+}
+
+.hero-cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
+
+/* Buttons etwas kompakter, elegant */
+.hero-cta .btn{
+  padding: .55rem 1.15rem;
+  font-size: .96rem;
+  border-radius: .5rem;
+}
+
+/* Responsive: untereinander, ohne Schnickschnack */
+@media (max-width: 992px){
+  .hero.hero-split > .container{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "art"
+      "copy";
+    row-gap: clamp(12px, 3vw, 22px);
   }
-  
-  /* Base */
-  html,body{font-family:var(--font-body);color:#111827;background:#fff}
-  .navbar-brand strong{letter-spacing:.5px}
-  
-  /* Buttons */
-  .btn,.btn-brand,.cta-btn,button{
-    display:inline-block; padding:.8rem 1.6rem; border:0; border-radius:6px;
-    background:var(--primary); color:var(--dark)!important; font-weight:600;
-    text-decoration:none; cursor:pointer; transition:background-color .3s ease, filter .2s ease;
+  .hero-box{ max-width: 100%; }
+  .hero-art{ max-width: 100%; }
+}
+
+
+/* ====== COIN – BASIS (360° Spin + Goldrahmen) ====== */
+.logo-coin{
+  position: absolute;                 /* fixiert, damit er nie mit dem Hero kollidiert */
+  top: 25px;                       /* ggf.  + Höhe deiner Navbar anpassen */
+  right: 25px;
+  width: 100px; height: 100px;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+.logo-coin img{
+  width:100%; height:100%;
+  border-radius:50%;
+  border:3px solid var(--accent, #bfa24a);
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.26));
+  animation: coinspin 10s linear infinite;  /* ruhiger 360°-Spin */
+}
+@keyframes coinspin{
+  0%{ transform: rotateY(0deg); }
+  100%{ transform: rotateY(360deg); }
+}
+@media (max-width:575.98px){
+  .logo-coin{ top:10px; right:10px; width:56px; height:56px; }
+}
+
+/* ===== Split-Hero mit Overlap (Text links, Bild rechts) ===== */
+
+.hero.hero-split{
+  position: relative;
+  min-height: 70vh;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  overflow: visible;                 /* nichts abschneiden (Coin/Overlap) */
+}
+
+.hero.hero-split > .container{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;      /* Bild minimal größer */
+  grid-template-areas:
+    "title  art"
+    "copy   art";
+  column-gap: clamp(28px, 5vw, 64px);
+  align-items: stretch;
+}
+
+.join-fixed {
+  font-size: 85%;
+  position: relative;
+  color:#fff; 
+  opacity:.66; 
+  font-weight:800; 
+  margin-right:.35rem;
+}
+
+/* Text-Widget (Glass-Card) links */
+.hero.hero-split .hero-box{
+  grid-area: copy;
+  align-self: start;
+  max-width: 820px;              /* vorher 720px → breiter */
+  padding: clamp(24px, 3vw, 36px); /* innen mehr Luft */
+  font-size: 1rem; 
+  border-radius: 18px;
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  background: linear-gradient(180deg, rgba(16,19,35,.46), rgba(16,19,35,.34));
+  box-shadow: 0 18px 60px rgba(0,0,0,.22);
+  z-index: 3;                        /* über dem Bild */
+  margin-top: 0;                      /* kein Collapsing oben */
+}
+.hero.hero-split .hero-box h1{ margin-top: 0; }
+.hero.hero-split .join-fixed{ color:#fff; opacity:.66; font-weight:800; margin-right:.35rem; }
+
+/* kleine goldene Unterstreichung (optional) */
+.hero.hero-split .headline-accent{ position:relative; display:inline-block; font-size: 85%;}
+.hero.hero-split .headline-accent .text{
+  position:relative; z-index:2;
+  background: linear-gradient(180deg,#fff 0%,#f7f7f7 60%,#fff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero.hero-split .headline-accent::after{
+  content:""; position:absolute; left:0; right:0; bottom:-0.18em; height:.16em;
+  background: linear-gradient(90deg, var(--accent,#bfa24a), var(--gold,#f5c84b));
+  border-radius:3px; transform:scaleX(0); transform-origin:left;
+  animation: underlineDraw .8s .12s ease-out forwards;
+}
+@keyframes underlineDraw{ to{ transform: scaleX(1); } }
+
+/* Bild-Widget rechts – größer + weiches Überlappen nach links */
+.hero.hero-split .hero-art{
+  grid-area: art;
+  align-self: start;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 26px;
+  overflow: hidden; 
+  box-shadow: 0 30px 90px rgba(0,0,0,.34);
+  z-index: 4;
+  isolation: isolate;
+
+  /* Overlap nach links */
+  max-width: min(64vw, 980px);         /* größer */
+  margin-top: clamp(120px, 4vw, 64px);  /* tiefer */
+}
+
+.hero.hero-split .hero-art img{
+  animation: heroPanZoom 14s ease-in-out infinite;
+}
+
+
+/* Weicher Übergang zur linken Kante (kein harter Schnitt über dem Text) */
+.hero.hero-split .hero-art::before{
+  content:none; position:absolute; inset:0 58% 0 0; pointer-events:none;
+  background: linear-gradient(to left,
+    rgba(0,0,0,0) 0%,
+    rgba(20,24,43,.22) 40%,
+    rgba(20,24,43,.55) 85%);
+}
+.hero.hero-split .hero-art::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(60% 60% at 70% 30%, rgba(191,162,74,.18), transparent 60%),
+    radial-gradient(50% 50% at 30% 70%, rgba(20,24,43,.35), transparent 60%);
+  mix-blend-mode: screen;
+}
+.hero.hero-split .hero-art img{
+  width:100%; height:100%;
+  object-fit: cover; object-position: 60% 70%;
+  transition: opacity 600ms ease, transform 1200ms ease;
+}
+
+/* CTA bleibt links unter dem Text (falls du sie separat hast) */
+.hero.hero-split .hero-cta{
+  grid-area: copy;
+  align-self: end;
+  margin-top: clamp(12px, 2vw, 18px);
+  display:flex; flex-wrap:wrap; gap:12px;
+  z-index: 3;
+}
+
+/* Responsive: auf eine Spalte, Overlap weg */
+@media (max-width: 992px){
+  .hero.hero-split > .container{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "art";
   }
-  .btn:hover,.btn-brand:hover,.cta-btn:hover,button:hover{background:var(--primary-dark);filter:saturate(105%)}
-  
-  /* Navbar underline hover */
-  .navbar .nav-link{position:relative}
-  .navbar .nav-link::after{
-    content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
-    background:linear-gradient(90deg,var(--gold),var(--gold-2));
-    transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
+  .hero.hero-split .hero-art{
+    max-width: min(92vw, 720px);
+    transform: none;                 /* kein Überlappen mobil */
+    margin-top: clamp(12px, 3vw, 24px);
   }
-  .navbar .nav-link:hover::after,.navbar .nav-link.active::after{transform:scaleX(1)}
-  
-  /* ========== HERO mit Overlay + SVG-Bogen unten + Slideshow ========== */
-  .hero{position:relative; min-height:72vh; overflow:hidden; color:#fff; isolation:isolate}
-  .hero-bg{position:absolute; inset:0; z-index:0}
-  .hero-slide{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:75% center;
-    opacity:0; transition:opacity 1200ms ease-in-out, filter 600ms ease-in-out; animation:heroZoom 11s ease-in-out infinite;
+}
+.hero.hero-split > .container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title art"
+    "copy  art";
+  column-gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+
+.hero-title{ 
+  grid-area: title; 
+  margin: 0 0 .35em;
+  display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .35rem;
+}
+
+/* Linkes Widget: kein Rahmen/Shadow, nur feine Linie + weicher Verlauf nach rechts */
+.hero-box{
+  grid-area: copy;
+  position: relative;
+  max-width: 720px;
+  padding: clamp(14px, 1.8vw, 22px) clamp(14px, 2vw, 24px);
+  border: none; box-shadow: none; background: transparent; /* clean */
+
+  /* feine vertikale Linie links */
+}
+.hero-box::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background: var(--hero-line);
+  border-radius: 2px;
+}
+/* sanfter Farbverlauf, der direkt an der Linie startet und nach rechts ausläuft */
+.hero-box::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, var(--hero-fade-start) 0%, var(--hero-fade-end) 22%);
+  pointer-events: none;
+}
+
+/* Bild rechts: größer, keine Ränder/Shadow, Ecken weich; Animation nur aufs IMG */
+.hero-art{
+  grid-area: art;
+  align-self: start;
+  width: 100%;
+  max-width: min(64vw, 1040px);  /* Bild etwas größer als Textspalte */
+  aspect-ratio: 16 / 10;
+  border-radius: 22px;
+  overflow: hidden;              /* hält die Ecken bei Animation */
+  box-shadow: none; border: none; background: transparent;
+}
+.hero-art img{
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 60% 70%;
+  animation: heroPanZoom 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes heroPanZoom{
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.045) translate3d(-0.5%, -0.5%, 0); }
+  100% { transform: scale(1); }
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   Cards / Sections (wie gehabt, leicht konsolidiert)
+   ========================================================= */
+.section-title {
+  font-family: var(--font-head);
+  font-size: 1.5rem; font-weight: 800;
+  color: var(--brand);
+  border-bottom: 2.5px solid var(--accent);
+  padding-bottom: .06em; display: inline-block; margin-bottom: .3em;
+}
+.section-divider { border-top: 1px solid var(--neutral); }
+.section-muted { background: var(--bg-muted); }
+section { padding: 2.5em 0; }
+@media (max-width:991.98px){ section { padding: 1.3em 0; } }
+
+.section-overlap { margin-top:-36px; padding: 0 0 2em; }
+.about-card {
+  background: var(--white);
+  border: 1px solid var(--neutral);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5em 1.2em;
+}
+
+.card, .feature-card, .coach-card, .card-pricing {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--neutral);
+  transition: box-shadow .14s, transform .13s;
+}
+.card:hover, .feature-card:hover, .coach-card:hover, .card-pricing:hover {
+  box-shadow: 0 8px 32px rgba(191,162,74,0.11);
+  transform: translateY(-2px) scale(1.01);
+}
+.feature-card { padding: 1.1em 1em; }
+.card-pricing.highlight {
+  border: 2px solid var(--accent);
+  box-shadow: 0 8px 32px rgba(191,162,74,0.11);
+}
+.badge.text-bg-warning { background: var(--accent-light); color: var(--accent); font-weight: 700; }
+.rounded-4 { border-radius: 1.2em !important; }
+.rounded-3 { border-radius: 0.6em !important; }
+
+/* =========================================================
+   Timetable / Kursplan (deine Version konsistent gelassen)
+   ========================================================= */
+.timetable-layout {
+  position: relative; background: #f8f8fc; border-radius: 1.4em;
+  box-shadow: 0 6px 32px rgba(20,24,43,0.09); padding: 2.5em 0; overflow: hidden;
+}
+.timetable-layout::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.6) 60%,rgba(255,255,255,0.5) 100%),
+    url('/assets/images/bjj2.jpg') center center/cover no-repeat;
+}
+.timetable-2col, .zeiten-widget, .zeiten-info { position: relative; z-index: 1; }
+.timetable-2col { display: flex; flex-direction: row; align-items: flex-start; gap: 2.5em; width: 100%; }
+.zeiten-info { flex: 0 0 320px; max-width: 340px; min-width: 220px; display:flex; flex-direction:column; }
+.timetable-panel, .zeiten-widget { flex: 1 1 0%; min-width: 0; max-width: 100%; }
+
+@media (max-width: 991px){
+  .timetable-2col { flex-direction: column; gap: 2em; }
+  .zeiten-info, .timetable-panel, .zeiten-widget { max-width: 100%; min-width: 0; width: 100%; }
+}
+
+/* Marker-Box */
+.zeiten-info-marker {
+  background: rgba(245,239,227,0.33);
+  border-radius: 1.1em; box-shadow: 0 2px 10px 1px rgba(20,24,43,0.07);
+  padding: 2.1em 1.4em; border-left: .22em solid var(--accent);
+}
+.zeiten-info-marker h2, .timetable-header {
+  font-family: var(--font-head); font-size: 1.19em; color: var(--brand-dark);
+  margin-bottom: 1em; font-weight: 800; text-align: left;
+}
+.zeiten-info-marker p, .zeiten-info-marker .lead {
+  color:#232629; font-size:1.05em; font-weight:500; letter-spacing:.01em;
+  text-align: justify; hyphens:auto; margin-bottom:1.3em; line-height:1.6;
+}
+.zeiten-info-marker .usp-list { list-style:none; padding:0; margin:1.1em 0 0; width:100%; }
+.zeiten-info-marker li { color:var(--brand-dark); font-size:1em; font-weight:700; letter-spacing:.01em; display:flex; align-items:center; margin-bottom:.25em; }
+.zeiten-info-marker .icon-check { display:inline-block; width:1.2em; height:1.2em; background:var(--accent); border-radius:50%; margin-right:.55em; color:#fff; font-size:.96em; line-height:1.2em; box-shadow:0 1.5px 5px 0 rgba(191,162,74,0.07); text-align:center; }
+
+/* Panel/Tabelle */
+.zeiten-widget, .timetable-panel { width: 100%; }
+.timetable-panel { background:#fff; border-radius:1.3em; box-shadow:0 8px 32px rgba(20,24,43,0.11); border:1.5px solid #e5e7eb; min-height:450px; }
+.timetable-panel-inner { display:flex; flex-direction:column; justify-content:center; height:100%; padding:2.2em 2.2em 1em; }
+.table-responsive { width:100%; overflow-x:auto; margin:0 auto; }
+
+.timetable-panel-header { position:relative; gap:1em; }
+.timetable-header {
+  font-size:1.5rem; font-weight:800; color:var(--brand); letter-spacing:.01em; margin-bottom:.35em;
+  background:none; border:none; padding-bottom:.07em; position:relative; text-align:left;
+}
+.timetable-header::before {
+  content:""; display:block; width:44px; height:3px; border-radius:2px;
+  background: linear-gradient(90deg, var(--accent), transparent 90%);
+  position:absolute; left:0; bottom:-.33em;
+}
+@media (max-width:575px){
+  .timetable-header { text-align:center; }
+  .timetable-header::before { left:50%; transform:translateX(-50%); width:32px; }
+}
+
+/* Tabelle */
+.timetable-modern .schedule-table {
+  width:100%; min-width:520px; font-size:.92em; border-collapse:separate;
+  background:#fff; border-radius:1em; overflow:hidden;
+}
+.timetable-modern th, .timetable-modern td {
+  text-align:center; vertical-align:middle; border:none !important;
+  padding:.38em .18em; min-width:58px; transition: background .14s, color .14s; font-size:.92em;
+}
+.timetable-modern th {
+  background:#eef1f7; color:var(--brand); font-family:var(--font-body);
+  font-weight:600; border-bottom:1.5px solid #dde1e9;
+}
+.timetable-modern td.text-secondary, .timetable-modern th:first-child { white-space:nowrap; font-size:.92em; }
+.timetable-modern .slot {
+  font-family:var(--font-body); font-weight:700; font-size:1em; background:none; cursor:pointer;
+  transition: color .17s, text-decoration .17s, box-shadow .18s; border-radius:.32em; outline:none;
+}
+.timetable-modern .slot[data-style="kids"]{ color:#5269b6; }
+.timetable-modern .slot[data-style="nogi"]{ color:#5d626c; }
+.timetable-modern .slot[data-style="gi"]  { color:#bfa24a; }
+.timetable-modern .slot.slot-empty { color:#bbb; opacity:.5; pointer-events:none; }
+.timetable-modern .slot:hover,
+.timetable-modern tr:hover .slot:not(.slot-empty){
+  color:var(--accent); text-decoration: underline 2px dotted #d1d6e3; box-shadow:0 2px 12px rgba(191,162,74,0.06);
+}
+
+/* Legende */
+.legend { display:flex; align-items:center; gap:1.2em; margin-top:1em; }
+.legend .dot { width:12px; height:12px; border-radius:999px; display:inline-block; margin-right:.4em; border:1.5px solid #dde1e9; }
+.legend .dot.kids{ background:#5269b6; }
+.legend .dot.nogi{ background:#5d626c; }
+.legend .dot.gi  { background:#bfa24a; }
+.legend span { font-weight:600; font-family:var(--font-body); color:#444; }
+
+.timetable-notes { margin-top:1.1em; }
+
+/* Mobile Table */
+@media (max-width:650px){
+  .timetable-modern .schedule-table,
+  .timetable-modern thead, .timetable-modern tr { display:block; width:100%; }
+  .timetable-modern th, .timetable-modern td {
+    text-align:left; display:block; min-width:unset; padding:.5em .7em;
+    border:none !important; background:none !important; border-radius:0;
   }
-  .hero-slide.active{opacity:1}
-  
-  /* Overlay über Background, unter Content/Shape */
-  .hero::before{
-    content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35));
+  .timetable-modern tr {
+    margin-bottom:1.2em; border-radius:1em; box-shadow:0 2px 8px rgba(20,24,43,0.07); background:#fff;
   }
-  
-  /* SVG-Bogen nur unten */
-  .hero-shape{position:absolute; bottom:-1px; left:0; width:100%; line-height:0; overflow:hidden; z-index:2; pointer-events:none}
-  .hero-shape svg{display:block; width:100%; height:150px}
-  
-  /* Inhalt über Overlay/Bogen */
-  .hero > .container{position:relative; z-index:3}
-  
-  /* Headline/Lead */
-  .hero h1{
-    font-family:var(--font-head); font-weight:800; letter-spacing:.3px;
-    font-size:clamp(2.2rem,4vw + 1rem,4rem); margin-bottom:.75rem;
-    text-shadow:0 2px 12px rgba(0,0,0,.25);
-  }
-  .hero .lead{ text-shadow:0 1px 8px rgba(0,0,0,.3) }
-  
-  /* Fixiertes Logo oben rechts */
-  .hero-logo{
-    position:absolute; top:20px; right:20px; width:160px; height:auto; opacity:.9;
-    filter:drop-shadow(0 8px 20px rgba(0,0,0,.35)); pointer-events:none; z-index:4;
-  }
-  @media (max-width:576px){ .hero-logo{width:110px; top:12px; right:12px; opacity:.85} }
-  
-  /* Ken Burns */
-  @keyframes heroZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
-  
-  /* Responsive Fokus */
-  @media (max-width:991.98px){ .hero-slide{object-position:65% center} }
-  @media (max-width:575.98px){ .hero{min-height:64vh} .hero-slide{object-position:55% center} }
-  
-  /* Sektionen & Titles */
-  .section-muted{background:var(--bg-muted)}
-  .section-divider{border-top:1px solid rgba(11,11,22,.06)}
-  .section-title{position:relative; padding-bottom:.4rem; letter-spacing:.2px; font-family:var(--font-head); font-weight:700}
-  .section-title::after{content:""; position:absolute; left:0; bottom:0; height:3px; width:64px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); border-radius:2px}
-  
-  /* Über-uns – Card direkt unterm Hero */
-  .section-overlap{position:relative; margin-top:-40px; padding:0 0 2rem}
-  .about-card{
-    background:#fff; border:1px solid #e5e7eb; border-radius:24px;
-    box-shadow:0 24px 60px rgba(11,11,22,.12); padding:clamp(1rem,3vw,2rem);
-  }
-  .about-card h3{font-family:var(--font-head); font-weight:700; font-size:1.15rem}
-  
-  /* Feature Cards */
-  .feature-card{transition:transform .2s ease, box-shadow .2s ease}
-  .feature-card:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(11,11,22,.08)}
-  
-  /* Story/Galerie Slider */
-  .story-slider{background:#000; border-radius:16px}
-  .story-slider img{max-height:520px; object-fit:cover}
-  .story-nav{
-    position:absolute; top:50%; transform:translateY(-50%);
-    background:rgba(0,0,0,.45); color:#fff; border:0; width:44px; height:44px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; font-size:24px;
-  }
-  .story-nav.prev{left:12px}
-  .story-nav.next{right:12px}
-  #story-dots{display:flex; gap:8px}
-  #story-dots .dot{width:10px; height:10px; border-radius:50%; background:#d1d5db; border:0}
-  #story-dots .dot.active{background:var(--gold)}
-  
-  /* Kursplan */
-  .table-gold>th{background:linear-gradient(180deg,#fff7e0,#ffe7b3)}
-  .schedule-table thead th{position:sticky; top:0; background:#fff; z-index:2}
-  .schedule-table td.slot{min-width:140px; vertical-align:top}
-  .schedule-table td.slot strong{display:block}
-  .legend .dot{display:inline-block; width:10px; height:10px; border-radius:999px; margin-right:.35rem; border:1px solid rgba(11,11,22,.2)}
-  .legend .dot.gi{background:#fff4d6}
-  .legend .dot.nogi{background:#e6f4ff}
-  
-  /* Floating Buttons */
-  .floating-cta{position:fixed; right:16px; bottom:16px; z-index:1000}
-  .whatsapp{
-    position:fixed; right:16px; bottom:86px; z-index:1000; width:56px; height:56px; border-radius:50%;
-    background:#25D366; color:#fff!important; display:flex; align-items:center; justify-content:center; padding:0; border:0;
-  }
-  .whatsapp:hover{background:#1ebe5b}
-  .whatsapp svg{width:28px; height:28px}
-  
-  /* Footer */
-  footer a{color:inherit}
-  
-  /* Print */
-  @media print{
-    .navbar,.floating-cta,.whatsapp,footer,#download-pdf{display:none!important}
-    .section-muted{background:#fff}
-    .table{font-size:12px}
-  }
-  
+  .timetable-modern th { font-size:1em; color:#3f4a60; }
+  .timetable-modern td.text-secondary { font-weight:800; color:#14182b; }
+  .timetable-modern td.slot.slot-empty { display:none; }
+}
+
+/* PDF Button nudge */
+.timetable-pdf-btn { animation: timetable-pulse 1.2s 1.3s 2 alternate; }
+@keyframes timetable-pulse { 0%{ box-shadow:0 0 0 0 var(--accent);} 100%{ box-shadow:0 0 0 8px rgba(191,162,74,0.17);} }
+
+/* Story/Galerie Basics */
+.story-slider { background:#171b2b; border-radius:1.2em; }
+.story-slider img { max-height:420px; object-fit:cover; }
+.story-nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,.34); color:#fff; border:0; width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+}
+.story-nav.prev { left:14px; }
+.story-nav.next { right:14px; }
+#story-dots .dot { width:10px; height:10px; border-radius:50%; background:#d1d5db; border:0; }
+#story-dots .dot.active { background: var(--accent); }
+
+/* Floating CTA / WhatsApp */
+.floating-cta { position:fixed; right:18px; bottom:18px; z-index:1000; box-shadow:var(--shadow); }
+.whatsapp {
+  position:fixed; right:18px; bottom:90px; z-index:1000;
+  width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center; padding:0; border:0; box-shadow:var(--shadow);
+}
+.whatsapp:hover { background:#1ebe5b; }
+.whatsapp svg { width:28px; height:28px; }
+
+/* Footer */
+footer {
+  background:#fff; color:#888; font-size:1em;
+  border-top:1px solid var(--neutral); padding:1.5em 0 .8em;
+}
+footer a { color: inherit; }
+
+/* Forms */
+.form-label { font-weight:500; color:var(--secondary); }
+.form-control, .form-select { border-radius:var(--radius-sm); border:1px solid var(--neutral); font-size:1em; }
+.form-control:focus, .form-select:focus { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-light); }
+
+/* A11y */
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* Global Responsive Tweaks */
+@media (max-width:991.98px){
+  .timetable-header { font-size:1.05rem; }
+  section { padding:1em 0; }
+  .rounded-4 { border-radius:.7em !important; }
+}
+@media (max-width:575.98px){
+  body { font-size:15px; }
+  .hero-logo { width:60px; }
+  .section-title { font-size:1.07rem; }
+  .timetable-modern th, .timetable-modern td { font-size:.92rem; }
+  .story-slider img { max-height:220px; }
+}
+
