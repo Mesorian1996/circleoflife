@@ -129,14 +129,14 @@ a:hover, a:focus { color: var(--accent); }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
-  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  gap: 18px;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
   font-weight: 800;
-  margin-bottom: 0.6em;
   flex-wrap: wrap;
+  margin-bottom: 0.6em;
 }
 .hero-join {
-  color: #fff;
+  color: #D3D3D3;
   letter-spacing: -.01em;
   font-weight: 800;
   font-size: 1em;
@@ -154,7 +154,7 @@ a:hover, a:focus { color: var(--accent); }
   height: 80px;
   border-radius: 50%;
   border: 3px solid var(--accent);
-  box-shadow: 0 0 8px #bfa24a88;
+  /* box-shadow: 0 0 8px #bfa24a88; */
   animation: coinspin 9s linear infinite;
   background: radial-gradient(ellipse at 60% 38%, #fffbe7 0%, #e5ab36 55%, #bfa24a 100%);
 }
@@ -164,6 +164,7 @@ a:hover, a:focus { color: var(--accent); }
 }
 .hero-circle {
   color: #fff;
+
   font-weight: 800;
   position: relative;
   display: inline-block;
@@ -206,7 +207,6 @@ a:hover, a:focus { color: var(--accent); }
   vertical-align: -.1em;
 }
 .hero-subline .highlight {
-  color: #ffe17c;
   font-weight: 700;
   text-align: center;
 }
@@ -259,10 +259,12 @@ a:hover, a:focus { color: var(--accent); }
 /* --- Responsive: Stack alles untereinander --- */
 @media (max-width: 768px) {
   .hero-title-row {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     font-size: 2rem;
     margin-bottom: .4em;
+    flex-wrap: nowrap; /* verhindert Umbruch */
+    white-space: nowrap;
   }
   .hero-title-coin {
     width: 56px;
@@ -300,18 +302,80 @@ a:hover, a:focus { color: var(--accent); }
   border-bottom: 2.5px solid var(--accent);
   padding-bottom: .06em; display: inline-block; margin-bottom: .3em;
 }
-.section-divider { border-top: 1px solid var(--neutral); }
 .section-muted { background: var(--bg-muted); }
 section { padding: 2.5em 0; }
 @media (max-width:991.98px){ section { padding: 1.3em 0; } }
 
-.section-overlap { margin-top:-36px; padding: 0 0 2em; }
+.section-overlap {
+  margin-top: -36px;
+  padding: 0 0 2em;
+  position: relative;
+  z-index: 2;
+}
+
 .about-card {
   background: var(--white);
   border: 1px solid var(--neutral);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-radius: 1.1em;
+  box-shadow: 0 2px 16px rgba(20,24,43,0.07);
   padding: 1.5em 1.2em;
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+}
+
+.about-card .row {
+  width: 100%;
+  display: flex;
+}
+
+.about-card .col-lg-4 {
+  padding: 0 1.2em;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Divider zwischen den Cards */
+.about-card .col-lg-4:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  right: 0;
+  width: 2px;
+  height: 64%;
+  background: linear-gradient(to bottom, #f5c84b 0%, #ffe17c 100%);
+  opacity: 0.35;
+  border-radius: 2px;
+}
+
+/* Eingangseffekt für Cards */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(36px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* Hover-Effekt (optional, ganz dezent) */
+.about-card .col-lg-4:hover {
+  background: rgba(245, 239, 227, 0.14);
+  box-shadow: 0 4px 18px rgba(191,162,74,0.11);
+  z-index: 1;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+
+/* --- Responsive ab Tablet --- */
+@media (max-width: 991px) {
+  .about-card .row {
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  .about-card .col-lg-4 {
+    padding: 1em 0.5em;
+    font-size: 1em;
+  }
+  .about-card .col-lg-4:not(:last-child)::after {
+    display: none;
+  }
 }
 
 .card, .feature-card, .coach-card, .card-pricing {
@@ -335,176 +399,244 @@ section { padding: 2.5em 0; }
 .rounded-3 { border-radius: 0.6em !important; }
 
 
-
-
-/* =========================================================
-   Timetable / Kursplan (deine Version konsistent gelassen)
-   ========================================================= */
-.timetable-layout {
-  position: relative; background: #f8f8fc; border-radius: 1.4em;
-  box-shadow: 0 6px 32px rgba(20,24,43,0.09); padding: 2.5em 0; overflow: hidden;
-}
-.timetable-layout::before {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  background:
-    linear-gradient(90deg,rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.6) 60%,rgba(255,255,255,0.5) 100%),
-    url('/assets/images/bjj2.jpg') center center/cover no-repeat;
-}
-.timetable-2col, .zeiten-widget, .zeiten-info { position: relative; z-index: 1; }
-.timetable-2col { display: flex; flex-direction: row; align-items: flex-start; gap: 2.5em; width: 100%; }
-.zeiten-info { flex: 0 0 320px; max-width: 340px; min-width: 220px; display:flex; flex-direction:column; }
-.timetable-panel, .zeiten-widget { flex: 1 1 0%; min-width: 0; max-width: 100%; }
-
-@media (max-width: 991px){
-  .timetable-2col { flex-direction: column; gap: 2em; }
-  .zeiten-info, .timetable-panel, .zeiten-widget { max-width: 100%; min-width: 0; width: 100%; }
-}
-
-/* Marker-Box */
-.zeiten-info-marker {
-  background: rgba(245,239,227,0.33);
-  border-radius: 1.1em; box-shadow: 0 2px 10px 1px rgba(20,24,43,0.07);
-  padding: 2.1em 1.4em; border-left: .22em solid var(--accent);
-}
-.zeiten-info-marker h2, .timetable-header {
-  font-family: var(--font-head); font-size: 1.19em; color: var(--brand-dark);
-  margin-bottom: 1em; font-weight: 800; text-align: left;
-}
-.zeiten-info-marker p, .zeiten-info-marker .lead {
-  color:#232629; font-size:1.05em; font-weight:500; letter-spacing:.01em;
-  text-align: justify; hyphens:auto; margin-bottom:1.3em; line-height:1.6;
-}
-.zeiten-info-marker .usp-list { list-style:none; padding:0; margin:1.1em 0 0; width:100%; }
-.zeiten-info-marker li { color:var(--brand-dark); font-size:1em; font-weight:700; letter-spacing:.01em; display:flex; align-items:center; margin-bottom:.25em; }
-.zeiten-info-marker .icon-check { display:inline-block; width:1.2em; height:1.2em; background:var(--accent); border-radius:50%; margin-right:.55em; color:#fff; font-size:.96em; line-height:1.2em; box-shadow:0 1.5px 5px 0 rgba(191,162,74,0.07); text-align:center; }
-
-/* Panel/Tabelle */
-.zeiten-widget, .timetable-panel { width: 100%; }
-.timetable-panel { background:#fff; border-radius:1.3em; box-shadow:0 8px 32px rgba(20,24,43,0.11); border:1.5px solid #e5e7eb; min-height:450px; }
-.timetable-panel-inner { display:flex; flex-direction:column; justify-content:center; height:100%; padding:2.2em 2.2em 1em; }
-.table-responsive { width:100%; overflow-x:auto; margin:0 auto; }
-
-.timetable-panel-header { position:relative; gap:1em; }
-.timetable-header {
-  font-size:1.5rem; font-weight:800; color:var(--brand); letter-spacing:.01em; margin-bottom:.35em;
-  background:none; border:none; padding-bottom:.07em; position:relative; text-align:left;
-}
-.timetable-header::before {
-  content:""; display:block; width:44px; height:3px; border-radius:2px;
-  background: linear-gradient(90deg, var(--accent), transparent 90%);
-  position:absolute; left:0; bottom:-.33em;
-}
-@media (max-width:575px){
-  .timetable-header { text-align:center; }
-  .timetable-header::before { left:50%; transform:translateX(-50%); width:32px; }
-}
-
-/* Tabelle */
-.timetable-modern .schedule-table {
-  width:100%; min-width:520px; font-size:.92em; border-collapse:separate;
-  background:#fff; border-radius:1em; overflow:hidden;
-}
-.timetable-modern th, .timetable-modern td {
-  text-align:center; vertical-align:middle; border:none !important;
-  padding:.38em .18em; min-width:58px; transition: background .14s, color .14s; font-size:.92em;
-}
-.timetable-modern th {
-  background:#eef1f7; color:var(--brand); font-family:var(--font-body);
-  font-weight:600; border-bottom:1.5px solid #dde1e9;
-}
-.timetable-modern td.text-secondary, .timetable-modern th:first-child { white-space:nowrap; font-size:.92em; }
-.timetable-modern .slot {
-  font-family:var(--font-body); font-weight:700; font-size:1em; background:none; cursor:pointer;
-  transition: color .17s, text-decoration .17s, box-shadow .18s; border-radius:.32em; outline:none;
-}
-.timetable-modern .slot[data-style="kids"]{ color:#5269b6; }
-.timetable-modern .slot[data-style="nogi"]{ color:#5d626c; }
-.timetable-modern .slot[data-style="gi"]  { color:#bfa24a; }
-.timetable-modern .slot.slot-empty { color:#bbb; opacity:.5; pointer-events:none; }
-.timetable-modern .slot:hover,
-.timetable-modern tr:hover .slot:not(.slot-empty){
-  color:var(--accent); text-decoration: underline 2px dotted #d1d6e3; box-shadow:0 2px 12px rgba(191,162,74,0.06);
-}
-
-/* Legende */
-.legend { display:flex; align-items:center; gap:1.2em; margin-top:1em; }
-.legend .dot { width:12px; height:12px; border-radius:999px; display:inline-block; margin-right:.4em; border:1.5px solid #dde1e9; }
-.legend .dot.kids{ background:#5269b6; }
-.legend .dot.nogi{ background:#5d626c; }
-.legend .dot.gi  { background:#bfa24a; }
-.legend span { font-weight:600; font-family:var(--font-body); color:#444; }
-
-.timetable-notes { margin-top:1.1em; }
-
-/* Mobile Table */
-@media (max-width:650px){
-  .timetable-modern .schedule-table,
-  .timetable-modern thead, .timetable-modern tr { display:block; width:100%; }
-  .timetable-modern th, .timetable-modern td {
-    text-align:left; display:block; min-width:unset; padding:.5em .7em;
-    border:none !important; background:none !important; border-radius:0;
+/* Mobile: kleinere Schrift, weniger Abstand, aber Zeile bleibt */
+@media (max-width: 540px) {
+  .hero-title-row {
+    gap: 8px;
+    flex-wrap: nowrap; /* verhindert Umbruch */
+    white-space: nowrap;
   }
-  .timetable-modern tr {
-    margin-bottom:1.2em; border-radius:1em; box-shadow:0 2px 8px rgba(20,24,43,0.07); background:#fff;
+  .hero-title-coin {
+    width: 40px;
+    height: 40px;
   }
-  .timetable-modern th { font-size:1em; color:#3f4a60; }
-  .timetable-modern td.text-secondary { font-weight:800; color:#14182b; }
-  .timetable-modern td.slot.slot-empty { display:none; }
+  .hero-logo {
+    width: 40px;
+    height: 40px;
+  }
 }
 
-/* PDF Button nudge */
-.timetable-pdf-btn { animation: timetable-pulse 1.2s 1.3s 2 alternate; }
-@keyframes timetable-pulse { 0%{ box-shadow:0 0 0 0 var(--accent);} 100%{ box-shadow:0 0 0 8px rgba(191,162,74,0.17);} }
 
-/* Story/Galerie Basics */
-.story-slider { background:#171b2b; border-radius:1.2em; }
-.story-slider img { max-height:420px; object-fit:cover; }
-.story-nav {
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(0,0,0,.34); color:#fff; border:0; width:40px; height:40px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center; font-size:24px;
+
+.wochen-card {
+  background: #fff;
+  border-radius: 1.2em; /* Nur außen abgerundet */
+  box-shadow: 0 4px 24px rgba(20,24,43,0.11);
+  border: 1.5px solid #e5e7eb;
+  padding: 2em 1.1em 1.3em 1.1em;
+  margin: 0 auto;
+  max-width: 900px;
 }
-.story-nav.prev { left:14px; }
-.story-nav.next { right:14px; }
-#story-dots .dot { width:10px; height:10px; border-radius:50%; background:#d1d5db; border:0; }
-#story-dots .dot.active { background: var(--accent); }
-
-/* Floating CTA / WhatsApp */
-.floating-cta { position:fixed; right:18px; bottom:18px; z-index:1000; box-shadow:var(--shadow); }
-.whatsapp {
-  position:fixed; right:18px; bottom:90px; z-index:1000;
-  width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff;
-  display:flex; align-items:center; justify-content:center; padding:0; border:0; box-shadow:var(--shadow);
+.wochen-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 1em;
+  background: none;
+  /* Keine Abrundung für die Tabelle */
+  border-radius: 1em;
+  overflow: hidden; /* Wichtig, damit die Inhalte nicht „über die Rundung hinaus“ gehen */
+  border-collapse: separate; /* separate, damit die Rundung sichtbar bleibt */
+  box-shadow: 0 6px 12px rgba(20,24,43,0.08);
 }
-.whatsapp:hover { background:#1ebe5b; }
-.whatsapp svg { width:28px; height:28px; }
-
-/* Footer */
-footer {
-  background:#fff; color:#888; font-size:1em;
-  border-top:1px solid var(--neutral); padding:1.5em 0 .8em;
+.wochen-table th {
+  background: #f5c84b;
+  color: #232323;
+  font-weight: 700;
+  font-size: 1.07em;
+  padding: .6em 0 .5em 0;
+  border: none;
 }
-footer a { color: inherit; }
-
-/* Forms */
-.form-label { font-weight:500; color:var(--secondary); }
-.form-control, .form-select { border-radius:var(--radius-sm); border:1px solid var(--neutral); font-size:1em; }
-.form-control:focus, .form-select:focus { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-light); }
-
-/* A11y */
-:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-
-/* Global Responsive Tweaks */
-@media (max-width:991.98px){
-  .timetable-header { font-size:1.05rem; }
-  section { padding:1em 0; }
-  .rounded-4 { border-radius:.7em !important; }
+.wochen-table td {
+  vertical-align: middle;
+  background: #fff;
+  padding: .5em .2em;
+  border: none;
+  min-width: 70px;
+  font-size: .97em;
 }
-@media (max-width:575.98px){
-  body { font-size:15px; }
-  .hero-logo { width:60px; }
-  .section-title { font-size:1.07rem; }
-  .timetable-modern th, .timetable-modern td { font-size:.92rem; }
-  .story-slider img { max-height:220px; }
+.wochen-table td:first-child {
+  font-weight: 600;
+  color: #5d626c;
+  background: #f7f8fa;
+}
+.kurs-type {
+  font-weight: 700;
+  padding: .13em .6em;
+  border-radius: .7em;
+  font-size: .93em;
+  display: inline-block;
+}
+.kurs-type.kids { background: #5269b6; color: #fff; }
+.kurs-type.nogi { background: #5d626c; color: #fff; }
+.kurs-type.gi   { background: #bfa24a; color: #fff; }
+.kursplan-legend {
+  display: flex;
+  gap: 1.1em;
+  justify-content: left;
+  color: #444;
+  font-weight: 600;
+  margin-top: .7em;
+  font-size: .96em;
+}
+.kursplan-legend .dot {
+  width: 13px; height: 13px; border-radius: 999px; display: inline-block; margin-right: .3em;
+  border: 1.5px solid #e5e7eb;
+}
+.kursplan-legend .dot.kids { background: #5269b6; }
+.kursplan-legend .dot.nogi { background: #5d626c; }
+.kursplan-legend .dot.gi   { background: #bfa24a; }
+.kursplan-notes {
+  color: #888;
+  font-size: .97em;
+  text-align: left;
+  margin-top: .5em;
 }
 
+/* Mobile: Card bleibt schmal, aber Schrift kann groß bleiben */
+@media (max-width: 700px) {
+  .wochen-card { max-width: 99vw; }
+  .wochen-table th,
+  .wochen-table td {
+    font-size: 0.98em;
+    padding: 0.28em 0.06em;
+    min-width: 28px;
+    max-width: 56px;
+  }
+  .wochen-table th { font-size: 1em; }
+  .wochen-table td:first-child { font-size: 1em; padding-left: .18em; min-width: 40px; }
+  .kursplan-legend,
+  .kursplan-notes {
+  justify-content: center;
+  text-align: center;
+  }
+  
+}
+    
+
+
+
+/* ===== Kursangebot (3 Kacheln, mobil-first) ===== */
+
+:root{
+  --card-bg: #fff;
+  --card-fg: #0f1222;
+  --card-muted: #6b7385;
+  --line: linear-gradient(180deg, var(--accent), var(--gold));
+  --ring: 0 0 0 0 rgba(191,162,74,.0);
+}
+
+.section-head{
+  margin-bottom: clamp(14px, 3vw, 24px);
+}
+.section-head h2{ margin:0 0 .25em; font-weight:800; }
+.section-head .muted{ margin:0; opacity:.85; }
+
+.course-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 3vw, 24px);
+}
+@media (min-width: 768px){
+  .course-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+.course-card {
+  background: var(--white);
+  border-radius: 0 1.2em 1.2em 0;   /* nur rechts abgerundet */
+  padding: 1.5em 1.2em 1.5em 1.6em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .18s, transform .18s;
+
+  /* Innerer Schatten */
+  box-shadow: inset 0 0 14px rgba(191,162,74,0.15);
+}
+
+/* Goldlinie links */
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(to bottom, #bfa24a, #ffe17c);
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 32px rgba(191,162,74,0.15);
+  transform: translateY(-2px);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000; /* Schwarz statt Weiß */
+  background: linear-gradient(135deg, #ffe17c, #bfa24a);
+  box-shadow: 0 2px 6px rgba(191,162,74,0.4);
+  flex-shrink: 0;
+}
+
+/* mehr Abstand zwischen Icon und Titel */
+.step-header h5 {
+  font-weight: 600;
+  margin-left: 0.6rem; /* Abstand zum Kreis */
+}
+
+
+
+
+/* Header: Icon + Title */
+.course-header{
+  display: flex;
+  align-items: center;
+  gap: .75em;
+  margin-bottom: .65em;
+}
+.course-header h3{
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #14182b;
+}
+.course-icon{
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffe17c, #bfa24a);
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(191,162,74,.35);
+}
+
+/* Text */
+.course-card p{
+  margin: 0;
+  font-size: .96rem;
+  line-height: 1.55;
+  color: #555;
+}
+
+
+/* Fußnote */
+.footnote{
+  margin-top: clamp(12px, 3vw, 20px);
+  font-size: .9rem;
+  opacity: .8;
+}
+
+
+
+.section-divider .footnote{ text-align: left; }
+
+/* Dark-Page Kompatibilität (dein Theme) */
+.section-divider .course-card{ background:#fff; }

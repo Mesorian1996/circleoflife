@@ -991,3 +991,281 @@
 }
 
 
+--
+
+/* =========================================================
+   Timetable / Kursplan (deine Version konsistent gelassen)
+   ========================================================= */
+.timetable-layout {
+  position: relative; background: #f8f8fc; border-radius: 1.4em;
+  box-shadow: 0 6px 32px rgba(20,24,43,0.09); padding: 2.5em 0; overflow: hidden;
+}
+.timetable-layout::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.6) 60%,rgba(255,255,255,0.5) 100%),
+    url('/assets/images/bjj2.jpg') center center/cover no-repeat;
+}
+.timetable-2col, .zeiten-widget, .zeiten-info { position: relative; z-index: 1; }
+.timetable-2col { display: flex; flex-direction: row; align-items: flex-start; gap: 2.5em; width: 100%; }
+.zeiten-info { flex: 0 0 320px; max-width: 340px; min-width: 220px; display:flex; flex-direction:column; }
+.timetable-panel, .zeiten-widget { flex: 1 1 0%; min-width: 0; max-width: 100%; }
+
+@media (max-width: 991px){
+  .timetable-2col { flex-direction: column; gap: 2em; }
+  .zeiten-info, .timetable-panel, .zeiten-widget { max-width: 100%; min-width: 0; width: 100%; }
+}
+
+/* Marker-Box */
+.zeiten-info-marker {
+  background: rgba(245,239,227,0.33);
+  border-radius: 1.1em; box-shadow: 0 2px 10px 1px rgba(20,24,43,0.07);
+  padding: 2.1em 1.4em; border-left: .22em solid var(--accent);
+}
+.zeiten-info-marker h2, .timetable-header {
+  font-family: var(--font-head); font-size: 1.19em; color: var(--brand-dark);
+  margin-bottom: 1em; font-weight: 800; text-align: left;
+}
+.zeiten-info-marker p, .zeiten-info-marker .lead {
+  color:#232629; font-size:1.05em; font-weight:500; letter-spacing:.01em;
+  text-align: justify; hyphens:auto; margin-bottom:1.3em; line-height:1.6;
+}
+.zeiten-info-marker .usp-list { list-style:none; padding:0; margin:1.1em 0 0; width:100%; }
+.zeiten-info-marker li { color:var(--brand-dark); font-size:1em; font-weight:700; letter-spacing:.01em; display:flex; align-items:center; margin-bottom:.25em; }
+.zeiten-info-marker .icon-check { display:inline-block; width:1.2em; height:1.2em; background:var(--accent); border-radius:50%; margin-right:.55em; color:#fff; font-size:.96em; line-height:1.2em; box-shadow:0 1.5px 5px 0 rgba(191,162,74,0.07); text-align:center; }
+
+/* Panel/Tabelle */
+.zeiten-widget, .timetable-panel { width: 100%; }
+.timetable-panel { background:#fff; border-radius:1.3em; box-shadow:0 8px 32px rgba(20,24,43,0.11); border:1.5px solid #e5e7eb; min-height:450px; }
+.timetable-panel-inner { display:flex; flex-direction:column; justify-content:center; height:100%; padding:2.2em 2.2em 1em; }
+.table-responsive { width:100%; overflow-x:auto; margin:0 auto; }
+
+.timetable-panel-header { position:relative; gap:1em; }
+.timetable-header {
+  font-size:1.5rem; font-weight:800; color:var(--brand); letter-spacing:.01em; margin-bottom:.35em;
+  background:none; border:none; padding-bottom:.07em; position:relative; text-align:left;
+}
+.timetable-header::before {
+  content:""; display:block; width:44px; height:3px; border-radius:2px;
+  background: linear-gradient(90deg, var(--accent), transparent 90%);
+  position:absolute; left:0; bottom:-.33em;
+}
+@media (max-width:575px){
+  .timetable-header { text-align:center; }
+  .timetable-header::before { left:50%; transform:translateX(-50%); width:32px; }
+}
+
+/* Tabelle */
+.timetable-modern .schedule-table {
+  width:100%; min-width:520px; font-size:.92em; border-collapse:separate;
+  background:#fff; border-radius:1em; overflow:hidden;
+}
+.timetable-modern th, .timetable-modern td {
+  text-align:center; vertical-align:middle; border:none !important;
+  padding:.38em .18em; min-width:58px; transition: background .14s, color .14s; font-size:.92em;
+}
+.timetable-modern th {
+  background:#eef1f7; color:var(--brand); font-family:var(--font-body);
+  font-weight:600; border-bottom:1.5px solid #dde1e9;
+}
+.timetable-modern td.text-secondary, .timetable-modern th:first-child { white-space:nowrap; font-size:.92em; }
+.timetable-modern .slot {
+  font-family:var(--font-body); font-weight:700; font-size:1em; background:none; cursor:pointer;
+  transition: color .17s, text-decoration .17s, box-shadow .18s; border-radius:.32em; outline:none;
+}
+.timetable-modern .slot[data-style="kids"]{ color:#5269b6; }
+.timetable-modern .slot[data-style="nogi"]{ color:#5d626c; }
+.timetable-modern .slot[data-style="gi"]  { color:#bfa24a; }
+.timetable-modern .slot.slot-empty { color:#bbb; opacity:.5; pointer-events:none; }
+.timetable-modern .slot:hover,
+.timetable-modern tr:hover .slot:not(.slot-empty){
+  color:var(--accent); text-decoration: underline 2px dotted #d1d6e3; box-shadow:0 2px 12px rgba(191,162,74,0.06);
+}
+
+/* Legende */
+.legend { display:flex; align-items:center; gap:1.2em; margin-top:1em; }
+.legend .dot { width:12px; height:12px; border-radius:999px; display:inline-block; margin-right:.4em; border:1.5px solid #dde1e9; }
+.legend .dot.kids{ background:#5269b6; }
+.legend .dot.nogi{ background:#5d626c; }
+.legend .dot.gi  { background:#bfa24a; }
+.legend span { font-weight:600; font-family:var(--font-body); color:#444; }
+
+.timetable-notes { margin-top:1.1em; }
+
+/* Mobile Table */
+@media (max-width:650px){
+  .timetable-modern .schedule-table,
+  .timetable-modern thead, .timetable-modern tr { display:block; width:100%; }
+  .timetable-modern th, .timetable-modern td {
+    text-align:left; display:block; min-width:unset; padding:.5em .7em;
+    border:none !important; background:none !important; border-radius:0;
+  }
+  .timetable-modern tr {
+    margin-bottom:1.2em; border-radius:1em; box-shadow:0 2px 8px rgba(20,24,43,0.07); background:#fff;
+  }
+  .timetable-modern th { font-size:1em; color:#3f4a60; }
+  .timetable-modern td.text-secondary { font-weight:800; color:#14182b; }
+  .timetable-modern td.slot.slot-empty { display:none; }
+}
+
+/* PDF Button nudge */
+.timetable-pdf-btn { animation: timetable-pulse 1.2s 1.3s 2 alternate; }
+@keyframes timetable-pulse { 0%{ box-shadow:0 0 0 0 var(--accent);} 100%{ box-shadow:0 0 0 8px rgba(191,162,74,0.17);} }
+
+/* Story/Galerie Basics */
+.story-slider { background:#171b2b; border-radius:1.2em; }
+.story-slider img { max-height:420px; object-fit:cover; }
+.story-nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,.34); color:#fff; border:0; width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+}
+.story-nav.prev { left:14px; }
+.story-nav.next { right:14px; }
+#story-dots .dot { width:10px; height:10px; border-radius:50%; background:#d1d5db; border:0; }
+#story-dots .dot.active { background: var(--accent); }
+
+/* Floating CTA / WhatsApp */
+.floating-cta { position:fixed; right:18px; bottom:18px; z-index:1000; box-shadow:var(--shadow); }
+.whatsapp {
+  position:fixed; right:18px; bottom:90px; z-index:1000;
+  width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center; padding:0; border:0; box-shadow:var(--shadow);
+}
+.whatsapp:hover { background:#1ebe5b; }
+.whatsapp svg { width:28px; height:28px; }
+
+/* Footer */
+footer {
+  background:#fff; color:#888; font-size:1em;
+  border-top:1px solid var(--neutral); padding:1.5em 0 .8em;
+}
+footer a { color: inherit; }
+
+/* Forms */
+.form-label { font-weight:500; color:var(--secondary); }
+.form-control, .form-select { border-radius:var(--radius-sm); border:1px solid var(--neutral); font-size:1em; }
+.form-control:focus, .form-select:focus { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-light); }
+
+/* A11y */
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* Global Responsive Tweaks */
+@media (max-width:991.98px){
+  .timetable-header { font-size:1.05rem; }
+  section { padding:1em 0; }
+  .rounded-4 { border-radius:.7em !important; }
+}
+@media (max-width:575.98px){
+  body { font-size:15px; }
+  .hero-logo { width:60px; }
+  .section-title { font-size:1.07rem; }
+  .timetable-modern th, .timetable-modern td { font-size:.92rem; }
+  .story-slider img { max-height:220px; }
+}
+
+
+<!-- KURSE -->
+<section id="kurse" class="py-5 section-divider" style="position:relative;">
+  <div class="stripe-line"></div>
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Kurse</h2><p class="text-secondary" data-aos="fade-up" data-aos-delay="150">Modernes BJJ – neueste Techniken aus Gi & No-Gi, klar strukturiert und praxisnah.</p></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in"><div class="mb-2" aria-hidden="true">🥋</div><h5 class="mb-1">Gi (BJJ)</h5><p class="text-secondary small mb-3">Griffe, Würfe, Guard, Passes – Technik pur.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1578926375605-eaf7559b1453?q=80&w=800&auto=format&fit=crop" alt="Gi Training"></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="150"><div class="mb-2" aria-hidden="true">⚡</div><h5 class="mb-1">No-Gi Grappling</h5><p class="text-secondary small mb-3">Leglocks & moderne Entries. Dynamisches Rollen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1593349481046-d8f3c9c9b9f1?q=80&w=800&auto=format&fit=crop" alt="No-Gi Grappling"></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="300"><div class="mb-2" aria-hidden="true">🧭</div><h5 class="mb-1">Open Mat</h5><p class="text-secondary small mb-3">Freies Rollen & Technik verfestigen.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1620189507180-0ae1f9a6ff2b?q=80&w=800&auto=format&fit=crop" alt="Open Mat"></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 p-3" data-aos="zoom-in" data-aos-delay="450"><div class="mb-2" aria-hidden="true">🎯</div><h5 class="mb-1">Competition</h5><p class="text-secondary small mb-3">Strategie & Score-Awareness.</p><img class="w-100 rounded-3 border" src="https://images.unsplash.com/photo-1609951651527-8b9b9d054b3f?q=80&w=800&auto=format&fit=crop" alt="Competition Class"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="zeiten" class="timetable-layout my-5 section-divider" style="position:relative;">
+  <div class="stripe-line"></div>
+  <div class="container timetable-2col d-flex align-items-stretch flex-wrap">
+    <!-- Linke Spalte: Info, Text, Feature-Balken -->
+    <div class="zeiten-info flex-grow-1 d-flex flex-column justify-content-between pe-lg-5 mb-4 mb-lg-0">
+      <div class="zeiten-info-marker" data-aos="fade-right">
+        <h2 class="timetable-header mb-2">Kursplan und Einstieg</h2>
+        <p class="lead text-secondary mb-3">
+          Modernes BJJ für alle<br>
+          Strukturiertes Training mit Aufwärmen &amp; Mobilität, Aufbau- und Krafttraining, Technikdrills, Positionssparing, freies Rollen und gezieltes Dehnen für langfristige Gesundheit und ein starkes Fundament.
+        </p>
+        <ul class="usp-list list-unstyled mb-4">
+          <li><span class="icon-check">✔️</span> Einsteiger willkommen</li>
+          <li><span class="icon-check">✔️</span> Flexible Zeiten, 6x/Woche</li>
+          <li><span class="icon-check">✔️</span> Erfahrene Coaches</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Rechte Spalte: Kursplan-Widget -->
+    <div class="zeiten-widget flex-shrink-0 timetable-panel" data-aos="fade-left">
+      <div class="timetable-panel-inner">
+        <div class="timetable-panel-header d-flex justify-content-between align-items-start">
+          <div>
+            <h4 class="timetable-header mb-0">Aktueller Wochenplan </h4>
+          </div>
+          <a class="btn btn-brand btn-sm timetable-pdf-btn" href="#" id="download-pdf">Kursplan als PDF</a>
+        </div>
+        <div class="table-responsive timetable-modern mt-3 mb-1">
+          <table class="table align-middle mb-0 schedule-table">
+            <thead>
+              <tr>
+                <th>Uhrzeit</th>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+                <th>Samstag</th>
+                <th>Sonntag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-secondary">17:00–18:00</td>
+                <td class="slot" data-style="kids"><strong>Kids</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="kids"><strong>Kids</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="kids"><strong></strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot slot-empty"></td>
+              </tr>
+              <tr>
+                <td class="text-secondary">18:00–19:30</td>
+                <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot slot-empty"></td>
+              </tr>
+              <tr>
+                <td class="text-secondary">19:30–21:00</td>
+                <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="nogi"><strong>No-Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot" data-style="gi"><strong>Gi</strong></td>
+                <td class="slot slot-empty"></td>
+                <td class="slot slot-empty"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="legend small d-flex align-items-center gap-3 mt-3">
+          <span><span class="dot kids"></span> Kids</span>
+          <span><span class="dot nogi"></span> No-Gi</span>
+          <span><span class="dot gi"></span> Gi</span>
+        </div>
+        <div class="timetable-notes">
+          <p class="small text-secondary mt-2 mb-0">Freies Training und Open Mats finden nach Absprache statt.</p>
+          <p class="small text-secondary mt-2 mb-0">Bitte ca. 15 Minuten vorher da sein; Flip-Flops mitbringen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
