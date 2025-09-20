@@ -58,29 +58,36 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" aria-label="Hauptnavigation">
     <div class="container">
+      <!-- Logo + Brand -->
       <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <img src="/assets/images/JiuJitsuLogo.svg" alt="Circle of Life Jiu-Jitsu Logo" width="32" height="32">
+        <img src="/assets/images/JiuJitsuLogo.svg" alt="Circle of Life Jiu-Jitsu Logo" width="28" height="28">
         <strong>Circle of Life Jiu-Jitsu</strong>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Menü öffnen">
+  
+      <!-- Toggler (mobil) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+              aria-controls="nav" aria-expanded="false" aria-label="Menü öffnen">
         <span class="navbar-toggler-icon"></span>
       </button>
+  
+      <!-- Menü rechtsbündig -->
       <div id="nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
-          <li class="nav-item"><a class="nav-link" href="#warum">Warum</a></li>
-          <li class="nav-item"><a class="nav-link" href="#kurse">Kurse</a></li>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-compact align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#kursangebot">Kursangebot</a></li>
           <li class="nav-item"><a class="nav-link" href="#kursplan">Kursplan</a></li>
           <li class="nav-item"><a class="nav-link" href="#preise">Preise</a></li>
-          <li class="nav-item"><a class="nav-link" href="#coaches">Coaches</a></li>
-          <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
-          <li class="nav-item"><a class="btn btn-sm btn-brand" href="#probestunde">Probestunde</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trainer">Trainer</a></li>
+          <li class="nav-item">
+            <a class="btn btn-sm btn-brand ms-lg-2" href="#probestunde">Probestunde</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  
 
 
 <!-- # HERO SECTION -->
@@ -117,15 +124,17 @@
   <div class="stripe-line"></div>
   <div class="container">
 
-    <header class="section-head">
-      <h2>Unser Kursangebot</h2>
-      <p class="muted">Finde das Training, das zu dir passt.</p>
+    <header class="section-head" data-aos="fade-up">
+      <h2 class="section-title">Unser Kursangebot</h2>
+      <p class="section-subtitle" data-aos="fade-up">
+        Finde das Training, das zu dir passt
+      </p>
     </header>
 
     <div class="course-grid">
       
       <!-- Gi -->
-      <article class="course-card">
+      <article class="course-card" data-aos="zoom-in">
         <div class="course-header">
           <img src="/assets/icons/BJJ_BlackBelt.svg" alt="Gi Icon" class="course-icon">
           <h3>Gi – klassisches BJJ</h3>
@@ -136,7 +145,7 @@
       </article>
 
       <!-- No-Gi -->
-      <article class="course-card">
+      <article class="course-card" data-aos="zoom-in" data-aos-delay="150">
         <div class="course-header">
           <img src="/assets/icons/nogi_icon.png" alt="No-Gi Icon" class="course-icon">
           <h3>No-Gi – modernes Grappling</h3>
@@ -147,7 +156,7 @@
       </article>
 
       <!-- Kondition / Kids -->
-      <article class="course-card">
+      <article class="course-card"data-aos="zoom-in" data-aos-delay="300">
         <div class="course-header">
           <img src="/assets/icons/strength_icon.png" alt="Kraft Icon" class="course-icon">
           <h3>Kondition & Muskelaufbau</h3>
@@ -165,23 +174,31 @@
 
 
 <!-- # JOIN THE CIRCLE OF LIFE -->
-<section class="py-5 section-divider" style="position:relative;">
+<section id="einstieg" class="py-5 section-divider" style="position:relative;">
   <div class="container">
-    <h2 class="section-title mb-4" data-aos="fade-up">Join the Circle of Life</h2>
-    <p class="text-secondary mb-5" data-aos="fade-up" data-aos-delay="150">
-      Stärker werden – technisch, mental und als Team. Das ist unser Versprechen.
-    </p>
+    <header class="section-head" data-aos="fade-up">
+      <h2 class="section-title">Join the Circle of Life</h2>
+      <p class="section-subtitle" data-aos="fade-up">
+        Stärker werden – technisch, mental und als Team. Das ist unser Versprechen.
+      </p>
+    </header>
+
+
     <div class="row g-4">
       <!-- Step 1 -->
-      <div class="col-md-4" data-aos="zoom-in">
+      <a href="#probestunde"><div class="col-md-4 card-link" data-aos="zoom-in">
         <article class="course-card h-100 p-4">
-          <div class="step-header d-flex align-items-center mb-2">
+          
+            <div class="step-header d-flex align-items-center mb-2">
             <span class="step-number">1</span>
-            <h5 class="mb-0 ms-2">Probestunde anfragen</h5>
+            <h5 class="mb-0 ms-2 card-link">Probestunde anfragen</h5>
           </div>
           <p class="text-secondary mb-0">Formular ausfüllen – wir melden uns innerhalb von 24h.</p>
+          
         </article>
+      </a>
       </div>
+
     
       <!-- Step 2 -->
       <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
@@ -214,10 +231,10 @@
   <section class="py-4" style="background:linear-gradient(90deg,var(--gold),var(--gold-2)); color:var(--brand)">
     <div class="container">
       <div class="row text-center text-nowrap g-4">
-        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">40+</div><div class="small">aktive Mitglieder</div></div>
-        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">6×/Woche</div><div class="small">Training</div></div>
-        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">1</div><div class="small">Coaches</div></div>
-        <div class="col-6 col-md-3"><div class="fs-3 fw-bold">100%</div><div class="small">Willkommen</div></div>
+        <div class="col-6 col-md-3" data-aos="zoom-in"><div class="fs-3 fw-bold">40+</div><div class="small">aktive Mitglieder</div></div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="150"><div class="fs-3 fw-bold">6×/Woche</div><div class="small">Training</div></div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><div class="fs-3 fw-bold">1</div><div class="small">Coaches</div></div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="450"><div class="fs-3 fw-bold">Hygiene</div><div class="small">Desinfizierte Trainingsfläche</div></div>
       </div>
     </div>
   </section>
@@ -242,8 +259,14 @@
 
   <section id="kursplan" class="kursplan-section">
     <div class="container">
-      <h2 class="kursplan-title">Kursplan und Einstieg</h2>
-      <div class="wochen-card">
+      <header class="section-head" data-aos="fade-up">
+        <h2 class="section-title">Kursplan und Einstieg</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+          6x pro Woche Training für Erwachsene, 2x pro Woche für Kinder.
+          Jede Einheit kombiniert Aufwärmen, Mobility, Technikdrills und Sparring.
+        </p>
+      </header>
+      <div class="wochen-card" data-aos="fade-up" data-aos-delay="200">
         <table class="wochen-table">
           <thead>
             <tr>
@@ -306,33 +329,66 @@
         <div class="kursplan-notes">
           <p>Weitere Trainingseinheiten wie bspw. Open Mats finden außerhalb der regulären Trainingszeiten nur nach Absprache oder Ankündigung statt.</p>
           <p>Bitte ca. 15 Minuten vorher da sein; Flip-Flops mitbringen.</p>
+          <p>Duschen stehen euch selbstverständlich zur Verfügung.</p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- PREISE -->
   <section id="preise" class="py-5 section-divider" style="position:relative;">
     <div class="container">
-      <div class="row text-center mb-4"><div class="col"><h2 class="fw-bold section-title" data-aos="fade-up">Unsere Preisliste</h2><p class="text-secondary" data-aos="fade-up">Alle Klassen, Open Mat & Sparring inklusive. </p></div></div>
+      <header class="section-head" data-aos="fade-up">
+        <h2 class="section-title">Unsere Preisliste</h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+            Alle Klassen, Open Mat & Sparring inklusive.
+          </p>
+      </header>
       <div class="row g-4 justify-content-center">
-        <div class="col-md-5"><div class="card card-pricing highlight rounded-4 h-100" data-aos="zoom-in"><div class="card-body p-4"><div class="badge text-bg-warning mb-2">Meistgewählt</div><h5 class="card-title">All Access (Erwachsene)</h5><p class="display-5 fw-bold">80€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Gi (BJJ) & No-Gi Grappling</li><li>Open Mat & Competition Class</li><li>Alle Level – Einsteiger willkommen</li></ul><a href="#probestunde" class="btn btn-brand w-100">Probestunde</a></div></div></div>
-        <div class="col-md-5"><div class="card card-pricing rounded-4 h-100" data-aos="zoom-in" data-aos-delay="150"><div class="card-body p-4"><h5 class="card-title">Kids (7–13 Jahre)</h5><p class="display-6 fw-bold">50€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p><ul class="list-unstyled d-grid gap-2 mb-4"><li>Koordination & Selbstvertrauen</li><li>Spielerische Technikvermittlung</li><li></li></ul><a href="#probestunde" class="btn btn-brand w-100">Jetzt starten</a></div></div></div>
+        <div class="col-md-5">
+          <div class="card card-pricing highlight rounded-4 h-100" data-aos="zoom-in">
+            <div class="card-body p-4">
+              <div class="badge text-bg-warning mb-2">Meistgewählt</div>
+              <h5 class="card-title">All Access (Erwachsene)</h5>
+              <p class="display-5 fw-bold">80€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p>
+              <ul class="list-unstyled d-grid gap-2 mb-4">
+                <li>Gi (BJJ) & No-Gi Grappling</li>
+                <li>Open Mat & Competition Class</li>
+                <li>Alle Level – Einsteiger willkommen</li>
+              </ul>
+              <a href="#probestunde" class="btn btn-brand w-100">Probestunde</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card card-pricing rounded-4 h-100" data-aos="zoom-in" data-aos-delay="150">
+            <div class="card-body p-4"><h5 class="card-title">Kids (7–13 Jahre)</h5>
+              <p class="display-6 fw-bold">50€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p>
+              <ul class="list-unstyled d-grid gap-2 mb-4">
+                <li>Koordination & Selbstvertrauen</li>
+                <li>Spielerische Technikvermittlung</li>
+                <li></li>
+              </ul>
+              <a href="#probestunde" class="btn btn-brand w-100">Jetzt starten</a>
+              </div>
+            </div>
+          </div>
       </div>
       <p class="small text-secondary text-center mt-3">* Eine einmalige Anmeldegebühr kann anfallen. Änderungen vorbehalten.</p>
     </div>
   </section>
 
 <!-- COACHES -->
-<section id="coaches" class="py-5 section-muted section-divider" style="position:relative;">
+<section id="trainer" class="py-5 section-muted section-divider" style="position:relative;">
   <div class="container">
     <!-- Überschrift -->
-    <div class="row text-center mb-4">
-      <div class="col">
-        <h2 class="fw-bold section-title" data-aos="fade-up">Dein Coach</h2>
-        <p class="text-secondary" data-aos="fade-up">Erfahrung aus Wettkampf &amp; Lehre.</p>
-      </div>
-    </div>
+    <header class="section-head" data-aos="fade-up">
+      <h2 class="section-title">Dein Trainer</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+        Erfahrung aus Wettkampf & Lehre.
+      </p>
+    </header>
 
     <!-- Coaches Grid -->
     <div class="row g-4 justify-content-center">
@@ -395,8 +451,12 @@
   <section id="probestunde" class="py-5 section-muted section-divider" style="position:relative;">
     <div class="stripe-line"></div>
     <div class="container">
-      <div class="row mb-4 text-center"><div class="col"><h2 class="fw-bold mb-1 section-title" data-aos="fade-up">Kostenlose Probestunde</h2><p class="text-secondary mb-0" data-aos="fade-up" data-aos-delay="150">Wir melden uns in der Regel innerhalb von 24h.</p></div></div>
-      <div class="row g-4">
+      <header class="section-head" data-aos="fade-up">
+        <h2 class="section-title">Kostenloses Probetraining</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+          Wir melden uns in der Regel innerhalb von 24h
+        </p>
+      </header><div class="row g-4">
         <div class="col-lg-7">
           <form id="trial-form" action="#" method="post" class="bg-white border rounded-4 p-4" data-aos="fade-up">
             <div class="row g-3">
@@ -424,7 +484,7 @@
             <!-- Adresse -->
             <p class="mb-1 d-flex align-items-start">
               <i class="bi bi-geo-alt-fill text-warning me-2"></i>
-              <span>Circle of Life Jiu-Jitsu<br>Am Herrschaftsweiher 17, 67071 Ludwigshafen am Rhein</span>
+              <span>Circle of Life Jiu-Jitsu<br>Am Herrschaftsweiher 17, <br>67071 Ludwigshafen am Rhein</span>
             </p>
         
             <!-- Telefon -->
@@ -477,11 +537,10 @@
     </div>
   </footer>
 
-  <!-- Floating actions -->
-  <a class="btn btn-lg btn-brand rounded-pill shadow floating-cta" href="#probestunde" aria-label="Probestunde anfragen">Probestunde</a>
-  <a class="whatsapp shadow" href="https://wa.me/490000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0012.06 0C5.45.04.2 5.3.24 11.9c.01 2.1.55 4.16 1.56 5.98L0 24l6.3-1.64a11.83 11.83 0 005.76 1.48h.05c6.6-.03 11.86-5.29 11.89-11.9A11.86 11.86 0 0020.52 3.48zM12.1 21.37h-.04a9.53 9.53 0 01-4.86-1.33l-.35-.2-3.74.97 1-3.64-.23-.37a9.54 9.54 0 01-1.45-5.08C2.38 6.6 6.6 2.38 12.02 2.38c2.53 0 4.92.99 6.72 2.79a9.47 9.47 0 012.78 6.77c-.03 5.42-4.45 9.43-9.42 9.43zm5.5-7.07c-.3-.15-1.77-.87-2.05-.97-.28-.1-.49-.15-.7.15-.2.29-.8.97-.98 1.17-.18.2-.36.21-.66.06-1.77-.88-2.93-1.57-4.08-3.55-.31-.53.31-.5.88-1.67.1-.2.05-.38-.02-.53-.06-.15-.7-1.67-.95-2.29-.25-.6-.5-.52-.7-.52h-.6c-.2 0-.53.07-.8.38-.26.29-1 1-1 2.43s1.03 2.82 1.18 3.02c.15.19 2.04 3.11 4.94 4.37.69.3 1.22.48 1.63.61.68.22 1.29.19 1.78.12.54-.08 1.77-.72 2.02-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
-  </a>
+  <!-- Scroll-to-Top Button -->
+  <button id="scrollTopBtn" aria-label="Nach oben scrollen">
+    ↑
+  </button>
 
   <!-- JS libs -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

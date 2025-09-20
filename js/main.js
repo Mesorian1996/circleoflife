@@ -215,3 +215,21 @@
   const pdfBtn = document.querySelector('.timetable-pdf-btn');
   if(pdfBtn) setTimeout(()=>pdfBtn.style.animation='none', 2800);
 })();
+
+
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Anzeigen, wenn 200px gescrolled
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollTopBtn.style.display = "flex";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  // Scroll nach oben bei Klick
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+

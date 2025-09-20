@@ -27,6 +27,10 @@
   --hero-fade-end:   rgba(191,162,74, 0);    
 }
 
+html {
+  scroll-behavior: smooth;               /* sanftes Scrollen */
+  scroll-padding-top: 40px;              /* Höhe deiner Navbar */
+}
 
 
 /* ---------- Base ---------- */
@@ -51,38 +55,58 @@ h3 { font-size: 1.3rem; }
 a { color: var(--secondary); transition: color .2s ease; text-decoration: none; }
 a:hover, a:focus { color: var(--accent); }
 
-/* ---------- Navbar ---------- */
+/* Navbar kompakt */
 .navbar {
-  background: var(--white);
-  border-bottom: 1px solid var(--neutral);
-  box-shadow: 0 1px 8px rgba(20,24,43,0.04);
-  font-size: 1rem;
+  font-size: .9rem;              /* kleinere Typo */
+  padding: .35rem 0;             /* weniger Höhe */
+  line-height: 1.2;
+  box-shadow: 0 1px 6px rgba(20,24,43,.05);
 }
-.navbar-brand strong { letter-spacing: .5px; color: var(--brand); }
-.navbar .nav-link {
-  color: var(--brand);
+
+/* Logo kompakter */
+.navbar-brand img { width: 26px; height: 26px; }
+.navbar-brand strong { font-size: .95rem; font-weight: 700; }
+
+/* Navigation enger */
+.nav-compact .nav-item { margin: 0 .15rem; }
+.nav-compact .nav-link {
+  padding: .25em .6em;
   font-weight: 600;
-  margin: 0 .5em;
-  padding: .4em .8em;
-  border-radius: var(--radius-sm);
-  position: relative;
+  color: var(--brand);
+  border-radius: .3rem;
+  transition: all .18s ease;
 }
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
+.nav-compact .nav-link:hover,
+.nav-compact .nav-link.active {
   color: var(--accent);
   background: var(--bg-muted);
 }
+
+/* CTA kompakt */
+.nav-compact .btn.btn-brand {
+  font-size: .85rem;
+  padding: .35em .9em;
+  border-radius: .5rem;
+  white-space: nowrap;
+}
+
+
 .navbar .nav-link::after {
   content: "";
   display: block;
-  height: 2px; width: 100%;
+  height: 2px;
+  width: 100%;
   margin-top: 2px;
   background: var(--accent);
   transform: scaleX(0);
   transition: transform .18s;
 }
 .navbar .nav-link:hover::after,
-.navbar .nav-link.active::after { transform: scaleX(1); }
+.navbar .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+
 
 /* ---------- Buttons ---------- */
 .btn-brand {
@@ -215,10 +239,17 @@ a:hover, a:focus { color: var(--accent); }
   to { opacity: 1; transform: translateY(0);}
 }
 
+
 /* --- Bildblock --- */
 .hero-image-block {
   width: 100%;
-  max-width: 680px;
+  height: auto;
+  max-width: min(90vw, 900px);   /* nicht breiter als 90% des Viewports oder 900px */
+  max-height: 70vh;              /* nicht höher als 70% der Bildschirmhöhe */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-inline: auto;  
   margin: 0 auto 32px auto; /* mehr Abstand nach unten */
   border-radius: 24px;
   overflow: hidden;
@@ -295,16 +326,68 @@ a:hover, a:focus { color: var(--accent); }
 /* =========================================================
    Cards / Sections (wie gehabt, leicht konsolidiert)
    ========================================================= */
-.section-title {
-  font-family: var(--font-head);
-  font-size: 1.5rem; font-weight: 800;
-  color: var(--brand);
-  border-bottom: 2.5px solid var(--accent);
-  padding-bottom: .06em; display: inline-block; margin-bottom: .3em;
-}
+/* Abschnitts-Spacing */
 .section-muted { background: var(--bg-muted); }
 section { padding: 2.5em 0; }
-@media (max-width:991.98px){ section { padding: 1.3em 0; } }
+@media (max-width: 991.98px){ section { padding: 1.3em 0; } }
+
+/* Einheitliche Abschnittstitel (immer mittig, mit goldener Unterstreichung) */
+h2.section-title{
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  color: var(--brand, #14182b);
+
+  display: inline-block;          /* Unterlinie nur so breit wie Text */
+  padding-bottom: .08em;
+  margin: 0 auto .3em;            /* zentriert */
+  text-align: center;
+
+  border-bottom: 2.5px solid var(--accent, #bfa24a);
+}
+
+/* Subtitel (immer mittig, angenehme Zeilenlänge) */
+.section-subtitle{
+  margin: 0;
+  max-width: 64ch;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.45;
+  color: rgba(17,19,28,.68);
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Dunkler/heller Abschnitts-Modifier (optional) */
+.section-head.is-light .section-title{
+  color:#fff;
+  border-bottom-color: var(--accent, #bfa24a);
+}
+.section-head.is-light .section-subtitle{
+  color: rgba(255,255,255,.78);
+}
+
+
+.card-link:hover {
+  color: #bfa24a;
+}
+
+.card.card-pricing .card-body {
+  display: flex;
+  flex-direction: column;   /* Inhalte untereinander */
+  height: 100%;
+}
+
+.card.card-pricing .card-body ul {
+  flex-grow: 1;             /* füllt den Zwischenraum */
+}
+
+.card.card-pricing .btn {
+  margin-top: auto;         /* Button immer ganz unten */
+}
+
+
 
 .section-overlap {
   margin-top: -36px;
@@ -527,11 +610,15 @@ section { padding: 2.5em 0; }
   --ring: 0 0 0 0 rgba(191,162,74,.0);
 }
 
+/* Wrapper steuert die Ausrichtung */
 .section-head{
+  text-align: center;                 /* mobile zuerst: zentriert */
   margin-bottom: clamp(14px, 3vw, 24px);
 }
-.section-head h2{ margin:0 0 .25em; font-weight:800; }
-.section-head .muted{ margin:0; opacity:.85; }
+
+
+
+
 
 .course-grid{
   display: grid;
@@ -640,3 +727,30 @@ section { padding: 2.5em 0; }
 
 /* Dark-Page Kompatibilität (dein Theme) */
 .section-divider .course-card{ background:#fff; }
+
+/* Scroll-to-Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent, #bfa24a);   /* Gold */
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;                        /* versteckt bis nötig */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: background .25s, transform .25s;
+  z-index: 9999;
+}
+
+#scrollTopBtn:hover {
+  background: #d9b64c;                  /* etwas helleres Gold */
+  transform: translateY(-2px);
+}
