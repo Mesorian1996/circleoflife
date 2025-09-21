@@ -243,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
+     // Bootstrap-Styling aktivieren
+  form.classList.add('was-validated');
+
     // Browser-Validation respektieren
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -274,7 +277,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (res.ok) {
         form.reset();
-        alert(result.message || 'Danke! Wir melden uns innerhalb von 24 Stunden.');
+          // Bootstrap-Validierung zurücksetzen
+          form.classList.remove('was-validated');
+          form.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
+            el.classList.remove('is-valid', 'is-invalid');
+          });
+        
+          alert(result.message || 'Danke! Wir melden uns schnellstmöglich bei dir.');
+
       } else {
         alert(result.message || 'Fehler beim Senden.');
       }

@@ -96,7 +96,7 @@ ${message || '–'}
       html
     });
 
-    res.json({ message: 'E-Mail erfolgreich gesendet ✅' });
+    res.json({ message: 'Oss! E-Mail erfolgreich gesendet ✅' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Fehler beim E-Mail-Versand ❌' });
