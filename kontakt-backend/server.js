@@ -1,36 +1,21 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+import express from 'express';
+import nodemailer from 'nodemailer';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
-app.use(express.json());
+const port = process.env.PORT || 3000;
+
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// POST-Route für Kontaktanfragen
 app.post('/api/contact', async (req, res) => {
-  const { anrede, vorname, nachname, phone, email, kurs, message } = req.body;
-
-  // Einfache Validierung
-  if (![anrede, vorname, nachname, phone, email, kurs].every(Boolean)) {
-    return res.status(400).json({ error: 'Bitte alle Pflichtfelder ausfüllen.' });
-  }
-
-  // E-Mail-Inhalt vorbereiten
-  const mailText = `
-Neue Kontaktanfrage:
-
-Anrede: ${anrede}
-Vorname: ${vorname}
-Nachname: ${nachname}
-Telefon: ${phone}
-E-Mail: ${email}
-Kursauswahl: ${kurs}
-Nachricht: ${message || '(keine Nachricht)'}
-  `;
+  const { name, email, message } = req.body;
 
   try {
-    // Gmail-Transporter
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
@@ -39,19 +24,20 @@ Nachricht: ${message || '(keine Nachricht)'}
     });
 
     await transporter.sendMail({
-      from: `"Circle of Life Anfrage" <${process.env.GMAIL_USER}>`,
-      to: "mail.circleoflife@gmx.de",
-      subject: `Probestunde Anfrage (${kurs})`,
-      text: mailText,
-      replyTo: email, // Damit du direkt antworten kannst
+      from: `"Kontaktformular" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      replyTo: email,
+      subject: `Neue Nachricht von ${name}`,
+      text: message
     });
 
-    res.status(200).json({ success: true, message: 'Deine Anfrage wurde erfolgreich gesendet.' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Beim Versand der E-Mail ist ein Fehler aufgetreten.' });
+    res.status(200).json({ message: 'E-Mail erfolgreich gesendet ✅' });
+  } catch (error) {
+    console.error('Fehler beim Senden:', error);
+    res.status(500).json({ message: 'Fehler beim E-Mail-Versand ❌' });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
+app.listen(port, () => {
+  console.log(`🚀 Server läuft auf Port ${port}`);
+});
