@@ -243,8 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-     // Bootstrap-Styling aktivieren
-  form.classList.add('was-validated');
+
 
     // Browser-Validation respektieren
     if (!form.checkValidity()) {
