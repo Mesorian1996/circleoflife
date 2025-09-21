@@ -235,16 +235,21 @@
 
 
 /* === EMAIL VERSAND === */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const API_BASE = "https://circleoflife-emailversandt.onrender.com";
   const form = document.getElementById('trial-form');
   if (!form) return;
 
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
 
-    // 👇 NEU: Felder EINZELN schicken – passend zum Backend-Template
+    // Browser-Validation respektieren
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Felder EINZELN schicken – passt zur server.js-Route
     const payload = {
       anrede:   form.anrede?.value?.trim()   || "",
       vorname:  form.vorname?.value?.trim()  || "",
@@ -256,20 +261,16 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true; btn.textContent = 'Wird gesendet...';
+    if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet...'; }
 
     try {
-      await fetch(`${API_BASE}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
       const res = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      const result = await res.json().catch(()=>({}));
+
+      const result = await res.json().catch(() => ({}));
 
       if (res.ok) {
         form.reset();
@@ -277,11 +278,12 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         alert(result.message || 'Fehler beim Senden.');
       }
-    } catch {
+    } catch (err) {
       alert('Es gab einen Netzwerkfehler beim Senden.');
     } finally {
-      btn.disabled = false; btn.textContent = 'Probestunde anfragen';
+      if (btn) { btn.disabled = false; btn.textContent = 'Probestunde anfragen'; }
     }
   });
 });
+
 
