@@ -233,50 +233,55 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  
-// EMAIL VERSAND
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('trial-form');
-    if (form) {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-  
-        // Felder auslesen und in ein Objekt packen
-        const data = {
-          name: `${form.anrede.value} ${form.vorname.value} ${form.nachname.value}`,
-          email: form.email.value,
-          message:
-            `Telefon: ${form.phone.value}\n` +
-            `Kurs: ${form.kurs.value}\n` +
-            `Nachricht: ${form.message.value}`
-        };
-  
-        // Optional: Button Feedback
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Wird gesendet...';
-  
-        try {
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-  
-          const result = await res.json();
-  
-          if (res.ok) {
-            form.reset();
-            alert(result.message || 'Anfrage erfolgreich gesendet!');
-          } else {
-            alert(result.message || 'Fehler beim Senden.');
-          }
-        } catch (err) {
-          alert('Es gab einen Fehler beim Senden.');
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Probestunde anfragen';
-        }
+
+/* === EMAIL VERSAND === */
+document.addEventListener('DOMContentLoaded', function() {
+  const API_BASE = "https://circleoflife-emailversandt.onrender.com";
+  const form = document.getElementById('trial-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    // 👇 NEU: Felder EINZELN schicken – passend zum Backend-Template
+    const payload = {
+      anrede:   form.anrede?.value?.trim()   || "",
+      vorname:  form.vorname?.value?.trim()  || "",
+      nachname: form.nachname?.value?.trim() || "",
+      email:    form.email?.value?.trim()    || "",
+      phone:    form.phone?.value?.trim()    || "",
+      kurs:     form.kurs?.value?.trim()     || "",
+      message:  form.message?.value?.trim()  || ""
+    };
+
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Wird gesendet...';
+
+    try {
+      await fetch(`${API_BASE}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
+      const res = await fetch(`${API_BASE}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await res.json().catch(()=>({}));
+
+      if (res.ok) {
+        form.reset();
+        alert(result.message || 'Danke! Wir melden uns innerhalb von 24 Stunden.');
+      } else {
+        alert(result.message || 'Fehler beim Senden.');
+      }
+    } catch {
+      alert('Es gab einen Netzwerkfehler beim Senden.');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Probestunde anfragen';
     }
   });
+});
+
