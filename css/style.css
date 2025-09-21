@@ -387,6 +387,12 @@ h2.section-title{
   margin-top: auto;         /* Button immer ganz unten */
 }
 
+.card-body:hover .course-card {
+  box-shadow: 0 16px 48px rgba(191,162,74,0.15);
+  transform: translateY(-2px);
+}
+
+
 
 
 .section-overlap {
@@ -719,7 +725,34 @@ h2.section-title{
   margin-top: clamp(12px, 3vw, 20px);
   font-size: .9rem;
   opacity: .8;
+  padding-right: 40px;
 }
+
+.footer-dark {
+  background-color: #1b1b1d;
+  color: #ccc;
+}
+
+.footer-dark h6 {
+  color: #f1f1f1;
+}
+
+.footer-dark .footer-link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-dark .footer-link:hover {
+  color: #f39c12;
+  text-decoration: none;
+}
+
+.footer-dark .bi-whatsapp {
+  font-size: 1.1rem;
+  vertical-align: text-bottom;
+}
+
 
 
 
@@ -731,15 +764,15 @@ h2.section-title{
 /* Scroll-to-Top Button */
 #scrollTopBtn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 30px;
+  right: 30px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
   border: none;
-  background: var(--accent, #bfa24a);   /* Gold */
+  background: var(--accent, #d9b64c);   /* Gold */
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   display: none;                        /* versteckt bis nötig */
@@ -751,6 +784,9 @@ h2.section-title{
 }
 
 #scrollTopBtn:hover {
-  background: #d9b64c;                  /* etwas helleres Gold */
-  transform: translateY(-2px);
+  background: #bfa24a;                  /* etwas helleres Gold */
+  transform: translateY(-3px);
 }
+
+/* sorgt dafür, dass beide Karten gleich hoch wirken */
+#probestunde .h-100 { display: flex; flex-direction: column; }

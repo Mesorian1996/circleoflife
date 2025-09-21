@@ -120,8 +120,7 @@
 </header>
 
 <!-- # KURSANGEBOT-->
-<section id="kursangebot" class="section-divider">
-  <div class="stripe-line"></div>
+<section id="kursangebot" class="py-5 section-divider" style="position:relative;">
   <div class="container">
 
     <header class="section-head" data-aos="fade-up">
@@ -193,21 +192,24 @@
             <span class="step-number">1</span>
             <h5 class="mb-0 ms-2 card-link">Probestunde anfragen</h5>
           </div>
-          <p class="text-secondary mb-0">Formular ausfüllen – wir melden uns innerhalb von 24h.</p>
+          <p class="text-secondary mb-0">Erster Kontakt: Formular ausfüllen, per Telefon oder eine Whatsapp-Nachricht – wir melden uns innerhalb von 24h.</p>
           
         </article>
       </a>
       </div>
 
     
+
       <!-- Step 2 -->
       <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
         <article class="course-card h-100 p-4">
           <div class="step-header d-flex align-items-center mb-2">
             <span class="step-number">2</span>
-            <h5 class="mb-0 ms-2">Basics lernen</h5>
+            <h5 class="mb-0 ms-2">Probetraining</h5>
           </div>
-          <p class="text-secondary mb-0">Sichere Fundamentals: Position vor Submission.</p>
+          <p class="text-secondary mb-0">Vorbeikommen und Spaß haben! 
+            <br>Lerne in einem ersten Training das Team, unser Angebot und unsere Trainer kennen.
+          </p>
         </article>
       </div>
     
@@ -218,7 +220,8 @@
             <span class="step-number">3</span>
             <h5 class="mb-0 ms-2">Dranbleiben</h5>
           </div>
-          <p class="text-secondary mb-0">Regelmäßig trainieren, Open Mat nutzen, Fortschritt tracken.</p>
+          <p class="text-secondary mb-0">Nach dem Probetraining hast du die Chance teil des Teams zu werden und dich stätig zu verbessern.
+          </p>        
         </article>
       </div>
     </div>
@@ -233,7 +236,7 @@
       <div class="row text-center text-nowrap g-4">
         <div class="col-6 col-md-3" data-aos="zoom-in"><div class="fs-3 fw-bold">40+</div><div class="small">aktive Mitglieder</div></div>
         <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="150"><div class="fs-3 fw-bold">6×/Woche</div><div class="small">Training</div></div>
-        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><div class="fs-3 fw-bold">1</div><div class="small">Coaches</div></div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><div class="fs-3 fw-bold">1</div><div class="small">Trainer</div></div>
         <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="450"><div class="fs-3 fw-bold">Hygiene</div><div class="small">Desinfizierte Trainingsfläche</div></div>
       </div>
     </div>
@@ -366,9 +369,9 @@
             <div class="card-body p-4"><h5 class="card-title">Kids (7–13 Jahre)</h5>
               <p class="display-6 fw-bold">50€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p>
               <ul class="list-unstyled d-grid gap-2 mb-4">
-                <li>Koordination & Selbstvertrauen</li>
+                <li>Selbstverteidigung & Selbstvertrauen</li>
                 <li>Spielerische Technikvermittlung</li>
-                <li></li>
+                <li>Respektvoller Umgang</li>
               </ul>
               <a href="#probestunde" class="btn btn-brand w-100">Jetzt starten</a>
               </div>
@@ -447,93 +450,155 @@
     </div>
   </section> -->
 
-  <!-- PROBESTUNDE / KONTAKT -->
-  <section id="probestunde" class="py-5 section-muted section-divider" style="position:relative;">
-    <div class="stripe-line"></div>
-    <div class="container">
-      <header class="section-head" data-aos="fade-up">
-        <h2 class="section-title">Kostenloses Probetraining</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
-          Wir melden uns in der Regel innerhalb von 24h
-        </p>
-      </header><div class="row g-4">
-        <div class="col-lg-7">
-          <form id="trial-form" action="#" method="post" class="bg-white border rounded-4 p-4" data-aos="fade-up">
-            <div class="row g-3">
-              <div class="col-md-6"><label class="form-label" for="name">Name</label><input class="form-control" id="name" name="name" required></div>
-              <div class="col-md-6"><label class="form-label" for="email">E-Mail</label><input type="email" class="form-control" id="email" name="email" required></div>
-              <div class="col-md-6"><label class="form-label" for="phone">Telefon (optional)</label><input class="form-control" id="phone" name="phone"></div>
-              <div class="col-md-6"><label class="form-label" for="kurs">Interessiert an</label>
-                <select id="kurs" name="course" class="form-select" required>
-                  <option value="Fundamentals (Gi)">Fundamentals (Gi)</option>
-                  <option value="No-Gi Basics">No-Gi Basics</option>
-                  <option value="Open Mat">Open Mat</option>
-                  <option value="Competition Class">Competition Class</option>
-                </select>
-              </div>
-              <div class="col-12"><label class="form-label" for="msg">Nachricht</label><textarea id="msg" name="message" rows="4" class="form-control" placeholder="Wunsch-Termin, Erfahrung, etc."></textarea></div>
-              <div class="col-12 form-check mb-2"><input class="form-check-input" type="checkbox" id="privacy" required> <label class="form-check-label" for="privacy">Ich stimme der Verarbeitung meiner Daten zum Zweck der Kontaktaufnahme zu.</label></div>
-              <div class="col-12 d-grid"><button class="btn btn-brand btn-lg" type="submit">Probestunde anfragen</button></div>
+<!-- PROBESTUNDE / KONTAKT -->
+<section id="probestunde" class="py-5 section-muted section-divider" style="position:relative;">
+  <div class="container">
+    <header class="section-head" data-aos="fade-up">
+      <h2 class="section-title">Kostenloses Probetraining</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+        Wir melden uns in der Regel innerhalb von 24h
+      </p>
+    </header>
+
+    <!-- EINE gemeinsame Row für beide Spalten -->
+    <div class="row g-4 align-items-stretch">
+      <!-- Formular -->
+      <div class="col-lg-7">
+        <form id="trial-form" action="#" method="post" class="bg-white border rounded-4 p-4 h-100 d-flex flex-column" data-aos="fade-up">
+          <div class="row g-3">
+            <!-- Anrede -->
+            <div class="col-md-6">
+              <label class="form-label" for="anrede">Anrede</label>
+              <select class="form-select" id="anrede" name="anrede" required>
+                <option value="" disabled selected>Bitte wählen...</option>
+                <option value="Herr">Herr</option>
+                <option value="Frau">Frau</option>
+                <option value="Divers">Divers</option>
+              </select>
             </div>
-          </form>
-        </div>
-        <div class="col-lg-5" id="kontakt">
-          <div class="bg-white border rounded-4 p-4 h-100" data-aos="fade-up" data-aos-delay="200">
-            <h5 class="mb-3">Kontakt</h5>
-        
-            <!-- Adresse -->
-            <p class="mb-1 d-flex align-items-start">
-              <i class="bi bi-geo-alt-fill text-warning me-2"></i>
-              <span>Circle of Life Jiu-Jitsu<br>Am Herrschaftsweiher 17, <br>67071 Ludwigshafen am Rhein</span>
-            </p>
-        
+            <!-- Vorname -->
+            <div class="col-md-6">
+              <label class="form-label" for="vorname">Vorname</label>
+              <input class="form-control" id="vorname" name="vorname" required>
+            </div>
+            <!-- Nachname -->
+            <div class="col-md-6">
+              <label class="form-label" for="nachname">Nachname</label>
+              <input class="form-control" id="nachname" name="nachname" required>
+            </div>
             <!-- Telefon -->
-            <p class="mb-1 d-flex align-items-center">
-              <i class="bi bi-telephone-fill text-warning me-2"></i>
-              <a href="tel:+4917661990534" class="text-decoration-none">0176 61990534</a>
-            </p>
-        
-            <!-- E-Mail -->
-            <p class="mb-1 d-flex align-items-center">
-              <i class="bi bi-envelope-fill text-warning me-2"></i>
-              <a href="mailto:mail.circleoflife@gmx.de" class="text-decoration-none">mail.circleoflife@gmx.de</a>
-            </p>
-        
-            <!-- Instagram -->
-            <p class="mb-3 d-flex align-items-center">
-              <i class="bi bi-instagram text-warning me-2"></i>
-              <a href="https://www.instagram.com/circle_of_life_jiujitsu?igsh=MXVyMDNtdHRmNXoxZw==" target="_blank" class="text-decoration-none">circle_of_life_jiujitsu</a>
-            </p>
-        
-            <!-- Google Maps -->
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-              <iframe 
-                title="Karte" 
-                loading="lazy" 
-                allowfullscreen 
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein&output=embed">
-              </iframe>
+            <div class="col-md-6">
+              <label class="form-label" for="phone">Telefon</label>
+              <input class="form-control" id="phone" name="phone" required>
             </div>
-        
-            <p class="small text-secondary mt-2 mb-0">
-              <i class="bi bi-car-front-fill text-warning me-1"></i> Parken: Hofeinfahrt & Parkhaus um die Ecke.
-            </p>
+            <!-- E-Mail -->
+            <div class="col-12">
+              <label class="form-label" for="email">E-Mail</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <!-- Kursauswahl -->
+            <div class="col-12">
+              <label class="form-label" for="kurs">Kursauswahl</label>
+              <select class="form-select" id="kurs" name="kurs" required>
+                <option value="" disabled selected>Bitte wählen...</option>
+                <option value="Erwachsene BJJ">Erwachsene BJJ</option>
+                <option value="Kinder BJJ">Kinder BJJ</option>
+              </select>
+            </div>
+            <!-- Nachricht -->
+            <div class="col-12">
+              <label class="form-label" for="msg">Nachricht (optional)</label>
+              <textarea id="msg" name="message" rows="4" class="form-control" placeholder="Wunsch-Termin, Erfahrung, etc."></textarea>
+            </div>
+            <!-- DSGVO Hinweis -->
+            <div class="col-12">
+              <p class="small text-secondary mb-2">
+                Mit dem Absenden des Formulars bestätige ich die Verarbeitung meiner Daten
+                zum Zweck der Kontaktaufnahme gemäß unserer
+                <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>.
+              </p>
+            </div>
+            <!-- Submit -->
+            <div class="col-12 d-grid">
+              <button class="btn btn-brand btn-lg" type="submit">Probestunde anfragen</button>
+            </div>
           </div>
-        </div>
-        
+        </form>
       </div>
-    </div>
-  </section>
+
+      <!-- Kontakt-Karte -->
+      <div class="col-lg-5" id="kontakt">
+        <div class="bg-white border rounded-4 p-4 h-100 d-flex flex-column" data-aos="fade-up" data-aos-delay="200">
+          <h5 class="mb-3">Kontakt</h5>
+
+          <p class="mb-1 d-flex align-items-start">
+            <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+            <span>Circle of Life Jiu-Jitsu<br>Am Herrschaftsweiher 17,<br>67071 Ludwigshafen am Rhein</span>
+          </p>
+          <p class="mb-1 d-flex align-items-center">
+            <i class="bi bi-telephone-fill text-warning me-2"></i>
+            <a href="tel:+4917661990534" class="text-decoration-none">0176 61990534</a>
+          </p>
+          <p class="mb-1 d-flex align-items-center">
+            <i class="bi bi-envelope-fill text-warning me-2"></i>
+            <a href="mailto:mail.circleoflife@gmx.de" class="text-decoration-none">mail.circleoflife@gmx.de</a>
+          </p>
+          <p class="mb-3 d-flex align-items-center">
+            <i class="bi bi-instagram text-warning me-2"></i>
+            <a href="https://www.instagram.com/circle_of_life_jiujitsu?igsh=MXVyMDNtdHRmNXoxZw==" target="_blank" class="text-decoration-none">circle_of_life_jiujitsu</a>
+          </p>
+          <p class="mb-3 d-flex align-items-center">
+            <i class="bi bi-whatsapp text-success me-2"></i>
+            <a href="https://wa.me/4917661990534" target="_blank" class="text-decoration-none">WhatsApp schreiben</a>
+          </p>
+
+          <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+            <iframe
+              title="Karte"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein&output=embed">
+            </iframe>
+          </div>
+
+          <p class="small text-secondary mt-2 mb-0">
+            <i class="bi bi-car-front-fill text-warning me-1"></i>
+            Parken: Hofeinfahrt &amp; Parkhaus um die Ecke.
+          </p>
+        </div>
+      </div>
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+</section>
+
 
   <!-- FOOTER -->
-  <footer class="py-4 border-top">
-    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-      <p class="mb-0">© <span id="y"></span> Circle of Life Jiu-Jitsu</p>
-      <ul class="nav">
-        <li class="nav-item"><a class="nav-link px-2 text-muted" href="#">Impressum</a></li>
-        <li class="nav-item"><a class="nav-link px-2 text-muted" href="#">Datenschutz</a></li>
-      </ul>
+  <footer class="py-4 border-top footer-dark">
+    <div class="container">
+      <div class="row text-center text-md-start gy-2">
+        <!-- Firma -->
+        <div class="col-md-4">
+          <h6 class="fw-bold mb-2">Circle of Life Jiu-Jitsu</h6>
+          <p class="mb-0">Inhaber Marvin Beck</p>
+          <p class="mb-0">Dürkheimer Str. 56,<br> 67071 Ludwigshafen am Rhein</p>
+        </div>
+  
+
+  
+  
+        <!-- Rechtliches -->
+        <div class="col-md-4">
+          <h6 class="fw-bold mb-2">Rechtliches</h6>
+          <p class="mb-1">
+            <a href="impressum.html" class="footer-link">Impressum</a>
+          </p>
+          <p class="mb-1">
+            <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+          </p>
+          <p class="small mb-0">© 2025 <span id="jahr"></span> – Alle Rechte vorbehalten.</p>
+        </div>
+      </div>
     </div>
   </footer>
 
