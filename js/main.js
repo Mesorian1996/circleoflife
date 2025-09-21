@@ -233,3 +233,50 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  
+// EMAIL VERSAND
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('trial-form');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+  
+        // Felder auslesen und in ein Objekt packen
+        const data = {
+          name: `${form.anrede.value} ${form.vorname.value} ${form.nachname.value}`,
+          email: form.email.value,
+          message:
+            `Telefon: ${form.phone.value}\n` +
+            `Kurs: ${form.kurs.value}\n` +
+            `Nachricht: ${form.message.value}`
+        };
+  
+        // Optional: Button Feedback
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+  
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+  
+          const result = await res.json();
+  
+          if (res.ok) {
+            form.reset();
+            alert(result.message || 'Anfrage erfolgreich gesendet!');
+          } else {
+            alert(result.message || 'Fehler beim Senden.');
+          }
+        } catch (err) {
+          alert('Es gab einen Fehler beim Senden.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Probestunde anfragen';
+        }
+      });
+    }
+  });

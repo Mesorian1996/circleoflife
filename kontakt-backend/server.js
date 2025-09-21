@@ -25,7 +25,7 @@ app.post('/api/contact', async (req, res) => {
 
     await transporter.sendMail({
       from: `"Kontaktformular" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      to: 'mesorian96@gmx.de',
       replyTo: email,
       subject: `Neue Nachricht von ${name}`,
       text: message
