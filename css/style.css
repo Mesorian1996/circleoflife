@@ -15,21 +15,23 @@
   --bg-muted: #f7f8fa;
   --white: #fff;
   --radius: 0.8em;
-  --radius-sm: 0.5em;
+  --radius-sm: 0.8em;
   --shadow: 0 4px 18px rgba(20,24,43,0.07);
   --font-head: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --nav-h: 64px;
+  --nav-alpha: 0;
   --glass-bg: rgba(255,255,255,0.18);
   --glass-border: rgba(255,255,255,0.22);
   --hero-line:       rgba(191,162,74, .9);   /* Gold-Linie */
   --hero-fade-start: rgba(191,162,74, .14);  /* zarter Goldschimmer */
-  --hero-fade-end:   rgba(191,162,74, 0);    
+  --hero-fade-end:   rgba(191,162,74, 0); 
+  --page-bg: #fff;    
 }
 
 html {
   scroll-behavior: smooth;               /* sanftes Scrollen */
-  scroll-padding-top: 40px;              /* Höhe deiner Navbar */
+  scroll-padding-top: var(--nav-h);              /* Höhe deiner Navbar */
 }
 
 
@@ -37,7 +39,14 @@ html {
 html, body {
   font-family: var(--font-body);
   color: var(--brand-dark);
-  background: var(--white);
+  background:
+    linear-gradient(
+      to bottom,
+      var(--brand) 0,
+      var(--brand) var(--nav-h),
+      var(--page-bg) var(--nav-h),
+      var(--page-bg) 100%
+    );
   font-size: 16px;
   line-height: 1.6;
   min-height: 100%;
@@ -58,13 +67,11 @@ a:hover, a:focus { color: var(--accent); }
 /* Navbar kompakt */
 .navbar {
   font-size: .9rem;              /* kleinere Typo */
-  padding: .35rem 0;             /* weniger Höhe */
   line-height: 1.2;
-  box-shadow: 0 1px 6px rgba(20,24,43,.05);
 }
 
 /* Logo kompakter */
-.navbar-brand img { width: 26px; height: 26px; }
+.navbar-brand img { width: 42px; height: 42px; }
 .navbar-brand strong { font-size: .95rem; font-weight: 700; }
 
 /* Navigation enger */
@@ -106,17 +113,67 @@ a:hover, a:focus { color: var(--accent); }
   transform: scaleX(1);
 }
 
+/* Navbar als Overlay */
+nav.navbar{
+  position: fixed; top:0; left:0; right:0; z-index:1020;
 
+  /* EINZIGE Hintergrund-Quelle: Alpha-Mix */
+  background: rgba(255,255,255, var(--nav-alpha)) !important;
+
+  /* Linie & Schatten skalieren mit */
+  border-bottom: 1px solid rgba(0,0,0, calc(var(--nav-alpha) * .08)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0, calc(var(--nav-alpha) * .06));
+
+  /* subtiler Glass-Effekt, mit Alpha stärker */
+  backdrop-filter: blur(calc(var(--nav-alpha) * 2.5px))
+                   saturate(calc(100% + var(--nav-alpha) * 40%));
+}
+
+/* WICHTIG: alte Zustandsklassen nicht mehr für BG nutzen */
+nav.navbar.transparent,
+nav.navbar.scrolled{
+  background: rgba(255,255,255, var(--nav-alpha)) !important;
+  border-bottom: 1px solid rgba(0,0,0, calc(var(--nav-alpha) * .08)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0, calc(var(--nav-alpha) * .06)) !important;
+  /* keine weiteren Farben hier setzen */
+}
+
+/* Textfarben mit der Deckkraft mischen: oben weiß, unten dunkel */
+nav.navbar .navbar-brand,
+nav.navbar .nav-link{
+  color: color-mix(in srgb, #111 calc(var(--nav-alpha)*100%), #fff) !important;
+}
+nav.navbar .nav-link:hover,
+nav.navbar .nav-link:focus{
+  color: color-mix(in srgb, #111 calc(var(--nav-alpha)*100%), #f2f2f2) !important;
+}
+
+/* Toggler-Icon: oben (alpha≈0) hell, unten dunkel */
+nav.navbar .navbar-toggler { 
+  border-color: rgba(0,0,0, calc(var(--nav-alpha) * .25));
+}
+nav.navbar .navbar-toggler-icon{
+  /* schwarzes Hamburger-Icon (Bootstrap-Standard) */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,.9)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  filter: invert(calc((1 - var(--nav-alpha)) * 100%)); /* oben weiß, unten schwarz */
+  transition: filter .15s linear;
+}
+
+/* Platz für die fixe Navbar schaffen */
+body{ padding-top: var(--nav-h); }
 
 /* ---------- Buttons ---------- */
 .btn-brand {
   background: var(--secondary);
   color: #fff !important;
-  border: none;
+  border: var(--secondary);
   font-weight: 700;
   border-radius: var(--radius-sm);
   transition: background .18s, box-shadow .18s;
   box-shadow: var(--shadow);
+}
+.hero-btn{
+  animation: sublineFadeIn .8s .3s backwards;
 }
 .btn-brand:hover, .btn-brand:focus {
   background: var(--accent);
@@ -133,14 +190,17 @@ a:hover, a:focus { color: var(--accent); }
 
 
 
+
 /* --- HERO TITLE ROW --- */
 .hero-modern {
   background: var(--brand);
   color: #fff;
-  padding: 48px 0 52px 0; /* mehr Abstand unten für großes Bild */
+  padding: 32px 0 52px 0; /* mehr Abstand unten für großes Bild */
   position: relative;
   overflow: hidden;
 }
+
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -189,7 +249,6 @@ a:hover, a:focus { color: var(--accent); }
 }
 .hero-circle {
   color: #fff;
-
   font-weight: 800;
   position: relative;
   display: inline-block;
@@ -214,15 +273,9 @@ a:hover, a:focus { color: var(--accent); }
 
 /* --- Subline direkt unter Titel, wenig Abstand --- */
 .hero-subline {
-  font-size: 1.13rem;
-  font-weight: 600;
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.5em 1.2em;
-  box-shadow: 0 4px 12px -6px #bfa24a33;
+  color: var(--accent-light);
   display: inline-block;
   margin-bottom: 0.5em;
-  letter-spacing: .01em;
   animation: sublineFadeIn .8s .3s backwards;
   text-align: center;
 }
@@ -235,37 +288,66 @@ a:hover, a:focus { color: var(--accent); }
   font-weight: 700;
   text-align: center;
 }
+
 @keyframes sublineFadeIn {
   from { opacity: 0; transform: translateY(18px);}
   to { opacity: 1; transform: translateY(0);}
 }
 
+.inline-cta{ color: rgba(255,255,255,.9); text-decoration: none; }
+.inline-cta .txt{
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .22em;
+  text-decoration-color: rgba(255,255,255,.55);
+}
+.inline-cta:hover{ color:#fff; }
+.inline-cta:hover .txt{ text-decoration-color:#fff; }
+.inline-cta .icon{ margin-right:.45rem; display:inline-block; transform: translateY(.5px); }
+
+/* Tastaturfokus */
+.inline-cta:focus-visible{ outline:2px solid rgba(255,255,255,.6); outline-offset:2px; border-radius:6px; }
+
+
 
 /* --- Bildblock --- */
 .hero-image-block {
-  width: 100%;
-  height: auto;
-  max-width: min(90vw, 900px);   /* nicht breiter als 90% des Viewports oder 900px */
-  max-height: 70vh;              /* nicht höher als 70% der Bildschirmhöhe */
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin-inline: auto;  
-  margin: 0 auto 32px auto; /* mehr Abstand nach unten */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: min(90vw, 900px);
+  max-height: 65vh;
+  margin: 0 auto 32px auto;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 18px 54px rgba(191,162,74,0.13);
 }
+
+/* Das Bild selbst */
+.hero-image-block img.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* oder z.B. 60% 70%, wenn du spezielle Zentrierung willst */
+  display: block;
+  border-radius: inherit;
+  transition: transform .7s cubic-bezier(.6,.2,.29,1.1);
+  animation: heroPanZoom 14s ease-in-out infinite;
+}
+
+/* Für alle Bilder mit der Klasse hero-image, falls sie nicht im Container sind */
 .hero-image {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  object-position: 60% 70%;
-  border-radius: 24px;
+  object-position: center;
+  border-radius: 36px;
   transition: transform .7s cubic-bezier(.6,.2,.29,1.1);
   animation: heroPanZoom 14s ease-in-out infinite;
 }
+
+
 @keyframes heroPanZoom {
   0%   { transform: scale(1);}
   50%  { transform: scale(1.04) translateY(-1.5%);}
@@ -287,6 +369,8 @@ a:hover, a:focus { color: var(--accent); }
   font-weight: 600;
   letter-spacing: 0.01em;
 }
+
+
 
 /* --- Responsive: Stack alles untereinander --- */
 @media (max-width: 768px) {
@@ -313,13 +397,104 @@ a:hover, a:focus { color: var(--accent); }
   }
   .hero-image-block {
     max-width: 99vw;
-    margin-bottom: 24px;
+    max-height: 45vh;
+    border-radius: 16px;
+  }
+  .hero-image-block img.hero-image,
+  .hero-image {
+    border-radius: 16px;
+    max-height: 45vh ;
   }
   .hero-content {
     gap: 11px;
     max-width: 99vw;
   }
+  .hero-ctas{ justify-content: center; }
+
+  .hero-btn {
+    border-radius: 1em;
+  }
+
+  /* nur dein Primär-CTA anpassen */
+  .btn.btn-brand.btn-quiet{
+    background: transparent !important;   /* kein Fill */
+    color: #fff !important;               /* weiße Schrift auf dunklem Hero */
+    border: 1.5px solid rgba(255,255,255,.65) !important;
+    box-shadow: none !important;          /* kein Glow */
+    padding: .55rem .9rem;                /* kleiner */
+    font-size: .95rem;
+    border-radius: .55rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    width: auto;                          /* NICHT full-width */
+  }
+  .btn.btn-brand.btn-quiet:hover{
+    background: rgba(255,255,255,.10);
+    border-color: #fff;
+  }
+  .btn.btn-brand.btn-quiet:active{ transform: none; }
+
+  /* Falls du irgendwo mobile Full-Width gesetzt hattest, hier sicher neutralisieren */
+  .hero-ctas .btn{ width: auto; }
 }
+
+/* Optional: schöner Tastaturfokus */
+.btn.btn-brand.btn-quiet:focus-visible{
+  outline: 2px solid rgba(255,255,255,.6);
+  outline-offset: 2px;
+}
+
+
+@media (max-width: 480px) {
+  /* mehr Luft rund um alles, aber dynamisch */
+  .hero-modern {
+    padding-block: clamp(18px, 6svh, 28px);
+  }
+  .hero-content {
+    gap: clamp(10px, 3.5svh, 22px);
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+  .hero-title-row {
+    gap: clamp(6px, 2vw, 12px);
+    margin-bottom: clamp(6px, 2.5svh, 16px);
+    font-size: clamp(1.8rem, 8vw, 2rem);
+  }
+
+  /* Subline ruhiger + mit fluidem Abstand */
+  .hero-subline {
+    font-size: clamp(.95rem, 3.8vw, 1.05rem);
+    margin: clamp(6px, 2svh, 14px) 0 clamp(10px, 2.8svh, 18px);
+    max-width: 95vw;
+    text-align: center;
+  }
+
+  /* Bildblock mit fester Ratio + dynamischer Maxhöhe & Abstand */
+  .hero-image-block {
+    max-width: 100vw;
+    max-height: clamp(220px, 35svh, 320px);
+    border-radius: 12px;
+    margin-top: clamp(10px, 3svh, 18px);
+  }
+  .hero-image-block img.hero-image,
+  .hero-image {
+    border-radius: 12px;
+    height: 100%;
+  }
+
+  /* CTA untereinander, mit fluidem Abstand */
+  .hero-ctas {
+    justify-content: center;
+    gap: clamp(8px, 2.8svh, 14px);
+  }
+  .btn.btn-brand.btn-quiet,
+  .btn.btn-outline-light {
+    width: 100%;
+    padding-block: clamp(.8rem, 2.8svh, 1.05rem);
+  }
+}
+
+
 
 
 

@@ -295,4 +295,30 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
+  const nav  = document.querySelector('nav.navbar');
+  if (!nav) return;
 
+  // reale Höhe in CSS-Variable schreiben (auch bei Resize)
+  const setNavH = () => root.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  setNavH(); window.addEventListener('resize', setNavH);
+
+  // Scrollstrecke, bis die Navbar vollständig weiß ist:
+  const MAX_DIST = 240; // px (nach Bedarf 200–400 anpassen)
+
+  // stetiger, linearer Fade 0..1
+  const fadeNav = () => {
+    const t = Math.min(1, window.scrollY / MAX_DIST); // 0..1
+    root.style.setProperty('--nav-alpha', t.toFixed(2));
+  };
+
+  fadeNav();
+  window.addEventListener('scroll', fadeNav, { passive: true });
+  window.addEventListener('resize', fadeNav);
+
+  // Mobilmenü: geöffnet = sofort weiß (Lesbarkeit), zu = wieder nach Scrollstand
+  const collapse = document.getElementById('nav');
+  collapse?.addEventListener('show.bs.collapse', () => root.style.setProperty('--nav-alpha', '1'));
+  collapse?.addEventListener('hidden.bs.collapse', fadeNav);
+});
