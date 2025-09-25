@@ -316,8 +316,9 @@ body{ padding-top: var(--nav-h); }
   align-items: center;
   justify-content: center;
   max-width: min(90vw, 900px);
-  max-height: 65vh;
-  margin: 0 auto 32px auto;
+  max-height: 50vh;  
+  /* oben dynamischer Abstand, seitlich zentriert, unten 32px bleibt */
+  margin: clamp(12px, 2.5vh, 24px) auto 32px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 18px 54px rgba(191,162,74,0.13);
@@ -350,7 +351,7 @@ body{ padding-top: var(--nav-h); }
 
 @keyframes heroPanZoom {
   0%   { transform: scale(1);}
-  50%  { transform: scale(1.04) translateY(-1.5%);}
+  50%  { transform: scale(1.04) translateY(-2%);}
   100% { transform: scale(1);}
 }
 
@@ -966,3 +967,35 @@ h2.section-title{
 
 /* sorgt dafür, dass beide Karten gleich hoch wirken */
 #probestunde .h-100 { display: flex; flex-direction: column; }
+
+/* BG-Slides weich blenden */
+.hero-bg { position: relative; }
+.hero-bg .hero-slide{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  opacity: 0;
+  transition: opacity .6s ease;   /* <- smooth */
+}
+.hero-bg .hero-slide.active{ opacity: 1; }
+
+
+:root{
+  --hero-fade: 12000ms;                          /* Dauer: 0.9s (gern 1200ms testen) */
+  --hero-ease: cubic-bezier(.22,.61,.36,1);    /* smooth ease-out */
+}
+
+/* BG-Slides */
+.hero-bg .hero-slide{
+  transition: opacity var(--hero-fade) var(--hero-ease);
+}
+
+/* rechtes Bild */
+#hero-visual-img{
+  transition:
+    opacity  var(--hero-fade) var(--hero-ease),
+    transform calc(var(--hero-fade) + 600ms) cubic-bezier(.2,.8,.2,1);
+}
+
+/* statt komplett ausblenden -> nur abdunkeln = weicher */
+#hero-visual-img.is-fading{ opacity: .15; }    /* vorher 0;  .15 fühlt sich „weicher“ an */

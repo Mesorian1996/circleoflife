@@ -38,9 +38,17 @@
        ============================================================ */
     const SLIDES = [
       { src:'/assets/images/Marvin_JJL.jpeg', pos:'78% 70%',
-        cap:'Fundamentals: Position vor Submission – die Basis für alles.' },
+        cap:'Fundamentals: Position vor Submission – die Basis für alles.',
+        alt:'Brazilian Jiu Jitsu GI Training'
+      },
       { src:'/assets/images/JJPro_League.jpeg', pos:'60% 70%',
-        cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.' },
+        cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
+        alt:'No-Gi Grappling'
+      },
+      { src:'/assets/images/Nogi_Gruenstadt.jpeg', pos:'60% 70%',
+        cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
+        alt:'Kampfsporttraining'
+      },
       // weitere Bilder hier hinzufügen:
       // { src:'/assets/images/gallery/slide3.jpg', pos:'70% 70%', cap:'Open Mat: Fragen klären, Rollen, Technik verfestigen.' },
       // { src:'/assets/images/gallery/slide4.jpg', pos:'70% 70%', cap:'Competition Class: Strategie, Score-Awareness und Drill-Sets.' },
@@ -58,7 +66,7 @@
         const im = document.createElement('img');
         im.className = 'hero-slide';
         im.src = SLIDES[i].src;
-        im.alt = '';
+        im.alt = SLIDES[i].alt;
         im.style.objectPosition = SLIDES[i].pos;
         heroWrap.appendChild(im);
       }
@@ -69,22 +77,36 @@
     const heroVisualImg = document.getElementById('hero-visual-img');
     const coinImg = document.querySelector('.logo-coin img');
 
-    function fadeSwap(imgEl, nextSrc, nextPos){
-      if(!imgEl) return;
-      imgEl.classList.add('is-fading');         // fade out
-      setTimeout(()=>{
-        // Quelle wechseln
-        const onLoaded = () => {
-          imgEl.removeEventListener('load', onLoaded);
-          if(nextPos) imgEl.style.objectPosition = nextPos;
-          imgEl.classList.remove('is-fading');  // fade in
-          imgEl.classList.add('zoom');          // kleiner Zoom-Punch
-          setTimeout(()=> imgEl.classList.remove('zoom'), 900);
-        };
-        imgEl.addEventListener('load', onLoaded, { once: true });
-        imgEl.src = nextSrc;
-      }, 120); // kleines Delay für sauberen Übergang
-    }
+// Ersetze DEINE fadeSwap-Funktion durch diese Version:
+function fadeSwap(imgEl, nextSrc, nextPos){
+  if(!imgEl) return;
+
+  const DURATION_MS = 1200;   // gleich wie --hero-fade (900ms)
+  const SWAP_AT     = 0.60;  // bei 60% der Fade-Down-Zeit Bildquelle tauschen
+
+  const pre = new Image();
+  pre.onload = () => {
+    imgEl.classList.add('is-fading');          // startet Fade auf Opacity .15
+
+    // Swap kurz VOR Ende des Fades -> wirkt wie Crossfade, ohne „Loch“
+    setTimeout(() => {
+      if (nextPos) imgEl.style.objectPosition = nextPos;
+      imgEl.src = nextSrc;
+
+      // direkt wieder hochblenden
+      requestAnimationFrame(() => {
+        imgEl.classList.remove('is-fading');
+
+        // (optional) kleiner Zoom-Punch
+        imgEl.style.transform = 'scale(1.035)';
+        setTimeout(()=> imgEl.style.transform = 'scale(1)', 1200);
+      });
+    }, DURATION_MS * SWAP_AT);
+  };
+  pre.src = nextSrc;          // vorladen
+}
+
+
     
 
     /* ===== Story/Galerie vorbereiten ===== */
@@ -178,6 +200,7 @@
     syncRender();
     start();
   
+    
     /* Interaktion */
     const hero = document.getElementById('hero');
     if (hero){
