@@ -45,9 +45,9 @@ app.post('/api/contact', async (req, res) => {
     kurs = '',
     message = ''
   } = req.body || {};
-
-  if ((!vorname && !nachname) || !email || !message) {
-    return res.status(400).json({ ok:false, message: 'Bitte Name, E-Mail & Nachricht angeben.' });
+  // NEU (message optional):
+  if ((!vorname && !nachname) || !email) {
+    return res.status(400).json({ ok:false, message: 'Bitte Name und E-Mail angeben.' });
   }
 
   const fullName = [anrede, vorname, nachname].filter(Boolean).join(' ').trim();
