@@ -206,6 +206,18 @@ nav.navbar { overflow: visible; }
 .nav-item.nav-bubble .dropdown-menu.show ~ .nav-caret::after{
   transform: rotate(225deg);
 }
+/* Alle Navbar-Links: Icon + Text sauber mittig */
+.navbar .nav-link{
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  line-height: 1.5;            /* vermeidet Baseline-Drift */
+  white-space:nowrap; 
+}
+.navbar .nav-link .caret-icon{
+  display: inline-block;
+  vertical-align: middle;      /* falls irgendwo inline bleibt */
+}
 
 /* Bubble-Menü: NUR Optik – Positionierung macht Bootstrap/Popper */
 .navbar .dropdown-menu.bubble{
@@ -1156,4 +1168,21 @@ h2.section-title{
 /* gedreht, wenn Menü offen */
 .nav-item.nav-bubble .dropdown-menu.show ~ .nav-caret::after{
   transform: rotate(225deg);
+}
+
+/* Safety net: horizontales Scrollen verhindern */
+:root, html, body { width:100%; overflow-x: clip; } /* statt hidden (performanter) */
+
+/* Komponenten, die gern „rausquellen“ */
+nav.navbar,
+.hero-intro,
+.container,
+.row { overflow-x: clip; }
+
+/* Bilder/SVGs niemals breiter als der Container */
+img, svg { max-width:100%; height:auto; display:block; }
+
+html, body { overflow-x: hidden; }
+@supports (overflow-x: clip){
+  html, body { overflow-x: clip; }
 }

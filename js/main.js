@@ -45,7 +45,7 @@
         cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
         alt:'No-Gi Grappling'
       },
-      { src:'/assets/images/Nogi_Gruenstadt.jpeg', pos:'60% 70%',
+      { src:'/assets/images/kurse/Nogi_Gruenstadt.jpeg', pos:'60% 70%',
         cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
         alt:'Kampfsporttraining'
       },
