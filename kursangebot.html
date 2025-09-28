@@ -192,161 +192,163 @@
             <!-- HERO: Kursangebot -->
             <section class="hero-intro no-image bg-dots hero--underline hero--glass" aria-labelledby="kursangebot-hero-title">
                 <div class="container hero-wrap">
-                    <!-- Deko-Background -->
-                    <div class="hero-bg" aria-hidden="true">
-                        <!-- sanfte Mesh-/Radial-Form -->
-                        <svg viewBox="0 0 800 400" preserveAspectRatio="none" class="hero-blob">
-                            <defs>
-                                <radialGradient id="g1" cx="30%" cy="30%" r="60%">
-                                    <stop offset="0%" stop-color="var(--accent, #6f7dff)" stop-opacity="0.18" />
-                                    <stop offset="100%" stop-color="transparent" stop-opacity="0" />
-                                </radialGradient>
-                                <radialGradient id="g2" cx="75%" cy="40%" r="55%">
-                                    <stop offset="0%" stop-color="var(--brand, #111)" stop-opacity="0.10" />
-                                    <stop offset="100%" stop-color="transparent" stop-opacity="0" />
-                                </radialGradient>
-                            </defs>
-                            <rect width="800" height="400" fill="url(#g1)" />
-                            <rect width="800" height="400" fill="url(#g2)" />
-                        </svg>
-                    </div>
-
-                    <div class="row g-4 align-items-center">
-                        <!-- Text -->
-                        <div class="col-lg-7">
-
+                  <div class="row g-4 align-items-center justify-content-center">
+                    <!-- Text: full-width, angenehm begrenzt -->
+                    <div class="col-12">
+                      <div class="hero-text">
+                        <div class="hero-head">
                             <h1 id="kursangebot-hero-title" class="hero-title">Kursangebot &amp; Stundenplan</h1>
-
-                            <p class="hero-subtitle">
-                                Unsere Kampfsportschule bietet <strong>Brazilian Jiu-Jitsu (Gi), No-Gi Grappling,
-                                    Fitness &amp; Conditioning und Kinder-BJJ</strong> – mit klarer
-                                Einsteiger-Progression, sicherem Sparring und strukturierter Betreuung.
-                                Wenn du im Raum Ludwigshafen, Mannheim, Bad Dürkheim,
-                                Frankenthal oder Grünstadt trainieren möchtest, bist du
-                                in wenigen Minuten bei uns (Anfahrt meist ca. 20&nbsp;Min.). Ob
-                                <strong>Selbstverteidigung</strong>, Fitness oder <strong>wettkampforientiertes</strong>
-                                Training:
-                                wir holen dich auf deinem Level ab und bauen Technik systematisch auf – von den
-                                Fundamentals bis zu fortgeschrittenen Positionsketten.
-                            </p>
-
-                            <div class="hero-listwrap">
-                                <br>
-                                <p class="hero-list-title"> <strong>Was erwartet dich bei uns?</strong></p>
-                                <ul class="list-check hero-list">
-                                    <li>Aufwärmen &amp; Mobilität (verletzungspräventiv)</li>
-                                    <li>Technikdrills mit klaren Lernzielen (Gi &amp; No-Gi)</li>
-                                    <li>Spezifisches Sparring mit kontrollierter Intensität</li>
-                                    <li>Positions- oder freies Sparring</li>
-                                    <li>Gemeinschaft &amp; Spaß – respektvolle Teamkultur</li>
-                                </ul>
-                            </div>
-
-
-                            <!-- nur 3 Chips -->
-                            <!-- <ul class="hero-chips" aria-label="Highlights">
-    <li>~20&nbsp;Min Anfahrt</li>
-    <li>Einsteigerfreundlich</li>
-    <li>Wettkampf optional</li>
-  </ul> -->
-
-                            <div class="hero-ctas">
-                                <a class="btn btn-brand" href="/index.html#probetraining">Kostenloses Probetraining</a>
-                                <nav class="hero-nav" aria-label="Abschnitts-Shortcuts">
-                                    <a href="#kurse">Kurse</a>
-                                    <a href="#stundenplan">Stundenplan</a>
-                                    <a href="#preise">Preise</a>
-                                    <a href="#faq">FAQ</a>
-                                </nav>
-                                <p class="small text-secondary">
-                                    Werte wie Respekt, Pünktlichkeit und Hygiene sind in unserer Akademie
-                                    selbstverständlich.
-                                </p>
-                            </div>
-
-                            <!-- <p class="hero-micro text-secondary">
-    Sicheres Sparring • klarer Fortschritt • familiäre Atmosphäre • leichter Einstieg
-  </p> -->
+                            <img class="hero-kurslogo" src="/assets/images/logo_bjj_1024.png"
+                                 alt="" aria-hidden="true" decoding="async">
+                          </div>
+              
+                        <!-- Optional: kleine Icon-Zeile unter dem Titel
+                        <p class="hero-icons" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                          <span>Kurse</span>
+                          <svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="currentColor" opacity=".12"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                          <span>Stundenplan</span>
+                        </p>
+                        -->
+              
+                        <p class="hero-subtitle">
+                            Unsere Kampfsportschule bietet 
+                            <span class="offer-badges">
+                              <span class="kurs-badge">BJJ (Gi)</span>
+                              <span class="kurs-badge">No-Gi Grappling</span>
+                              <span class="kurs-badge">Fitness&nbsp;&amp;&nbsp;Conditioning</span>
+                              <span class="kurs-badge">Kinder-BJJ</span>
+                            </span> – mit klarem Einsteigerfortschritt,
+                        sicherem Sparring und strukturierter Betreuung. Wenn du aus dem Raum Ludwigshafen, Mannheim, Bad Dürkheim, Frankenthal oder Grünstadt kommst und BJJ trainieren möchtest, 
+                        bist du meist in ca. 20 Minuten bei uns. Ob Selbstverteidigung, Fitness und Kondition oder
+                        wettkampforientiertes Training: Wir holen dich auf deinem Level ab und bauen
+                        Technik systematisch auf – von den Grundlagen bis zu fortgeschrittenen Positionsketten.
+                        </p>
+              
+                        <div class="hero-listwrap">
+                          <p class="hero-list-title">Was erwartet dich bei uns?</p>
+                          <ul class="list-check hero-list">
+                            <li>Aufwärmen &amp; Mobilität (verletzungspräventiv)</li>
+                            <li>Technikdrills mit klaren Lernzielen (Gi &amp; No-Gi)</li>
+                            <li>Spezifisches Sparring mit kontrollierter Intensität</li>
+                            <li>Positions- oder freies Sparring</li>
+                            <li>Gemeinschaft &amp; Spaß – respektvolle Teamkultur</li>
+                          </ul>
                         </div>
-                        <!-- Visual (Bild oder Collage) -->
-                        <div class="col-lg-5">
-                            <figure class="hero-visual">
-                                <!-- Option A: ein starkes Motiv-Bild -->
-                                <img src="/assets/images/Schwarzer_GI.jpeg"
-                                    alt="Training auf der Matte: BJJ und Grappling in Ludwigshafen" width="900"
-                                    height="700" decoding="async" fetchpriority="high" class="img-fluid">
-                                <!-- Option B: Logo/Badge als Fallback
-            <img src="/assets/images/JiuJitsuLogo.svg" alt="" width="300" height="300" loading="lazy" class="img-fluid" aria-hidden="true">
-            -->
-                            </figure>
+              
+                        <div class="hero-ctas">
+                          <a class="btn btn-brand" href="/index.html#probetraining">Kostenloses Probetraining sichern</a>
+                          <nav class="hero-nav" aria-label="Abschnitts-Shortcuts">
+                            <a href="#kurse">
+                                <!-- <svg width="20" height="20" viewBox="0 0 24 24"><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> -->
+                                Kurse
+                            </a>
+                            <a href="#stundenplan">
+                                <!-- <svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="currentColor" opacity=".12"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> -->
+                                Stundenplan
+                            </a>
+                            <a href="#preise">Preise</a>
+                            <a href="#faq">FAQ</a>
+                          </nav>
                         </div>
+                        <p class="small text-secondary">
+                            Werte wie Respekt, Pünktlichkeit und Hygiene sind in unserer Akademie selbstverständlich.
+                        </p>
+
+                      </div>
+                      
                     </div>
-
-
+                  </div>
                 </div>
-            </section>
+              </section>
+              
 
 
 
 
             <section id="kurse" class="mb-5">
                 <div class="container">
-                    <!-- A) BJJ (Gi)  [Text links, Bild rechts] -->
-                    <div class="row align-items-center g-4 mb-4">
-                        <div class="col-md-6">
+                    <!-- A) BJJ (Gi) -->
+                    <div class="row  g-4 mb-4">
+                        <div class="col-md-6 kurs-karte">
+            
                             <h2 class="h4 mb-2">BJJ (Gi)</h2>
-                            <p>Technik vor Kraft: Mit Gi (Kimono) lernst du Kontrolle über Griffe, Balance und
-                                Übergänge.
-                                Fundamentals, Positionsdrills und sicheres Sparring – ideal für Einsteiger &
-                                Fortgeschrittene.</p>
+                            <p>
+                                Brazilian Jiu-Jitsu im Gi legt die Grundlagen für sauberes Grappling: Griffarbeit am Kimono,
+                                Guard-Kontrolle, Guard-Passing und präzise Submissions. Im Training kombinieren wir klare
+                                Fundamentals mit Positionsdrills und sicherem Sparring, sodass Technik, Timing und Haltung
+                                Schritt für Schritt zusammenfinden – ideal für Einsteiger und Fortgeschrittene im Kampfsport.
+                            </p>
+            
                             <a class="btn btn-outline-brand btn-sm" href="/bjj.html">Mehr zu BJJ (Gi)</a>
+            
                         </div>
                         <div class="col-md-6 text-center">
-                            <img src="/assets/images/kurse/gi.jpg" alt="BJJ im Gi in Ludwigshafen" width="900"
+                            <img src="/assets/images/kurse/Gi_training_gruenstadt.jpeg" alt="BJJ im Gi in Ludwigshafen" width="900"
                                 height="600" loading="lazy" decoding="async" class="img-fluid rounded-4 shadow-sm">
                         </div>
                     </div>
-
-                    <!-- B) No-Gi  [Bild links, Text rechts] -->
-                    <div class="row align-items-center g-4 mb-4">
-                        <div class="col-md-6 order-md-2">
+            
+                    <!-- B) No-Gi -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6 order-md-2 kurs-karte">
+            
                             <h2 class="h4 mb-2">No-Gi Grappling</h2>
-                            <p>Ohne Gi, dynamischer: Hand-Fighting, Clinch-Kontrolle, Takedowns und Submissions ohne
-                                Stoffgriffe.
-                                Du verbesserst Timing, Entries und Körperspannung – sicher und respektvoll.</p>
+                            <p>
+                                No-Gi ist dynamisches Grappling ohne Kimono: Hand-Fighting, Clinch-Kontrolle, Takedowns,
+                                Leg-Locks und Submissions ohne Stoffgriffe. Der Fokus liegt auf Druckaufbau, Balance
+                                und Übergängen vom Stand auf den Boden. Spezifisches Sparring in kontrollierter Intensität
+                                stärkt Körpergefühl, Reaktionszeit und Selbstverteidigungsgrundlagen.
+                            </p>
                             <a class="btn btn-outline-brand btn-sm" href="/grappling.html">Mehr zu No-Gi</a>
+            
                         </div>
                         <div class="col-md-6 order-md-1 text-center">
-                            <img src="/assets/images/kurse/nogi.jpg" alt="No-Gi Grappling in Ludwigshafen" width="900"
+                            <img src="/assets/images/kurse/Nogi_Gruenstadt.jpeg" alt="No-Gi Grappling in Ludwigshafen" width="900"
                                 height="600" loading="lazy" decoding="async" class="img-fluid rounded-4 shadow-sm">
                         </div>
                     </div>
-
-                    <!-- A) Fitness  [Text links, Bild rechts] -->
-                    <div class="row align-items-center g-4 mb-4">
-                        <div class="col-md-6">
-                            <h2 class="h4 mb-2">Fitness & Conditioning</h2>
-                            <p>Kraft, Core & Mobility für Grappling: Griffkraft, Hüftbeweglichkeit und Stabilität,
-                                ohne dich fürs Techniktraining zu ermüden.</p>
+            
+                    <!-- C) Fitness -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6 kurs-karte">
+            
+                            <h2 class="h4 mb-2">Fitness &amp; Conditioning</h2>
+                            <p>
+                                Funktionelles Conditioning für Grappling und Jiu-Jitsu: Ganzkörperkraft, Core-Stabilität,
+                                Griffkraft und Mobilität für Hüfte, Schultern und Wirbelsäule. Die Sessions sind so dosiert,
+                                dass sie Leistungsfähigkeit steigern, ohne das Techniktraining zu ermüden – für bessere
+                                Ausdauer, saubere Positionen und nachhaltige Belastbarkeit auf der Matte.
+                            </p>
                             <a class="btn btn-outline-brand btn-sm" href="/fitness.html">Mehr zu Fitness</a>
+            
                         </div>
                         <div class="col-md-6 text-center">
-                            <img src="/assets/images/kurse/fitness.jpg" alt="Grappling-spezifisches Conditioning"
-                                width="900" height="600" loading="lazy" decoding="async"
-                                class="img-fluid rounded-4 shadow-sm">
+                            <img src="/assets/images/kurse/Gi_training_gruenstadt.jpeg" alt="Grappling-spezifisches Conditioning"
+                                width="900" height="600" loading="lazy" decoding="async" class="img-fluid rounded-4 shadow-sm">
                         </div>
                     </div>
-
-                    <!-- B) Kinder  [Bild links, Text rechts] -->
-                    <div class="row align-items-center g-4">
-                        <div class="col-md-6 order-md-2">
+            
+                    <!-- D) Kinder -->
+                    <div class="row g-4">
+                        <div class="col-md-6 order-md-2 kurs-karte">
+            
                             <h2 class="h4 mb-2">Kinder-BJJ (7–13)</h2>
-                            <p>Spielerisch lernen, sicher wachsen: Bewegung, Koordination und klare Regeln.
-                                Kurze Erklärphasen, viele Übungen – für Selbstvertrauen und Spaß.</p>
+                            <p>
+                                Spielerisches Jiu-Jitsu für Kinder: Hier lernen Kinder Koordination, Motorik und kindgerechte
+                                Selbstverteidigung
+                                in einer sicheren, respektvollen Umgebung. Wir legen Wert auf Wohlbefinden und Freude an Bewegung –
+                                klare, freundlich vermittelte Regeln fördern Disziplin und Rücksichtnahme.
+                                In der wertschätzenden Gruppe können Kinder sich ausprobieren, Grenzen kennenlernen und ihre
+                                Persönlichkeit entfalten. Kurze Erklärphasen, viele Bewegungs- und Technikspiele sowie
+                                altersgerechtes, kontrolliertes Üben stärken Aufmerksamkeit, Teamgeist und Selbstvertrauen –
+                                eine wertvolle Grundlage für gesunden Kampfsport und den Alltag.
+                            </p>
                             <a class="btn btn-outline-brand btn-sm" href="/kinder.html">Mehr zu Kinder-BJJ</a>
+            
                         </div>
                         <div class="col-md-6 order-md-1 text-center">
-                            <img src="/assets/images/kurse/kids.jpg" alt="Kinder-BJJ in Ludwigshafen" width="900"
+                            <img src="/assets/images/kurse/Nogi_Gruenstadt.jpeg" alt="Kinder-BJJ in Ludwigshafen" width="900"
                                 height="600" loading="lazy" decoding="async" class="img-fluid rounded-4 shadow-sm">
                         </div>
                     </div>

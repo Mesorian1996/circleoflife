@@ -12,7 +12,7 @@ border-radius:.6rem; background:#fff; font-weight:600;
 
 
 /* Kurskarten: etwas luftiger */
-.page-kursangebot .course-card p{ color:#454b59; }
+.page-kursangebot .kurs-karte p{ color:#454b59; }
 
 
 /* FAQ: Accordions dezenter */
@@ -175,68 +175,37 @@ border-radius:.6rem; background:#fff; font-weight:600;
 .hero-intro.bg-dots.is-strong::before { --alpha:.16; --size:1.6px; --gap:22px; }
 .hero-intro.bg-dots.is-bold::before   { --alpha:.22; --size:2px;  --gap:20px; }
 
-/* Schöne Text-Styles im Hero */
-.hero-intro.hero--underline .hero-title{
-    position:relative; padding-bottom:.5rem;
-  }
-  .hero-intro.hero--underline .hero-title::after{
-    content:""; position:absolute; left:0; bottom:0; height:3px; width:84px;
-    background: linear-gradient(90deg, var(--accent), transparent 70%);
-    border-radius:3px;
-  }
-  .hero-intro.hero--glass .col-lg-7{
-    background: rgba(255,255,255,.32);
-    -webkit-backdrop-filter: blur(8px) saturate(140%);
-    backdrop-filter: blur(8px) saturate(140%);
-    border: 1px solid rgba(0,0,0,.06);
-    border-radius: 14px;
-    padding: clamp(12px,2.4vw,18px);
-  }
-  @media (max-width: 991.98px){
-    .hero-intro.hero--glass .col-lg-7{
-      background: rgba(255,255,255,.48); /* mobil etwas weniger transparent für Lesbarkeit */
-      -webkit-backdrop-filter: blur(10px) saturate(150%);
-      backdrop-filter: blur(10px) saturate(150%);
-    }
-  }
-  
-  @media (max-width: 991.98px){
-    .hero-intro.hero--glass .col-lg-7{ background: rgba(255,255,255,.72); }
-  }
-  
-  /* dezente Wort-Hervorhebung im Hero-Text */
-  .hero-intro .hl{
-      background: linear-gradient(to top, rgba(17,17,17,.08), rgba(17,17,17,0) 60%);
-      padding:0 .06em; border-radius:.15em;
-    }
-  
-  /* Titel & Intro */
-.hero-title{ margin-top: .1rem; } /* kompensiert entfernte Eyebrow */
-.hero-intro .hero-subtitle{ color:#3f4654; font-weight:470; line-height:1.6; }
-.hero-intro .hero-subtitle strong{ font-weight:700; }
 
-/* Checkliste (kompakt, ruhig) */
-.list-check{ list-style:none; margin:.7rem 0 .6rem; padding:0; }
+/* // HERO WIDGET // */
+/* no-image: Text mittig, angenehme Lesebreite */
+.hero-intro.no-image .hero-text{
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* kleine Icon-Zeile (nur falls du sie aktivierst) */
+.hero-icons{
+  display:flex; gap:.6rem; align-items:center;
+  color:#1f2937; opacity:.9; margin:.35rem 0 .1rem;
+}
+.hero-icons span{ font-weight:600; margin-right:.6rem; }
+
+/* Liste-Titel & Checkliste */
+.hero-listwrap{ margin-top:.6rem; }
+.hero-list-title{ margin:.2rem 0 .3rem; font-weight:700; font-size:.95rem; color:#2f3542; }
+.list-check{ list-style:none; margin:.4rem 0 0; padding:0; }
 .list-check li{
-  position:relative; padding-left:1.35rem; margin:.35rem 0; line-height:1.45;
+  position:relative; padding-left:1.35rem; margin:.32rem 0; line-height:1.45;
 }
 .list-check li::before{
   content:""; position:absolute; left:0; top:.35rem; width:.85rem; height:.85rem;
-  border-radius:50%;
   background-image: radial-gradient(#3f4a60 48%, transparent 50%);
 }
 
-/* Chips: max. 3, kompakt */
-.hero-chips{
-  display:flex; flex-wrap:wrap; gap:.5rem; padding:0; margin:.8rem 0 0; list-style:none;
-}
-.hero-chips li{
-  border:1px solid var(--neutral);
-  background:#fff; border-radius:999px;
-  padding:.32rem .6rem; font-weight:600; font-size:.9rem;
-}
+/* Intro-Typo etwas ruhiger */
+.hero-intro .hero-subtitle{ color:#3f4654; font-weight:470; line-height:1.6; }
 
-/* Glass-Panel (falls aktiv): etwas transparenter, damit’s ruhiger wirkt */
+/* Glass-Panel (lesbar auf Dots/Pattern) */
 .hero-intro.hero--glass .hero-text{
   background: rgba(255,255,255,.32);
   -webkit-backdrop-filter: blur(8px) saturate(140%);
@@ -249,6 +218,88 @@ border-radius:.6rem; background:#fff; font-weight:600;
   .hero-intro.hero--glass .hero-text{ background: rgba(255,255,255,.46); }
 }
 
+/* Underline am Titel */
+.hero-intro.hero--underline .hero-title{ position:relative; padding-bottom:0.75rem; }
+.hero-intro.hero--underline .hero-title::after{
+  content:""; position:absolute; left:0; bottom:0; height:4px; width:84px;
+  background: linear-gradient(90deg, var(--accent), transparent 80%);
+  border-radius:2px;
+}
 
+.hero-text{ position: relative; }
+.hero-watermark{
+  position: absolute; right: 25px; top: 25px; z-index: 0;
+  width: 60px;
+  height: 60px;
+  inline-size: clamp(110px, 18vw, 160px); opacity: .10;
+  filter: saturate(.7);
+  pointer-events: none;
+}
+.hero-text > *:not(.hero-watermark){ position: relative; z-index: 1; } /* Inhalt über dem WM */
 
+/* H1 + Logo auf einer Linie */
+.hero-head{ display:flex; align-items:center; gap:.6rem; }
+.hero-kurslogo{
+  inline-size: 60px; block-size: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  flex: 0 0 56px;
+}
 
+/* Textkarte mit Scatter-Pattern dahinter */
+.kurs-karte{
+    position: relative;
+    border-radius: 16px;
+    padding: clamp(14px, 2.2vw, 18px);
+    overflow: hidden;
+    background: rgba(255,255,255,.78);             /* Grundfläche für Lesbarkeit */
+    border: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(2px) saturate(110%);
+  }
+  
+  /* Scatter-SVG Layer */
+  .kurs-karte::before{
+    content:"";
+    position:absolute; inset:-1px; z-index:0.25; pointer-events:none;
+    background-image: url("/assets/background/polygon-scatter-haikei.svg");
+    background-repeat: no-repeat;
+    background-size: 150% auto;                    /* groß & soft */
+    background-position: right -80px center;       /* off-canvas, wirkt „organisch“ */
+    opacity: .1;                                  /* 0.12–0.26 je nach Geschmack */
+    filter: saturate(110%) blur(0.5px);
+    mix-blend-mode: multiply;                       /* natürlicher Look */
+  }
+  
+  /* leichter Weiß-Scrim für Textkontrast (links->rechts) */
+  .kurs-karte::after{
+    content:"";
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    background: linear-gradient(90deg,
+        rgba(255,255,255,.85) 0%,
+        rgba(255,255,255,.55) 45%,
+        rgba(255,255,255,0) 100%);
+  }
+  
+  /* Inhalt über den Layern */
+  .kurs-karte > *{ position: relative; z-index: 1; }
+  
+  /* Mobile: etwas kräftigerer Scrim, Pattern dezenter */
+  @media (max-width: 575.98px){
+    .kurs-karte::before{ opacity:.15; background-size: 140% auto; background-position: right -20px center; }
+    .kurs-karte::after{ background: linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.62) 45%, rgba(255,255,255,0) 100%); }
+
+  }
+  
+  /* Optional Hover */
+  @media (hover:hover){
+    .kurs-karte:hover{ box-shadow: 0 12px 28px rgba(0,0,0,.06); }
+  }
+  
+  .offer-badges{ display:inline-flex; flex-wrap:wrap; gap:.35rem .35rem; margin:0 .15rem; vertical-align:middle; }
+.offer-badges .kurs-badge{
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.22rem .5rem; border:1px solid var(--neutral);
+  background:#fff; border-radius:999px; font-weight:600; font-size:.92rem;
+  line-height:1.1;
+  font-weight: bold;
+}
