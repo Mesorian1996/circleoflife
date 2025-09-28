@@ -1,0 +1,254 @@
+/* Kursangebot: dezente Verbesserungen */
+.page-kursangebot main { scroll-margin-top: var(--nav-h); }
+.page-kursangebot .section-head { margin-bottom: clamp(18px, 3vw, 28px); }
+.page-kursangebot .section-nav {
+display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center;
+}
+.page-kursangebot .section-nav a{
+padding:.45rem .75rem; border:1px solid var(--neutral);
+border-radius:.6rem; background:#fff; font-weight:600;
+}
+.page-kursangebot .section-nav a:hover{ border-color:var(--accent); color:var(--accent); }
+
+
+/* Kurskarten: etwas luftiger */
+.page-kursangebot .course-card p{ color:#454b59; }
+
+
+/* FAQ: Accordions dezenter */
+.page-kursangebot .accordion-button{ font-weight:700; }
+.page-kursangebot .accordion-body{ color:#4b5160; }
+
+/* Kursangebot – Page-spezifische Feinheiten */
+.page-kursangebot main { scroll-margin-top: var(--nav-h); }
+
+/* Kursangebot – Feature-Reihen */
+#kurse img { object-fit: cover; width: 100%; height: auto; }
+#kurse .row + .row { border-top: 1px solid var(--neutral); padding-top: 1.25rem; }
+@media (min-width: 992px){
+  #kurse .row + .row { padding-top: 1.75rem; }
+}
+
+.section-head .small { margin-top: .25rem; display: block; }
+
+/* ========== HERO(INTRO) – Kursangebot ========== */
+.hero-intro {
+    position: relative;
+    padding: clamp(24px, 5vw, 56px) 0;
+    overflow: clip;
+    border-bottom: 1px solid var(--neutral);
+  }
+  .hero-intro .hero-wrap { position: relative; z-index: 1; }
+  
+  /* Hintergrund-Visual */
+  .hero-intro .hero-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    mask-image: radial-gradient(60% 50% at 50% 30%, #000 55%, transparent 100%);
+  }
+  .hero-intro .hero-blob {
+    width: 100%; height: 100%; display: block; opacity: .9;
+  }
+  
+  /* Typo */
+  .hero-title {
+    font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
+    margin-bottom: .4rem;
+  }
+  .hero-subtitle {
+    color: #4b5160;
+    font-size: clamp(.98rem, 1.2vw, 1.05rem);
+    margin: 0;
+  }
+  
+  /* Chips */
+  .hero-chips {
+    display: flex; flex-wrap: wrap; gap: .5rem .5rem;
+    list-style: none; padding: 0; margin: .9rem 0 0;
+  }
+  .hero-chips li {
+    border: 0.5px solid var(--neutral);
+    background: #fff;
+    border-radius: 999px;
+    padding: .35rem .6rem;
+    font-weight: 600;
+    font-size: .9rem;
+  }
+  
+  /* CTAs + Sektionen-Navi */
+  .hero-ctas { display: flex; align-items: center; gap: .8rem 1.2rem; flex-wrap: wrap; margin-top: 1rem; }
+  .hero-nav { display: flex; gap: .45rem; flex-wrap: wrap; }
+  .hero-nav a {
+    display: inline-block; padding: .35rem .65rem; border-radius: .6rem;
+    border: 1px dashed var(--neutral);
+    font-weight: 600;
+  }
+  .hero-nav a:hover { color: var(--accent); border-style: solid; }
+  
+  /* Visual-Kachel */
+  .hero-visual {
+    position: relative; margin: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.02));
+    border: 1px solid var(--neutral);
+    border-radius: clamp(14px, 2vw, 22px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .hero-visual img { display: block; width: 100%; height: auto; object-fit: cover; }
+  
+  /* Microline */
+  .hero-micro { margin-top: clamp(14px, 2vw, 20px); }
+  
+  /* Motion respect */
+  @media (prefers-reduced-motion: reduce){
+    .hero-blob, .hero-nav a, .hero-visual { transition: none !important; animation: none !important; }
+  }
+  
+/* C) Bild schlicht, ohne Rand/Schatten */
+.hero-intro.flat-image { border-bottom: 0; }
+.hero-intro.flat-image .hero-bg { display: none; }  /* Vignette aus */
+.hero-intro.flat-image .hero-visual{
+  background: none; border: 0; box-shadow: none;
+  border-radius: 12px;                               /* optional: leichte Rundung */
+}
+
+/* Dot-Grid als SVG-Data-URI (skaliert sauber, wenig Kontrast) */
+.hero-intro.bg-dots .hero-bg { display:none; } /* alte Vignette aus */
+.hero-intro.bg-dots {
+  --dot: %23000000;         /* Punktfarbe (URL-escaped) */
+  --dotAlpha: .06;          /* Deckkraft .04–.10 */
+  --gap: 26;                /* Abstand in px */
+  background-image:
+    radial-gradient(circle at center, rgba(0,0,0,var(--dotAlpha)) 1px, transparent 1.2px);
+  background-size: var(--gap) var(--gap);
+  background-position: 0 0;
+}
+
+/* Hero: Dots sichtbar & robust (als Layer) */
+.hero-intro.bg-dots { position: relative; background: none; }
+.hero-intro.bg-dots .hero-bg { display: none; } /* alte Vignette sicher aus */
+.hero-intro.bg-dots::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  /* Fein justierbar: */
+  --gap: 24px;            /* Abstand der Punkte */
+  --size: 1.5px;          /* Punktgröße */
+  --alpha: .12;           /* Sichtbarkeit (.08–.14 ist gut) */
+  background-image: radial-gradient(circle at center,
+                     rgba(0,0,0,var(--alpha)) var(--size), transparent calc(var(--size) + .2px));
+  background-size: var(--gap) var(--gap);
+}
+
+/* Inhalt liegt sicher über dem Layer */
+.hero-intro .hero-wrap { position: relative; z-index: 1; }
+
+/* Falls du die Bild-Variante nutzt: flach & ohne Ränder (behältst du ja) */
+.hero-intro.flat-image .hero-visual{
+  background:none !important; border:0 !important; box-shadow:none !important; border-radius:12px;
+}
+
+
+/* // PARAGRAPHEN STYLING // */
+/* Standard, aber größer */
+.p-lead{font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65;color:#353b47;margin:.75rem 0}
+
+/* linker rand card style */
+.p-rule{border-left:4px solid var(--neutral);padding:.6rem .9rem;margin:.8rem 0;background:#f8f9ff;border-radius:.4rem}
+
+/* Erster Buchstabe Groß */
+.p-dropcap{line-height:1.7}
+.p-dropcap::first-letter{float:left;font-size:3.1rem;line-height:1;margin:.15rem .4rem 0 0;font-weight:700;color:var(--accent)}
+
+/* Card */
+.p-card{border:1px solid var(--neutral);border-radius:.8rem;padding:.8rem 1rem;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+
+/* *Neu Badge */
+.p-badge{position:relative;padding-left:5.5rem}
+.p-badge::before{content:"Neu";position:absolute;left:0;top:.15rem;background:#eef; color:#334;border:1px solid var(--neutral);padding:.25rem .55rem;border-radius:999px;font-weight:700;font-size:.8rem}
+
+/* Callout */
+.p-callout{border:1px solid var(--neutral);border-left:4px solid #7b8cff;background:#fff;border-radius:.6rem;padding:.8rem 1rem;color:#2a2f3a}
+.p-callout.success{border-left-color:#18a957}
+.p-callout.warn{border-left-color:#e7a400;background:#fff9e9}
+
+
+/* Dots – Intensitäts-Modifier */
+.hero-intro.bg-dots.is-strong::before { --alpha:.16; --size:1.6px; --gap:22px; }
+.hero-intro.bg-dots.is-bold::before   { --alpha:.22; --size:2px;  --gap:20px; }
+
+/* Schöne Text-Styles im Hero */
+.hero-intro.hero--underline .hero-title{
+    position:relative; padding-bottom:.5rem;
+  }
+  .hero-intro.hero--underline .hero-title::after{
+    content:""; position:absolute; left:0; bottom:0; height:3px; width:84px;
+    background: linear-gradient(90deg, var(--accent), transparent 70%);
+    border-radius:3px;
+  }
+  .hero-intro.hero--glass .col-lg-7{
+    background: rgba(255,255,255,.32);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    backdrop-filter: blur(8px) saturate(140%);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 14px;
+    padding: clamp(12px,2.4vw,18px);
+  }
+  @media (max-width: 991.98px){
+    .hero-intro.hero--glass .col-lg-7{
+      background: rgba(255,255,255,.48); /* mobil etwas weniger transparent für Lesbarkeit */
+      -webkit-backdrop-filter: blur(10px) saturate(150%);
+      backdrop-filter: blur(10px) saturate(150%);
+    }
+  }
+  
+  @media (max-width: 991.98px){
+    .hero-intro.hero--glass .col-lg-7{ background: rgba(255,255,255,.72); }
+  }
+  
+  /* dezente Wort-Hervorhebung im Hero-Text */
+  .hero-intro .hl{
+      background: linear-gradient(to top, rgba(17,17,17,.08), rgba(17,17,17,0) 60%);
+      padding:0 .06em; border-radius:.15em;
+    }
+  
+  /* Titel & Intro */
+.hero-title{ margin-top: .1rem; } /* kompensiert entfernte Eyebrow */
+.hero-intro .hero-subtitle{ color:#3f4654; font-weight:470; line-height:1.6; }
+.hero-intro .hero-subtitle strong{ font-weight:700; }
+
+/* Checkliste (kompakt, ruhig) */
+.list-check{ list-style:none; margin:.7rem 0 .6rem; padding:0; }
+.list-check li{
+  position:relative; padding-left:1.35rem; margin:.35rem 0; line-height:1.45;
+}
+.list-check li::before{
+  content:""; position:absolute; left:0; top:.35rem; width:.85rem; height:.85rem;
+  border-radius:50%;
+  background-image: radial-gradient(#3f4a60 48%, transparent 50%);
+}
+
+/* Chips: max. 3, kompakt */
+.hero-chips{
+  display:flex; flex-wrap:wrap; gap:.5rem; padding:0; margin:.8rem 0 0; list-style:none;
+}
+.hero-chips li{
+  border:1px solid var(--neutral);
+  background:#fff; border-radius:999px;
+  padding:.32rem .6rem; font-weight:600; font-size:.9rem;
+}
+
+/* Glass-Panel (falls aktiv): etwas transparenter, damit’s ruhiger wirkt */
+.hero-intro.hero--glass .hero-text{
+  background: rgba(255,255,255,.32);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  backdrop-filter: blur(8px) saturate(140%);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:14px;
+  padding: clamp(12px,2.4vw,18px);
+}
+@media (max-width: 991.98px){
+  .hero-intro.hero--glass .hero-text{ background: rgba(255,255,255,.46); }
+}
+
+
+
+

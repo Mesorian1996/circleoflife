@@ -1,0 +1,16 @@
+/* Über uns: Abschnittsabstände & Info-Karten */
+.page-ueber-uns main { scroll-margin-top: var(--nav-h); }
+.page-ueber-uns .about-kacheln{ display:grid; gap:1rem; grid-template-columns:1fr; }
+@media (min-width: 768px){ .page-ueber-uns .about-kacheln{ grid-template-columns:repeat(3,1fr); } }
+.page-ueber-uns .about-box{
+background:#fff; border:1px solid var(--neutral); border-radius:1rem;
+padding:1.1rem; box-shadow:var(--shadow);
+}
+
+
+/* Standort-Box */
+.page-ueber-uns .standort-card li{ margin:.25rem 0; }
+
+
+/* Map-Rahmen */
+.page-ueber-uns .map-embed{ border-radius:1rem; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.08); }

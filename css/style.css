@@ -159,6 +159,131 @@ nav.navbar .navbar-toggler-icon{
   transition: filter .15s linear;
 }
 
+/* ===== NAV: Hover-Kontrast fix, wenn Navbar noch oben "transparent" ist ===== */
+nav.navbar.transparent .nav-link:hover,
+nav.navbar.transparent .nav-link:focus {
+  color: #111 !important;            /* statt fast-weiß -> gut lesbar auf hellem Hover-BG */
+}
+
+/* Falls du die Startseiten-"Kachel" nutzt, gleich konsistent halten */
+nav.navbar.transparent .nav-link.nav-tile:hover,
+nav.navbar.transparent .nav-link.nav-tile:focus {
+  color: #111 !important;
+}
+
+/* Optional – wenn du oben explizit ein weißes Pill willst (statt bg-muted):
+nav.navbar.transparent .nav-link:hover,
+nav.navbar.transparent .nav-link:focus {
+  background: #fff;
+  color: #111 !important;
+  border-radius: .4rem;
+}
+*/
+
+/* Navbar darf nicht clippen */
+nav.navbar { overflow: visible; }
+
+/* Split-Layout + Pfeil sichtbar */
+.nav-item.nav-bubble { display: flex; align-items: center; gap: .25rem; }
+
+/* Caret-Stil (sichtbar Desktop & Mobile) */
+.nav-item.nav-bubble .nav-caret{
+  border: 0;
+  background: transparent;
+  padding: .25rem .35rem;
+  line-height: 1;
+}
+.nav-item.nav-bubble .nav-caret::after{
+  content: "";
+  display: inline-block;
+  width: .48rem; height: .48rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .18s ease;
+}
+/* gedreht, wenn Menü offen */
+.nav-item.nav-bubble .dropdown-menu.show ~ .nav-caret::after{
+  transform: rotate(225deg);
+}
+
+/* Bubble-Menü: NUR Optik – Positionierung macht Bootstrap/Popper */
+.navbar .dropdown-menu.bubble{
+  border-radius: 14px;
+  border: 1px solid var(--neutral);
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+  padding: .5rem;
+  min-width: 16rem;
+  /* KEIN position:absolute/left/top überschreiben! */
+}
+
+/* kleiner Zipfel oben am Menü */
+.navbar .dropdown-menu.bubble::before,
+.navbar .dropdown-menu.bubble::after{
+  content:"";
+  position:absolute;
+  width:14px; height:14px;
+  top: -8px; left: 24px;            /* bei Bedarf 2–4px feinjustieren */
+  transform: rotate(45deg);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.navbar .dropdown-menu.bubble::before{
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+  background: #fff;
+  z-index: -1;
+}
+.navbar .dropdown-menu.bubble::after{
+  background: #fff;
+  border-left: 1px solid var(--neutral);
+  border-top: 1px solid var(--neutral);
+  z-index: -1;
+}
+
+/* Dropdown-Items */
+.navbar .dropdown-item{
+  border-radius: .5rem;
+  font-weight: 500;
+  padding: .5rem .65rem;
+}
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus{
+  background: var(--bg-muted);
+  color: var(--accent);
+}
+
+/* Kontrast, solange Navbar noch transparent ist */
+nav.navbar.transparent .dropdown-menu.bubble{
+  color: #111; background: #fff;
+}
+
+/* Bubble-Dropdown: Pfeil/Zipfel ausblenden */
+.navbar .dropdown-menu.bubble::before,
+.navbar .dropdown-menu.bubble::after{
+  content: none !important;
+}
+
+/* Pfeil im Link + Hover-Open nur Desktop */
+.nav-link.has-caret{ display:flex; align-items:center; gap:.35rem; }
+.nav-link.has-caret .caret-icon{ transition: transform .18s ease; }
+
+/* Desktop: Hover öffnet Dropdown, Link bleibt klickbar */
+@media (min-width: 992px){
+  .nav-item.nav-bubble:hover > .dropdown-menu{ display:block; }
+  .nav-item.nav-bubble .nav-caret{ display:none; } /* Toggle nur mobil */
+}
+
+/* Pfeil drehen, wenn offen (mobil & desktop) */
+.nav-item.dropdown.show .nav-link.has-caret .caret-icon{ transform: rotate(180deg); }
+
+/* Deko beim Link unterdrücken (sonst „goldene Raute“/Underline) */
+.navbar .nav-link.has-caret::before,
+.navbar .nav-link.has-caret::after{ content:none !important; }
+
+
+
+
+
 /* Platz für die fixe Navbar schaffen */
 body{ padding-top: var(--nav-h); }
 
@@ -999,3 +1124,36 @@ h2.section-title{
 
 /* statt komplett ausblenden -> nur abdunkeln = weicher */
 #hero-visual-img.is-fading{ opacity: .15; }    /* vorher 0;  .15 fühlt sich „weicher“ an */
+
+
+/* Mobile: nur EIN Caret (im Button), Caret im Link ausblenden */
+@media (max-width: 991.98px){
+  .navbar .nav-link.has-caret .caret-icon{ display: none !important; }
+}
+
+/* Mobile-Toggle stylen: Farbe, Zentrierung, gleiche Höhe wie Nav-Links */
+.nav-item.nav-bubble .nav-caret{
+  appearance: none; -webkit-appearance: none;
+  background: transparent; border: 0;
+  /* exakt dieselbe Farbe wie deine Nav-Links (oben weiß, unten dunkel) */
+  color: color-mix(in srgb, #111 calc(var(--nav-alpha)*100%), #fff) !important;
+
+  display: flex; align-items: center; justify-content: center;
+  padding: .5rem .45rem;            /* an deine .nav-link paddings anlehnen */
+  line-height: 1;                   /* kein Baseline-Versatz */
+}
+
+/* Caret zeichnen + sauber zentrieren */
+.nav-item.nav-bubble .nav-caret::after{
+  content: "";
+  width: .52rem; height: .52rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);         /* zugeklappt */
+  /* kein margin-top: zentriert durch flex */
+}
+
+/* gedreht, wenn Menü offen */
+.nav-item.nav-bubble .dropdown-menu.show ~ .nav-caret::after{
+  transform: rotate(225deg);
+}

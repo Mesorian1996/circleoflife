@@ -345,3 +345,19 @@ document.addEventListener('DOMContentLoaded', () => {
   collapse?.addEventListener('show.bs.collapse', () => root.style.setProperty('--nav-alpha', '1'));
   collapse?.addEventListener('hidden.bs.collapse', fadeNav);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.nav-item.dropdown').forEach(function(item){
+    const toggle = item.querySelector('[data-bs-toggle="dropdown"]') || item; // fallback
+    const btn = item.querySelector('[data-bs-toggle="dropdown"]');
+    if(!btn) return;
+    const dd = new bootstrap.Dropdown(btn, { autoClose: 'outside' });
+
+    function isDesktop(){ return window.matchMedia('(min-width: 992px)').matches; }
+    item.addEventListener('mouseenter', () => { if(isDesktop()) dd.show(); });
+    item.addEventListener('mouseleave', () => { if(isDesktop()) dd.hide(); });
+    item.addEventListener('focusin',  () => { if(isDesktop()) dd.show(); });
+    item.addEventListener('focusout', (e)=> { if(isDesktop() && !item.contains(e.relatedTarget)) dd.hide(); });
+  });
+});
