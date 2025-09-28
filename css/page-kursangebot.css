@@ -303,3 +303,7 @@ border-radius:.6rem; background:#fff; font-weight:600;
   line-height:1.1;
   font-weight: bold;
 }
+
+.text-secondary {
+  margin-top: 1rem;
+}
