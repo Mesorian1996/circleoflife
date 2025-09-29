@@ -1182,7 +1182,4 @@ nav.navbar,
 /* Bilder/SVGs niemals breiter als der Container */
 img, svg { max-width:100%; height:auto; display:block; }
 
-html, body { overflow-x: hidden; }
-@supports (overflow-x: clip){
-  html, body { overflow-x: clip; }
-}
+
