@@ -361,3 +361,97 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('focusout', (e)=> { if(isDesktop() && !item.contains(e.relatedTarget)) dd.hide(); });
   });
 });
+
+(function () {
+  const table = document.querySelector('.kursplan-table');
+  const scrollWrap = document.querySelector('.table-scroll');
+  const pills = document.querySelectorAll('.plan-filter .pill');
+  if (!table || !scrollWrap) return;
+
+  // Map JS getDay() -> Spaltenindex (0 = Zeitspalte links)
+  const getTodayColIndex = () => {
+    const d = new Date().getDay(); // 0 So ... 6 Sa
+    return ({1:1,2:2,3:3,4:4,5:5,6:6,0:7})[d]; // Mo=1..So=7
+  };
+
+  // markiere die Heute-Spalte (setzt .is-today + .col-today)
+  const markToday = () => {
+    const col = getTodayColIndex();
+    const headCells = table.tHead?.rows[0]?.cells || [];
+    [...headCells].forEach((th,i) => {
+      th.classList.toggle('is-today', i===col);
+      th.classList.toggle('col-today', i===col);
+    });
+    [...table.tBodies[0].rows].forEach(row => {
+      [...row.cells].forEach((cell,i) => {
+        cell.classList.toggle('is-today', i===col);
+        cell.classList.toggle('col-today', i===col);
+      });
+    });
+    return col;
+  };
+
+  const autoScrollToCol = (col) => {
+    const narrow = window.matchMedia('(max-width: 991.98px)').matches;
+    const target = table.tHead?.rows[0]?.cells[col];
+    if (!narrow || !target) return;
+    const left = target.offsetLeft - 80; // Puffer neben Zeitspalte
+    scrollWrap.scrollTo({ left, behavior: 'smooth' });
+  };
+
+  // zeigt nur die Heute-Spalte, blendet andere aus
+  const showOnlyToday = () => {
+    scrollWrap.classList.add('table-only-today');      // -> CSS blendet Nicht-heute aus
+    scrollWrap.classList.add('table-filter-today');    // optionales Dimming, falls noch aktiv
+    autoScrollToCol(getTodayColIndex());
+  };
+
+  // zeigt wieder alle Spalten
+  const showAllDays = () => {
+    scrollWrap.classList.remove('table-only-today', 'table-filter-today');
+    // sicherstellen, dass evtl. per Inline-Style versteckte TDs wieder sichtbar sind
+    table.querySelectorAll('td, th').forEach(el => el.style.removeProperty('display'));
+  };
+
+  // Type-Filter (Gi/No-Gi/Kids)
+  const applyTypeFilter = (type) => {
+    // erst alles zeigen
+    table.querySelectorAll('.badge').forEach(b => {
+      const td = b.parentElement;
+      if (td) td.style.display = '';
+    });
+    if (!type) return;
+    table.querySelectorAll('.badge').forEach(b => {
+      const td = b.parentElement;
+      if (td) td.style.display = (b.dataset.type === type) ? '' : 'none';
+    });
+  };
+
+  // UI-Init
+  const todayCol = markToday();
+
+  // Pill-Events
+  pills.forEach(p => p.addEventListener('click', () => {
+    pills.forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+
+    const f = p.dataset.filter;
+    if (f === 'today') {
+      // Nur Heute zeigen (andere Spalten ausblenden)
+      showOnlyToday();
+      // zusätzlich evtl. Type-Filter zurücksetzen
+      applyTypeFilter(null);
+    } else {
+      // alle Tage zeigen
+      showAllDays();
+      // optionaler Typfilter
+      if (f === 'gi' || f === 'nogi' || f === 'kids') {
+        applyTypeFilter(f);
+      } else {
+        applyTypeFilter(null); // "Alle"
+      }
+    }
+  }));
+})();
+
+

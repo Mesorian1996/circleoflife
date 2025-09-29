@@ -264,10 +264,7 @@ nav.navbar { overflow: visible; }
   color: var(--accent);
 }
 
-/* Kontrast, solange Navbar noch transparent ist */
-nav.navbar.transparent .dropdown-menu.bubble{
-  color: #111; background: #fff;
-}
+
 
 /* Bubble-Dropdown: Pfeil/Zipfel ausblenden */
 .navbar .dropdown-menu.bubble::before,
@@ -1172,12 +1169,6 @@ h2.section-title{
 
 /* Safety net: horizontales Scrollen verhindern */
 :root, html, body { width:100%; overflow-x: clip; } /* statt hidden (performanter) */
-
-/* Komponenten, die gern „rausquellen“ */
-nav.navbar,
-.hero-intro,
-.container,
-.row { overflow-x: clip; }
 
 /* Bilder/SVGs niemals breiter als der Container */
 img, svg { max-width:100%; height:auto; display:block; }

@@ -1,3 +1,28 @@
+
+  /* Theme-Variablen – passe das an deine Brand an */
+  :root{
+    --today-accent: #5865f2;                /* Outline/Text-Akzent */
+    --today-bg:     rgba(88,101,242,.10);   /* Zellen-Hintergrund */
+    --today-head:   rgba(88,101,242,.16);   /* Header-Hintergrund */
+    --today-border: rgba(88,101,242,.35);   /* Linie unter Header */
+    --brand: #14182b;
+    --brand-dark: #101323;
+    --accent: #bfa24a;             /* Gold (Akzent) */
+    --gold: #f5c84b;               /* warmer Goldton */
+    --gold-2: #ffe17c;
+    --accent-light: #f5efe3;
+    --secondary: #3f4a60;
+    --neutral: #e4e6ec;
+    --bg-muted: #f7f8fa;
+    --badge-gi:#bfa24a; 
+    --badge-nogi:#5d626c; 
+    --badge-kids:#5269b6;  
+    --secondary-bg: color-mix(in srgb, var(--accent, #5865f2) 8%, #f7f8fb);
+    --neutral-strong: rgba(0,0,0,.16);
+    --light-blue: #ADD8E6;
+  }
+
+
 /* Kursangebot: dezente Verbesserungen */
 .page-kursangebot main { scroll-margin-top: var(--nav-h); }
 .page-kursangebot .section-head { margin-bottom: clamp(18px, 3vw, 28px); }
@@ -307,3 +332,216 @@ border-radius:.6rem; background:#fff; font-weight:600;
 .text-secondary {
   margin-top: 1rem;
 }
+
+/* kleine Headline-Deko */
+.kurs-karte h2{
+    display:flex; align-items:center; gap:.5rem; margin-bottom:.35rem;
+  }
+  .kurs-karte h2::after{
+    content:""; flex:1; height:3px; border-radius:2px;
+    background: linear-gradient(90deg, var(--accent), transparent 70%);
+    opacity:.45;
+  }
+
+/* --- CTA: Outline-Button mit animiertem Pfeil -------------------------- */
+.btn-outline-brand.cta-arrow{ position:relative; padding-right:2.1rem; }
+.btn-outline-brand.cta-arrow::after{
+  content:""; position:absolute; right:1rem; top:50%;
+  width:.5rem; height:.5rem; transform: translateY(-50%) rotate(-45deg);
+  border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transition: right .18s ease, transform .18s ease;
+}
+.btn-outline-brand.cta-arrow:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+.btn-outline-brand:focus-visible{
+  outline:3px solid color-mix(in oklab, var(--accent) 55%, white);
+  outline-offset:3px;
+}
+
+/* Mobile: Pattern etwas leiser */
+@media (max-width: 575.98px){
+    .kurs-karte::before{ opacity:.14; background-size: 190% auto; background-position:right -50px center; }
+    .kurs-karte::after{ background: linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.62) 45%, rgba(255,255,255,0) 100%); }
+  }
+
+
+/* Scroll-Wrapper für Mobile */
+.table-scroll{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,.04);
+  }
+  .kursplan-table{
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 720px; /* sorgt für horizontales Scrollen auf schmalen Screens */
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Kopf */
+  .kursplan-table thead th{
+    position: sticky; top: 0;
+    z-index: 3;
+    background: #fff;
+    padding: .7rem .8rem;
+    text-align: left;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    white-space: nowrap;
+  }
+  
+  /* Zeitspalte sticky links */
+  .kursplan-table .sticky{
+    position: sticky; left: 0;
+    z-index: 4; /* über Zellen */
+    background: #fff;
+    box-shadow: 4px 0 0 rgba(0,0,0,.04); /* feine Trennung */
+  }
+  
+  /* Körper */
+  .kursplan-table tbody th.time{
+    padding: .65rem .8rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    white-space: nowrap;
+  }
+  .kursplan-table td{
+    padding: .55rem .7rem;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    min-width: 8.5rem; /* angenehme Kartenbreite beim Scrollen */
+  }
+  
+  /* Badges */
+  .badge{
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.34rem .55rem; border-radius:999px;
+    font-weight: 700; font-size:.9rem; line-height:1;
+  }
+  .badge.gi   { color:#fff; background:#bfa24a; }
+  .badge.nogi { color:#fff; background:#5d626c; }
+  .badge.kids { color:#fff; background:#5269b6; }
+
+
+  
+  /* Heute-Highlight */
+  .is-today{
+    background: linear-gradient(180deg, rgba(88,101,242,.08), rgba(88,101,242,.02));
+  }
+  
+  
+  /* Filter "heute": alle anderen Spalten leicht dimmen */
+  .table-filter-today td:not(.col-today),
+  .table-filter-today th:not(.sticky):not(.col-today){
+    opacity:.28;
+  }
+
+  /* Filter-Pills */
+.plan-filter{ display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.6rem; }
+.pill{
+  border:1px solid var(--neutral, #e5e7eb);
+  background:#fff; border-radius:999px; padding:.28rem .7rem;
+  font-weight:600; font-size:.92rem; cursor:pointer;
+}
+.pill.active{ color:#fff; background: var(--accent, #5865f2); border-color: transparent; }
+
+
+  
+  /* Kleine Screens: etwas kompakter */
+  @media (max-width: 575.98px){
+    .kursplan-table td{ min-width: 7.4rem; }
+    .badge{ font-weight:600; }
+  }
+  
+
+  
+  /* ---------- Filterpanel Tweaks ---------- */
+  .plan-filter{
+    display:flex; align-items:center; gap:.4rem .5rem; flex-wrap:wrap;
+    margin-top:.6rem; margin-bottom:.6rem; /* etwas Luft nach oben/unten */
+  }
+  .filter-label{
+    display:inline-flex; align-items:center; gap:.35rem;
+    font-weight:700; color:#2f3542; margin-right:.25rem;
+  }
+  .filter-icon{ width:18px; height:18px; opacity:.8; }
+  
+  /* mehr Luft zwischen Filter und Tabelle */
+  .table-scroll{ margin-top:.4rem; }
+  
+  /* ---------- Tabelle: starker Table-Header ---------- */
+  .kursplan-table thead th{
+    font-weight:800;
+    border-bottom: 2px solid var(--neutral-strong); /* dicke Linie */
+  }
+  
+  /* ---------- Sticky Zeitspalte: Secondary-Look + Trennschatten ---------- */
+  .kursplan-table .sticky{
+    background: var(--secondary-bg);
+    box-shadow: 6px 0 12px rgba(0,0,0,.06); /* sichtbare Trennung zur Scrollfläche */
+    border-right: 1px solid rgba(0,0,0,.06);
+  }
+  
+  /* Headerzelle der Zeitspalte extra klar */
+  .kursplan-table thead .sticky{
+    background: color-mix(in srgb, var(--secondary-bg) 85%, #fff);
+  }
+  
+ 
+  
+  /* ---------- Badges: längere Titel + subtile Zweitzeile ---------- */
+  .badge{
+    display:inline-flex; flex-direction:column; align-items:flex-start;
+    gap:.14rem; padding:.38rem .6rem; border-radius:12px; line-height:1.1;
+  }
+  .badge .title{ font-weight:800; }
+  .badge .note{ font-weight:600; font-size:.78rem; opacity:.75; }
+  
+  /* Bei sehr schmal: Badges wieder einzeilig */
+  @media (max-width: 480px){
+    .badge{ flex-direction:row; align-items:center; gap:.4rem; }
+    .badge .note{ display:none; }
+  }
+  
+  /* ---------- Zellen/Spalten etwas luftiger ---------- */
+  .kursplan-table td{ min-width: 9.2rem; }
+  @media (max-width: 575.98px){
+    .kursplan-table td{ min-width: 7.6rem; }
+  }
+  
+  /* ---------- Optional: Hover über Spalten (Desktop) ---------- */
+  @media (hover:hover){
+    .kursplan-table td:hover{ background: rgba(0,0,0,.025); }
+  }
+
+  
+  .table-filter-today td.col-today,
+  .table-filter-today th.col-today{
+    background: color-mix(in srgb, var(--today-accent) 10%, #fff);
+    /* outline: 2px solid color-mix(in srgb, var(--today-accent) 45%, transparent); */
+  }
+  
+  /* Header-Zelle von Heute */
+  .kursplan-table thead th.is-today{
+    background: var(--today-head);
+    border-bottom: 2px solid var(--today-border);
+    color: color-mix(in srgb, #111 85%, var(--today-accent));
+  }
+  
+  /* Wenn nur "Heute" gezeigt werden soll */
+.table-only-today td:not(.col-today),
+.table-only-today th:not(.sticky):not(.col-today){
+  display: none;
+}
+
+/* Optional: wenn nur heute gezeigt wird, darf die Tabelle schmal sein */
+.table-only-today .kursplan-table{
+  min-width: 0;
+}
+
