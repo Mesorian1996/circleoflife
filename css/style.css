@@ -325,14 +325,24 @@ body{ padding-top: var(--nav-h); }
 
 
 
-/* --- HERO TITLE ROW --- */
-.hero-modern {
-  background: var(--brand);
-  color: #fff;
-  padding: 32px 0 52px 0; /* mehr Abstand unten für großes Bild */
+
+
+.hero-modern{
   position: relative;
+  color:#fff;
+  padding: 32px 0 52px;      /* unten genug Luft, s. Hinweis */
+  background-image: url("/assets/background/hero-wave.svg");
+  background-repeat: no-repeat;           /* nicht wiederholen */
+  background-position: center bottom;     /* am unteren Rand starten */
+  background-size: 100% auto;             /* auf volle Breite skalieren */
   overflow: hidden;
 }
+
+@media (max-width: 720.98px){
+  .hero-modern{ padding-bottom: 96px;   background-size: 1500px;  }
+  .hero-modern::after{ height: 130px; }
+}
+
 
 
 .hero-content {

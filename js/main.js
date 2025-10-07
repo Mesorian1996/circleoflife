@@ -37,9 +37,9 @@
        Gemeinsame Slides für Hero + Story/Galerie (synchron)
        ============================================================ */
     const SLIDES = [
-      { src:'/assets/images/Marvin_JJL.jpeg', pos:'78% 70%',
+      { src:'/assets/images/kurse/nogi_grappling_3.jpeg', pos:'78% 70%',
         cap:'Fundamentals: Position vor Submission – die Basis für alles.',
-        alt:'Brazilian Jiu Jitsu GI Training'
+        alt:'Nogi grappling in Ludwigshafen'
       },
       { src:'/assets/images/JJPro_League.jpeg', pos:'60% 70%',
         cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',

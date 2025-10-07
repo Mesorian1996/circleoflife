@@ -281,7 +281,7 @@ border-radius:.6rem; background:#fff; font-weight:600;
     border: 1px solid rgba(0,0,0,.06);
     backdrop-filter: blur(2px) saturate(110%);
   }
-  
+
   /* Scatter-SVG Layer */
   .kurs-karte::before{
     content:"";
@@ -366,6 +366,8 @@ border-radius:.6rem; background:#fff; font-weight:600;
     .kurs-karte::before{ opacity:.14; background-size: 190% auto; background-position:right -50px center; }
     .kurs-karte::after{ background: linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.62) 45%, rgba(255,255,255,0) 100%); }
   }
+
+
 
 
 /* Scroll-Wrapper für Mobile */
