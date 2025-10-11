@@ -1,7 +1,18 @@
-/* Lesebreite */
+/* ===== Subpages: schlankes Add-on zu style.css + kursangebot.css ===== */
+
+/* Lesebreite (nur falls nicht schon global vorhanden) */
 .container-narrow { max-width: 860px; margin-inline: auto; }
 
-/* Note / Callout */
+/* Hero: Typo & Spacing (gleicht auf allen Subpages an) */
+.hero-intro .hero-title { letter-spacing: .2px; }
+.hero-ctas + .small { margin-top: .9rem; margin-bottom: .9rem; display: block; }
+.hero-intro.hero--glass { padding-top: 2.5rem; padding-bottom: 1.25rem; }
+@media (min-width: 992px){
+  .hero-intro.hero--glass { padding-top: 2.75rem; padding-bottom: 1.5rem; }
+  .hero-ctas + .small { margin-top: 1rem; margin-bottom: 1rem; }
+}
+
+/* Note / Callout (dezenter Akzent, Brandfarbe kann aus :root kommen) */
 .note{
   border-left: 4px solid var(--brand, #f39c12);
   background: rgba(0,0,0,.03);
@@ -9,101 +20,56 @@
   border-radius: .5rem;
 }
 
-/* Begriffe: Card-Layout */
+/* Inline-Links (unter Begriffe) */
+.inline-links a{ text-decoration: underline; text-underline-offset: 2px; }
+.link-strong{ font-weight: 700; }
+
+/* ===== Begriffe-Glossar ===== */
 .term-card{
   border: 1px solid #e9ecef;
   border-radius: .75rem;
   padding: .9rem 1rem;
-  height: 100%;
   background: #fff;
+  height: 100%;
 }
 
-/* Klickbarer Head (ganze Zeile) */
+/* Klickbarer Card-Kopf (Button, nie Linkblau) */
 .term-head{
   -webkit-tap-highlight-color: transparent;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: .75rem;
-  width: 100%;
-  padding: .25rem 0 .35rem;
-  background: transparent;
-  border: 0;
-  text-align: left;
-  cursor: pointer;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .75rem;
+  width: 100%; padding: .35rem 0 .45rem;
+  background: transparent; border: 0; text-align: left; cursor: pointer;
+  color: inherit;
 }
-.term-head:focus{ outline: none; box-shadow: 0 0 0 .2rem rgba(243,156,18,.35); border-radius: .5rem; }
-.term-head:hover h3{ text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.term-head:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 .2rem rgba(243,156,18,.35);
+  border-radius: .5rem;
+}
 
-.term-desc{ margin: .35rem 0 .5rem; line-height: 1.55; }
+/* Titel groß & ruhig */
+.term-title{ font-weight: 700; color: inherit; margin: 0; }
+@media (hover:hover){
+  .term-head:hover .term-title{ text-decoration: underline; text-underline-offset: 2px; }
+}
 
-/* Chevron */
+/* Chevron (dreht beim Öffnen) */
 .chev{
   inline-size: 1rem; block-size: 1rem;
   background: center/contain no-repeat
     url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
   transition: transform .2s ease;
 }
-
-/* Chevron drehen, wenn offen */
 .term-head[aria-expanded="true"] .chev{ transform: rotate(180deg); }
 
-/* Bildbereich */
+/* Text & Bildbereich */
+.term-desc{ margin: .4rem 0 .55rem; line-height: 1.55; }
 .term-media{ margin-top: .5rem; }
 .term-media img{
-  display:block; width:100%; height:auto; border-radius:.5rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  display: block; width: 100%; height: auto;
+  border-radius: .5rem; box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
 
-/* Bilder – Placeholder-Farbe beim Lazy-Load */
+/* Bild-Placeholder bei Lazy-Load */
 img[loading="lazy"]{ background: #f6f7f9; }
 
-/* Hero kleine Typo-Optimierung */
-.hero-intro .hero-title { letter-spacing: .2px; }
-
-.inline-links a{ text-decoration: underline; text-underline-offset: 2px; }
-.link-strong{ font-weight:700; }
-
-/* subpage.css */
-.hero-ctas + .small { margin-top: .75rem; margin-bottom: .75rem; display:block; }
-
-/* Card */
-.term-card{
-    border:1px solid #e9ecef; border-radius:.75rem; padding:.9rem 1rem; background:#fff;
-  }
-  
-  /* Kopf als Click-Target */
-  .term-head{
-    -webkit-tap-highlight-color:transparent;
-    display:grid; grid-template-columns:1fr auto; align-items:center; gap:.75rem;
-    width:100%; padding:.35rem 0 .45rem; background:transparent; border:0; text-align:left; cursor:pointer;
-  }
-  .term-head:focus-visible{ outline:none; box-shadow:0 0 0 .2rem rgba(243,156,18,.35); border-radius:.5rem; }
-  
-  /* Titel groß & nie blau */
-  .term-title{ font-weight:700; color:inherit; }
-  .term-head, .term-head .term-title, .term-head *{ color:inherit; }
-  
-  /* Affordance rechts: Pill + Chevron */
-  .term-affordance{ display:flex; align-items:center; gap:.5rem; }
-  .term-pill{
-    font-size:.7rem; font-weight:700; padding:.15rem .45rem; border-radius:999px;
-    background:rgba(243,156,18,.12); color:#b06a00; /* Ton zu deiner Brand */
-    text-transform:uppercase; letter-spacing:.02em;
-  }
-  .chev{
-    inline-size:1rem; block-size:1rem; transition:transform .2s ease;
-    background:center/contain no-repeat url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  }
-  .term-head[aria-expanded="true"] .chev{ transform:rotate(180deg); }
-  
-  /* Text & Bild */
-  .term-desc{ margin:.4rem 0 .55rem; line-height:1.55; }
-  .term-media{ margin-top:.5rem; }
-  .term-media img{ display:block; width:100%; height:auto; border-radius:.5rem; box-shadow:0 6px 18px rgba(0,0,0,.08); }
-  
-  /* Mobile: leichte Touch-Feedback */
-  @media (hover:hover){
-    .term-head:hover .term-title{ text-decoration:underline; text-underline-offset:2px; }
-  }
-  
