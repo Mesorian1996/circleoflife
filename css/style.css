@@ -26,7 +26,11 @@
   --hero-line:       rgba(191,162,74, .9);   /* Gold-Linie */
   --hero-fade-start: rgba(191,162,74, .14);  /* zarter Goldschimmer */
   --hero-fade-end:   rgba(191,162,74, 0); 
-  --page-bg: #fff;    
+  --page-bg: #fff;   
+  --faq-text: #111;          /* sehr dunkel */
+  --faq-border: #e5e7eb;     /* helles Grau */
+  --faq-brand: #f39c12;      /* deine Orange */
+  --faq-focus: rgba(243,156,18,.35); 
 }
 
 html {
@@ -1183,4 +1187,56 @@ h2.section-title{
 /* Bilder/SVGs niemals breiter als der Container */
 img, svg { max-width:100%; height:auto; display:block; }
 
+/* Schmale Lesebreite (optional) */
+#faq .container-narrow { max-width: 760px; margin-inline: auto; }
+
+
+/* Accordion clean */
+#faq .accordion-readable .accordion-item{
+  border: 1px solid var(--faq-border);
+  border-radius: 12px;
+  background: transparent;    /* keine Karte, kein Panel */
+  overflow: hidden;
+  margin-bottom: .75rem;
+}
+
+#faq .accordion-readable .accordion-button{
+  background: transparent;    /* kein grauer Layer */
+  color: var(--faq-text);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  padding: 1rem 1.125rem;
+  box-shadow: none;
+}
+
+#faq .accordion-readable .accordion-button:focus{
+  outline: none;
+  box-shadow: 0 0 0 .2rem var(--faq-focus); /* sichtbarer Fokus */
+}
+
+#faq .accordion-readable .accordion-button.collapsed{
+  background: transparent;    /* gleichbleibender Kontrast */
+}
+
+#faq .accordion-readable .accordion-body{
+  color: var(--faq-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: .9rem 1.125rem 1.1rem;
+}
+
+/* dünner Brand-Akzent, nur wenn geöffnet */
+#faq .accordion-readable .accordion-collapse.show{
+  border-left: 3px solid var(--gold);
+}
+
+/* sanfter Hover (ohne Kontrastverlust) */
+@media (prefers-reduced-motion: no-preference){
+  #faq .accordion-readable .accordion-item:hover{
+    transform: translateY(-1px);
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06); /* ganz leicht, kein „Kartenrahmen“ */
+  }
+}
 

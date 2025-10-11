@@ -547,3 +547,16 @@ border-radius:.6rem; background:#fff; font-weight:600;
   min-width: 0;
 }
 
+/* Preise kompakt – Feinschliff */
+#preise-kurz .card { overflow: hidden; }
+#preise-kurz table { table-layout: fixed; }            /* verhindert wildes Springen */
+#preise-kurz th, #preise-kurz td { padding: .9rem 1rem; }
+#preise-kurz thead th { font-weight: 600; }
+#preise-kurz tbody tr:nth-child(even) td { 
+  background: rgba(0,0,0,.02);                         /* dezente Zebra-Streifen */
+}
+#preise-kurz tbody td strong { letter-spacing: .2px; }
+@media (min-width: 992px){
+  #preise-kurz .mx-auto { max-width: 720px; }          /* Desktop noch etwas schmaler */
+}
+

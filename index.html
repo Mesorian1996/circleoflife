@@ -515,49 +515,108 @@
 
 
   <!-- PREISE -->
-  <section id="preise" class="py-5 section-divider" style="position:relative;">
+  <section id="preise" class="py-5 section-divider">
     <div class="container">
       <header class="section-head" data-aos="fade-up">
         <h2 class="section-title">Unsere Preisliste</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
-          Alle Klassen, Open Mat & Sparring inklusive.
+          Alle Klassen, Open Mat &amp; Sparring inklusive.
         </p>
       </header>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-5">
-          <div class="card card-pricing highlight rounded-4 h-100" data-aos="zoom-in">
-            <div class="card-body p-4">
-              <div class="badge text-bg-warning mb-2">Meistgewählt</div>
-              <h5 class="card-title">All Access (Erwachsene)</h5>
-              <p class="display-5 fw-bold">80€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p>
+
+      <!-- 1-spaltig mobil, 4-spaltig ab md -->
+      <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center pricing-scroll">
+
+        <!-- Karte 1: All Access -->
+        <div class="col" data-aos="zoom-in">
+          <div class="card card-pricing highlight rounded-4 h-100">
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="badge text-bg-warning mb-2 align-self-start">Meistgewählt</div>
+              <h5 class="card-title mb-1">Erwachsene (Gi & No-Gi)</h5>
+              <p class="display-5 fw-bold mb-3">
+                80€ <span class="fs-6 fw-normal text-secondary">/ Monat</span>
+              </p>
               <ul class="list-unstyled d-grid gap-2 mb-4">
-                <li>Gi (BJJ) & No-Gi Grappling</li>
-                <li>Open Mat & Competition Class</li>
+                <li>Gi (BJJ) &amp; No-Gi Grappling</li>
+                <li>Open Mat &amp; Competition Class</li>
                 <li>Alle Level – Einsteiger willkommen</li>
               </ul>
-              <a href="#probetraining" class="btn btn-brand w-100">Probetraining</a>
+              <a href="#probetraining" class="btn btn-brand w-100 mt-auto">Probetraining</a>
             </div>
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="card card-pricing rounded-4 h-100" data-aos="zoom-in" data-aos-delay="150">
-            <div class="card-body p-4">
-              <h5 class="card-title">Kids (7–13 Jahre)</h5>
-              <p class="display-6 fw-bold">50€<span class="fs-6 fw-normal text-secondary"> / Monat</span></p>
+
+        <!-- Karte 2: Kids -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card card-pricing rounded-4 h-100">
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title mb-1">Kids (6–13 Jahre)</h5>
+              <p class="display-6 fw-bold mb-1">
+                50€ <span class="fs-6 fw-normal text-secondary">/ Monat</span>
+              </p>
+              <p class="mb-3 text-secondary small">
+                Geschwisterrabatt: jedes weitere Kind <strong>30€</strong>/Monat
+              </p>
               <ul class="list-unstyled d-grid gap-2 mb-4">
-                <li>Selbstverteidigung & Selbstvertrauen</li>
+                <li>Selbstverteidigung &amp; Selbstvertrauen</li>
                 <li>Spielerische Technikvermittlung</li>
                 <li>Respektvoller Umgang</li>
               </ul>
-              <a href="#probetraining" class="btn btn-brand w-100">Jetzt starten</a>
+              <a href="#probetraining" class="btn btn-brand w-100 mt-auto">Jetzt starten</a>
             </div>
           </div>
         </div>
+
+        <!-- Karte 3: Studierende -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="150">
+          <div class="card card-pricing rounded-4 h-100">
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title mb-1">Studierende</h5>
+              <p class="display-6 fw-bold mb-3">
+                70€ <span class="fs-6 fw-normal text-secondary">/ Monat (−12,5%)</span>
+              </p>
+              <ul class="list-unstyled d-grid gap-2 mb-4">
+                <li>Gi &amp; No-Gi inklusive</li>
+                <li>Flexible Trainingszeiten</li>
+                <li>Gültig mit Studierendenausweis</li>
+              </ul>
+              <a href="#probetraining" class="btn btn-brand w-100 mt-auto">Jetzt starten</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karte 4: 10er-Karte -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card card-pricing rounded-4 h-100">
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title mb-1">10er-Karte</h5>
+              <p class="display-6 fw-bold mb-3">
+                150€ <span class="fs-6 fw-normal text-secondary">/ 10 Einheiten</span>
+              </p>
+              <ul class="list-unstyled d-grid gap-2 mb-4">
+                <li>Für Gi &amp; No-Gi nutzbar</li>
+                <li>Ideal bei unregelmäßigen Zeiten</li>
+                <li>Keine Mitgliedschaft erforderlich</li>
+              </ul>
+              <a href="#probetraining" class="btn btn-outline-brand w-100 mt-auto">Fragen &amp; Kauf</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <p class="small text-secondary text-center mt-3">* Eine einmalige Anmeldegebühr kann anfallen. Änderungen
-        vorbehalten.</p>
+
+      <!-- Hinweise -->
+      <div class="text-left mt-3">
+        <p class="small text-secondary mb-1">
+          * Einmalige Anmeldegebühr: <strong>40€</strong>
+        </p>
+        <p class="small text-secondary">
+          ** Zahlung monatlich; Kündigungsfrist 4&nbsp;Wochen zum Monatsende.
+        </p>
+      </div>
     </div>
   </section>
+
 
   <!-- COACHES -->
   <section id="trainer" class="py-5 section-muted section-divider" style="position:relative;">
@@ -762,7 +821,7 @@
         </p>
       </header>
 
-      <div class="accordion" id="faqAccordion">
+      <div class="accordion accordion-readable" id="faqAccordion">
         <!-- Frage 1 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="q1">
