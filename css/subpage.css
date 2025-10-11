@@ -1,0 +1,63 @@
+/* Lesebreite */
+.container-narrow { max-width: 860px; margin-inline: auto; }
+
+/* Note / Callout */
+.note{
+  border-left: 4px solid var(--brand, #f39c12);
+  background: rgba(0,0,0,.03);
+  padding: .9rem 1rem;
+  border-radius: .5rem;
+}
+
+/* Begriffe: Card-Layout */
+.term-card{
+  border: 1px solid #e9ecef;
+  border-radius: .75rem;
+  padding: .9rem 1rem;
+  height: 100%;
+  background: #fff;
+}
+
+/* Klickbarer Head (ganze Zeile) */
+.term-head{
+  -webkit-tap-highlight-color: transparent;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  padding: .25rem 0 .35rem;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.term-head:focus{ outline: none; box-shadow: 0 0 0 .2rem rgba(243,156,18,.35); border-radius: .5rem; }
+.term-head:hover h3{ text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+.term-desc{ margin: .35rem 0 .5rem; line-height: 1.55; }
+
+/* Chevron */
+.chev{
+  inline-size: 1rem; block-size: 1rem;
+  background: center/contain no-repeat
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  transition: transform .2s ease;
+}
+
+/* Chevron drehen, wenn offen */
+.term-head[aria-expanded="true"] .chev{ transform: rotate(180deg); }
+
+/* Bildbereich */
+.term-media{ margin-top: .5rem; }
+.term-media img{
+  display:block; width:100%; height:auto; border-radius:.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Bilder – Placeholder-Farbe beim Lazy-Load */
+img[loading="lazy"]{ background: #f6f7f9; }
+
+/* Hero kleine Typo-Optimierung */
+.hero-intro .hero-title { letter-spacing: .2px; }
+

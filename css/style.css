@@ -24,7 +24,7 @@
   --glass-bg: rgba(255,255,255,0.18);
   --glass-border: rgba(255,255,255,0.22);
   --hero-line:       rgba(191,162,74, .9);   /* Gold-Linie */
-  --hero-fade-start: rgba(191,162,74, .14);  /* zarter Goldschimmer */
+  --hero-fade-start: rgba(191,162,74, .14);  /* zarter Goldschimmer */  
   --hero-fade-end:   rgba(191,162,74, 0); 
   --page-bg: #fff;   
   --faq-text: #111;          /* sehr dunkel */
@@ -1212,7 +1212,7 @@ img, svg { max-width:100%; height:auto; display:block; }
 
 #faq .accordion-readable .accordion-button:focus{
   outline: none;
-  box-shadow: 0 0 0 .2rem var(--faq-focus); /* sichtbarer Fokus */
+  box-shadow: 0 0 0 .2rem var(--secondary); /* sichtbarer Fokus */
 }
 
 #faq .accordion-readable .accordion-button.collapsed{
@@ -1240,3 +1240,18 @@ img, svg { max-width:100%; height:auto; display:block; }
   }
 }
 
+
+@media (max-width: 767.98px) {
+  .pricing-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+  }
+  .pricing-scroll > .col {
+    min-width: 260px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
