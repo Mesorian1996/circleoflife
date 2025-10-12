@@ -1,5 +1,8 @@
 /* ===== Subpages: schlankes Add-on zu style.css + kursangebot.css ===== */
 
+
+:root{ --accent: #bfa24a;    }
+
 /* Lesebreite (nur falls nicht schon global vorhanden) */
 .container-narrow { max-width: 860px; margin-inline: auto; }
 
@@ -14,7 +17,7 @@
 
 /* Note / Callout (dezenter Akzent, Brandfarbe kann aus :root kommen) */
 .note{
-  border-left: 4px solid var(--brand, #f39c12);
+  border-left: 4px solid var(--brand, #bfa24a);
   background: rgba(0,0,0,.03);
   padding: .9rem 1rem;
   border-radius: .5rem;
@@ -73,3 +76,136 @@
 /* Bild-Placeholder bei Lazy-Load */
 img[loading="lazy"]{ background: #f6f7f9; }
 
+
+.card .h5{ font-weight:600; transition: color .2s ease, text-decoration-color .2s ease, text-underline-offset .2s ease;}
+
+
+.icon-chip{
+  width: 50px;
+  height: 50px;
+  flex-shrink: 1;
+  border-radius: 40%;
+  background: radial-gradient(circle at 50% 50%, #ffe17c, #bfa24a);
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(191,162,74,.35);
+}
+
+/* 1x horizontaler Spin */
+@keyframes chip-spin-y { to { transform: rotateY(360deg); } }
+
+@media (hover:hover){
+  .card:hover .icon-chip{ animation: chip-spin-y .6s ease-out 1; }
+}
+.card:focus-within .icon-chip{ animation: chip-spin-y .6s ease-out 1; }
+
+/* Motion-Respect */
+@media (prefers-reduced-motion: reduce){
+  .card:hover .icon-chip, .card:focus-within .icon-chip{ animation: none !important; }
+}
+
+@media (hover:hover){
+  .card:hover .h5{ 
+    color: #bfa24a;
+  }
+}
+.card:focus-within .h5{
+  color: #bfa24a;
+}
+
+/* === Split-Layout Hero === */
+.hero-about-split{
+  position: relative;
+  padding: 64px 0 48px;
+  background: linear-gradient(180deg, #0b0e17 0%, #0b0e17 40%, #0c0f19 100%);
+  color: #fff;
+}
+.hero-about-split .hero-title{ letter-spacing: .2px; }
+.hero-about-split .hero-subtitle{ opacity: .95; }
+
+/* Bild optisch „schweben“ lassen */
+.hero-about-split .hero-media img{
+  border-radius: 1rem;
+  box-shadow: 0 14px 42px rgba(0,0,0,.30);
+}
+
+/* Shadow unten */
+.hero-about-split .hero-shadow{
+  position: absolute; left:0; right:0; bottom:-18px; height:36px;
+  background: radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,.24), rgba(0,0,0,0) 65%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+@media (min-width: 992px){
+  .hero-about-split{ padding: 92px 0 64px; }
+}
+
+
+/* Vollbreit-Dots sehr dezent */
+.about-hero{ position:relative; padding: 56px 0 40px; }
+.about-hero-bg-dots{
+  position:absolute; inset:0; pointer-events:none; opacity:.07;
+  background-image: radial-gradient(currentColor 1px, transparent 1.5px);
+  background-size: 14px 14px;
+  color:#0b0e17; /* dunkles Grau für Dots */
+}
+/* Shadowteppich unter dem Abschnitt */
+.section-drop-shadow{
+  position:absolute; left:0; right:0; bottom:-18px; height:36px;
+  background: radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,.18), rgba(0,0,0,0) 65%);
+  filter: blur(6px); pointer-events:none;
+}
+
+/* Rundbogen-Bildrahmen */
+.about-arch{
+  position:relative; display:block; width:min(560px,100%); margin-inline:auto;
+  border-radius: 32px 32px 200px 200px / 32px 32px 260px 260px; /* arch */
+  overflow:hidden; background:#111;
+  margin-top: 0; padding-top: 0;
+}
+.about-arch-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top center;   /* <-- Start an der oberen Kante */
+  transform: none;        
+}
+/* farbige Ecken (Brand-Strich) */
+.corner{
+  position:absolute; width:46px; height:46px; border-radius:12px;
+  border:4px solid var(--brand);
+}
+.corner--tl{ top:14px; left:14px; border-right:none; border-bottom:none; }
+.corner--br{ bottom:14px; right:14px; border-left:none; border-top:none; }
+
+/* kleines Badge */
+.about-badge{
+  position:relative; left:12px; bottom:12px;
+  display:flex; gap:.6rem; align-items:center;
+  background:#0e111a; color:#fff; border-radius:.75rem; padding:.6rem .7rem;
+}
+.about-badge-icon{ font-size:1.1rem; }
+
+/* Headline-Akzent */
+.fw-800{ font-weight:800; }
+.brand-accent{ color:var(--brand); }
+
+/* Liste mit Check-Icons */
+.about-list li{
+  position:relative; padding-left:1.8rem; margin:.5rem 0;
+  line-height:1.55;
+}
+.about-list .check{
+  position:absolute; left:0; top:.2rem; width:1.1rem; height:1.1rem; border-radius:999px;
+  background: var(--accent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M6.173 11.414L2.76 8l1.06-1.06 2.353 2.353 6.01-6.01 1.06 1.06z'/%3E%3C/svg%3E") center/12px 12px no-repeat;
+}
+/* Hover-Details */
+@media (hover:hover){
+  .about-arch:hover .corner{ filter: brightness(1.05) saturate(1.1); }
+}
+
+/* Spacing Desktop etwas größer */
+@media (min-width: 992px){
+  .about-hero{ padding: 80px 0 56px; }
+}
