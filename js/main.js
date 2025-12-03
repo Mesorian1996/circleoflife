@@ -1,7 +1,18 @@
 /* ========================= js/main.js ========================= */
 (function(){
+    /* AOS init once DOM is ready */
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AOS) {
+        window.AOS.init({
+          once: true,
+          duration: 600,
+          easing: 'ease-out'
+        });
+      }
+    });
+
     /* Jahr im Footer */
-    const yearEl = document.getElementById('y');
+    const yearEl = document.getElementById('jahr') || document.getElementById('y');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   
     /* Client-side Form Validity */
@@ -37,15 +48,15 @@
        Gemeinsame Slides für Hero + Story/Galerie (synchron)
        ============================================================ */
     const SLIDES = [
-      { src:'/assets/images/kurse/nogi_grappling_3.jpeg', pos:'78% 70%',
+      { src:'/assets/images/kurse/nogi_grappling_3.webp', pos:'78% 70%',
         cap:'Fundamentals: Position vor Submission – die Basis für alles.',
         alt:'Nogi grappling in Ludwigshafen'
       },
-      { src:'/assets/images/JJPro_League.jpeg', pos:'60% 70%',
+      { src:'/assets/images/JJPro_League.webp', pos:'60% 70%',
         cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
         alt:'No-Gi Grappling'
       },
-      { src:'/assets/images/kurse/Nogi_Gruenstadt.jpeg', pos:'60% 70%',
+      { src:'/assets/images/kurse/Nogi_Gruenstadt.webp', pos:'60% 70%',
         cap:'No-Gi Grappling: Kontrolle, Scrambles und moderne Entries.',
         alt:'Kampfsporttraining'
       },
@@ -241,20 +252,14 @@ function fadeSwap(imgEl, nextSrc, nextPos){
 
 
   const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-  // Anzeigen, wenn 200px gescrolled
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      scrollTopBtn.style.display = "flex";
-    } else {
-      scrollTopBtn.style.display = "none";
-    }
-  });
-
-  // Scroll nach oben bei Klick
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  if (scrollTopBtn){
+    window.addEventListener("scroll", () => {
+      scrollTopBtn.style.display = window.scrollY > 200 ? "flex" : "none";
+    });
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
 
 /* === EMAIL VERSAND === */
@@ -286,6 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const btn = form.querySelector('button[type="submit"]');
+    const originalBtnText = btn?.textContent?.trim() || 'Probetraining anfragen';
     if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet...'; }
 
     try {
@@ -313,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
       alert('Es gab einen Netzwerkfehler beim Senden.');
     } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Probestunde anfragen'; }
+      if (btn) { btn.disabled = false; btn.textContent = originalBtnText; }
     }
   });
 });
