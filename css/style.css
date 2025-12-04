@@ -378,29 +378,19 @@ body{ padding-top: var(--nav-h); }
 .hero-modern{
   position: relative;
   color:#fff;
-  padding: 32px 0 52px;      /* unten genug Luft, s. Hinweis */
+  padding: clamp(28px, 6vh, 48px) 0 clamp(32px, 7vh, 56px);
   background-image: url("/assets/background/hero-wave.svg");
-  background-repeat: no-repeat;           /* nicht wiederholen */
-  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
   overflow: hidden;
-  min-height: calc(100vh - var(--nav-h));
-  display: flex;
-  align-items: center;
 }
 
 @media (max-width: 720.98px){
   .hero-modern{
-    padding-bottom: 96px;
-    background-size: cover;
-    min-height: calc(100vh - var(--nav-h));
+    padding: clamp(24px, 8vh, 40px) 0 clamp(28px, 10vh, 60px);
   }
-  .hero-modern::after{ height: 260px; }
-  .hero-image-block{
-    width: min(95vw, 520px);
-    max-width: 520px;
-    min-height: clamp(220px, 48vw, 360px);
-  }
+  .hero-modern::after{ height: 200px; }
 }
 
 
@@ -410,11 +400,10 @@ body{ padding-top: var(--nav-h); }
   flex-direction: column;
   align-items: center;
   gap: clamp(22px, 4vw, 36px);
-  width: 100%;
-  max-width: none;
+  width: min(100%, 1080px);
   margin: 0 auto;
   position: relative;
-  padding-inline: clamp(16px, 5vw, 72px);
+  padding-inline: clamp(16px, 5vw, 48px);
   box-sizing: border-box;
 }
 .hero-ctas{
@@ -500,11 +489,26 @@ body{ padding-top: var(--nav-h); }
   position: relative;
   display: inline-block;
   font-size: 1em;
-  text-decoration-line: underline;
-  text-decoration-thickness: 0.14em;
-  text-underline-offset: 0.45em;
-  text-decoration-color: var(--accent);
   padding-bottom: .08em;
+  text-decoration: none;
+}
+
+.hero-circle::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.08em;
+  height: 0.18em;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: heroUnderline 0.8s ease-out forwards;
+  border-radius: 4px;
+}
+
+@keyframes heroUnderline{
+  to { transform: scaleX(1); }
 }
 
 /* CTA Sections */
@@ -631,6 +635,7 @@ body{ padding-top: var(--nav-h); }
   animation: sublineFadeIn .8s .3s backwards;
   text-align: center;
   line-height: 1.88;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
 }
 .hero-subline-icon {
   font-size: 1.15em;
