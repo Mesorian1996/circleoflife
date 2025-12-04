@@ -490,7 +490,7 @@ body{ padding-top: var(--nav-h); }
   display: inline-block;
   font-size: 1em;
   padding-bottom: .08em;
-  text-decoration: none;
+  /* text-decoration: none;
 }
 
 .hero-circle::after{
@@ -508,7 +508,8 @@ body{ padding-top: var(--nav-h); }
 }
 
 @keyframes heroUnderline{
-  to { transform: scaleX(1); }
+  to { transform: scaleX(1); } */
+  border-bottom: 0.18em solid var(--accent);
 }
 
 /* CTA Sections */
@@ -635,7 +636,7 @@ body{ padding-top: var(--nav-h); }
   animation: sublineFadeIn .8s .3s backwards;
   text-align: center;
   line-height: 1.88;
-  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
 }
 .hero-subline-icon {
   font-size: 1.15em;
