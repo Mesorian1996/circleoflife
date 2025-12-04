@@ -28,11 +28,29 @@
     }
   
     /* PDF Export (Kursplan) */
+    let html2PdfLoader;
+    const loadHtml2Pdf = () => {
+      if (window.html2pdf) return Promise.resolve(window.html2pdf);
+      if (!html2PdfLoader){
+        html2PdfLoader = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+          script.referrerPolicy = 'no-referrer';
+          script.onload = () => resolve(window.html2pdf);
+          script.onerror = () => reject(new Error('html2pdf konnte nicht geladen werden.'));
+          document.head.appendChild(script);
+        });
+      }
+      return html2PdfLoader;
+    };
+
     const dl = document.getElementById('download-pdf');
     if (dl){
-      dl.addEventListener('click', (e) => {
+      dl.addEventListener('click', async (e) => {
         e.preventDefault();
         const tableWrap = document.querySelector('#zeiten .table-responsive');
+        if (!tableWrap) return;
+        dl.disabled = true;
         const opt = {
           margin: 10,
           filename: 'kursplan-circle-of-life.pdf',
@@ -40,7 +58,15 @@
           html2canvas: { scale: 2 },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
         };
-        if (tableWrap && window.html2pdf) html2pdf().from(tableWrap).set(opt).save();
+        try {
+          const html2pdf = await loadHtml2Pdf();
+          if (html2pdf) html2pdf().from(tableWrap).set(opt).save();
+        } catch (err) {
+          console.error(err);
+          alert('PDF konnte nicht geladen werden. Bitte später erneut versuchen.');
+        } finally {
+          dl.disabled = false;
+        }
       });
     }
   
