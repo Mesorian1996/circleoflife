@@ -640,47 +640,21 @@ body{ padding-top: var(--nav-h); }
     width: 100%;
   }
 }
-/* --- Subline direkt unter Titel, wenig Abstand --- */
-.hero-subline {
-  color: rgba(17,19,28,.88);
+.hero-subtitle{
+  color: rgba(255, 255, 255, 0.9);
   display: block;
-  margin: clamp(.8rem, 2vw, 1.2rem) auto clamp(1.4rem, 3vw, 2.4rem);
+  margin: clamp(.8rem, 2vw, 1.3rem) auto clamp(1.4rem, 3vw, 2.5rem);
   max-width: 60ch;
   animation: sublineFadeIn .8s .3s backwards;
   text-align: center;
   line-height: 1.75;
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
-}
-.hero-subline-icon {
-  font-size: 1.15em;
-  margin-right: .5em;
-  vertical-align: -.1em;
-}
-.hero-subline .highlight {
-  font-weight: 700;
-  text-align: center;
+  font-size: clamp(1rem, 1.9vw, 1.35rem);
 }
 
 @keyframes sublineFadeIn {
   from { opacity: 0; transform: translateY(18px);}
   to { opacity: 1; transform: translateY(0);}
 }
-
-.inline-cta{ color: rgba(255,255,255,.9); text-decoration: none; }
-.inline-cta .txt{
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: .22em;
-  text-decoration-color: rgba(255,255,255,.55);
-}
-.inline-cta:hover{ color:#fff; }
-.inline-cta:hover .txt{ text-decoration-color:#fff; }
-.inline-cta .icon{ margin-right:.45rem; display:inline-block; transform: translateY(.5px); }
-
-/* Tastaturfokus */
-.inline-cta:focus-visible{ outline:2px solid rgba(255,255,255,.6); outline-offset:2px; border-radius:6px; }
-
-
 
 /* --- Bildblock --- */
 .hero-image-block {
@@ -781,7 +755,7 @@ body{ padding-top: var(--nav-h); }
     width: 56px;
     height: 56px;
   }
-  .hero-subline {
+  .hero-subtitle {
     font-size: 1rem;
     margin-bottom: .5em;
     max-width: 99vw;
@@ -853,7 +827,7 @@ body{ padding-top: var(--nav-h); }
   }
 
   /* Subline ruhiger + mit fluidem Abstand */
-  .hero-subline {
+  .hero-subtitle {
     font-size: clamp(.95rem, 3.8vw, 1.05rem);
     margin: clamp(6px, 2svh, 14px) 0 clamp(10px, 2.8svh, 18px);
     max-width: 95vw;
@@ -1395,6 +1369,16 @@ h2.section-title{
 .footer-dark .footer-link:hover {
   color: #f39c12;
   text-decoration: none;
+}
+
+@supports (content-visibility: auto){
+  .cv-section{
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+  }
+  .cv-section--compact{
+    contain-intrinsic-size: 360px;
+  }
 }
 
 .section-divider .footnote{ text-align: left; }
