@@ -405,6 +405,19 @@ body{ padding-top: var(--nav-h); }
   background-position: center top;
   background-size: cover;
   overflow: hidden;
+  min-height: clamp(620px, 100vh, 960px);
+  display: flex;
+  align-items: center;
+}
+@supports (height: 100svh){
+  .hero-modern{
+    min-height: clamp(620px, 100svh, 960px);
+  }
+}
+@supports (height: 100dvh){
+  .hero-modern{
+    min-height: clamp(620px, 100dvh, 960px);
+  }
 }
 
 @media (max-width: 720.98px){
@@ -426,6 +439,8 @@ body{ padding-top: var(--nav-h); }
   position: relative;
   padding-inline: clamp(16px, 5vw, 48px);
   box-sizing: border-box;
+  min-height: inherit;
+  justify-content: center;
 }
 .hero-ctas{
   display: flex;
@@ -839,14 +854,10 @@ body{ padding-top: var(--nav-h); }
   /* mehr Luft rund um alles, aber dynamisch */
   .hero-modern {
     padding-block: clamp(18px, 6svh, 28px);
-    min-height: 85svh;
-    display: flex;
-    align-items: center;
   }
   .hero-content {
     gap: clamp(10px, 3.5svh, 22px);
     padding-inline: clamp(12px, 4vw, 20px);
-    min-height: 100%;
   }
   .hero-title-row {
     gap: clamp(6px, 2vw, 12px);
