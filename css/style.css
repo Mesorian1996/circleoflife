@@ -813,6 +813,8 @@ body{ padding-top: var(--nav-h); }
   .hero-content {
     gap: 11px;
     max-width: 99vw;
+    min-height: 85svh;
+    justify-content: center;
   }
   .hero-title-row{ order: 0; }
   .hero-image-block{ order: 1; }
@@ -837,10 +839,14 @@ body{ padding-top: var(--nav-h); }
   /* mehr Luft rund um alles, aber dynamisch */
   .hero-modern {
     padding-block: clamp(18px, 6svh, 28px);
+    min-height: 85svh;
+    display: flex;
+    align-items: center;
   }
   .hero-content {
     gap: clamp(10px, 3.5svh, 22px);
     padding-inline: clamp(12px, 4vw, 20px);
+    min-height: 100%;
   }
   .hero-title-row {
     gap: clamp(6px, 2vw, 12px);
