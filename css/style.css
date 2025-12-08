@@ -574,6 +574,13 @@ body{ padding-top: var(--nav-h); }
   flex-wrap: wrap;
   justify-content: flex-end;
 }
+.cta-panel--focus .cta-panel__inner{
+  flex-direction: column;
+  text-align: center;
+}
+.cta-panel--focus .cta-panel__actions{
+  justify-content: center;
+}
 .cta-panel .btn-brand,
 .bg-brand-dark .btn-brand{
   background: #fff;
@@ -635,14 +642,14 @@ body{ padding-top: var(--nav-h); }
 }
 /* --- Subline direkt unter Titel, wenig Abstand --- */
 .hero-subline {
-  color: var(--accent-light);
-  display: inline-block;
-  margin-bottom: clamp(1.6em, 4vw, 2.8em);
-  padding: 0 clamp(1rem, 4vw, 2.2rem);
+  color: rgba(17,19,28,.88);
+  display: block;
+  margin: clamp(.8rem, 2vw, 1.2rem) auto clamp(1.4rem, 3vw, 2.4rem);
+  max-width: 60ch;
   animation: sublineFadeIn .8s .3s backwards;
   text-align: center;
-  line-height: 1.88;
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  line-height: 1.75;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
 }
 .hero-subline-icon {
   font-size: 1.15em;
@@ -945,6 +952,56 @@ h2.section-title{
 }
 .section-head .section-subtitle{
   margin-top: .65em;
+}
+
+/* Section hero split layout */
+.seo-split{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:clamp(1.5rem,4vw,2.5rem);
+  align-items:stretch;
+  margin-bottom:clamp(1.5rem,4vw,2.5rem);
+}
+.seo-split__copy{
+  background:#fff;
+  border-radius:1.5rem;
+  padding:clamp(1.5rem,4vw,2.5rem);
+  box-shadow:0 24px 60px rgba(15,17,30,.08);
+}
+.seo-split__copy .eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.78rem;
+  color:var(--accent);
+  margin-bottom:.35rem;
+}
+.seo-split__copy .seo-title{
+  margin:.35rem 0 1rem;
+  color:#14182b;
+}
+.seo-bullets{
+  padding-left:1.2rem;
+  margin-bottom:1.1rem;
+}
+.seo-bullets li{
+  margin-bottom:.45rem;
+  line-height:1.5;
+  color:rgba(17,19,28,.78);
+}
+.seo-bullets--compact li{
+  font-size:.95rem;
+  color:rgba(17,19,28,.72);
+}
+.seo-split__media{
+  display:flex;
+}
+.seo-split__media .dojo-visual{
+  width:100%;
+  max-height:480px;
+}
+.seo-split__media .dojo-visual img{
+  height:100%;
+  object-fit:cover;
 }
 
 

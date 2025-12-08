@@ -7,7 +7,13 @@
   <!-- SEO -->
   <title>Brazilian Jiu-Jitsu (BJJ) – Grundlagen, Positionen & Geschichte | Circle of Life BJJ</title>
   <meta name="description" content="Was ist BJJ? Kompakte Einführung in Brazilian Jiu-Jitsu: Positionsspiel (Guard, Pass, Mount, Side, Back), Sweeps & Submissions – plus Geschichte & Einsatzbereiche. Einsteiger willkommen." />
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Circle of Life Jiu-Jitsu">
+  <meta name="keywords" content="Brazilian Jiu-Jitsu Ludwigshafen, BJJ Grundlagen, Kampfsport Mannheim, Grappling Positionen, Selbstverteidigung Rhein-Neckar, BJJ Probetraining">
+  <meta name="geo.region" content="DE-RP">
+  <meta name="geo.placename" content="Ludwigshafen am Rhein">
   <link rel="canonical" href="https://circleoflife-bjj.de/bjj.html" />
+  <link rel="alternate" hreflang="de" href="https://circleoflife-bjj.de/bjj.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -31,15 +37,19 @@
   <!-- Bootstrap & CSS -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </noscript>
   <link href="/css/style.css" rel="stylesheet">
-  <!-- Gemeinsamer Unterseiten-Stil -->
+  <link href="/css/page-kursangebot.css" rel="stylesheet">
   <link href="/css/subpage.css" rel="stylesheet">
 
-  <link href="/css/page-kursangebot.css" rel="stylesheet">
-
   <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  </noscript>
 
   <!-- JSON-LD: Breadcrumbs -->
   <script type="application/ld+json">
@@ -72,18 +82,25 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"Brauche ich Vorerfahrung?",
-       "acceptedAnswer":{"@type":"Answer","text":"Nein. Wir starten mit Fundamentals und passen die Intensität an – ideal für Einsteiger."}},
-      {"@type":"Question","name":"Was brauche ich fürs erste Training?",
-       "acceptedAnswer":{"@type":"Answer","text":"Sportkleidung, Flip-Flops für die Mattenzone, Wasser. Leih-Gi nach Absprache."}},
-      {"@type":"Question","name":"Wie läuft eine Einheit ab?",
-       "acceptedAnswer":{"@type":"Answer","text":"Aufwärmen, Technikdrills, spezifisches Sparring, optional freies Sparring – alles kontrolliert."}}
+      {"@type":"Question","name":"Brauche ich Vorerfahrung im Brazilian Jiu-Jitsu?",
+       "acceptedAnswer":{"@type":"Answer","text":"Nein. Wir starten mit Fundamentals, vermitteln grundlegende Bewegungen und steigern die Intensität erst, wenn du dich sicher fühlst."}},
+      {"@type":"Question","name":"Welche Ausrüstung brauche ich für BJJ?",
+       "acceptedAnswer":{"@type":"Answer","text":"Für das erste Training reichen Sportkleidung und Flip-Flops. Langfristig benötigst du einen Gi und optional Rashguard/Shorts für No-Gi."}},
+      {"@type":"Question","name":"Wie läuft eine Trainingseinheit ab?",
+       "acceptedAnswer":{"@type":"Answer","text":"Aufwärmen, Technikdrills, situatives Sparring und optional freies Rollen – alles kontrolliert und mit Fokus auf Technik."}},
+      {"@type":"Question","name":"Für wen eignet sich BJJ?",
+       "acceptedAnswer":{"@type":"Answer","text":"Für alle Altersklassen – ob Selbstverteidigung, Fitness, Stressabbau oder Wettkampf. Technik vor Kraft macht BJJ besonders zugänglich."}},
+      {"@type":"Question","name":"Wie oft sollte ich BJJ pro Woche trainieren?",
+       "acceptedAnswer":{"@type":"Answer","text":"Zwei bis drei Einheiten pro Woche reichen für kontinuierliche Fortschritte. Vor Wettkämpfen oder ambitionierten Zielen kannst du das Pensum steigern – wir helfen bei der Planung."}},
+      {"@type":"Question","name":"Hilft BJJ bei Selbstverteidigung im Alltag?",
+       "acceptedAnswer":{"@type":"Answer","text":"Ja. Du lernst Distanzkontrolle, sichere Clinch-Mechaniken und wie du dich am Boden befreist. Regelmäßiges Sparring schafft Selbstvertrauen für reale Szenarien."}}
     ]
   }
   </script>
 </head>
 
 <body class="page-bjj">
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
   <!-- NAV -->
   <nav class="navbar navbar-expand-lg sticky-top transparent" aria-label="Hauptnavigation">
     <div class="container">
@@ -116,8 +133,7 @@
     </div>
   </nav>
 
-  <main class="py-5">
-    <div class="container">
+  <main id="main-content" class="py-5">
 
       <!-- HERO -->
       <section class="hero-intro no-image bg-dots hero--underline hero--glass" aria-labelledby="bjj-hero-title" data-aos="fade-up">
@@ -129,15 +145,20 @@
                   <h1 id="bjj-hero-title" class="hero-title">Brazilian Jiu-Jitsu</h1>
                 </div>
                 <p class="hero-subtitle">
-                  Brazilian Jiu-Jitsu ist ein bodenorientierter Kampfsport. Mit Hebeln und Würgetechniken
-                  kontrollierst du Situationen sicher – <strong>Technik statt Kraft</strong>, für Einsteiger & Fortgeschrittene.
+                  Brazilian Jiu-Jitsu ist ein bodenorientierter Kampfsport aus Brasilien. 
+                  In Ludwigshafen, Mannheim und der Rhein-Neckar-Region lernst du mit Hebeln &amp; Würgetechniken Situationen sicher zu kontrollieren 
+                  – <strong>Technik statt Kraft</strong>, für Einsteiger &amp; Fortgeschrittene. Unsere Kampfsportschule verbindet BJJ-Training, 
+                  No-Gi Grappling und funktionelle Selbstverteidigung. 
+                  Unsere Schwarzgurttrainer bringen dir moderne und etablierte Techniken bei, um deine Selbstverteidigung zu stärken. 
+                  Dabei spielt deine Erfahrung keine Rolle, wir bringen dir die Grundlagen und bauen ein gutes Fundament für deinen Fortschritt.
                 </p>
                 <div class="hero-ctas">
                   <a class="btn btn-brand" href="/index.html#probetraining">Kostenloses Probetraining sichern</a>
                   <nav class="hero-nav" aria-label="Abschnitts-Shortcuts">
                     <a href="#was-ist-bjj">Was ist BJJ?</a>
-                    <a href="#geschichte">Geschichte & wofür</a>
+                    <a href="#geschichte">Geschichte &amp; Nutzen</a>
                     <a href="#begriffe">Begriffe</a>
+                    <a href="#faq">FAQ</a>
                   </nav>
                 </div>
                 <p class="small text-secondary">Einsteiger willkommen – Sportkleidung & Flip-Flops reichen fürs erste Training.</p>
@@ -147,69 +168,114 @@
         </div>
       </section>
 
-      <!-- Was ist BJJ (+ Bild daneben) -->
-      <section id="was-ist-bjj" class="mb-5 section-divider" data-aos="fade-up">
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-6">
-            <header class="section-head mb-3">
-                <h2 class="section-title h4">Was ist BJJ?</h2>
-              </header>
-            <p>
-              Brazilian Jiu-Jitsu arbeitet mit <strong>Positionskontrolle</strong> und <strong>Technik</strong> statt roher Kraft.
-              Typischer Ablauf: Stand → Wurf/Takedown → <em>Guard</em> → <em>Passieren</em> → 
-              <strong>Kontrolle</strong> (Side Control/Mount/Back) → <strong>Submission</strong> (Hebel/Würge).
-            </p>
-            <ul class="list-check">
-              <li>Struktur: Aufwärmen, Technikdrills, spezifisches & freies Sparring</li>
-              <li>Progression: Fundamentals bis fortgeschrittene Ketten</li>
-              <li>Sicher: klare Regeln, kontrollierte Intensität</li>
-            </ul>
-            <div class="note mt-3">
-              <strong>Hinweis:</strong> Für den Start reichen Sportkleidung & Flip-Flops; Leih-Gi nach Absprache möglich.
+      <section class="cta-strip" aria-label="Direkte Kontaktmöglichkeiten">
+        <div class="container">
+          <div class="cta-strip__inner">
+            <div class="cta-strip__copy">
+              <h2 class="cta-strip__title">BJJ &amp; Grappling in Ludwigshafen</h2>
+              <p class="mb-0">Antwort innerhalb von 24&nbsp;Stunden – sichere dir dein kostenloses Probetraining oder ruf direkt bei uns an.</p>
+            </div>
+            <div class="cta-strip__actions">
+              <a class="btn btn-brand" href="/index.html#probetraining" title="Probetraining sichern">Probetraining sichern</a>
+              <a class="btn btn-outline-light" href="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein" target="_blank" rel="noopener" title="Route öffnen">Route zum Gym</a>
+            </div>
+            <div class="hero-cta-secondary hero-cta-secondary--strip" aria-label="Schnelle Kontaktmöglichkeiten">
+              <span class="hero-cta-note">Direkter Kontakt:</span>
+              <a class="hero-cta-link" href="tel:+4917661990534" title="Jetzt im Gym anrufen">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/telefon.svg" alt="Telefon Icon" title="Telefon Icon">
+                </span>
+                0176&nbsp;61990534
+              </a>
+              <a class="hero-cta-link" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp schreiben">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/whatsapp.svg" alt="WhatsApp Icon" title="WhatsApp Icon">
+                </span>
+                WhatsApp schreiben
+              </a>
+              <a class="hero-cta-link" href="https://www.instagram.com/circle_of_life_jiujitsu" target="_blank" rel="noopener" title="Instagram öffnen">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/instagram.svg" alt="Instagram Icon" title="Instagram Icon">
+                </span>
+                Folge uns auf Instagram
+              </a>
             </div>
           </div>
-          <div class="col-lg-6 text-center">
-            <picture>
-              <img src="/assets/images/kurse/gi_training_1.jpeg" class="img-fluid rounded-4 shadow-sm"
-                   width="900" height="600" loading="lazy" decoding="async"
-                   alt="BJJ im Gi – Technikdrills" title="BJJ im Gi – Technikdrills">
-            </picture>
-            <p class="small text-secondary mt-2">Technikdrills & kontrolliertes Sparring im Gi.</p>
+        </div>
+      </section>
+
+      <!-- Was ist BJJ (+ Bild daneben) -->
+      <section id="was-ist-bjj" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Grundlagen</p>
+              <h2 class="seo-title h3">Was ist Brazilian Jiu-Jitsu?</h2>
+              <p class="text-dark">BJJ in unserer Kampfsportschule in Ludwigshafen setzt auf Positionskontrolle und Technik statt roher Kraft. Ablauf: Stand → Takedown → Guard → Pass → dominante Kontrolle → Submission. Jede Einheit kombiniert Warm-up, Technikdrills, spezifisches und freies Sparring.</p>
+              <ul class="seo-bullets">
+                <li>Strukturierte Lernpfade von Fundamentals bis Advanced</li>
+                <li>Kontrollierte Intensität &amp; klare Mattenetikette</li>
+                <li>Einsteigerfreundlich – Sportkleidung &amp; Flip-Flops reichen</li>
+                <li>Selbstverteidigung, Fitness &amp; MMA-spezifische Inhalte</li>
+              </ul>
+              <div class="note mt-3">
+                <strong>Hinweis:</strong> Leih-Gis sind nach Absprache verfügbar. Technik vor Kraft, Sicherheit vor Ego.
+              </div>
+            </div>
+            <div class="seo-split__media">
+              <figure class="dojo-visual">
+                <img src="/assets/images/kurse/Gi_BJJ_1.webp" loading="lazy" decoding="async" alt="BJJ Technikdrills im Gi" title="BJJ Technikdrills im Gi">
+                <figcaption>
+                  <span class="label">Technik &amp; Kontrolle</span>
+                  <p>Drills für Guard, Passing und Submissions in kleinen Gruppen.</p>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Geschichte & wofür -->
-      <section id="geschichte" class="mb-5" data-aos="fade-up">
-        <div class="row g-4">
-          <div class="col-lg-10 col-xl-8">
-            <header class="section-head mb-3">
-                <h2 class="section-title h4">Geschichte des BJJ</h2>
-              </header>
-
-            <p>
-              BJJ entwickelte sich im 20. Jahrhundert in Brasilien aus dem Judo, mit starkem Fokus auf das
-              <strong>Bodenkampf-Positionsspiel</strong>. Durch Kontrolle, Hebel und Würgen kann eine technisch
-              versierte Person auch körperlich stärkere Gegner neutralisieren.
-            </p>
-            <p>
-              Heute wird BJJ trainiert für <strong>Selbstverteidigung</strong>, <strong>Fitness</strong> und 
-              <strong>Wettkampf</strong> (Gi/No-Gi) und ist ein wesentlicher Bestandteil in Mixed Martial Arts (MMA).
-              Der Unterricht verbindet technische Präzision mit sicherem, kontrolliertem Sparring.
-            </p>
-            <p class="small text-secondary mb-0">
-              Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a>
-            </p>
+      <section id="geschichte" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split section-intro mb-4">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Geschichte &amp; Nutzen</p>
+              <h2 class="seo-title h3">Vom Kodokan Judo zum modernen Grappling</h2>
+              <p class="text-dark">Brazilian Jiu-Jitsu entstand Anfang des 20. Jahrhunderts in Brasilien und fokussiert Bodenkampf, Kontrolle und Submissions. Heute trainieren wir BJJ für Selbstverteidigung, Fitness und Wettkampf – Gi wie No-Gi – quer durch die Rhein-Neckar-Region.</p>
+              <ul class="seo-bullets">
+                <li>Technik- und positionsbasiertes Kampfsystem</li>
+                <li>Essentiell für MMA &amp; moderne Selbstverteidigung</li>
+                <li>Perfekt für Stressabbau, Fokus und Community</li>
+              </ul>
+              <p class="small text-secondary mb-0">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a></p>
+            </div>
+            <div class="seo-split__media">
+              <div class="p-4 rounded-4 border shadow-sm w-100">
+                <p class="text-uppercase small fw-semibold text-secondary mb-1">BJJ trainieren für</p>
+                <ul class="list-unstyled small mb-0">
+                  <li>• Selbstverteidigung &amp; Körpergefühl</li>
+                  <li>• Fitness, Mobility &amp; Mindset</li>
+                  <li>• Wettkampf (Gi &amp; No-Gi)</li>
+                  <li>• MMA &amp; Grappling-Events</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Begriffe mit „Card-Kopf klickbar = Bild klappt in der Card auf“ -->
-      <section id="begriffe" class="mb-4" data-aos="fade-up">
-        <header class="section-head mb-3">
-          <h2 class="section-title h4">Wichtige Begriffe im BJJ</h2>
-        </header>
-      
+      <section id="begriffe" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split section-intro mb-4">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Glossar</p>
+              <h2 class="seo-title h3">Wichtige Begriffe im BJJ</h2>
+              <p class="text-dark">Ein kurzer Überblick über die Positionssprache auf der Matte – klick die Cards, um Beispielbilder zu sehen.</p>
+            </div>
+          </div>
+
         <!-- Wrapper für Accordion-Verhalten -->
         <div id="begriffe-cards" class="row row-cols-1 row-cols-md-2 g-3">
       
@@ -375,14 +441,112 @@
           Für Kinder: <a class="link-strong" href="/kinder.html"><strong>Kinder-BJJ</strong></a>.
           Zeiten: <a class="link-strong" href="/index.html#kursplan"><strong>Stundenplan</strong></a>.
         </p>
-      </section>
+      </div></section>
       
 
-      <!-- Abschluss-CTA -->
-      <section class="text-center py-4" data-aos="fade-up">
-        <a href="/index.html#probetraining" class="btn btn-brand btn-lg">Kostenloses Probetraining buchen</a>
+      <!-- FAQ -->
+      <section id="faq" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split section-intro mb-4">
+            <div class="seo-split__copy">
+              <p class="eyebrow">FAQ</p>
+              <h2 class="seo-title h3">Häufige Fragen zu BJJ</h2>
+              <p class="text-dark mb-0">Antworten für Einsteiger, Selbstverteidigungsinteressierte und Athlet:innen.</p>
+            </div>
+          </div>
+          <div class="accordion accordion-readable" id="faqBjj">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA1" aria-expanded="true" aria-controls="faqBjjA1">
+                  Brauche ich Vorerfahrung im Brazilian Jiu-Jitsu?
+                </button>
+              </h3>
+              <div id="faqBjjA1" class="accordion-collapse collapse show" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Nein. Wir starten mit Fundamentals, lernen die wichtigsten Bewegungen (Hip-Escape, Technical Stand-up, Breakfalls) und steigern die Intensität erst, wenn du dich sicher fühlst.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA2" aria-expanded="false" aria-controls="faqBjjA2">
+                  Welche Ausrüstung brauche ich für BJJ?
+                </button>
+              </h3>
+              <div id="faqBjjA2" class="accordion-collapse collapse" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Für dein erstes Training reichen Sportkleidung und Flip-Flops. Langfristig benötigst du einen Gi, ggf. Rashguard/Shorts für No-Gi. Handtuch &amp; Wasser nicht vergessen – wir beraten dich gern.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA3" aria-expanded="false" aria-controls="faqBjjA3">
+                  Wie läuft eine Trainingseinheit ab?
+                </button>
+              </h3>
+              <div id="faqBjjA3" class="accordion-collapse collapse" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Warm-up mit Mobility, Technikdrills, situatives Sparring und optional freies Rollen. Alles kontrolliert, mit Fokus auf Technik und Sicherheit.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA4" aria-expanded="false" aria-controls="faqBjjA4">
+                  Für wen eignet sich BJJ?
+                </button>
+              </h3>
+              <div id="faqBjjA4" class="accordion-collapse collapse" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Für alle Altersklassen – egal ob du Selbstverteidigung, Fitness, Stressabbau oder Wettkampfambitionen hast. Technik steht vor Kraft, daher ist BJJ besonders zugänglich.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA5" aria-expanded="false" aria-controls="faqBjjA5">
+                  Wie oft sollte ich pro Woche trainieren?
+                </button>
+              </h3>
+              <div id="faqBjjA5" class="accordion-collapse collapse" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Zwei bis drei Einheiten pro Woche reichen, um Technik und Fitness kontinuierlich zu verbessern. Vor Wettkämpfen oder bei ambitionierten Zielen kannst du das Pensum steigern – wir helfen beim Plan.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqBjjSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBjjA6" aria-expanded="false" aria-controls="faqBjjA6">
+                  Hilft BJJ bei Selbstverteidigung im Alltag?
+                </button>
+              </h3>
+              <div id="faqBjjA6" class="accordion-collapse collapse" data-bs-parent="#faqBjj">
+                <div class="accordion-body">
+                  Ja. Du lernst Distanzkontrolle, sichere Clinch-Mechaniken und wie du dich am Boden befreist. Durch regelmäßiges Sparring gewinnst du Selbstvertrauen für reale Szenarien.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
+
+      <!-- Abschluss-CTA -->
+      <section class="cta-panel cta-panel--focus my-5" data-aos="fade-up">
+        <div class="container">
+          <div class="cta-panel__inner">
+            <div>
+              <p class="text-uppercase small fw-semibold text-warning mb-1">Bereit für BJJ?</p>
+              <h2 class="mb-2">Hol dir dein kostenloses Probetraining</h2>
+              <p class="mb-0">Teste Gi oder No-Gi, lern Coaches &amp; Community kennen und sichere dir deinen Spot in Ludwigshafen-Ruchheim.</p>
+            </div>
+            <div class="cta-panel__actions">
+              <a class="btn btn-brand btn-lg" href="/index.html#probetraining" title="Probetraining reservieren">Probetraining reservieren</a>
+              <a class="btn btn-outline-light btn-lg" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp Kontakt">WhatsApp Kontakt</a>
+            </div>
+          </div>
+        </div>
+      </section>
   </main>
 
   <!-- FOOTER (kurz) -->
@@ -408,11 +572,18 @@
   <button id="scrollTopBtn" aria-label="Nach oben scrollen">↑</button>
 
   <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:600, easing:'ease-out' });</script>
-  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.AOS) {
+        AOS.init({ once: true, duration: 600, easing: 'ease-out' });
+      }
+      const yearEl = document.getElementById('jahr');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+  </script>
+  <script src="/js/main.js" defer></script>
   <script src="/js/nav.js" defer></script>
-  <script>document.getElementById('jahr').textContent=new Date().getFullYear();</script>
 </body>
 </html>

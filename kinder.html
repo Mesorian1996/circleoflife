@@ -5,7 +5,13 @@
     <!-- SEO -->
     <title>Kinder-BJJ (6–13) – Selbstvertrauen, Bewegung & Respekt | Circle of Life BJJ</title>
     <meta name="description" content="Kinder-BJJ: spielerische Technik, Koordination und Respekt. Sicheres Ringen mit klaren Regeln – Einsteiger willkommen." />
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Circle of Life Jiu-Jitsu">
+    <meta name="keywords" content="Kinder BJJ Ludwigshafen, Kampfsport Kinder Mannheim, Selbstverteidigung Kids, Kindertraining Grappling, Kampfsport Probetraining Kinder">
+    <meta name="geo.region" content="DE-RP">
+    <meta name="geo.placename" content="Ludwigshafen am Rhein">
     <link rel="canonical" href="https://circleoflife-bjj.de/kinder.html" />
+    <link rel="alternate" hreflang="de" href="https://circleoflife-bjj.de/kinder.html" />
   
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -29,13 +35,19 @@
     <!-- CSS -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </noscript>
     <link href="/css/style.css" rel="stylesheet" />
     <link href="/css/page-kursangebot.css" rel="stylesheet" />
     <link href="/css/subpage.css" rel="stylesheet" />
   
     <!-- AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    </noscript>
   
     <!-- JSON-LD: Breadcrumbs -->
     <script type="application/ld+json">
@@ -73,13 +85,18 @@
         {"@type":"Question","name":"Was sollten Kinder mitbringen?",
          "acceptedAnswer":{"@type":"Answer","text":"Bequeme Sportkleidung, Flip-Flops, Wasserflasche. Schmuck bitte ablegen."}},
         {"@type":"Question","name":"Dürfen Eltern zuschauen?",
-         "acceptedAnswer":{"@type":"Answer","text":"Ja, gern. Wir achten auf Ruhe in der Halle, damit die Kinder fokussiert bleiben."}}
+        "acceptedAnswer":{"@type":"Answer","text":"Ja, gern. Wir achten auf Ruhe in der Halle, damit die Kinder fokussiert bleiben."}},
+      {"@type":"Question","name":"Wie oft trainieren Kinder pro Woche?",
+        "acceptedAnswer":{"@type":"Answer","text":"Wir empfehlen zwei feste Einheiten pro Woche. Bei hoher Motivation sind zusätzliche Open Mats möglich – immer altersgerecht begleitet."}},
+      {"@type":"Question","name":"Gibt es Rabatte für Geschwister?",
+        "acceptedAnswer":{"@type":"Answer","text":"Ja. Das zweite Kind trainiert zum reduzierten Tarif und Eltern können familienfreundliche Mitgliedschaften wählen."}}
       ]
     }
     </script>
   </head>
   
 <body class="page-kids">
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
       <!-- NAV -->
   <nav class="navbar navbar-expand-lg sticky-top transparent" aria-label="Hauptnavigation">
@@ -113,17 +130,23 @@
     </div>
   </nav>
 
-  <main class="py-5"><div class="container">
+  <main id="main-content" class="py-5">
     <!-- HERO -->
     <section class="hero-intro no-image bg-dots hero--underline hero--glass" aria-labelledby="kids-hero" data-aos="fade-up">
       <div class="container hero-wrap"><div class="row g-4 justify-content-center"><div class="col-12">
         <div class="hero-text">
           <div class="hero-head"><h1 id="kids-hero" class="hero-title">Kinder-BJJ</h1></div>
-          <p class="hero-subtitle">Spielerisch Technik lernen, fair ringen, Selbstvertrauen aufbauen – mit klaren Regeln & Respekt.</p>
+          <p class="hero-subtitle">Spielerisch Technik lernen, fair ringen und Selbstvertrauen aufbauen – unser Kinder-BJJ in Ludwigshafen &amp; Mannheim vermittelt klare Regeln und Respekt.
+
+            Eltern aus Ludwigshafen-Ruchheim, Mannheim, Bad Dürkheim oder Frankenthal finden bei uns eine familiäre Kampfsportschule: kindgerechte BJJ-Techniken, Anti-Bullying-Übungen, Bewegungs- und Konzentrationsspiele sowie regelmäßiges Feedback, damit dein Kind stark, respektvoll und sicher aufwächst.
+          </p>
           <div class="hero-ctas">
             <a class="btn btn-brand" href="/index.html#probetraining">Probetraining vereinbaren</a>
             <nav class="hero-nav" aria-label="Abschnitts-Shortcuts">
-              <a href="#was-ist">Was ist Kinder-BJJ?</a><a href="#geschichte">Warum & Nutzen</a><a href="#begriffe">Begriffe</a>
+              <a href="#was-ist">Was ist Kinder-BJJ?</a>
+              <a href="#geschichte">Warum &amp; Nutzen</a>
+              <a href="#begriffe">Begriffe</a>
+              <a href="#faq">FAQ</a>
             </nav>
           </div>
           <p class="small text-secondary">Mitbringen: Sportkleidung, Flip-Flops, Wasserflasche.</p>
@@ -131,38 +154,110 @@
       </div></div></div>
     </section>
 
-    <!-- Was ist -->
-    <section id="was-ist" class="mb-5 section-divider" data-aos="fade-up">
-      <header class="section-head"><h2 class="section-title h4">Was ist Kinder-BJJ?</h2></header>
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <p>Kinder-BJJ vermittelt Bewegung, Koordination & Fairness. Die Kinder lernen altersgerecht, wie man sicher ringt, fällt, kontrolliert und Situationen löst – immer mit klaren Regeln und Spaß.</p>
-          <ul class="list-check"><li>Aufwärmen & Spiele → Technikdrills → kontrolliertes Ringen</li><li>Respekt, Teamgeist & Konzentration</li><li>Sicherheits- und Hygieneregeln</li></ul>
-          <div class="note mt-3"><strong>Hinweis:</strong> Ein Probetraining ist jederzeit möglich. Eltern dürfen gern zusehen.</div>
+    <section class="cta-strip" aria-label="Direkte Kontaktmöglichkeiten">
+      <div class="container">
+        <div class="cta-strip__inner">
+          <div class="cta-strip__copy">
+            <h2 class="cta-strip__title">Kinder-BJJ in Ludwigshafen</h2>
+            <p class="mb-0">Antwort innerhalb von 24&nbsp;h – sichere deinem Kind einen kostenlosen Platz oder ruf direkt im Gym an.</p>
+          </div>
+          <div class="cta-strip__actions">
+            <a class="btn btn-brand" href="/index.html#probetraining" title="Probetraining sichern">Probetraining sichern</a>
+            <a class="btn btn-outline-light" href="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein" target="_blank" rel="noopener" title="Route öffnen">Route zum Gym</a>
+          </div>
+          <div class="hero-cta-secondary hero-cta-secondary--strip" aria-label="Schnelle Kontaktmöglichkeiten">
+            <span class="hero-cta-note">Direkter Kontakt:</span>
+            <a class="hero-cta-link" href="tel:+4917661990534" title="Gym anrufen">
+              <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                <img src="/assets/icons/telefon.svg" alt="Telefon Icon" title="Telefon Icon">
+              </span>
+              0176&nbsp;61990534
+            </a>
+            <a class="hero-cta-link" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp schreiben">
+              <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                <img src="/assets/icons/whatsapp.svg" alt="WhatsApp Icon" title="WhatsApp Icon">
+              </span>
+              WhatsApp schreiben
+            </a>
+            <a class="hero-cta-link" href="https://www.instagram.com/circle_of_life_jiujitsu" target="_blank" rel="noopener" title="Instagram öffnen">
+              <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                <img src="/assets/icons/instagram.svg" alt="Instagram Icon" title="Instagram Icon">
+              </span>
+              Folge uns auf Instagram
+            </a>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <picture>
-            <source srcset="/assets/images/kurse/kids_1.avif" type="image/avif">
-            <source srcset="/assets/images/kurse/kids_1.webp" type="image/webp">
-            <img src="/assets/images/kurse/kids_1.jpg" class="img-fluid rounded-4 shadow-sm" width="900" height="600" loading="lazy" alt="Kinder-BJJ Training" title="Kinder-BJJ Training">
-          </picture>
-          <p class="small text-secondary mt-2">Spielerisches Lernen in sicherem Rahmen.</p>
+      </div>
+    </section>
+
+    <!-- Was ist -->
+    <section id="was-ist" class="section-divider" data-aos="fade-up">
+      <div class="container">
+        <div class="seo-split">
+          <div class="seo-split__copy">
+            <p class="eyebrow">Grundlagen</p>
+            <h2 class="seo-title h3">Was ist Kinder-BJJ?</h2>
+            <p class="text-dark">Kinder-BJJ vermittelt Bewegung, Koordination und Fairness. Die Kids aus Ludwigshafen, Mannheim und der Pfalz lernen altersgerecht, wie man sicher ringt, fällt, kontrolliert und Konflikte löst – mit klaren Regeln und Spaß.</p>
+            <ul class="seo-bullets">
+              <li>Aufwärmspiele → Technikdrills → kontrolliertes Ringen</li>
+              <li>Respekt, Teamgeist &amp; Konzentration</li>
+              <li>Sicherheits- und Hygieneregeln von Anfang an</li>
+            </ul>
+            <div class="note mt-3"><strong>Hinweis:</strong> Ein Probetraining ist jederzeit möglich. Eltern dürfen gern zusehen.</div>
+          </div>
+          <div class="seo-split__media">
+            <figure class="dojo-visual">
+              <img src="/assets/images/kinder_training.webp" loading="lazy" decoding="async" alt="Kinder-BJJ Training" title="Kinder-BJJ Training">
+              <figcaption>
+                <span class="label">Kindertraining</span>
+                <p>Spielerisches Lernen in sicherem Rahmen.</p>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Warum & Nutzen -->
-    <section id="geschichte" class="mb-5" data-aos="fade-up">
-      <header class="section-head"><h2 class="section-title h4">Warum Kinder-BJJ? (Nutzen)</h2></header>
-      <div class="row g-4"><div class="col-xl-8">
-        <p>Durch strukturierte Bewegung verbessert sich Motorik & Haltung; Kinder lernen, Konflikte fair zu lösen und Verantwortung zu übernehmen. BJJ fördert Selbstvertrauen, Fokus und soziale Kompetenzen.</p>
-        <p class="small text-secondary mb-0">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a></p>
-      </div></div>
+    <section id="geschichte" class="section-divider" data-aos="fade-up">
+      <div class="container">
+        <div class="seo-split">
+          <div class="seo-split__copy">
+            <p class="eyebrow">Warum Kinder-BJJ?</p>
+            <h2 class="seo-title h3">Selbstvertrauen &amp; Bewegung mit System</h2>
+            <p class="text-dark">Durch strukturierte Bewegung verbessern sich Motorik und Haltung. Kinder lernen, Konflikte fair zu lösen und Verantwortung zu übernehmen. BJJ fördert Selbstvertrauen, Fokus und soziale Kompetenzen.</p>
+            <ul class="seo-bullets">
+              <li>Mehr Selbstvertrauen &amp; Körpergefühl</li>
+              <li>Besserer Fokus für Schule &amp; Alltag</li>
+              <li>Anti-Bullying Strategien &amp; Teamkultur</li>
+            </ul>
+            <p class="small text-secondary mb-0">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a></p>
+          </div>
+          <div class="seo-split__media">
+            <div class="p-4 rounded-4 border shadow-sm w-100">
+              <p class="text-uppercase small fw-semibold text-secondary mb-1">Kursinfos</p>
+              <ul class="list-unstyled small mb-0">
+                <li>• Alter: 6–13 Jahre</li>
+                <li>• 2 Einheiten pro Woche</li>
+                <li>• Elternfeedback &amp; klare Lernziele</li>
+                <li>• Spielerische Prüfungen &amp; Sticker</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Begriffe -->
-    <section id="begriffe" class="mb-4" data-aos="fade-up">
-      <header class="section-head"><h2 class="section-title h4">Begriffe (für Kinder erklärt)</h2></header>
+    <section id="begriffe" class="section-divider" data-aos="fade-up">
+      <div class="container">
+        <div class="seo-split section-intro mb-4">
+          <div class="seo-split__copy">
+            <p class="eyebrow">Begriffe</p>
+            <h2 class="seo-title h3">Kinderleicht erklärt</h2>
+            <p class="text-dark mb-0">Damit Eltern &amp; Kids wissen, was wir auf der Matte meinen.</p>
+          </div>
+        </div>
       <div id="begriffe-cards" class="row row-cols-1 row-cols-md-2 g-3">
         <!-- Fallschule -->
         <div class="col"><article class="term-card" aria-labelledby="term-fall">
@@ -209,12 +304,98 @@
       <p class="mt-3 small inline-links">
         Für Erwachsene: <a class="link-strong" href="/bjj.html"><strong>BJJ</strong></a> · <a class="link-strong" href="/grappling.html"><strong>No-Gi</strong></a> · <a class="link-strong" href="/index.html#zeiten"><strong>Stundenplan</strong></a>.
       </p>
+    </div></section>
+
+    <section id="faq" class="section-divider" data-aos="fade-up">
+      <div class="container">
+        <div class="seo-split section-intro mb-4">
+          <div class="seo-split__copy">
+            <p class="eyebrow">FAQ</p>
+            <h2 class="seo-title h3">Fragen zum Kindertraining</h2>
+            <p class="text-dark mb-0">Die wichtigsten Infos für Eltern auf einen Blick.</p>
+          </div>
+        </div>
+        <div class="accordion accordion-readable" id="faqKids">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqKidsOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqKidsA1" aria-expanded="true" aria-controls="faqKidsA1">
+                Ab welchem Alter können Kinder starten?
+              </button>
+            </h3>
+            <div id="faqKidsA1" class="accordion-collapse collapse show" data-bs-parent="#faqKids">
+              <div class="accordion-body">
+                Unsere Kurse sind auf 6–13 Jahre ausgelegt. Jüngere Kinder können nach einem Kennenlernen starten, wenn Motorik und Aufmerksamkeit passen.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqKidsTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqKidsA2" aria-expanded="false" aria-controls="faqKidsA2">
+                Was sollten Kinder mitbringen?
+              </button>
+            </h3>
+            <div id="faqKidsA2" class="accordion-collapse collapse" data-bs-parent="#faqKids">
+              <div class="accordion-body">
+                Bequeme Sportkleidung, Flip-Flops, Wasserflasche und ein kleines Handtuch. Schmuck bitte ablegen, Fingernägel kurz halten.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqKidsThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqKidsA3" aria-expanded="false" aria-controls="faqKidsA3">
+                Dürfen Eltern zuschauen?
+              </button>
+            </h3>
+            <div id="faqKidsA3" class="accordion-collapse collapse" data-bs-parent="#faqKids">
+              <div class="accordion-body">
+                Ja, gern – solange Ruhe in der Halle herrscht, damit die Kinder fokussiert bleiben. Wir geben nach dem Training Feedback.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqKidsFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqKidsA4" aria-expanded="false" aria-controls="faqKidsA4">
+                Wie oft trainieren Kinder pro Woche?
+              </button>
+            </h3>
+            <div id="faqKidsA4" class="accordion-collapse collapse" data-bs-parent="#faqKids">
+              <div class="accordion-body">
+                Wir empfehlen zwei feste Einheiten pro Woche. Bei hoher Motivation können Kinder zusätzliche Open Mats besuchen – immer begleitet und altersgerecht.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqKidsFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqKidsA5" aria-expanded="false" aria-controls="faqKidsA5">
+                Gibt es Rabatte für Geschwister oder längere Mitgliedschaften?
+              </button>
+            </h3>
+            <div id="faqKidsA5" class="accordion-collapse collapse" data-bs-parent="#faqKids">
+              <div class="accordion-body">
+                Ja. Das zweite Kind trainiert zum reduzierten Tarif, und Eltern können zwischen Monatsbeitrag, 10er-Karte oder kombinierter Familienmitgliedschaft wählen.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="text-center py-4" data-aos="fade-up">
-      <a href="/index.html#probetraining" class="btn btn-brand btn-lg">Probetraining vereinbaren</a>
+    <section class="cta-panel cta-panel--focus my-5" data-aos="fade-up">
+      <div class="container">
+        <div class="cta-panel__inner">
+          <div>
+            <p class="text-uppercase small fw-semibold text-warning mb-1">Kinder-BJJ</p>
+            <h2 class="mb-2">Jetzt Kinder-Probetraining sichern</h2>
+            <p class="mb-0">Lerne Coach &amp; Team kennen, schau beim Training zu und sichere dir einen Platz im Kinderkurs.</p>
+          </div>
+          <div class="cta-panel__actions">
+            <a class="btn btn-brand btn-lg" href="/index.html#probetraining" title="Probetraining reservieren">Probetraining reservieren</a>
+            <a class="btn btn-outline-light btn-lg" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp Kontakt">WhatsApp Kontakt</a>
+          </div>
+        </div>
+      </div>
     </section>
-  </div></main>
+  </main>
 
   <!-- FOOTER (kurz) -->
   <footer class="py-4 border-top footer-dark">
@@ -239,12 +420,19 @@
   <button id="scrollTopBtn" aria-label="Nach oben scrollen">↑</button>
 
   <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:600, easing:'ease-out' });</script>
-  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.AOS) {
+        AOS.init({ once: true, duration: 600, easing: 'ease-out' });
+      }
+      const yearEl = document.getElementById('jahr');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+  </script>
+  <script src="/js/main.js" defer></script>
   <script src="/js/nav.js" defer></script>
-  <script>document.getElementById('jahr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
 

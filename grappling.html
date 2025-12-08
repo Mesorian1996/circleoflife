@@ -5,7 +5,13 @@
     <!-- SEO -->
     <title>No-Gi Grappling – Technik, Positionsspiel & Takedowns | Circle of Life BJJ</title>
     <meta name="description" content="No-Gi Grappling: Hand Fighting, Takedowns, Guard-Passes, Kontrolle & Submissions ohne Gi. Technikdrills, spezifisches & freies Sparring. Einsteiger willkommen." />
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Circle of Life Jiu-Jitsu">
+    <meta name="keywords" content="No-Gi Grappling Ludwigshafen, Grappling Mannheim, Leglocks Training, MMA Grappling Kurs, Kampfsport Rhein-Neckar, Grappling Probetraining">
+    <meta name="geo.region" content="DE-RP">
+    <meta name="geo.placename" content="Ludwigshafen am Rhein">
     <link rel="canonical" href="https://circleoflife-bjj.de/grappling.html" />
+    <link rel="alternate" hreflang="de" href="https://circleoflife-bjj.de/grappling.html" />
   
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -29,13 +35,19 @@
     <!-- CSS -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </noscript>
     <link href="/css/style.css" rel="stylesheet" />
     <link href="/css/page-kursangebot.css" rel="stylesheet" />
     <link href="/css/subpage.css" rel="stylesheet" />
   
     <!-- AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    </noscript>
   
     <!-- JSON-LD: Breadcrumbs -->
     <script type="application/ld+json">
@@ -73,7 +85,11 @@
         {"@type":"Question","name":"Was ziehe ich im No-Gi an?",
          "acceptedAnswer":{"@type":"Answer","text":"Rashguard oder T-Shirt, Shorts/Spats, Flip-Flops für die Mattenzone. Fingernägel kurz, Hygiene beachten."}},
         {"@type":"Question","name":"Sind Leglocks erlaubt?",
-         "acceptedAnswer":{"@type":"Answer","text":"Ja, stufengerecht und mit klarem Sicherheitsfokus. Technik vor Kraft; Abbruch-Signale werden respektiert."}}
+       "acceptedAnswer":{"@type":"Answer","text":"Ja, stufengerecht und mit klarem Sicherheitsfokus. Technik vor Kraft; Abbruch-Signale werden respektiert."}},
+      {"@type":"Question","name":"Wie oft sollte ich No-Gi trainieren?",
+       "acceptedAnswer":{"@type":"Answer","text":"Zwei bis drei Sessions pro Woche reichen für solide Fortschritte. Vor Wettkämpfen kannst du zusätzliche Open Mats oder Drill-Einheiten einplanen."}},
+      {"@type":"Question","name":"Welche Sicherheitsregeln gelten bei Leglocks?",
+       "acceptedAnswer":{"@type":"Answer","text":"Wir vermitteln Leglocks progressiv: saubere Entries, kontrolliertes Finishing und sofortiges Lösen beim Tap. Kommunikation und Respekt stehen an erster Stelle."}}
       ]
     }
     </script>
@@ -81,6 +97,7 @@
   
 
 <body class="page-nogi">
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
   <!-- NAV -->
   <nav class="navbar navbar-expand-lg sticky-top transparent" aria-label="Hauptnavigation">
     <div class="container">
@@ -113,8 +130,7 @@
     </div>
   </nav>
 
-  <main class="py-5">
-    <div class="container">
+  <main id="main-content" class="py-5">
       <!-- HERO -->
       <section class="hero-intro no-image bg-dots hero--underline hero--glass" aria-labelledby="nogi-hero" data-aos="fade-up">
         <div class="container hero-wrap">
@@ -122,11 +138,16 @@
             <div class="col-12">
               <div class="hero-text">
                 <div class="hero-head"><h1 id="nogi-hero" class="hero-title">No-Gi Grappling</h1></div>
-                <p class="hero-subtitle">Grappling ohne Gi: Grip-Fighting, Takedowns, Kontrolle & Submissions – technisch, schnell, sicher.</p>
+                <p class="hero-subtitle">
+                  Grappling ohne Gi in Ludwigshafen &amp; Mannheim: Grip-Fighting, Takedowns, Kontrolle &amp; Submissions – technisch, schnell, sicher. Unser No-Gi Programm richtet sich an Kampfsportler aus der gesamten Rhein-Neckar-Region. Wir trainieren ADCC-orientierte Systems, Leglocks mit Sicherheitsprotokoll und MMA-taugliche Clinch-Strategien – ideal für Selbstverteidigung, Wettkampf oder Cross-Training mit Brazilian Jiu-Jitsu.
+                </p>
                 <div class="hero-ctas">
                   <a class="btn btn-brand" href="/index.html#probetraining">Kostenloses Probetraining sichern</a>
                   <nav class="hero-nav" aria-label="Abschnitts-Shortcuts">
-                    <a href="#was-ist">Was ist No-Gi?</a><a href="#geschichte">Geschichte & wofür</a><a href="#begriffe">Begriffe</a>
+                    <a href="#was-ist">Was ist No-Gi?</a>
+                    <a href="#geschichte">Geschichte &amp; Nutzen</a>
+                    <a href="#begriffe">Begriffe</a>
+                    <a href="#faq">FAQ</a>
                   </nav>
                 </div>
                 <p class="small text-secondary">Kurze Hose/Rashguard, Flip-Flops für die Mattenzone – fertig.</p>
@@ -136,37 +157,110 @@
         </div>
       </section>
 
-      <!-- Was ist -->
-      <section id="was-ist" class="mb-5 section-divider" data-aos="fade-up">
-        <header class="section-head"><h2 class="section-title h4">Was ist No-Gi Grappling?</h2></header>
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-6">
-            <p>No-Gi trainiert die gleichen Prinzipien wie BJJ – jedoch ohne Gi-Griffe. Du arbeitest mit Under/Overhooks, Wrist Control und Head-Position. Ablauf: Stand → Takedown → Guard/Passing → Kontrolle (Side/Mount/Back) → Submission.</p>
-            <ul class="list-check"><li>Fokus auf Bewegung, Frames, Head-Position</li><li>Technikdrills + spezifisches / freies Sparring</li><li>Klare Sicherheitsregeln (v. a. bei Leglocks)</li></ul>
-            <div class="note mt-3"><strong>Hinweis:</strong> Rashguard/T-Shirt, Shorts/Spats. Fingernägel kurz, Hygiene beachten.</div>
-          </div>
-          <div class="col-lg-6 text-center">
-            <picture>
-              <img src="/assets/images/kurse/nogi_grappling_1.jpeg" class="img-fluid rounded-4 shadow-sm" width="900" height="600" loading="lazy" alt="No-Gi Grappling Training" title="No-Gi Grappling Training">
-            </picture>
-            <p class="small text-secondary mt-2">Position, Druck & Bewegung statt Gi-Griffe.</p>
+      <section class="cta-strip" aria-label="Direkte Kontaktmöglichkeiten">
+        <div class="container">
+          <div class="cta-strip__inner">
+            <div class="cta-strip__copy">
+              <h2 class="cta-strip__title">No-Gi Grappling in Ludwigshafen</h2>
+              <p class="mb-0">Antwort innerhalb von 24&nbsp;h – sichere dir dein kostenloses Probetraining oder kontaktiere uns direkt.</p>
+            </div>
+            <div class="cta-strip__actions">
+              <a class="btn btn-brand" href="/index.html#probetraining" title="Probetraining sichern">Probetraining sichern</a>
+              <a class="btn btn-outline-light" href="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein" target="_blank" rel="noopener" title="Route öffnen">Route zum Gym</a>
+            </div>
+            <div class="hero-cta-secondary hero-cta-secondary--strip" aria-label="Schnelle Kontaktmöglichkeiten">
+              <span class="hero-cta-note">Direkter Kontakt:</span>
+              <a class="hero-cta-link" href="tel:+4917661990534" title="Gym anrufen">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/telefon.svg" alt="Telefon Icon" title="Telefon Icon">
+                </span>
+                0176&nbsp;61990534
+              </a>
+              <a class="hero-cta-link" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp schreiben">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/whatsapp.svg" alt="WhatsApp Icon" title="WhatsApp Icon">
+                </span>
+                WhatsApp schreiben
+              </a>
+              <a class="hero-cta-link" href="https://www.instagram.com/circle_of_life_jiujitsu" target="_blank" rel="noopener" title="Instagram öffnen">
+                <span class="icon-chip icon-chip--inline" aria-hidden="true">
+                  <img src="/assets/icons/instagram.svg" alt="Instagram Icon" title="Instagram Icon">
+                </span>
+                Folge uns auf Instagram
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Geschichte & wofür -->
-      <section id="geschichte" class="mb-5" data-aos="fade-up">
-        <header class="section-head"><h2 class="section-title h4">Geschichte & wofür wird No-Gi trainiert?</h2></header>
-        <div class="row g-4"><div class="col-xl-8">
-          <p>No-Gi ist die Gi-freie Variante des BJJ/Grappling und gewann über Submission-Only-Formate & MMA große Popularität. Der Fokus liegt auf Kontrolle, Transitions und Submissions ohne Stoffgriffe.</p>
-          <p>Trainiert wird für Selbstverteidigung, Wettkampf (ADCC/EBI-Regeln) und als Grundlage im MMA. Leglocks werden progressiv & sicher vermittelt.</p>
-          <p class="small text-secondary mb-0">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a></p>
-        </div></div>
+      <!-- Was ist -->
+      <section id="was-ist" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Grundlagen</p>
+              <h2 class="seo-title h3">Was ist No-Gi Grappling?</h2>
+            <p class="text-dark">No-Gi in unserer Kampfsportschule nutzt die gleichen Positionsprinzipien wie BJJ, aber ohne Gi-Griffe. Du arbeitest mit Underhooks, Wrist Control, Head-Position und Bodylocks für Entries, Kontrollen und Submissions.</p>
+              <ul class="seo-bullets">
+                <li>Ablauf: Stand → Takedown → Guard/Passing → Kontrolle → Submission</li>
+                <li>Fokus auf Bewegung, Frames und Timing</li>
+                <li>Klare Sicherheitsregeln, vor allem bei Leglocks</li>
+              <li>Perfekt für MMA, Selbstverteidigung &amp; Grappling-Wettkämpfe</li>
+              </ul>
+              <div class="note mt-3"><strong>Hinweis:</strong> Rashguard/T-Shirt, Shorts/Spats und Flip-Flops für die Mattenzone. Fingernägel kurz, Hygiene beachten.</div>
+            </div>
+            <div class="seo-split__media">
+              <figure class="dojo-visual">
+                <img src="/assets/images/kurse/nogi_grappling_3.webp" loading="lazy" decoding="async" alt="No-Gi Grappling Training" title="No-Gi Grappling Training">
+                <figcaption>
+                  <span class="label">No-Gi Session</span>
+                  <p>Hand Fighting, Bodylocks und Leglock-Einstiege ohne Gi-Griffe.</p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="geschichte" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Warum No-Gi?</p>
+              <h2 class="seo-title h3">Geschichte &amp; Einsatzbereiche</h2>
+            <p class="text-dark">No-Gi ist die gi-freie Variante des BJJ und wurde durch Submission-Only-Formate und MMA populär. In Ludwigshafen und der gesamten Rhein-Neckar-Region trainieren wir ohne Stoffgriffe, mit Fokus auf Kontrolle, Transitions, Leglocks und schnellen Entries.</p>
+              <ul class="seo-bullets">
+                <li>Trainiere Selbstverteidigung, MMA oder ADCC/EBI-Regelwerke</li>
+                <li>Verbessere Takedowns, Scrambles und Explosivität</li>
+                <li>Leglocks &amp; Druckaufbau werden progressiv und sicher vermittelt</li>
+              </ul>
+              <p class="small text-secondary mb-0">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener">Wikipedia – Brazilian Jiu-Jitsu</a></p>
+            </div>
+            <div class="seo-split__media">
+              <div class="p-4 rounded-4 border shadow-sm w-100">
+                <p class="text-uppercase small fw-semibold text-secondary mb-1">Trainingsziele</p>
+                <ul class="list-unstyled small mb-0">
+                  <li>• Wrestling Entries &amp; Clinch</li>
+                  <li>• Guard Passing ohne Griffe</li>
+                  <li>• Leglocks &amp; Back Takes</li>
+                  <li>• Competition Prep (ADCC-Style)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Begriffe -->
-      <section id="begriffe" class="mb-4" data-aos="fade-up">
-        <header class="section-head"><h2 class="section-title h4">Wichtige Begriffe im No-Gi</h2></header>
+      <section id="begriffe" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split section-intro mb-4">
+            <div class="seo-split__copy">
+              <p class="eyebrow">Glossar</p>
+              <h2 class="seo-title h3">Wichtige Begriffe im No-Gi</h2>
+              <p class="text-dark mb-0">Klick dich durch die Cards, um zentrales Vokabular im Grappling kennenzulernen.</p>
+            </div>
+          </div>
         <div id="begriffe-cards" class="row row-cols-1 row-cols-md-2 g-3">
           <!-- Hand Fighting -->
           <div class="col"><article class="term-card" aria-labelledby="term-handfight">
@@ -235,12 +329,97 @@
           Für Kinder: <a class="link-strong" href="/kinder.html"><strong>Kinder-BJJ</strong></a>.
           Zeiten: <a class="link-strong" href="/index.html#kursplan"><strong>Stundenplan</strong></a>.
         </p>
+      </div></section>
+
+      <section id="faq" class="section-divider" data-aos="fade-up">
+        <div class="container">
+          <div class="seo-split section-intro mb-4">
+            <div class="seo-split__copy">
+              <p class="eyebrow">FAQ</p>
+              <h2 class="seo-title h3">Fragen zu No-Gi Grappling</h2>
+              <p class="text-dark mb-0">Alles rund um Ausrüstung, Sicherheit und Einstieg ohne Gi.</p>
+            </div>
+          </div>
+          <div class="accordion accordion-readable" id="faqNogi">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqNogiOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqNogiA1" aria-expanded="true" aria-controls="faqNogiA1">
+                  Brauche ich Vorerfahrung?
+                </button>
+              </h3>
+              <div id="faqNogiA1" class="accordion-collapse collapse show" data-bs-parent="#faqNogi">
+                <div class="accordion-body">
+                  Nein. Wir starten mit Fundamentals, vermitteln Hand Fighting und Bodenkontrolle Schritt für Schritt und steigern die Intensität erst, wenn du dich sicher fühlst.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqNogiTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqNogiA2" aria-expanded="false" aria-controls="faqNogiA2">
+                  Was ziehe ich im No-Gi an?
+                </button>
+              </h3>
+              <div id="faqNogiA2" class="accordion-collapse collapse" data-bs-parent="#faqNogi">
+                <div class="accordion-body">
+                  Rashguard oder enges T-Shirt, Shorts/Spats ohne Reißverschlüsse, Flip-Flops für die Mattenzone. Hygiene &amp; kurze Nägel sind Pflicht.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqNogiThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqNogiA3" aria-expanded="false" aria-controls="faqNogiA3">
+                  Sind Leglocks erlaubt?
+                </button>
+              </h3>
+              <div id="faqNogiA3" class="accordion-collapse collapse" data-bs-parent="#faqNogi">
+                <div class="accordion-body">
+                  Ja, stufengerecht und mit klarem Sicherheitsfokus. Technik vor Kraft; Abbruchsignale werden konsequent respektiert.
+                </div>
+              </div>
+            </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqNogiFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqNogiA4" aria-expanded="false" aria-controls="faqNogiA4">
+                Wie oft sollte ich No-Gi trainieren?
+              </button>
+            </h3>
+            <div id="faqNogiA4" class="accordion-collapse collapse" data-bs-parent="#faqNogi">
+              <div class="accordion-body">
+                Zwei bis drei Sessions pro Woche reichen für solide Fortschritte. Vor Wettkämpfen kannst du zusätzliche Open Mats oder Drill-Einheiten einplanen.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqNogiFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqNogiA5" aria-expanded="false" aria-controls="faqNogiA5">
+                Welche Sicherheitsregeln gelten bei Leglocks?
+              </button>
+            </h3>
+            <div id="faqNogiA5" class="accordion-collapse collapse" data-bs-parent="#faqNogi">
+              <div class="accordion-body">
+                Wir vermitteln Leglocks progressiv: saubere Entries, kontrolliertes Finishing und sofortiges Lösen beim Tap. Kommunikation und Respekt sie stehen an erster Stelle.
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </section>
 
-      <section class="text-center py-4" data-aos="fade-up">
-        <a href="/index.html#probetraining" class="btn btn-brand btn-lg">Kostenloses Probetraining buchen</a>
+      <section class="cta-panel cta-panel--focus my-5" data-aos="fade-up">
+        <div class="container">
+          <div class="cta-panel__inner">
+            <div>
+              <p class="text-uppercase small fw-semibold text-warning mb-1">No-Gi Grappling &amp; MMA</p>
+              <h2 class="mb-2">Starte dein No-Gi Probetraining</h2>
+              <p class="mb-0">Teste Scrambles, Leglocks und Bodylocks in einer sicheren Umgebung zwischen Ludwigshafen und Mannheim.</p>
+            </div>
+            <div class="cta-panel__actions">
+              <a class="btn btn-brand btn-lg" href="/index.html#probetraining" title="Probetraining reservieren">Probetraining reservieren</a>
+              <a class="btn btn-outline-light btn-lg" href="https://wa.me/4917661990534" target="_blank" rel="noopener" title="WhatsApp Kontakt">WhatsApp Kontakt</a>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
   </main>
 
   <!-- FOOTER (kurz) -->
@@ -266,11 +445,18 @@
   <button id="scrollTopBtn" aria-label="Nach oben scrollen">↑</button>
 
   <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:600, easing:'ease-out' });</script>
-  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.AOS) {
+        AOS.init({ once: true, duration: 600, easing: 'ease-out' });
+      }
+      const yearEl = document.getElementById('jahr');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+  </script>
+  <script src="/js/main.js" defer></script>
   <script src="/js/nav.js" defer></script>
-  <script>document.getElementById('jahr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
