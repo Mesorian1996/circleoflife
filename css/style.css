@@ -331,6 +331,27 @@ body{ padding-top: var(--nav-h); }
 }
 .hero-btn{
   animation: sublineFadeIn .8s .3s backwards;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: clamp(1.4rem, 4vw, 2.4rem);
+  gap: .35rem;
+}
+.hero-btn--highlight{
+  background: linear-gradient(135deg,#ffe17c,#f3c14a 60%,#e4ab33);
+  color: #1d1f2a !important;
+  border: none;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08);
+}
+.hero-btn--highlight:hover,
+.hero-btn--highlight:focus{
+  background: linear-gradient(135deg,#fff2a9,#ffd46b 60%,#f3b945);
+  color: #111 !important;
+}
+.hero-ctas{
+  position: relative;
+  align-items: center;
+  gap: .4rem;
 }
 .btn-brand:hover, .btn-brand:focus {
   background: var(--accent);
@@ -654,7 +675,12 @@ body{ padding-top: var(--nav-h); }
 .hero-modern .hero-subtitle{
   animation: none;
   max-width: 48ch;
-  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  margin-top: clamp(.35rem, 1vw, .9rem);
+  margin-bottom: clamp(.85rem, 2vw, 1.6rem);
+}
+.hero-subtitle--mobile{ display:none; }
+.hero-note{
+  margin-top: .4rem;
 }
 
 @keyframes sublineFadeIn {
@@ -766,6 +792,14 @@ body{ padding-top: var(--nav-h); }
     margin-bottom: .5em;
     max-width: 99vw;
   }
+  .hero-subtitle--desktop{ display:none; }
+  .hero-subtitle--mobile{ display:block; margin-bottom: .9rem; }
+  .hero-note{
+    order: 5;
+    display: block;
+    text-align: center;
+    margin-bottom: .5rem;
+  }
   .hero-image-frame {
     max-width: 99vw;
     max-height: 45vh;
@@ -780,42 +814,24 @@ body{ padding-top: var(--nav-h); }
     gap: 11px;
     max-width: 99vw;
   }
-  .hero-ctas{ justify-content: center; }
+  .hero-title-row{ order: 0; }
+  .hero-image-block{ order: 1; }
+  .hero-subtitle{ order: 2; }
+  .hero-ctas{
+    justify-content: center;
+    order: 4;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-note{ display: none; }
 
   .hero-btn {
     border-radius: 1em;
   }
 
-  /* nur dein Primär-CTA anpassen */
-  .btn.btn-brand.btn-quiet{
-    background: transparent !important;   /* kein Fill */
-    color: #fff !important;               /* weiße Schrift auf dunklem Hero */
-    border: 1.5px solid rgba(255,255,255,.65) !important;
-    box-shadow: none !important;          /* kein Glow */
-    padding: .55rem .9rem;                /* kleiner */
-    font-size: .95rem;
-    border-radius: .55rem;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    width: auto;                          /* NICHT full-width */
-  }
-  .btn.btn-brand.btn-quiet:hover{
-    background: rgba(255,255,255,.10);
-    border-color: #fff;
-  }
-  .btn.btn-brand.btn-quiet:active{ transform: none; }
-
-  /* Falls du irgendwo mobile Full-Width gesetzt hattest, hier sicher neutralisieren */
   .hero-ctas .btn{ width: auto; }
 }
-
-/* Optional: schöner Tastaturfokus */
-.btn.btn-brand.btn-quiet:focus-visible{
-  outline: 2px solid rgba(255,255,255,.6);
-  outline-offset: 2px;
-}
-
 
 @media (max-width: 480px) {
   /* mehr Luft rund um alles, aber dynamisch */
@@ -858,7 +874,6 @@ body{ padding-top: var(--nav-h); }
     justify-content: center;
     gap: clamp(8px, 2.8svh, 14px);
   }
-  .btn.btn-brand.btn-quiet,
   .btn.btn-outline-light {
     width: 100%;
     padding-block: clamp(.8rem, 2.8svh, 1.05rem);
