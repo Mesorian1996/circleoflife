@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import logoSvg from '../../assets/images/JiuJitsuLogo.svg';
+import heroImg from '../../assets/images/JJPro_League.webp';
+---
+
+<section class="hero-modern" id="hero">
+  <div class="container hero-content">
+    <h1 class="hero-title-row">
+      <span class="hero-join">Join the</span>
+      <span class="hero-title-coin">
+        <img class="hero-logo" src={logoSvg.src} alt="Circle of Life Jiu-Jitsu Logo" title="Circle of Life Jiu-Jitsu Logo" />
+      </span>
+      <span class="hero-circle">Circle of Life</span>
+    </h1>
+    <p class="hero-subtitle hero-subtitle--desktop">
+      Kampfsportakademie für Brazilian Jiu-Jitsu &amp; No-Gi in Ludwigshafen-Ruchheim – strukturierte Kurse, klare Lernpfade, starke Community.
+      Familiäre Atmosphäre, moderne Selbstverteidigung und Kampfsporttraining für Anfänger, Kids und Wettkämpfer gleichermaßen.
+    </p>
+    <p class="hero-subtitle hero-subtitle--mobile">
+      BJJ &amp; No-Gi in Ludwigshafen: sichere Lernpfade, familiäre Atmosphäre, moderne Selbstverteidigung – für Einsteiger, Kids und Wettkämpfer.
+    </p>
+    <p class="hero-note" style="font-size:.9rem;color:rgba(255,255,255,.7);margin:0;">
+      Kursplan, Preise und Probetraining findest du weiter unten auf dieser Seite.
+    </p>
+    <div class="hero-image-block">
+      <div class="hero-image-frame">
+        <Image
+          src={heroImg}
+          alt="BJJ Training Circle of Life"
+          title="BJJ Training Circle of Life"
+          class="hero-image"
+          loading="eager"
+          fetchpriority="high"
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 991px) 95vw, (max-width: 1399px) 88vw, 82vw"
+        />
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn-brand btn-lg hero-btn hero-btn--highlight" href="#probetraining" title="Kostenloses Probetraining sichern">
+        Kostenloses Probetraining sichern
+      </a>
+    </div>
+  </div>
+</section>

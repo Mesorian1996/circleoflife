@@ -1,0 +1,63 @@
+---
+interface Props {
+  id:     string
+  frage:  string
+  antwort: string
+  open?:  boolean
+  last?:  boolean
+}
+
+const { id, frage, antwort, open = false, last = false } = Astro.props
+const bodyId = `${id}-body`
+---
+
+<h2 id={id}>
+  <button
+    type="button"
+    class:list={[
+      "flex items-center justify-between w-full px-5 py-5",
+      "font-semibold text-left gap-3",
+      "border border-border",
+      "hover:bg-surface focus:ring-2 focus:ring-accent/30 focus:outline-none",
+      "transition-colors",
+      open ? "bg-surface" : "bg-white",
+      !last ? "border-b-0" : "",
+    ]}
+    style="color: var(--color-primary)"
+    data-accordion-target={`#${bodyId}`}
+    aria-expanded={open ? "true" : "false"}
+    aria-controls={bodyId}
+  >
+    <span class="text-sm md:text-base"
+          style="color: var(--color-primary)">{frage}</span>
+
+    <svg
+      data-accordion-icon
+      class:list={[
+        "w-4 h-4 shrink-0 transition-transform duration-200 text-text-muted",
+        open ? "rotate-180" : "",
+      ]}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </button>
+</h2>
+
+<div
+  id={bodyId}
+  class:list={[open ? "" : "hidden"]}
+  aria-labelledby={id}
+>
+  <div class:list={[
+    "px-5 py-5 border border-t-0 border-border bg-white",
+    last ? "rounded-b-xl" : "",
+  ]}>
+    <p class="text-text-muted text-sm md:text-base leading-relaxed">
+      {antwort}
+    </p>
+  </div>
+</div>

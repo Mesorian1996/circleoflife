@@ -1,0 +1,89 @@
+---
+const benefits = [
+  {
+    title: 'Mehr Selbstvertrauen',
+    desc:  'Wer regelmäßig unter Druck trainiert und Fortschritte sieht, trägt dieses Gefühl in jeden Bereich des Lebens – Beruf, Beziehungen, Alltag.',
+  },
+  {
+    title: 'Bessere Gesundheit',
+    desc:  'BJJ und Grappling trainieren Ausdauer, Kraft und Beweglichkeit gleichzeitig. Dazu kommt aktiver Stressabbau – besser als jedes Fitnessstudio.',
+  },
+  {
+    title: 'Echte Community',
+    desc:  'Du trainierst mit Menschen die dich kennen, pushen und feiern. Aus Trainingspartnern werden echte Freunde – quer durch alle Altersgruppen.',
+  },
+  {
+    title: 'Besseres Körpergefühl',
+    desc:  'Koordination, Gleichgewicht und räumliches Bewusstsein verbessern sich spürbar. Du lernst, deinen Körper bewusst und effizient einzusetzen.',
+  },
+  {
+    title: 'Mentale Stärke',
+    desc:  'Grappling lehrt Geduld, Fokus und Resilienz. Du lernst, in unangenehmen Situationen ruhig zu bleiben – auf der Matte wie im echten Leben.',
+  },
+  {
+    title: 'Selbstverteidigung',
+    desc:  'Du erlangst praxisnahe Fähigkeiten für den Ernstfall – ohne Aggression, aber mit klarem Verständnis davon, wie du dich und andere schützen kannst.',
+  },
+]
+---
+
+<section class="bg-surface-dark py-16 md:py-20" data-aos="fade-up">
+  <div class="container mx-auto max-w-6xl px-4">
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
+
+      <!-- Left: Text -->
+      <div class="flex flex-col justify-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
+          Warum Kampfsport?
+        </p>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl leading-tight mb-5"
+            style="color: white">
+          Was Kampfsport wirklich mit dir macht
+        </h2>
+        <p class="text-white/80 text-base leading-relaxed mb-4">
+          BJJ und Grappling sind mehr als Sport. Du investierst in deine Gesundheit,
+          deinen Kopf und ein Netzwerk aus Menschen, die alle dasselbe Ziel verfolgen:
+          besser werden – auf der Matte und im Leben.
+        </p>
+        <p class="text-white/80 text-base leading-relaxed">
+          Egal ob du 20 oder 50 bist, Anfänger oder Wettkämpfer – die Effekte sind
+          nachweislich spürbar. Und sie beginnen nach dem ersten Training.
+        </p>
+      </div>
+
+      <!-- Right: Benefits grid (2 cols on md+) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {benefits.map((b) => (
+          <div class="flex items-start gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-4">
+            <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span>
+            <div>
+              <p class="font-semibold text-white text-sm mb-0.5">{b.title}</p>
+              <p class="text-white/65 text-sm leading-relaxed">{b.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-12 flex flex-wrap gap-3">
+      <a
+        href="/#probetraining"
+        class="px-6 py-3 rounded-lg bg-gold text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors"
+      >
+        Kostenloses Probetraining sichern
+      </a>
+      <a
+        href="https://wa.me/4917661990534"
+        target="_blank"
+        rel="noopener"
+        class="px-6 py-3 rounded-lg border-2 border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-colors"
+      >
+        WhatsApp schreiben
+      </a>
+    </div>
+
+  </div>
+</section>

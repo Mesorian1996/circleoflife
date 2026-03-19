@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactCta from '@/components/ui/ContactCta.astro';
+import KursangebotSection from '@/components/sections/KursangebotSection.astro';
+import ErwachsenenBenefitsSection from '@/components/sections/ErwachsenenBenefitsSection.astro';
+---
+
+<Base
+  title="BJJ Kursangebot & Stundenplan Mannheim/Ludwigshafen | Circle of Life Jiu-Jitsu"
+  description="Gi, No-Gi & Kindertraining – entdecke das Kursangebot von Circle of Life BJJ in Ludwigshafen/Mannheim. Strukturierter Kursplan, faire Preise & kostenloses Probetraining."
+  canonical="https://circleoflife-bjj.de/kursangebot"
+  ogImage="https://circleoflife-bjj.de/assets/social/og-kursangebot.jpeg"
+>
+
+  <section class="subpage-hero" aria-labelledby="kursangebot-hero" data-aos="fade-up">
+    <div class="container" style="padding-bottom:4rem;">
+      <span class="subpage-badge">Alle Kurse</span>
+      <h1 id="kursangebot-hero">Unser Kursangebot</h1>
+      <p class="lead" style="max-width:65ch;">
+        Strukturierte Einheiten, klare Systeme, starker Teamgeist – für Einsteiger, Fortgeschrittene und Kinder.
+        Gi &amp; No-Gi Grappling in Ludwigshafen-Ruchheim, perfekt erreichbar aus Mannheim, Bad Dürkheim und Frankenthal.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+        <a class="btn-brand btn-lg" href="/#probetraining">Kostenloses Probetraining sichern</a>
+        <a class="btn-outline-light btn-lg" href="/#kursplan">Kursplan ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <KursangebotSection />
+
+  <ErwachsenenBenefitsSection />
+
+  <section style="padding:2.5em 0;" class="section-muted">
+    <div class="container">
+      <header class="section-head" data-aos="fade-up">
+        <h2 class="section-title">Kursplan</h2>
+        <p class="section-subtitle">6x pro Woche Training für Erwachsene, 2x pro Woche für Kinder.</p>
+      </header>
+      <div class="wochen-card" data-aos="fade-up">
+        <table class="wochen-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>17:00 – 18:00</th>
+              <th>18:00 – 19:30</th>
+              <th>19:30 – 21:00</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Mo</td><td><span class="kurs-type kids">Kids</span></td><td><span class="kurs-type nogi">No-Gi</span></td><td><span class="kurs-type gi">Gi</span></td></tr>
+            <tr><td>Di</td><td></td><td></td><td></td></tr>
+            <tr><td>Mi</td><td><span class="kurs-type kids">Kids</span></td><td><span class="kurs-type gi">Gi</span></td><td><span class="kurs-type nogi">No-Gi</span></td></tr>
+            <tr><td>Do</td><td></td><td></td><td></td></tr>
+            <tr><td>Fr</td><td></td><td><span class="kurs-type nogi">No-Gi</span></td><td><span class="kurs-type gi">Gi</span></td></tr>
+            <tr><td>Sa</td><td></td><td></td><td></td></tr>
+            <tr><td>So</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <div class="kursplan-legend">
+          <span><span class="dot kids"></span> Kids</span>
+          <span><span class="dot nogi"></span> No-Gi</span>
+          <span><span class="dot gi"></span> Gi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCta
+    eyebrow="Kurs wählen & starten"
+    headline="BJJ, Grappling & Fitness – alle Kurse in Ludwigshafen"
+    subline="Gi, No-Gi, Kinder-BJJ, Conditioning und Zirkeltraining unter einem Dach. 6x pro Woche Training in Ludwigshafen-Ruchheim."
+    ctaLabel="Probetraining sichern"
+    showContact={true}
+    align="left"
+  />
+
+</Base>

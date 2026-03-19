@@ -1,0 +1,59 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const steps = [
+  {
+    number: '1',
+    title: 'Probetraining anfragen',
+    href: '#probetraining',
+    desc: 'Erster Kontakt leicht gemacht: Formular ausfüllen, per Telefon anrufen oder eine WhatsApp-Nachricht schicken. Wir melden uns innerhalb von 24 Stunden und bestätigen deinen Termin für das kostenlose Probetraining.',
+    delay: 0,
+  },
+  {
+    number: '2',
+    title: 'Probetraining absolvieren',
+    href: undefined,
+    desc: 'Komm einfach vorbei und erlebe dein erstes Training! Lerne unser Team, die Trainer und das Training im Gi und No-Gi kennen. Du bekommst einen realistischen Eindruck – kostenlos und unverbindlich.',
+    delay: 150,
+  },
+  {
+    number: '3',
+    title: 'Dranbleiben & wachsen',
+    href: undefined,
+    desc: 'Nach dem Probetraining entscheidest du, ob du Teil unserer Community wirst. Mit regelmäßigem Training entwickelst du Technik, Fitness und Selbstvertrauen.',
+    delay: 300,
+  },
+];
+---
+
+<section id="einstieg" class="cv-section" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Be a part of the Circle"
+      subtitle={`Stärker werden – technisch, mental und als Team. Das ist unser Versprechen. Viele unserer Mitglieder kommen aus <strong>Ludwigshafen</strong>, <strong>Mannheim</strong>, <strong>Bad Dürkheim</strong> oder <strong>Frankenthal</strong>. Egal woher du kommst – sichere dir dein <a href="#probetraining" class="font-bold text-accent">kostenloses Probetraining</a>.`}
+    />
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {steps.map((s) => (
+        <article
+          class="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-card) transition-all duration-200 hover:shadow-(--shadow-card-hover) hover:-translate-y-1"
+          data-aos="zoom-in"
+          data-aos-delay={s.delay}
+        >
+          <div class="mb-4 flex items-center gap-3">
+            <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-gold-2 to-accent text-sm font-extrabold text-primary shadow-sm">
+              {s.number}
+            </span>
+            <h3 class="text-base font-bold text-text">
+              {s.href
+                ? <a href={s.href} class="text-text no-underline hover:text-accent transition-colors">{s.title}</a>
+                : s.title
+              }
+            </h3>
+          </div>
+          <p class="text-sm leading-relaxed text-text-muted">{s.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

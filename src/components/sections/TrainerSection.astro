@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from '../ui/SectionHeader.astro';
+import trainerImg from '../../assets/images/Schwarzer_GI.jpeg';
+---
+
+<section id="trainer" class="cv-section bg-surface" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Dein Trainer"
+      subtitle="Erfahrung aus Wettkampf &amp; Lehre."
+    />
+
+    <div class="flex justify-center">
+      <article
+        class="w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-white shadow-(--shadow-card) transition-all duration-200 hover:shadow-(--shadow-card-hover)"
+        data-aos="zoom-in"
+      >
+        <Image
+          src={trainerImg}
+          alt="Headcoach Marvin Beck"
+          title="Headcoach Marvin Beck"
+          class="w-full"
+          style="display:block; object-fit:contain;"
+          loading="lazy"
+          widths={[360, 720]}
+          sizes="384px"
+        />
+        <div class="p-6 text-center">
+          <h3 class="text-lg font-bold text-text">Headcoach Marvin Beck</h3>
+          <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-accent">Black Belt</p>
+          <p class="mt-3 text-sm leading-relaxed text-text-muted">
+            Unser Headcoach Marvin Beck bringt jahrelange Erfahrung aus Brazilian Jiu-Jitsu,
+            No-Gi Wettkämpfen und Martial Arts mit.<br /><br />
+            „Position before Submission – hier werden ganze Systeme beigebracht.
+            Guard-Game, Guard-Passing, Top-Game und Leg-Locks"
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

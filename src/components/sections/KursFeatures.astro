@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Feature {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  features: Feature[];
+  columns?: 2 | 3 | 4;
+  delay?: number;
+}
+
+const { features, columns = 3, delay = 0 } = Astro.props;
+---
+
+<div
+  class="kurs-features-grid"
+  style={`--kf-cols:${columns};`}
+  data-aos="fade-up"
+  data-aos-delay={delay}
+>
+  {features.map((f, i) => (
+    <div class="kurs-feature-item" data-aos="fade-up" data-aos-delay={delay + i * 80}>
+      <div class="kurs-feature-item__icon" aria-hidden="true">
+        <Icon name={f.icon} class="w-5 h-5" />
+      </div>
+      <div>
+        <h4 class="kurs-feature-item__title">{f.title}</h4>
+        <p class="kurs-feature-item__desc">{f.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>

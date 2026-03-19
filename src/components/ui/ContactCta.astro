@@ -1,0 +1,134 @@
+---
+/**
+ * ContactCta
+ * @description Wiederverwendbarer CTA-Block — Eyebrow, Headline,
+ *              Subline, zwei Buttons, Kontaktlinks.
+ *
+ * @prop {string} eyebrow        - Goldener Eyebrow-Text (uppercase)
+ * @prop {string} headline       - Weiße Hauptüberschrift
+ * @prop {string} subline        - Weißer Beschreibungstext
+ * @prop {string} [ctaLabel]     - Primärer CTA-Text
+ * @prop {string} [ctaHref]      - Primärer CTA-Link
+ * @prop {string} [cta2Label]    - Sekundärer CTA-Text
+ * @prop {string} [cta2Href]     - Sekundärer CTA-Link
+ * @prop {boolean} [showContact] - Kontaktlinks anzeigen (default: true)
+ * @prop {'left'|'center'} [align] - Ausrichtung (default: 'left')
+ */
+
+import { IconPhone, IconWhatsApp, IconInstagram } from '@/icons/index';
+import SvgIcon from '@/components/ui/SvgIcon.astro';
+
+interface Props {
+  eyebrow:       string;
+  headline:      string;
+  subline:       string;
+  ctaLabel?:     string;
+  ctaHref?:      string;
+  cta2Label?:    string;
+  cta2Href?:     string;
+  showContact?:  boolean;
+  align?:        'left' | 'center';
+}
+
+const {
+  eyebrow,
+  headline,
+  subline,
+  ctaLabel    = 'Probetraining sichern',
+  ctaHref     = '/#probetraining',
+  cta2Label   = 'Route zum Gym',
+  cta2Href    = 'https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen',
+  showContact = true,
+  align       = 'left',
+} = Astro.props;
+
+const isCenter = align === 'center';
+---
+
+<div class="py-16 md:py-20 bg-surface-dark">
+  <div class:list={[
+    "container mx-auto max-w-6xl px-4",
+    isCenter ? "flex flex-col items-center text-center"
+             : "flex flex-col items-start text-left",
+  ]}>
+
+    <!-- Eyebrow -->
+    <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
+      {eyebrow}
+    </p>
+
+    <!-- Headline -->
+    <h2 class="font-heading font-bold text-3xl md:text-4xl leading-tight mb-4 max-w-2xl"
+        style="color: white">
+      {headline}
+    </h2>
+
+    <!-- Subline -->
+    <p class="text-white/90 text-base md:text-lg mb-8 max-w-xl leading-relaxed"
+       style="color: rgba(255,255,255,0.9)">
+      {subline}
+    </p>
+
+    <!-- Buttons -->
+    <div class:list={["flex flex-wrap gap-3 mb-8", isCenter && "justify-center"]}>
+      <a
+        href={ctaHref}
+        class="px-6 py-3 rounded-lg bg-gold text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors"
+      >
+        {ctaLabel}
+      </a>
+      {cta2Label && (
+        <a
+          href={cta2Href}
+          target={cta2Href?.startsWith('http') ? '_blank' : undefined}
+          rel={cta2Href?.startsWith('http') ? 'noopener' : undefined}
+          class="px-6 py-3 rounded-lg border-2 border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-colors"
+        >
+          {cta2Label}
+        </a>
+      )}
+    </div>
+
+    <!-- Kontaktlinks: flex-col auf Mobile, flex-row ab sm -->
+    {showContact && (
+      <div class:list={[
+        "flex flex-col sm:flex-row sm:flex-wrap gap-4 text-sm",
+        isCenter && "sm:justify-center",
+      ]}>
+
+        <a
+          href="tel:+4917661990534"
+          class="flex items-center gap-2.5 font-medium hover:text-accent transition-colors"
+           style="color:white"
+        >
+          <SvgIcon icon={IconPhone} class="w-6 h-6 shrink-0 text-accent" />
+          0176 61990534
+        </a>
+
+        <a
+          href="https://wa.me/4917661990534"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-2.5 font-medium hover:text-accent transition-colors"
+           style="color:white"
+        >
+          <SvgIcon icon={IconWhatsApp} class="w-6 h-6 shrink-0 text-accent" />
+          WhatsApp schreiben
+        </a>
+
+        <a
+          href="https://www.instagram.com/circle_of_life_jiujitsu"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-2.5 font-medium hover:text-accent transition-colors"
+           style="color:white"
+        >
+          <SvgIcon icon={IconInstagram} class="w-6 h-6 shrink-0 text-accent" />
+          Folge uns auf Instagram
+        </a>
+
+      </div>
+    )}
+
+  </div>
+</div>
