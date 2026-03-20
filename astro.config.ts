@@ -13,8 +13,5 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
-    resolve: {
-      alias: { '@': '/Users/mesorianlimani/Documents/MES/Projekte/circleoflife/src' },
-    },
   },
 });
