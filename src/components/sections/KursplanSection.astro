@@ -1,169 +1,166 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
-import KursBadge from '../ui/KursBadge.astro';
 import { ALL_DAYS, kurse, kursStyles, getSlots, findKurs, getActiveDays } from '../../data/kursplan';
 
 const slots      = getSlots();
 const activeDays = getActiveDays();
+
+// Fitness aus der Legende ausblenden — kein aktiver Kurs
+const legendTypes = (Object.keys(kursStyles) as (keyof typeof kursStyles)[]).filter(t => t !== 'fitness');
 ---
 
-<section id="kursplan" class="cv-section" style="padding:2.5em 0;">
-  <div class="container">
+<section id="kursplan" class="py-16 bg-white">
+  <div class="container mx-auto px-4">
     <SectionHeader
       title="Kursplan"
-      subtitle="6× pro Woche Training für Erwachsene, 2× für Kinder. Jede Einheit: Aufwärmen, Mobility, Technikdrills & Sparring."
+      subtitle="6× Erwachsenentraining pro Woche — Brazilian Jiu-Jitsu (Gi), No-Gi Grappling und Zirkeltraining — plus 2× Kids BJJ für Kinder von 6–13 Jahren. Trainingsort: Ludwigshafen am Rhein, direkt an der Grenze zu Mannheim."
     />
 
-    <!-- ── Desktop table (≥ 700 px) ── -->
-    <div class="wochen-card kursplan-desktop" data-aos="fade-up" data-aos-delay="100">
-      <table class="wochen-table">
-        <thead>
-          <tr>
-            <th>Tag</th>
-            {slots.map(s => <th>{s.label}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {ALL_DAYS.map(tag => (
-            <tr>
-              <td>{tag}</td>
-              {slots.map(slot => {
-                const k = findKurs(tag, slot.start);
-                return (
-                  <td>
-                    {k && (
-                      k.href
-                        ? <a href={k.href} class="kurs-link"><KursBadge typ={k.typ} label={k.titel} /></a>
-                        : <KursBadge typ={k.typ} label={k.titel} />
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <!-- Legend -->
-      <div class="kursplan-legend">
-        {(['gi', 'nogi', 'kids'] as const).map(typ => (
-          <span>
-            <span class="dot" style={`background:${kursStyles[typ].dot};`}></span>
-            {kursStyles[typ].label}
-          </span>
+    <!-- ── Desktop Grid (≥ lg) ── -->
+    <div class="hidden lg:block overflow-hidden rounded-2xl border border-gray-100 shadow-sm" data-aos="fade-up">
+      <div class="grid grid-cols-8 bg-gray-50 border-b border-gray-100">
+        <div class="p-4 text-xs font-bold uppercase tracking-widest text-gray-400">Zeit</div>
+        {ALL_DAYS.map(tag => (
+          <div class="p-4 text-center font-bold text-gray-900 border-l border-gray-100 uppercase tracking-wider">{tag}</div>
         ))}
-        <span>
-          <span class="dot" style="background:#0d9488;"></span>
-          Zirkel Mamas
-        </span>
-        <span>
-          <span class="dot" style="background:#5eead4;"></span>
-          Zirkel 60+
-        </span>
       </div>
 
-      <div class="kursplan-notes">
-        <p style="margin:.25rem 0;">Open Mats finden außerhalb der regulären Trainingszeiten nach Absprache oder Ankündigung statt.</p>
-        <p style="margin:.25rem 0;">Bitte ca. 15 Min. vorher da sein; Flip-Flops mitbringen. Duschen stehen zur Verfügung.</p>
+      {slots.map(slot => (
+        <div class="grid grid-cols-8 border-b border-gray-50 last:border-0">
+          <div class="p-4 text-xs font-mono font-bold text-gray-700 flex items-center justify-center bg-gray-100/60">{slot.label}</div>
+          {ALL_DAYS.map(tag => {
+            const k = findKurs(tag, slot.start);
+            const dot = k ? (kursStyles[k.typ]?.dot ?? '#bfa24a') : null;
+            return (
+              <div class="p-1.5 border-l border-gray-50 min-h-[90px] flex">
+                {k && (
+                  <div
+                    class="w-full p-2.5 rounded-lg border-l-4 shadow-sm flex flex-col justify-center transition-transform hover:scale-[1.03]"
+                    style={`border-color:${dot};background-color:${dot}15;`}
+                  >
+                    <p class="text-sm font-bold leading-tight" style={`color:${dot};`}>
+                      {k.titel.replace('Erwachsenen ', '')}
+                    </p>
+                    <span class="text-[11px] mt-1 text-gray-500 font-medium uppercase tracking-tighter italic">{k.start}</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+
+    <!-- ── Mobile Tabs (< lg) ── -->
+    <div class="lg:hidden">
+      <div class="sticky top-0 z-30 -mx-4 px-4 bg-white/95 backdrop-blur-sm border-b border-gray-100 mb-6">
+        <nav class="flex gap-2 py-4 overflow-x-auto no-scrollbar scroll-smooth" role="tablist">
+          {activeDays.map((tag) => (
+            <button
+              type="button"
+              id={`kp-tab-${tag}`}
+              data-hs-tab={`#kp-panel-${tag}`}
+              data-day={tag}
+              class="kp-tab shrink-0 px-6 py-2 rounded-full text-sm font-bold transition-all border border-gray-200 text-gray-500 bg-white"
+            >
+              {tag}
+            </button>
+          ))}
+        </nav>
+      </div>
+
+      <div class="space-y-4">
+        {activeDays.map((tag, i) => {
+          const dayCourses = kurse.filter(k => k.tag === tag);
+          return (
+            <div
+              id={`kp-panel-${tag}`}
+              role="tabpanel"
+              class:list={[i !== 0 && 'hidden', 'animate-in fade-in slide-in-from-bottom-2 duration-300']}
+            >
+              <div class="grid gap-3">
+                {dayCourses.map(k => {
+                  const dot = kursStyles[k.typ]?.dot ?? '#bfa24a';
+                  return (
+                    <div
+                      class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 shadow-sm border-l-4"
+                      style={`border-color:${dot};background-color:${dot}10;`}
+                    >
+                      <div class="flex flex-col min-w-[75px]">
+                        <span class="text-sm font-black" style={`color:${dot};`}>{k.start}</span>
+                        <span class="text-[10px] text-gray-400 font-medium uppercase">{k.end}</span>
+                      </div>
+                      <div class="flex-1">
+                        <h4 class="font-bold text-gray-900 leading-tight">{k.titel.replace('Erwachsenen ', '')}</h4>
+                        <p class="text-[11px] text-gray-500 font-semibold uppercase tracking-wide">{kursStyles[k.typ]?.label || 'Zirkeltraining'}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
 
-    <!-- ── Mobile tabs (< 700 px) — Preline hs-tab ── -->
-    <div class="kursplan-tabs" data-aos="fade-up" data-aos-delay="100">
+    <!-- ── Legende (nur Desktop, ohne Fitness) ── -->
+    <div class="hidden lg:flex mt-12 flex-wrap justify-center gap-6">
+      {legendTypes.map(typ => (
+        <div class="flex items-center gap-2 group cursor-default">
+          <span class="w-3 h-3 rounded-full shadow-sm transition-transform group-hover:scale-125" style={`background:${kursStyles[typ].dot};`}></span>
+          <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">{kursStyles[typ].label}</span>
+        </div>
+      ))}
+    </div>
 
-      <!-- Tab nav -->
-      <nav class="flex flex-wrap gap-2 mb-5" aria-label="Trainingstage" role="tablist">
-        {activeDays.map((tag, i) => (
-          <button
-            type="button"
-            id={`kp-tab-${tag}`}
-            data-hs-tab={`#kp-panel-${tag}`}
-            aria-controls={`kp-panel-${tag}`}
-            data-day={tag}
-            role="tab"
-            class:list={[
-              'kp-tab',
-              'hs-tab-active:bg-accent hs-tab-active:border-accent hs-tab-active:text-primary',
-              'rounded-full border border-border bg-white px-4 py-1.5 text-sm font-semibold text-text-muted',
-              'transition-all duration-150 hover:border-accent hover:text-accent outline-none',
-              'focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1',
-              { active: i === 0 },
-            ]}
-            aria-selected={i === 0 ? 'true' : 'false'}
-          >
-            {tag}
-          </button>
-        ))}
-      </nav>
-
-      <!-- Tab panels -->
-      {activeDays.map((tag, i) => {
-        const dayCourses = kurse.filter(k => k.tag === tag);
-        return (
-          <div
-            id={`kp-panel-${tag}`}
-            role="tabpanel"
-            aria-labelledby={`kp-tab-${tag}`}
-            class:list={[i !== 0 && 'hidden']}
-          >
-            <div class="flex flex-col gap-3">
-              {dayCourses.map(k => (
-                <div class="flex items-center justify-between gap-4 rounded-xl border border-border bg-white px-4 py-3 shadow-(--shadow-card)">
-                  <span class="text-sm font-semibold text-text-muted">{k.start} – {k.end}</span>
-                  {k.href
-                    ? <a href={k.href} class="kurs-link"><KursBadge typ={k.typ} label={k.titel} /></a>
-                    : <KursBadge typ={k.typ} label={k.titel} />
-                  }
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-
-      <!-- Notes -->
-      <p class="mt-4 text-sm text-text-faint">Bitte ca. 15 Min. vorher da sein; Flip-Flops mitbringen.</p>
+    <div class="mt-10 max-w-2xl mx-auto">
+      <p class="text-xs text-center text-gray-400 leading-relaxed italic">
+        * Bitte ca. 15 Min. vor Trainingsbeginn erscheinen. Flip-Flops für den Gang von der Umkleide zur Matte sind Pflicht. Duschen stehen zur Verfügung.
+      </p>
     </div>
   </div>
 </section>
 
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .kp-tab.active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-accent) 25%, transparent);
+  }
+</style>
+
 <script is:inline>
 (function () {
-  var tabs   = document.querySelectorAll('[data-hs-tab]');
+  var tabs   = document.querySelectorAll('.kp-tab');
   var panels = document.querySelectorAll('[role="tabpanel"]');
   if (!tabs.length) return;
 
-  function activate(selectedTab) {
-    var targetId = selectedTab.getAttribute('data-hs-tab').replace('#', '');
+  function activate(tab) {
+    var targetId = tab.getAttribute('data-hs-tab').replace('#', '');
     tabs.forEach(function (t) {
-      var active = t === selectedTab;
-      t.classList.toggle('active', active);
-      t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.classList.toggle('active', t === tab);
+      t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
     });
     panels.forEach(function (p) {
-      var active = p.id === targetId;
-      p.classList.toggle('hidden', !active);
+      p.classList.toggle('hidden', p.id !== targetId);
     });
   }
 
-  tabs.forEach(function (btn) {
-    btn.addEventListener('click', function () { activate(btn); });
-  });
+  tabs.forEach(function (btn) { btn.addEventListener('click', function () { activate(btn); }); });
 
-  // Highlight current weekday tab
-  var dayMap = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-  var today  = dayMap[new Date().getDay()];
+  var dayMap   = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+  var today    = dayMap[new Date().getDay()];
   var todayTab = document.querySelector('.kp-tab[data-day="' + today + '"]');
   if (todayTab) {
-    // Add today marker dot
-    if (!todayTab.querySelector('.today-dot')) {
-      var dot = document.createElement('span');
-      dot.className = 'today-dot';
-      dot.style.cssText = 'display:inline-block;width:6px;height:6px;background:currentColor;border-radius:50%;margin-left:5px;vertical-align:middle;opacity:0.7;';
-      todayTab.appendChild(dot);
-    }
-    // Auto-activate today's tab if it exists and no user interaction yet
     activate(todayTab);
+    todayTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  } else if (tabs.length) {
+    activate(tabs[0]);
   }
 })();
 </script>

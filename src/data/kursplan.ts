@@ -18,7 +18,7 @@ export const kursStyles: Record<
   gi:      { cssClass: 'gi',      dot: '#bfa24a', label: 'Erwachsenen BJJ' },
   nogi:    { cssClass: 'nogi',    dot: '#5d626c', label: 'Erwachsenen No-Gi' },
   kids:    { cssClass: 'kids',    dot: '#5269b6', label: 'Kids BJJ' },
-  fitness: { cssClass: 'fitness', dot: '#3d9970', label: 'Fitness' },
+  fitness: { cssClass: 'fitness', dot: '#3d9970', label: 'Fitness' }, // kept for type safety
   zirkel:  { cssClass: 'zirkel', dot: '#0d9488', label: 'Zirkel' },
 };
 
