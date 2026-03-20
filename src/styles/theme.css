@@ -733,6 +733,14 @@ h2.section-title {
   .cta-banner__actions { width: 100%; }
 }
 
+/* ── Swiper Pagination Branding ── */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-accent) !important;
+}
+.swiper-pagination-bullet {
+  background-color: var(--color-border) !important;
+}
+
 /* ── Legal pages ── */
 .legal-page { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
 .legal-page h1 { margin-bottom: 1.5rem; }

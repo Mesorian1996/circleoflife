@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Image } from 'astro:assets';
+import logo from '@/assets/images/JiuJitsuLogo.svg';
+import SvgIcon from '@/components/ui/SvgIcon.astro';
+import { IconInstagram } from '@/icons/index';
 import ContactCta from '@/components/ui/ContactCta.astro';
 import FaqSection from '@/components/sections/FaqSection.astro';
 import floImg from '../assets/images/Flo_Marvin.jpeg';
@@ -186,19 +189,29 @@ import halleImg from '../assets/images/col_halle.jpeg';
             Stories, Open Mat Ankündigungen, Seminar-News und Eindrücke direkt von der Matte.
             So verpasst du keinen Trainingsslot und bleibst über Events rund um Brazilian Jiu-Jitsu informiert.
           </p>
-          <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;">
             <li><span style="color:var(--accent);">✓</span> Short Clips zu Gi &amp; No-Gi Techniken</li>
             <li><span style="color:var(--accent);">✓</span> Updates zu Seminaren, Wettkämpfen &amp; Workshops</li>
             <li><span style="color:var(--accent);">✓</span> Community-Einblicke und Member-Stories</li>
           </ul>
-          <a class="btn-brand btn-lg" href="https://www.instagram.com/circle_of_life_jiujitsu" target="_blank" rel="noopener" title="Instagram öffnen">
-            @circle_of_life_jiujitsu folgen
-          </a>
         </div>
         <div style="background:var(--color-surface);border-radius:1.2rem;padding:1.5rem;text-align:center;">
-          <p style="font-size:3rem;margin-bottom:.5rem;">📸</p>
-          <p style="font-weight:600;margin-bottom:.25rem;">@circle_of_life_jiujitsu</p>
-          <p style="font-size:.875rem;color:var(--color-text-muted);">Folge uns auf Instagram für aktuelle Einblicke aus dem Training.</p>
+          <a
+            href="https://www.instagram.com/circle_of_life_jiujitsu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex flex-col items-center gap-3 hover:opacity-80 transition-opacity"
+            aria-label="Circle of Life BJJ auf Instagram folgen"
+          >
+            <div class="w-16 h-16 rounded-2xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow">
+              <img src={logo.src} alt="Circle of Life BJJ Logo" class="w-full h-full object-contain" />
+            </div>
+            <span class="text-sm font-semibold" style="color:var(--color-text-muted);">@circle_of_life_jiujitsu</span>
+            <span class="flex items-center gap-1.5 text-xs" style="color:var(--color-text-faint);">
+              <SvgIcon icon={IconInstagram} class="w-3.5 h-3.5" />
+              Auf Instagram ansehen
+            </span>
+          </a>
         </div>
       </div>
     </div>
