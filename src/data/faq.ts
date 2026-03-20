@@ -42,7 +42,7 @@ export const faqByPage: Record<string, FaqItem[]> = {
 
   kinder: [
     { id: 'kids-1', frage: 'Ab welchem Alter kann mein Kind anfangen?',
-      antwort: 'Unser Kinder-BJJ ist für Kinder von 6 bis 13 Jahren. In dieser Zeit lernen Kinder am besten über Bewegung und Spiel — genau so ist unser Training aufgebaut.', open: true },
+      antwort: 'Unser Kinder-BJJ ist für Kinder von 6 bis 13 Jahren. In dieser Zeit lernen Kinder am besten über Bewegung und Spiel — genau so ist unser Training aufgebaut.' },
     { id: 'kids-2', frage: 'Ist BJJ für Kinder gefährlich?',
       antwort: 'Nein. BJJ ist ein Kontaktsport ohne Schläge. Der Fokus liegt auf Technik, Kontrolle und gegenseitigem Respekt. Verletzungen sind beim strukturierten Kinder-Training sehr selten.' },
     { id: 'kids-3', frage: 'Hilft BJJ wirklich gegen Mobbing?',
@@ -57,7 +57,7 @@ export const faqByPage: Record<string, FaqItem[]> = {
 
   zirkeltraining: [
     { id: 'zirkel-1', frage: 'Was ist Zirkeltraining genau?',
-      antwort: 'Beim Zirkeltraining wechselst du in festgelegten Intervallen zwischen verschiedenen Übungsstationen. Das trainiert Kraft, Ausdauer und Koordination gleichzeitig — effektiv und abwechslungsreich.', open: true },
+      antwort: 'Beim Zirkeltraining wechselst du in festgelegten Intervallen zwischen verschiedenen Übungsstationen. Das trainiert Kraft, Ausdauer und Koordination gleichzeitig — effektiv und abwechslungsreich.' },
     { id: 'zirkel-2', frage: 'Brauche ich Sporterfahrung für das Zirkeltraining?',
       antwort: 'Nein. Beide Kurse (Mamas und 60+) sind explizit für jedes Fitnesslevel ausgelegt. Jede Übung kann angepasst werden.' },
     { id: 'zirkel-3', frage: 'Kann ich mein Baby beim Mamas-Training mitbringen?',
@@ -70,7 +70,7 @@ export const faqByPage: Record<string, FaqItem[]> = {
 
   'ueber-uns': [
     { id: 'about-1', frage: 'Wer trainiert bei Circle of Life BJJ?',
-      antwort: 'Wir haben über 60 aktive Mitglieder — Einsteiger, Fortgeschrittene, Wettkämpfer, Kinder und Erwachsene jeden Alters. Viele kommen aus Ludwigshafen, Mannheim, Frankenthal und der ganzen Pfalz.', open: true },
+      antwort: 'Wir haben über 60 aktive Mitglieder — Einsteiger, Fortgeschrittene, Wettkämpfer, Kinder und Erwachsene jeden Alters. Viele kommen aus Ludwigshafen, Mannheim, Frankenthal und der ganzen Pfalz.' },
     { id: 'about-2', frage: 'Was macht euer Gym besonders?',
       antwort: 'Familiäre Atmosphäre, strukturierter Lernpfad und ein erfahrener Headcoach der "Position before Submission" lehrt. Kein Ego-Training — jeder wird respektvoll behandelt.' },
     { id: 'about-3', frage: 'Gibt es Wettkampfmöglichkeiten?',
@@ -85,7 +85,6 @@ export const faqs: FaqItem[] = [
     id:      'faq-1',
     frage:   'Brauche ich Vorerfahrung im Kampfsport?',
     antwort: 'Nein, Einsteiger sind ausdrücklich willkommen. Wir starten mit Fundamentals und führen dich Schritt für Schritt ins Training ein.',
-    open:    true,
   },
   {
     id:      'faq-2',

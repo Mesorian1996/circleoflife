@@ -175,7 +175,21 @@ const kursActive =
              bg-surface-dark border-b border-white/10 shadow-lg"
       style="top: 64px"
     >
-      <ul class="flex flex-col gap-0.5 px-4 py-4 max-h-[80vh] overflow-y-auto">
+      <!-- Mobile menu logo -->
+      <div class="flex items-center gap-3 px-3 py-3 border-b border-white/10 mb-2">
+        <img
+          src={logo.src}
+          alt="Circle of Life BJJ"
+          class="h-9 w-auto object-contain"
+        />
+        <span class="font-heading font-semibold text-white text-sm">Circle of Life</span>
+      </div>
+
+      <ul class="flex flex-col gap-0.5 px-4 pb-4 max-h-[80vh] overflow-y-auto">
+
+        <li>
+          <a href="/" class="mobile-link">Startseite</a>
+        </li>
 
         <li>
           <a href="/ueber-uns" class="mobile-link">Über uns</a>

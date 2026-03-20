@@ -15,9 +15,9 @@ export const kursStyles: Record<
   KursTyp,
   { cssClass: string; dot: string; label: string }
 > = {
-  gi:      { cssClass: 'gi',      dot: '#bfa24a', label: 'Gi' },
-  nogi:    { cssClass: 'nogi',    dot: '#5d626c', label: 'No-Gi' },
-  kids:    { cssClass: 'kids',    dot: '#5269b6', label: 'Kids' },
+  gi:      { cssClass: 'gi',      dot: '#bfa24a', label: 'Erwachsenen BJJ' },
+  nogi:    { cssClass: 'nogi',    dot: '#5d626c', label: 'Erwachsenen No-Gi' },
+  kids:    { cssClass: 'kids',    dot: '#5269b6', label: 'Kids BJJ' },
   fitness: { cssClass: 'fitness', dot: '#3d9970', label: 'Fitness' },
   zirkel:  { cssClass: 'zirkel', dot: '#0d9488', label: 'Zirkel' },
 };
@@ -29,16 +29,16 @@ export const kurse: Kurs[] = [
   { id: 'di-zirkel-mamas', typ: 'zirkel', tag: 'Di', start: '10:00', end: '11:00', titel: 'Zirkel Mamas', href: '/zirkeltraining' },
   { id: 'di-zirkel-60',    typ: 'zirkel', tag: 'Di', start: '11:15', end: '12:15', titel: 'Zirkel 60+',   href: '/zirkeltraining' },
   // Montag
-  { id: 'mo-kids', typ: 'kids', tag: 'Mo', start: '17:00', end: '18:00', titel: 'Kids',   href: '/kinder'    },
-  { id: 'mo-nogi', typ: 'nogi', tag: 'Mo', start: '18:00', end: '19:30', titel: 'No-Gi', href: '/grappling'  },
-  { id: 'mo-gi',   typ: 'gi',   tag: 'Mo', start: '19:30', end: '21:00', titel: 'Gi',    href: '/bjj'        },
+  { id: 'mo-kids', typ: 'kids', tag: 'Mo', start: '17:00', end: '18:00', titel: 'Kids BJJ',   href: '/kinder'    },
+  { id: 'mo-nogi', typ: 'nogi', tag: 'Mo', start: '18:00', end: '19:30', titel: 'Erwachsenen No-Gi', href: '/grappling'  },
+  { id: 'mo-gi',   typ: 'gi',   tag: 'Mo', start: '19:30', end: '21:00', titel: 'Erwachsenen BJJ',    href: '/bjj'        },
   // Mittwoch
-  { id: 'mi-kids', typ: 'kids', tag: 'Mi', start: '17:00', end: '18:00', titel: 'Kids',   href: '/kinder'    },
-  { id: 'mi-gi',   typ: 'gi',   tag: 'Mi', start: '18:00', end: '19:30', titel: 'Gi',    href: '/bjj'        },
-  { id: 'mi-nogi', typ: 'nogi', tag: 'Mi', start: '19:30', end: '21:00', titel: 'No-Gi', href: '/grappling'  },
+  { id: 'mi-kids', typ: 'kids', tag: 'Mi', start: '17:00', end: '18:00', titel: 'Kids BJJ',   href: '/kinder'    },
+  { id: 'mi-gi',   typ: 'gi',   tag: 'Mi', start: '18:00', end: '19:30', titel: 'Erwachsenen BJJ',    href: '/bjj'        },
+  { id: 'mi-nogi', typ: 'nogi', tag: 'Mi', start: '19:30', end: '21:00', titel: 'Erwachsenen No-Gi', href: '/grappling'  },
   // Freitag
-  { id: 'fr-nogi', typ: 'nogi', tag: 'Fr', start: '18:00', end: '19:30', titel: 'No-Gi', href: '/grappling'  },
-  { id: 'fr-gi',   typ: 'gi',   tag: 'Fr', start: '19:30', end: '21:00', titel: 'Gi',    href: '/bjj'        },
+  { id: 'fr-nogi', typ: 'nogi', tag: 'Fr', start: '18:00', end: '19:30', titel: 'Erwachsenen No-Gi', href: '/grappling'  },
+  { id: 'fr-gi',   typ: 'gi',   tag: 'Fr', start: '19:30', end: '21:00', titel: 'Erwachsenen BJJ',    href: '/bjj'        },
 ];
 
 /** Unique time slots sorted by start time */
