@@ -1,5 +1,5 @@
 ---
-const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? 'https://circleoflife-backend.onrender.com/api/contact';
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
 const kursOptions = [
   'BJJ (Gi) – Erwachsene',
@@ -17,13 +17,16 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
   id="probetraining-form"
   class="space-y-5"
   novalidate
-  data-endpoint={endpoint}
   aria-label="Probetraining anfragen"
 >
-  <!-- Honeypot -->
-  <div class="hidden" aria-hidden="true">
-    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-  </div>
+  <!-- Web3Forms Hidden Fields -->
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input type="hidden" name="subject" value="Neue Probetraining-Anfrage – Circle of Life BJJ" />
+  <input type="hidden" name="from_name" value="Circle of Life BJJ Website" />
+  <input type="hidden" name="redirect" value="false" />
+
+  <!-- Honeypot Spam-Schutz -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
   <!-- Anrede -->
   <div>
@@ -116,7 +119,6 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 (function () {
   var form       = document.getElementById('probetraining-form');
   if (!form) return;
-  var endpoint   = form.dataset.endpoint;
   var submitBtn  = document.getElementById('form-submit');
   var btnLabel   = document.getElementById('btn-label');
   var btnLoading = document.getElementById('btn-loading');
@@ -134,20 +136,16 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
     errorDiv.classList.add('hidden');
     successDiv.classList.add('hidden');
 
-    var honeypot = form.querySelector('#website');
-    if (honeypot && honeypot.value) return;
+    var vorname = form.querySelector('#vorname').value.trim();
+    var nachname = form.querySelector('#nachname').value.trim();
+    var email = form.querySelector('#email').value.trim();
 
-    var data = {};
-    new FormData(form).forEach(function (val, key) {
-      if (key !== 'website') data[key] = val;
-    });
-
-    if (!data.vorname && !data.nachname) {
+    if (!vorname && !nachname) {
       errorDiv.textContent = 'Bitte gib deinen Namen an.';
       errorDiv.classList.remove('hidden');
       return;
     }
-    if (!data.email) {
+    if (!email) {
       errorDiv.textContent = 'Bitte gib deine E-Mail-Adresse an.';
       errorDiv.classList.remove('hidden');
       return;
@@ -155,13 +153,12 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 
     setLoading(true);
     try {
-      var res  = await fetch(endpoint, {
+      var res  = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: new FormData(form),
       });
       var json = await res.json();
-      if (json.ok) {
+      if (json.success) {
         successDiv.classList.remove('hidden');
         form.reset();
       } else {
