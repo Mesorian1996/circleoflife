@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import ContactCta from '@/components/ui/ContactCta.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+import floImg from '../assets/images/Flo_Marvin.jpeg';
+import giImg from '../assets/images/kurse/Gi_BJJ_1.jpeg';
+import nogiTrainImg from '../assets/images/kurse/nogi_grappling_3.jpeg';
+import sparringGiImg from '../assets/images/kurse/sparring_gi.webp';
+import sparringNogiImg from '../assets/images/kurse/sparring_nogi.webp';
+import kinderImg from '../assets/images/kinder_training.jpeg';
+import technikImg from '../assets/images/kurse/technik_training.webp';
+import halleImg from '../assets/images/col_halle.jpeg';
+---
+
+<Base
+  title="Über uns – Circle of Life BJJ Kampfsportschule Ludwigshafen"
+  description="Lerne Circle of Life BJJ kennen – unsere Kampfsportschule für Brazilian Jiu-Jitsu & No-Gi Grappling in Ludwigshafen-Ruchheim. Werte, Team & Philosophie."
+  canonical="https://circleoflife-bjj.de/ueber-uns"
+  ogImage="https://circleoflife-bjj.de/assets/social/og-ueber-uns.jpeg"
+>
+
+  <!-- ABOUT HERO -->
+  <section style="padding:3rem 0 2rem;" data-aos="fade-up">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;align-items:center;">
+        <div>
+          <Image src={nogiTrainImg} loading="eager" fetchpriority="high" decoding="async" alt="No-Gi Grappling Training Circle of Life" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;border-radius:1.5rem;display:block;height:auto;" />
+        </div>
+        <div>
+          <p style="text-transform:uppercase;font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:.1em;margin-bottom:.5rem;">Über uns</p>
+          <h1 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Über <span style="color:var(--accent);">Circle of Life</span></h1>
+          <p style="font-size:1.1rem;margin-bottom:1rem;">
+            Wir sind die <strong>Brazilian Jiu-Jitsu Kampfsportschule</strong> für Ludwigshafen, Mannheim und den Rhein-Neckar-Raum.
+            Bei uns lernst du <strong>No-Gi Grappling</strong>, funktionale Selbstverteidigung und moderne <strong>Martial Arts</strong>.
+          </p>
+          <p style="color:var(--color-text-muted);margin-bottom:1rem;">
+            Unser Ansatz verbindet strukturierte Lernpfade, respektvolle Mattenkultur und klare Werte:
+            Bei uns sind alle willkommen, unabhängig von Alter, Geschlecht oder Fitnesslevel.
+          </p>
+          <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="display:flex;align-items:flex-start;gap:.5rem;">
+              <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+              Martial-Arts-Training mit klaren Fortschritten für Gi &amp; No-Gi Grappling.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:.5rem;">
+              <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+              Hygienische Mattenflächen, respektvolle Regeln und eine achtsame Teamkultur.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:.5rem;">
+              <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+              Selbstverteidigungs-Drills, die Körpergefühl und Selbstvertrauen stärken.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:.5rem;">
+              <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+              Community &amp; Motivation: wir begleiten Anfänger und Wettkämpfer gleichermaßen.
+            </li>
+          </ul>
+          <a class="btn-brand btn-lg" href="/#probetraining">Kostenloses Probetraining sichern</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALERIE -->
+  <section id="galerie" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div style="margin-bottom:1.5rem;">
+        <p style="text-transform:uppercase;font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:.1em;">Impressionen</p>
+        <h2 style="font-size:1.5rem;font-weight:700;">Einblicke in unsere BJJ &amp; No-Gi Sessions</h2>
+        <p>So sieht Training bei Circle of Life aus: strukturierte Technikblöcke, kontrolliertes Sparring und eine Community, die gemeinsam wächst.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;">
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={giImg} alt="Brazilian Jiu-Jitsu Training im Gi" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Gi Training – strukturiertes Techniktraining</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={nogiTrainImg} alt="No-Gi Grappling im Circle of Life Gym" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">No-Gi – Wrestling Entries und moderne Submissions</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={floImg} alt="Coach Flo und Marvin im Training" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Coaching – persönliche Betreuung</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={sparringGiImg} alt="Gi Sparring in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Gi Sparring – levelgerechtes Rollen</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={sparringNogiImg} alt="No-Gi Sparring" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">No-Gi Sparring – Technik und Kontrolle</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={kinderImg} alt="Kinder BJJ in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Kids &amp; Teens – Selbstvertrauen und Spaß</figcaption>
+        </figure>
+        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
+          <Image src={technikImg} alt="Techniktraining Circle of Life" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
+          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Techniktraining – moderne Grundlagen</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM CIRCLE OF LIFE -->
+  <section id="bjj-selbstvertrauen" style="padding:2.5em 0;" class="section-muted" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Warum Circle of Life?</p>
+          <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Kampfsportschule für Brazilian Jiu-Jitsu &amp; No-Gi</h2>
+          <p>Wir verbinden strukturierte Brazilian-Jiu-Jitsu-Klassen, modernes No-Gi Grappling und praxisnahe Selbstverteidigung für die gesamte Rhein-Neckar-Region.</p>
+          <ul class="seo-bullets">
+            <li>Gi &amp; No-Gi Klassen von Grundlagentraining bis Competition-Level</li>
+            <li>Selbstverteidigungs-Drills für Distanzkontrolle, Clinch und Bodenkampf</li>
+            <li>Mindset &amp; Mobility – Stress abbauen, Resilienz aufbauen, verletzungsfrei trainieren</li>
+            <li>Community Fokus: respektvolle Mattenregeln und individuelle Betreuung</li>
+          </ul>
+          <p style="font-size:.875rem;color:var(--color-text-muted);">Circle of Life ist die Anlaufstelle für strukturiertes Martial-Arts-Training in Ludwigshafen, Mannheim und der Pfalz.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="background:#fff;border-radius:1.2rem;padding:1.5rem;box-shadow:var(--shadow);">
+            <h3 style="font-size:1.1rem;margin-bottom:.75rem;">Regional verwurzelt</h3>
+            <p style="font-size:.9rem;color:var(--color-text-muted);margin-bottom:.75rem;">Viele Mitglieder kommen aus Ludwigshafen, Mannheim, Bad Dürkheim, Frankenthal oder Speyer. Die Wege sind kurz und das Netzwerk wächst.</p>
+            <h3 style="font-size:1.1rem;margin-bottom:.5rem;">Programme im Überblick</h3>
+            <ul style="list-style:none;padding:0;margin:0;font-size:.9rem;color:var(--color-text-muted);display:flex;flex-direction:column;gap:.3rem;">
+              <li>• Grundlagen- und Fortgeschrittenen-Training für Gi &amp; No-Gi</li>
+              <li>• Kampfsport und Selbstverteidigung für Kinder und Jugendliche</li>
+              <li>• Wettkampfvorbereitung &amp; Open Mat</li>
+              <li>• Mobility &amp; Conditioning Sessions</li>
+            </ul>
+          </div>
+          <div class="bg-brand-dark" style="border-radius:1.2rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;">
+            <div>
+              <p style="text-transform:uppercase;font-size:.75rem;font-weight:600;color:var(--gold);margin-bottom:.25rem;">Unsere Kennzahlen</p>
+              <ul style="list-style:none;padding:0;margin:0;font-size:.875rem;color:rgba(255,255,255,.8);display:flex;flex-direction:column;gap:.3rem;">
+                <li>• 6x pro Woche BJJ &amp; Grappling</li>
+                <li>• Kinder- &amp; Erwachsenenkurse im selben Haus</li>
+                <li>• Frauenfreundliches Training &amp; klare Mattenregeln</li>
+                <li>• Community aus Ludwigshafen, Mannheim &amp; der Pfalz</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.5rem;">
+              <a class="btn-brand" href="/#probetraining">Probetraining reservieren</a>
+              <a class="btn-outline-light" href="https://wa.me/4917661990534" target="_blank" rel="noopener">WhatsApp Kontakt</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOJO & HYGIENE -->
+  <section id="dojo" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Dojo &amp; Hygienestandard</p>
+          <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Räumlichkeiten und Hygiene</h3>
+          <p>Unser Brazilian-Jiu-Jitsu Dojo wird nach jeder Einheit gelüftet und gereinigt. Flip-Flops in der Mattenzone, kurze Nägel und frische Kleidung sind Pflicht.</p>
+          <ul class="seo-bullets">
+            <li>Mattenpflege &amp; Lüftung nach jeder Einheit</li>
+            <li>Flip-Flops außerhalb der Mattenzone, sauberes Equipment</li>
+            <li>Frische Kleidung, kurze Nägel, Cuts abkleben</li>
+            <li>Kein Training bei Fieber, Erkältung oder Hautirritationen</li>
+          </ul>
+          <p style="font-size:.875rem;color:var(--color-text-muted);"><strong>Hinweis:</strong> Bitte melde dich bei Unwohlsein ab. Sicherheit &amp; Gesundheit gehen vor.</p>
+        </div>
+        <div class="seo-split__media">
+          <Image src={halleImg} loading="lazy" decoding="async" alt="Trainingsraum Circle of Life" title="Trainingsraum Circle of Life" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;border-radius:1.5rem;object-fit:cover;max-height:480px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram" style="padding:2.5em 0;" class="section-muted">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;align-items:center;">
+        <div>
+          <p style="text-transform:uppercase;font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:.1em;margin-bottom:.5rem;">Instagram</p>
+          <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Folge @circle_of_life_jiujitsu</h3>
+          <p style="color:var(--color-text-muted);margin-bottom:1rem;">
+            Stories, Open Mat Ankündigungen, Seminar-News und Eindrücke direkt von der Matte.
+            So verpasst du keinen Trainingsslot und bleibst über Events rund um Brazilian Jiu-Jitsu informiert.
+          </p>
+          <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;">
+            <li><span style="color:var(--accent);">✓</span> Short Clips zu Gi &amp; No-Gi Techniken</li>
+            <li><span style="color:var(--accent);">✓</span> Updates zu Seminaren, Wettkämpfen &amp; Workshops</li>
+            <li><span style="color:var(--accent);">✓</span> Community-Einblicke und Member-Stories</li>
+          </ul>
+          <a class="btn-brand btn-lg" href="https://www.instagram.com/circle_of_life_jiujitsu" target="_blank" rel="noopener" title="Instagram öffnen">
+            @circle_of_life_jiujitsu folgen
+          </a>
+        </div>
+        <div style="background:var(--color-surface);border-radius:1.2rem;padding:1.5rem;text-align:center;">
+          <p style="font-size:3rem;margin-bottom:.5rem;">📸</p>
+          <p style="font-weight:600;margin-bottom:.25rem;">@circle_of_life_jiujitsu</p>
+          <p style="font-size:.875rem;color:var(--color-text-muted);">Folge uns auf Instagram für aktuelle Einblicke aus dem Training.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection page="ueber-uns" />
+
+  <ContactCta
+    eyebrow="Teil der Community werden"
+    headline="Dein BJJ-Gym in Ludwigshafen – familiär, strukturiert, offen für alle"
+    subline="Über 60 aktive Mitglieder aus Ludwigshafen, Mannheim, Frankenthal und der Pfalz. Komm vorbei und erlebe es selbst – kostenlos und unverbindlich."
+    ctaLabel="Probetraining sichern"
+    showContact={true}
+    align="left"
+  />
+
+</Base>

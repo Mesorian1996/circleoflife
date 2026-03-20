@@ -1,0 +1,47 @@
+---
+import StatCard from '../ui/StatCard.astro';
+import SvgIcon from '../ui/SvgIcon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { IconUsers, IconCalendar, IconClock, IconFlame } from '@/icons/index';
+---
+
+<section class="cv-section section-muted" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Circle of Life in Zahlen"
+      subtitle="Eine aktive Community, regelmäßiges Training und klare Werte – das macht uns aus."
+    />
+
+    <div class="bento-grid" data-aos="fade-up" data-aos-delay="50">
+      <StatCard value="60+" label="aktive Mitglieder"          icon={IconUsers}    delay={0} />
+      <StatCard value="6×"  label="Training pro Woche"         icon={IconCalendar} delay={100} />
+      <StatCard value="3"   label="Trainingstage Mo / Mi / Fr" icon={IconClock}    delay={200} />
+      <StatCard value="∞"   label="Sparring-Runden"            icon={IconFlame}    delay={300} />
+
+      <!-- Feature highlight -->
+      <div class="bento-feature" data-aos="fade-up" data-aos-delay="150">
+        <div class="bento-feature__icon" aria-hidden="true">
+          <SvgIcon icon={IconFlame} class="w-6 h-6" />
+        </div>
+        <h3>Gi &amp; No-Gi</h3>
+        <p>Beide Disziplinen in einem Verein. Egal ob du mit oder ohne Gi trainieren willst – bei uns bist du richtig.</p>
+      </div>
+
+      <!-- Location -->
+      <div class="bento-location" data-aos="fade-up" data-aos-delay="250">
+        <div class="bento-location__label">Standort</div>
+        <div class="bento-location__address">
+          Am Herrschaftsweiher 17<br />67071 Ludwigshafen am Rhein
+        </div>
+        <a
+          href="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bento-location__link"
+        >
+          Route planen →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

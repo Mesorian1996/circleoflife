@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import SvgIcon from '../ui/SvgIcon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { IconCheck } from '@/icons/index';
+import { zirkelkurse } from '@/data/zirkeltraining';
+import zirkelBild   from '@/assets/images/kurse/Zirkeltraining.jpg';
+import zirkel60Bild from '@/assets/images/kurse/Zirkeltraining-60.jpg';
+
+const mamaKurs = zirkelkurse[0];
+const kurs60   = zirkelkurse[1];
+
+const bilder = [zirkelBild, zirkel60Bild] as const;
+---
+
+<section id="kurse" class="cv-section" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Kurse & Zeiten"
+      subtitle="Beide Kurse finden jeden Dienstag statt – direkt nacheinander, damit du flexibel planen kannst."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {[mamaKurs, kurs60].map((kurs, i) => (
+        <article
+          class="flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-(--shadow-card) transition-all duration-300 hover:shadow-(--shadow-card-hover) hover:-translate-y-1"
+          data-aos="fade-up"
+          data-aos-delay={i * 150}
+        >
+          <!-- Bild: 2:1 Ratio → ~180px hoch auf Mobile -->
+          <div class="w-full shrink-0 overflow-hidden">
+            <Image
+              src={bilder[i]}
+              alt={kurs.titel}
+              class="w-full"
+              style="display:block;height:auto"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Body -->
+          <div class="flex flex-1 flex-col p-5">
+            <p class="eyebrow mb-2 text-xs">
+              Dienstag {kurs.von} – {kurs.bis} Uhr
+            </p>
+            <h3 class="font-bold text-lg mb-1" style="color:var(--color-primary)">
+              {kurs.titel}
+            </h3>
+            <p class="text-xs text-text-faint mb-3">{kurs.zielgruppe}</p>
+
+            <!-- Mobile: einklappbar -->
+            <details class="md:hidden group mb-4">
+              <summary class="list-none cursor-pointer text-xs font-semibold text-accent flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90"
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                Details anzeigen
+              </summary>
+              <div class="mt-3">
+                <p class="text-sm leading-relaxed text-text-muted mb-4">{kurs.beschreibung}</p>
+                <ul class="space-y-1.5 text-sm text-text-muted mb-2">
+                  {kurs.features.map(f => (
+                    <li class="flex items-center gap-2">
+                      <SvgIcon icon={IconCheck} class="w-3.5 h-3.5 text-accent shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+
+            <!-- Desktop: immer sichtbar -->
+            <div class="hidden md:block mb-4">
+              <p class="text-sm leading-relaxed text-text-muted mb-4">{kurs.beschreibung}</p>
+              <ul class="space-y-1.5 text-sm text-text-muted mb-2">
+                {kurs.features.map(f => (
+                  <li class="flex items-center gap-2">
+                    <SvgIcon icon={IconCheck} class="w-3.5 h-3.5 text-accent shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Preis -->
+            <div class="rounded-lg bg-surface px-4 py-2.5 mb-4">
+              <span class="text-xs font-semibold uppercase tracking-widest text-text-faint">
+                Preis
+              </span>
+              <p class="mt-0.5 text-xl font-extrabold text-primary">
+                {kurs.preisHinweis}
+              </p>
+            </div>
+
+            <!-- CTA -->
+            <a
+              href="/#probetraining"
+              class="block w-full py-2 px-4 rounded-lg text-center text-sm font-bold bg-accent text-primary hover:bg-accent-muted transition-colors mt-auto"
+            >
+              Jetzt anmelden
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+

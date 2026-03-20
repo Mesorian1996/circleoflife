@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: circleoflife-astro
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node dist/server/entry.mjs
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: PUBLIC_CONTACT_ENDPOINT
+        value: /api/contact
+      - key: RESEND_API_KEY
+        sync: false
+      - key: FROM_NAME
+        value: Circle of Life BJJ
+      - key: FROM_EMAIL
+        value: kontakt@circleoflife-bjj.de
+      - key: MAIL_TO
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://circleoflife-bjj.de,https://www.circleoflife-bjj.de

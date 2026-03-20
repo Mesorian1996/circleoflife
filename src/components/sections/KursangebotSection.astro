@@ -1,0 +1,111 @@
+---
+import { Image } from 'astro:assets';
+import SvgIcon from '../ui/SvgIcon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import {
+  IconGi, IconNoGi, IconConditioning, IconChildren, IconCircuitTraining, IconArrowRight,
+} from '@/icons/index';
+
+import giImg      from '../../assets/images/kurse/Gi-Training.jpeg';
+import nogiImg    from '../../assets/images/kurse/nogi_grappling_3.jpeg';
+import fitnessImg from '../../assets/images/kurse/technik_training.jpeg';
+import kinderImg  from '../../assets/images/kinder_training.jpeg';
+import zirkelImg  from '../../assets/images/kurse/Zirkeltraining.jpg';
+
+const cards = [
+  {
+    title:       'BJJ (Gi)',
+    href:        '/bjj',
+    icon:        IconGi,
+    img:         giImg,
+    imgAlt:      'BJJ Gi Training Circle of Life',
+    description: 'Klassisches Brazilian Jiu-Jitsu im Gi. Würfe, Guard-Game, Positionskontrolle & Submissions – strukturierter Lernpfad für Einsteiger und Fortgeschrittene.',
+    delay:       0,
+  },
+  {
+    title:       'No-Gi Grappling',
+    href:        '/grappling',
+    icon:        IconNoGi,
+    img:         nogiImg,
+    imgAlt:      'No-Gi Grappling Training',
+    description: 'Dynamisches Grappling ohne Kimono. Fokus auf Schnelligkeit, Leg-Locks, Heelhooks und moderne Submissions. Ideal für MMA & Wettkampf.',
+    delay:       100,
+  },
+  {
+    title:       'Fitness & Conditioning',
+    href:        '/fitness',
+    icon:        IconConditioning,
+    img:         fitnessImg,
+    imgAlt:      'Fitness und Conditioning Training',
+    description: 'BJJ-spezifisches Körpergewichtstraining: Mobility, Core-Stabilität und Ausdauer – ohne Maschinen, für Grappler aller Level.',
+    delay:       200,
+  },
+  {
+    title:       'Kinder-BJJ',
+    href:        '/kinder',
+    icon:        IconChildren,
+    img:         kinderImg,
+    imgAlt:      'Kinder BJJ Training',
+    description: 'Spielerisch Kampfsport lernen: Selbstvertrauen, Respekt und Selbstverteidigung für Kinder von 6–13 Jahren.',
+    delay:       300,
+  },
+  {
+    title:       'Zirkeltraining',
+    href:        '/zirkeltraining',
+    icon:        IconCircuitTraining,
+    img:         zirkelImg,
+    imgAlt:      'Zirkeltraining in der Halle',
+    description: 'Ganzkörper-Zirkeltraining für Mamas (mit Baby willkommen!) und die Generation 60+. Dienstags – für jedes Fitnesslevel.',
+    delay:       400,
+  },
+] as const;
+---
+
+<section id="kursangebot" class="cv-section" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Unser Kursangebot"
+      subtitle="In unserer Kampfsportakademie bieten wir <strong>Brazilian Jiu-Jitsu (BJJ)</strong>, <strong>No-Gi Grappling</strong>, Fitness und Zirkeltraining an – für Erwachsene, Kinder und die Generation 60+. Unser Standort befindet sich in <strong>Ludwigshafen-Ruchheim</strong>, wenige Minuten von Mannheim, Frankenthal und Bad Dürkheim."
+    />
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {cards.map((c) => (
+        <a
+          href={c.href}
+          class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-(--shadow-card) transition-all duration-300 hover:-translate-y-1 hover:shadow-(--shadow-card-hover)"
+          data-aos="fade-up"
+          data-aos-delay={c.delay}
+        >
+          <!-- Card image -->
+          <div class="h-48 overflow-hidden">
+            <Image
+              src={c.img}
+              alt={c.imgAlt}
+              widths={[400, 700]}
+              sizes="(max-width:639px) 95vw, (max-width:1023px) 46vw, 30vw"
+              loading="lazy"
+              class="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="height:100%"
+            />
+          </div>
+
+          <!-- Card body -->
+          <div class="flex flex-1 flex-col p-5">
+            <div class="mb-3 flex items-center gap-2">
+              <SvgIcon
+                icon={c.icon}
+                class="w-6 h-6 text-accent shrink-0"
+              />
+              <h3 class="text-lg font-bold text-text">{c.title}</h3>
+            </div>
+            <p class="flex-1 text-sm leading-relaxed text-text-muted">{c.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors group-hover:text-accent-muted">
+              Mehr erfahren
+              <SvgIcon icon={IconArrowRight} class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

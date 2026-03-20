@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import SvgIcon from '../ui/SvgIcon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { IconShield, IconTrendingUp, IconUsers, IconAward } from '@/icons/index';
+import trainerImg  from '../../assets/images/Schwarzer_GI.jpeg';
+import floMarvinImg from '../../assets/images/Flo_Marvin.jpeg';
+
+const values = [
+  { icon: IconShield,     title: 'Respekt & Sicherheit',      desc: 'Klare Mattenetikette, desinfizierte Flächen, kontrolliertes Sparring.' },
+  { icon: IconTrendingUp, title: 'Strukturierter Lernpfad',   desc: 'Von Fundamentals bis Competition – du weißt immer, wo du stehst.' },
+  { icon: IconUsers,      title: 'Inklusive Community',       desc: 'Alle Altersgruppen, Geschlechter und Fitnesslevel – wir lassen niemanden zurück.' },
+  { icon: IconAward,      title: 'Wettkampferfahrung',        desc: 'Coaches mit aktiver Turniererfahrung, die wissen, was es braucht.' },
+];
+---
+
+<section id="ueber-uns-values" class="cv-section" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      title="Unsere Werte"
+      subtitle="Brazilian Jiu-Jitsu ist mehr als Sport – es ist eine Lebenseinstellung. Diese Werte treiben uns an."
+    />
+    <div class="about-values-grid" data-aos="fade-up" data-aos-delay="50">
+      {values.map((v, i) => (
+        <div class="about-value-card" data-aos="fade-up" data-aos-delay={i * 100}>
+          <div class="about-value-card__icon">
+            <SvgIcon icon={v.icon} class="w-6 h-6" />
+          </div>
+          <h3 class="about-value-card__title">{v.title}</h3>
+          <p class="about-value-card__desc">{v.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="team" class="cv-section section-muted" style="padding:2.5em 0;">
+  <div class="container">
+    <SectionHeader
+      eyebrow="Das Team"
+      title="Deine Coaches"
+      subtitle="Erfahrene Athleten und Trainer, die ihr Wissen gerne weitergeben."
+    />
+    <div class="team-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="coach-card" data-aos="fade-up" data-aos-delay="0">
+        <Image
+          src={trainerImg}
+          alt="Head Coach – Circle of Life BJJ"
+          widths={[400, 600]}
+          sizes="(max-width:767px) 90vw, 320px"
+          loading="lazy"
+          class="coach-card__img"
+        />
+        <div class="coach-card__body">
+          <h3 class="coach-card__name">Head Coach</h3>
+          <p class="coach-card__role">Brazilian Jiu-Jitsu &amp; No-Gi Grappling</p>
+          <p class="coach-card__bio">
+            Schwarzer Gürtel, aktiver Wettkämpfer und Gründer von Circle of Life BJJ.
+            Verbindet moderne Techniken mit einer klaren, lernorientierten Methodik.
+          </p>
+        </div>
+      </div>
+      <div class="coach-card" data-aos="fade-up" data-aos-delay="150">
+        <Image
+          src={floMarvinImg}
+          alt="Coaches Flo & Marvin – Circle of Life BJJ"
+          widths={[400, 600]}
+          sizes="(max-width:767px) 90vw, 320px"
+          loading="lazy"
+          class="coach-card__img"
+        />
+        <div class="coach-card__body">
+          <h3 class="coach-card__name">Flo &amp; Marvin</h3>
+          <p class="coach-card__role">BJJ Instructors</p>
+          <p class="coach-card__bio">
+            Erfahrene Athleten mit vielen Jahren auf der Matte.
+            Leidenschaft für Technik, Community und die nächste Generation BJJ-Kämpfer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

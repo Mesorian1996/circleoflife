@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import ContactCta from '@/components/ui/ContactCta.astro';
+import KursDetailHero from '@/components/sections/KursDetailHero.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+import KinderSelbstvertrauenSection from '@/components/sections/KinderSelbstvertrauenSection.astro';
+import kinderImg from '../assets/images/kinder_training.jpeg';
+---
+
+<Base
+  title="Kinder-BJJ Ludwigshafen | Circle of Life BJJ"
+  description="Kinder-BJJ in Ludwigshafen für Kinder von 6-13 Jahren. Spielerisch Technik lernen, Selbstvertrauen aufbauen & Anti-Bullying. Kostenloses Probetraining."
+  canonical="https://circleoflife-bjj.de/kinder"
+  bodyClass="page-kinder"
+>
+
+  <KursDetailHero
+    badge="Kinder 6–13 Jahre"
+    title="Kinder-BJJ"
+    headingId="kids-hero"
+    ctaLabel="Probetraining vereinbaren"
+    lead="Spielerisch Technik lernen, fair ringen und Selbstvertrauen aufbauen – unser Kinder-BJJ in Ludwigshafen &amp; Mannheim vermittelt klare Regeln und Respekt. Eltern aus Ludwigshafen-Ruchheim, Mannheim, Bad Dürkheim oder Frankenthal finden bei uns eine familiäre Kampfsportschule: kindgerechte BJJ-Techniken, Anti-Bullying-Übungen und regelmäßiges Feedback."
+    note="Mitbringen: Sportkleidung, Flip-Flops, Wasserflasche."
+    anchors={[
+      { href: '#was-ist',    label: 'Was ist Kinder-BJJ?' },
+      { href: '#geschichte', label: 'Warum & Nutzen' },
+      { href: '#faq',        label: 'FAQ' },
+    ]}
+  />
+
+
+  <section id="was-ist" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Grundlagen</p>
+          <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Was ist Kinder-BJJ?</h2>
+          <p>Kinder-BJJ vermittelt Bewegung, Koordination und Fairness. Die Kids aus Ludwigshafen, Mannheim und der Pfalz lernen altersgerecht, wie man sicher ringt, fällt, kontrolliert und Konflikte löst – mit klaren Regeln und Spaß.</p>
+          <ul class="seo-bullets">
+            <li>Aufwärmspiele → Technikdrills → kontrolliertes Ringen</li>
+            <li>Respekt, Teamgeist &amp; Konzentration</li>
+            <li>Sicherheits- und Hygieneregeln von Anfang an</li>
+          </ul>
+          <div style="background:var(--color-surface);border-radius:.75rem;padding:1rem;margin-top:.75rem;font-size:.9rem;">
+            <strong>Hinweis:</strong> Ein Probetraining ist jederzeit möglich. Eltern dürfen gern zusehen.
+          </div>
+        </div>
+        <div class="seo-split__media">
+          <Image src={kinderImg} loading="lazy" decoding="async" alt="Kinder-BJJ Training" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;border-radius:1.5rem;object-fit:cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="geschichte" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Warum Kinder-BJJ?</p>
+          <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Selbstvertrauen &amp; Bewegung mit System</h2>
+          <p>Durch strukturierte Bewegung verbessern sich Motorik und Haltung. Kinder lernen, Konflikte fair zu lösen und Verantwortung zu übernehmen. BJJ fördert Selbstvertrauen, Fokus und soziale Kompetenzen.</p>
+          <ul class="seo-bullets">
+            <li>Mehr Selbstvertrauen &amp; Körpergefühl</li>
+            <li>Besserer Fokus für Schule &amp; Alltag</li>
+            <li>Anti-Bullying Strategien &amp; Teamkultur</li>
+          </ul>
+          <p style="font-size:.875rem;color:var(--color-text-muted);">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener" style="color:var(--color-accent);">Wikipedia – Brazilian Jiu-Jitsu</a></p>
+        </div>
+        <div class="seo-split__media">
+          <div style="background:var(--color-surface);border-radius:1rem;padding:1.5rem;width:100%;border:1px solid var(--color-border);">
+            <span class="eyebrow">Kursinfos</span>
+            <ul style="list-style:none;padding:0;margin:0;font-size:.9rem;display:flex;flex-direction:column;gap:.4rem;">
+              <li>• Alter: 6–13 Jahre</li>
+              <li>• 2 Einheiten pro Woche</li>
+              <li>• Elternfeedback &amp; klare Lernziele</li>
+              <li>• Spielerische Prüfungen &amp; Sticker</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <KinderSelbstvertrauenSection />
+
+  <FaqSection page="kinder" />
+
+  <ContactCta
+    eyebrow="Kinder BJJ anfragen"
+    headline="Kinder-BJJ in Ludwigshafen – Selbstverteidigung & Selbstvertrauen"
+    subline="Spielerisches BJJ-Training für Kinder von 6–13 Jahren. Kleine Gruppen, erfahrene Trainer, familiäre Atmosphäre in Ruchheim."
+    ctaLabel="Jetzt anmelden"
+    cta2Label="Anrufen"
+    cta2Href="tel:+4917661990534"
+    showContact={false}
+    align="left"
+  />
+
+</Base>

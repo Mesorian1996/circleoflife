@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import CtaStripSection from '../components/sections/CtaStripSection.astro';
+import KursangebotSection from '../components/sections/KursangebotSection.astro';
+import KursplanSection from '../components/sections/KursplanSection.astro';
+import PreiseSection from '../components/sections/PreiseSection.astro';
+import EinstiegSection from '../components/sections/EinstiegSection.astro';
+import StatsSection from '../components/sections/StatsSection.astro';
+import StandortSection from '../components/sections/StandortSection.astro';
+import TrainerSection from '../components/sections/TrainerSection.astro';
+import ProbetrainingSection from '../components/sections/ProbetrainingSection.astro';
+import FaqSection from '../components/sections/FaqSection.astro';
+import ContactCta from '@/components/ui/ContactCta.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["MartialArtsSchool","SportsActivityLocation"],
+    "name": "Circle of Life Jiu-Jitsu",
+    "description": "Brazilian Jiu-Jitsu & Grappling Schule in Ludwigshafen am Rhein mit Kursen für Erwachsene, Kinder und Wettkämpfer.",
+    "sport": ["Brazilian Jiu-Jitsu", "Grappling", "Kampfsport", "BJJ", "Martial Arts"],
+    "url": "https://circleoflife-bjj.de/",
+    "telephone": "+49 176 61990534",
+    "email": "mail.circleoflife@gmx.de",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Am Herrschaftsweiher 17",
+      "postalCode": "67071",
+      "addressLocality": "Ludwigshafen am Rhein",
+      "addressRegion": "Rheinland-Pfalz",
+      "addressCountry": "DE"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday",    "opens": "17:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "17:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday",    "opens": "18:00", "closes": "21:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/circle_of_life_jiujitsu?igsh=MXVyMDNtdHRmNXoxZw=="]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Brauche ich Vorerfahrung im Kampfsport?", "acceptedAnswer": { "@type": "Answer", "text": "Nein, Einsteiger sind ausdrücklich willkommen." } },
+      { "@type": "Question", "name": "Was soll ich zum Probetraining mitbringen?", "acceptedAnswer": { "@type": "Answer", "text": "Bequeme Sportkleidung und Flip-Flops genügen." } },
+      { "@type": "Question", "name": "Ist das Probetraining wirklich kostenlos?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, das Probetraining ist vollkommen kostenlos und unverbindlich." } }
+    ]
+  }
+];
+---
+
+<Base
+  title="Brazilian Jiu-Jitsu Ludwigshafen | No-Gi Grappling | Circle of Life BJJ"
+  description="Trainiere den Kampfsport Brazilian Jiu-Jitsu in Ludwigshafen – Circle of Life BJJ. Gi & No-Gi, Training für Anfänger, Fortgeschrittene und Kinder. Probetraining ist kostenlos!"
+  canonical="https://circleoflife-bjj.de/"
+  ogTitle="Brazilian Jiu-Jitsu in Mannheim & Ludwigshafen | Circle of Life BJJ"
+  ogDesc="Starte jetzt mit Brazilian Jiu-Jitsu bei Circle of Life – kostenlose Probestunde, strukturierter Kursplan & erfahrene Coaches. Mannheim & Ludwigshafen."
+  jsonLd={jsonLd}
+>
+  <HeroSection />
+  <CtaStripSection />
+  <KursangebotSection />
+  <KursplanSection />
+  <PreiseSection />
+  <EinstiegSection />
+  <StatsSection />
+  <StandortSection />
+  <TrainerSection />
+  <ProbetrainingSection />
+  <FaqSection />
+  <ContactCta
+    eyebrow="Direkter Kontakt"
+    headline="Brazilian Jiu-Jitsu in Ludwigshafen, Mannheim & Rhein-Neckar"
+    subline="Antwort innerhalb von 24 h – sichere dir deinen kostenlosen Platz im Probetraining oder ruf direkt im Gym in Ludwigshafen-Ruchheim an."
+    ctaLabel="Probetraining sichern"
+    align="left"
+  />
+</Base>

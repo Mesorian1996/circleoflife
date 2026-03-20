@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import ContactCta from '@/components/ui/ContactCta.astro';
+import KursDetailHero from '@/components/sections/KursDetailHero.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+import giImg from '../assets/images/kurse/Gi_BJJ_1.jpeg';
+---
+
+<Base
+  title="Brazilian Jiu-Jitsu (BJJ) Ludwigshafen | Circle of Life BJJ"
+  description="Brazilian Jiu-Jitsu im Gi in Ludwigshafen & Mannheim. Lerne Positionskontrolle, Guard-Game und Submissions. Kostenlose Probestunde für Anfänger und Fortgeschrittene."
+  canonical="https://circleoflife-bjj.de/bjj"
+  bodyClass="page-bjj"
+>
+
+  <KursDetailHero
+    badge="Gi Training"
+    title="Brazilian Jiu-Jitsu"
+    headingId="bjj-hero-title"
+    lead="Brazilian Jiu-Jitsu ist ein bodenorientierter Kampfsport aus Brasilien. In Ludwigshafen, Mannheim und der Rhein-Neckar-Region lernst du mit Hebeln &amp; Würgetechniken Situationen sicher zu kontrollieren – <strong>Technik statt Kraft</strong>, für Einsteiger &amp; Fortgeschrittene. Unsere Coaches bringen dir moderne und etablierte Techniken bei, um deine Selbstverteidigung zu stärken."
+    note="Einsteiger willkommen – Sportkleidung &amp; Flip-Flops reichen fürs erste Training."
+    anchors={[
+      { href: '#was-ist-bjj', label: 'Was ist BJJ?' },
+      { href: '#geschichte',  label: 'Geschichte & Nutzen' },
+      { href: '#faq',         label: 'FAQ' },
+    ]}
+  />
+
+
+  <section id="was-ist-bjj" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Grundlagen</p>
+          <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Was ist Brazilian Jiu-Jitsu?</h2>
+          <p>BJJ in unserer Kampfsportschule in Ludwigshafen setzt auf Positionskontrolle und Technik statt roher Kraft. Ablauf: Stand → Takedown → Guard → Pass → dominante Kontrolle → Submission. Jede Einheit kombiniert Warm-up, Technikdrills, spezifisches und freies Sparring.</p>
+          <ul class="seo-bullets">
+            <li>Strukturierte Lernpfade von Fundamentals bis Advanced</li>
+            <li>Kontrollierte Intensität &amp; klare Mattenetikette</li>
+            <li>Einsteigerfreundlich – Sportkleidung &amp; Flip-Flops reichen</li>
+            <li>Selbstverteidigung, Fitness &amp; MMA-spezifische Inhalte</li>
+          </ul>
+          <div style="background:var(--color-surface);border-radius:.75rem;padding:1rem;margin-top:.75rem;font-size:.9rem;">
+            <strong>Hinweis:</strong> Leih-Gis sind nach Absprache verfügbar. Technik vor Kraft, Sicherheit vor Ego.
+          </div>
+        </div>
+        <div class="seo-split__media">
+          <Image src={giImg} loading="lazy" decoding="async" alt="BJJ Technikdrills im Gi" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;border-radius:1.5rem;object-fit:cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="geschichte" style="padding:2.5em 0;" data-aos="fade-up">
+    <div class="container">
+      <div class="seo-split">
+        <div class="seo-split__copy">
+          <p class="eyebrow">Geschichte &amp; Nutzen</p>
+          <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Vom Kodokan Judo zum modernen Grappling</h2>
+          <p>Brazilian Jiu-Jitsu entstand Anfang des 20. Jahrhunderts in Brasilien und fokussiert Bodenkampf, Kontrolle und Submissions. Heute trainieren wir BJJ für Selbstverteidigung, Fitness und Wettkampf – Gi wie No-Gi – quer durch die Rhein-Neckar-Region.</p>
+          <ul class="seo-bullets">
+            <li>Technik- und positionsbasiertes Kampfsystem</li>
+            <li>Essentiell für MMA &amp; moderne Selbstverteidigung</li>
+            <li>Perfekt für Stressabbau, Fokus und Community</li>
+          </ul>
+          <p style="font-size:.875rem;color:var(--color-text-muted);">Weiterführend: <a href="https://de.wikipedia.org/wiki/Brazilian_Jiu-Jitsu" target="_blank" rel="nofollow noopener" style="color:var(--color-accent);">Wikipedia – Brazilian Jiu-Jitsu</a></p>
+        </div>
+        <div class="seo-split__media">
+          <div style="background:var(--color-surface);border-radius:1rem;padding:1.5rem;width:100%;border:1px solid var(--color-border);">
+            <span class="eyebrow">BJJ trainieren für</span>
+            <ul style="list-style:none;padding:0;margin:0;font-size:.9rem;display:flex;flex-direction:column;gap:.4rem;">
+              <li>• Selbstverteidigung &amp; Körpergefühl</li>
+              <li>• Fitness, Mobility &amp; Mindset</li>
+              <li>• Wettkampf (Gi &amp; No-Gi)</li>
+              <li>• MMA &amp; Grappling-Events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection page="bjj" />
+
+  <ContactCta
+    eyebrow="BJJ Training starten"
+    headline="Klassisches BJJ im Gi – Ludwigshafen & Mannheim"
+    subline="Strukturierter Lernpfad vom Einsteiger bis zum Wettkämpfer. Jetzt kostenloses Probetraining in Ludwigshafen-Ruchheim sichern."
+    ctaLabel="Kostenloses Probetraining"
+    showContact={true}
+    align="left"
+  />
+
+</Base>

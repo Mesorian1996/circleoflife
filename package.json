@@ -1,0 +1,27 @@
+{
+  "name": "circleoflife-astro",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.0.3",
+    "@iconify-json/lucide": "^1.2.98",
+    "aos": "^2.3.4",
+    "astro-icon": "^1.1.5",
+    "preline": "^4.1.2",
+    "resend": "^4.5.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/aos": "^3.0.7",
+    "astro": "^5.5.5",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.3"
+  }
+}
