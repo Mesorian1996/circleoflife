@@ -47,8 +47,8 @@ const contacts = [
 
         <ul class="space-y-3 mb-5">
           {contacts.map((c) => (
-            <li class="flex items-start gap-3">
-              <SvgIcon icon={c.icon} class="w-6 h-6 shrink-0 text-accent mt-0.5" label={c.label} />
+            <li class="flex items-center gap-3">
+              <SvgIcon icon={c.icon} class="w-6 h-6 shrink-0 text-accent" label={c.label} />
               {c.href ? (
                 <a
                   href={c.href}
