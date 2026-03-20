@@ -14,7 +14,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     resolve: {
-      alias: { '@': '/Users/mesorianlimani/Documents/MES/Projekte/circleoflife-astro/src' },
+      alias: { '@': '/Users/mesorianlimani/Documents/MES/Projekte/circleoflife/src' },
     },
   },
 });
