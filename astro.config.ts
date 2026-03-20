@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  output: 'server',
+  adapter: cloudflare(),
   integrations: [
     icon({
       include: { lucide: ['*'] },

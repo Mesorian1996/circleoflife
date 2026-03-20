@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.1.2",
     "@astrojs/node": "^9.0.3",
     "@iconify-json/lucide": "^1.2.98",
     "aos": "^2.3.4",
@@ -20,7 +21,7 @@
     "@astrojs/check": "^0.9.8",
     "@tailwindcss/vite": "^4.1.0",
     "@types/aos": "^3.0.7",
-    "astro": "^5.5.5",
+    "astro": "^6.0.7",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.3"
   }
