@@ -158,7 +158,14 @@ const legendTypes = (Object.keys(kursStyles) as (keyof typeof kursStyles)[]).fil
   var todayTab = document.querySelector('.kp-tab[data-day="' + today + '"]');
   if (todayTab) {
     activate(todayTab);
-    todayTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    // Nur horizontal im Tab-Container scrollen, nicht die ganze Seite
+    var nav = todayTab.closest('nav');
+    if (nav) {
+      var tabLeft   = todayTab.offsetLeft;
+      var tabWidth  = todayTab.offsetWidth;
+      var navWidth  = nav.offsetWidth;
+      nav.scrollLeft = tabLeft - (navWidth / 2) + (tabWidth / 2);
+    }
   } else if (tabs.length) {
     activate(tabs[0]);
   }
