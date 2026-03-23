@@ -8,14 +8,12 @@ const path = 'dist/server/wrangler.json';
 const cfg = JSON.parse(readFileSync(path, 'utf8'));
 
 // Only keep fields valid for Cloudflare Pages
+// Pages does NOT support: main, rules, no_bundle (those are Workers-only)
 const patched = {
   name: cfg.name,
-  main: cfg.main,
   compatibility_date: cfg.compatibility_date,
   compatibility_flags: cfg.compatibility_flags,
   pages_build_output_dir: cfg.pages_build_output_dir,
-  no_bundle: cfg.no_bundle,
-  rules: cfg.rules,
   vars: cfg.vars ?? {},
   // Bindings we actually use (none for now)
   kv_namespaces: [],
