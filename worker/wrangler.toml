@@ -1,0 +1,8 @@
+name = "circleoflife-contact"
+main = "index.mjs"
+compatibility_date = "2024-09-23"
+
+# Secrets (set via CLI, never commit):
+#   wrangler secret put RESEND_API_KEY
+#   wrangler secret put RESEND_FROM
+#   wrangler secret put RESEND_TO

@@ -1,6 +1,5 @@
 ---
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
-
+const workerUrl = import.meta.env.PUBLIC_CONTACT_WORKER_URL ?? '';
 const kursOptions = [
   'Erwachsenen BJJ',
   'Kinder BJJ',
@@ -13,6 +12,7 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 
 <form
   id="probetraining-form"
+  data-action={workerUrl}
   class="space-y-5"
   novalidate
   aria-label="Probetraining anfragen"
@@ -146,8 +146,7 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 
     setLoading(true);
     try {
-      // NEU:
-      var res = await fetch('/api/contact', {
+      var res = await fetch(form.dataset.action, {
         method: 'POST',
         body: new FormData(form),
       });
