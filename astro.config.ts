@@ -5,19 +5,23 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
   integrations: [
     icon({
       include: { lucide: ['*'] },
     }),
   ],
-vite: {
-  plugins: [tailwindcss()],
-  ssr: {
-    external: ['node:async_hooks'],
+  vite: {
+    plugins: [tailwindcss()],
+    ssr: {
+      external: ['node:async_hooks'],
+    },
+    optimizeDeps: {
+      exclude: ['resend', 'audit-ZNXLMFSS'],  
+    },
   },
-  optimizeDeps: {
-    exclude: ['resend'],
-  },
-},
 });
