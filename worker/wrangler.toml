@@ -1,4 +1,4 @@
-name = "circleoflife-contact"
+name = "contact-form"
 main = "index.mjs"
 compatibility_date = "2024-09-23"
 
