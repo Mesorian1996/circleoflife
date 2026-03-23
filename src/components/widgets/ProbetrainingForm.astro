@@ -17,11 +17,6 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
   novalidate
   aria-label="Probetraining anfragen"
 >
-  <!-- Web3Forms Hidden Fields -->
-  <input type="hidden" name="access_key" value={accessKey} />
-  <input type="hidden" name="subject" value="Neue Probetraining-Anfrage – Circle of Life BJJ" />
-  <input type="hidden" name="from_name" value="Circle of Life BJJ Website" />
-  <input type="hidden" name="redirect" value="false" />
 
   <!-- Honeypot Spam-Schutz -->
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
@@ -151,7 +146,8 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 
     setLoading(true);
     try {
-      var res  = await fetch('https://api.web3forms.com/submit', {
+      // NEU:
+      var res = await fetch('/api/contact', {
         method: 'POST',
         body: new FormData(form),
       });
