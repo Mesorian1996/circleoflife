@@ -21,7 +21,15 @@ export default {
       return new Response('Method Not Allowed', { status: 405 });
     }
 
-    const data = await request.json();
+    let data;
+    try {
+      data = await request.json();
+    } catch {
+      return Response.json(
+        { success: false, message: 'Ungültige Anfrage.' },
+        { status: 400, headers: cors(origin) }
+      );
+    }
     if (data.botcheck) {
       return Response.json({ success: false }, { status: 400, headers: cors(origin) });
     }
