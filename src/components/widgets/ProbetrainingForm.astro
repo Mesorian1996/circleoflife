@@ -146,9 +146,13 @@ const labelClass = 'block text-sm font-semibold text-text mb-1';
 
     setLoading(true);
     try {
+      var fd = new FormData(form);
+      var payload = {};
+      fd.forEach(function(v, k) { payload[k] = v; });
       var res = await fetch(form.dataset.action, {
         method: 'POST',
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
       var json = await res.json();
       if (json.success) {

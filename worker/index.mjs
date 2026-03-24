@@ -21,19 +21,18 @@ export default {
       return new Response('Method Not Allowed', { status: 405 });
     }
 
-    const data = await request.formData();
-    const botcheck = data.get('botcheck');
-    if (botcheck) {
+    const data = await request.json();
+    if (data.botcheck) {
       return Response.json({ success: false }, { status: 400, headers: cors(origin) });
     }
 
-    const anrede  = data.get('anrede')  ?? '';
-    const vorname = data.get('vorname') ?? '';
-    const nachname = data.get('nachname') ?? '';
-    const email   = data.get('email')   ?? '';
-    const phone   = data.get('phone')   ?? '';
-    const kurs    = data.get('kurs')    ?? '';
-    const message = data.get('message') ?? '';
+    const anrede   = data.anrede   ?? '';
+    const vorname  = data.vorname  ?? '';
+    const nachname = data.nachname ?? '';
+    const email    = data.email    ?? '';
+    const phone    = data.phone    ?? '';
+    const kurs     = data.kurs     ?? '';
+    const message  = data.message  ?? '';
 
     if (!vorname || !email) {
       return Response.json(
