@@ -1,5 +1,40 @@
 const ALLOWED_ORIGIN = 'https://circleoflife-bjj.de';
 
+async function sendAdminAlert(env, { vorname, nachname, email, phone, kurs, message, anrede, errText }) {
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `Circle of Life BJJ <${env.RESEND_FROM}>`,
+        to: [env.RESEND_TO],
+        subject: `⚠️ Fehler – Probetraining-Anfrage nicht zugestellt`,
+        html: `
+          <div style="font-family:sans-serif;color:#111;max-width:560px;">
+            <p style="color:#b91c1c;font-weight:bold;">Eine Probetraining-Anfrage konnte nicht zugestellt werden.</p>
+            <p>Bitte nimm manuell Kontakt auf:</p>
+            <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0;"/>
+            <p><strong>Anrede:</strong> ${anrede || '–'}</p>
+            <p><strong>Vorname:</strong> ${vorname}</p>
+            <p><strong>Nachname:</strong> ${nachname || '–'}</p>
+            <p><strong>Telefon:</strong> ${phone || '–'}</p>
+            <p><strong>E-Mail:</strong> ${email}</p>
+            <p><strong>Kurs:</strong> ${kurs || '–'}</p>
+            <p><strong>Nachricht:</strong><br/>${message || '–'}</p>
+            <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0;"/>
+            <p style="color:#6b7280;font-size:12px;">Resend-Fehler: ${errText}</p>
+          </div>
+        `,
+      }),
+    });
+  } catch {
+    // best effort — wenn auch das fehlschlägt, kann nichts mehr getan werden
+  }
+}
+
 function cors(origin) {
   const allowed = origin === ALLOWED_ORIGIN ? origin : ALLOWED_ORIGIN;
   return {
@@ -82,8 +117,10 @@ export default {
     });
 
     if (!res.ok) {
+      const errText = await res.text().catch(() => '');
+      await sendAdminAlert(env, { vorname, nachname, email, phone, kurs, message, anrede, errText });
       return Response.json(
-        { success: false, message: 'Fehler beim Senden.' },
+        { success: false, message: 'Leider ist ein Fehler beim Senden aufgetreten. Bitte ruf uns an oder schreib uns eine WhatsApp.' },
         { status: 500, headers: cors(origin) }
       );
     }
