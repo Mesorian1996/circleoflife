@@ -5,7 +5,7 @@ import SectionHeader from '../ui/SectionHeader.astro';
 import { IconUsers, IconCalendar, IconClock, IconFlame } from '@/icons/index';
 ---
 
-<section class="cv-section section-muted" style="padding:2.5em 0;">
+<section class="cv-section" style="padding:2.5em 0;">
   <div class="container">
     <SectionHeader
       title="Circle of Life in Zahlen"
@@ -13,7 +13,7 @@ import { IconUsers, IconCalendar, IconClock, IconFlame } from '@/icons/index';
     />
 
     <div class="bento-grid" data-aos="fade-up" data-aos-delay="50">
-      <StatCard value="60+" label="aktive Mitglieder"          icon={IconUsers}    delay={0} />
+      <StatCard value="100+" label="aktive Mitglieder"          icon={IconUsers}    delay={0} />
       <StatCard value="6×"  label="Training pro Woche"         icon={IconCalendar} delay={100} />
       <StatCard value="3"   label="Trainingstage Mo / Mi / Fr" icon={IconClock}    delay={200} />
       <StatCard value="∞"   label="Sparring-Runden"            icon={IconFlame}    delay={300} />
@@ -39,9 +39,40 @@ import { IconUsers, IconCalendar, IconClock, IconFlame } from '@/icons/index';
           rel="noopener noreferrer"
           class="bento-location__link"
         >
-          Route planen →
+          Route planen
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll<HTMLElement>('.stat-card__value').forEach(el => {
+    const raw = el.textContent?.trim() ?? '';
+    const match = raw.match(/^(\d+)(.*)$/);
+    if (!match) return;
+
+    const end    = parseInt(match[1], 10);
+    const suffix = match[2];
+    const obj    = { val: 0 };
+
+    gsap.to(obj, {
+      val: end,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      },
+      onUpdate() {
+        el.textContent = Math.round(obj.val) + suffix;
+      },
+    });
+  });
+</script>

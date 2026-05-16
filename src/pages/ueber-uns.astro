@@ -69,43 +69,96 @@ import halleImg from '../assets/images/col_halle.jpeg';
   <!-- GALERIE -->
   <section id="galerie" style="padding:2.5em 0;" data-aos="fade-up">
     <div class="container">
-      <div style="margin-bottom:1.5rem;">
-        <p style="text-transform:uppercase;font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:.1em;">Impressionen</p>
-        <h2 style="font-size:1.5rem;font-weight:700;">Einblicke in unsere BJJ &amp; No-Gi Sessions</h2>
-        <p>So sieht Training bei Circle of Life aus: strukturierte Technikblöcke, kontrolliertes Sparring und eine Community, die gemeinsam wächst.</p>
+      <div style="margin-bottom:1.75rem;">
+        <p class="eyebrow" style="justify-content:flex-start;">Impressionen</p>
+        <h2 style="font-size:clamp(1.5rem,2.8vw,1.9rem);font-weight:800;letter-spacing:-0.02em;margin:0 0 0.4rem;">Einblicke in unsere BJJ &amp; No-Gi Sessions</h2>
+        <p style="color:var(--color-text-muted);font-size:.95rem;max-width:56ch;">So sieht Training bei Circle of Life aus: strukturierte Technikblöcke, kontrolliertes Sparring und eine Community, die gemeinsam wächst.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;">
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={giImg} alt="Brazilian Jiu-Jitsu Training im Gi" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Gi Training – strukturiertes Techniktraining</figcaption>
+      <div class="ueber-gallery">
+        <figure class="ueber-gallery__item">
+          <Image src={giImg} alt="Brazilian Jiu-Jitsu Training im Gi" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" style="object-position:center top;" />
+          <figcaption>Gi Training</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={nogiTrainImg} alt="No-Gi Grappling im Circle of Life Gym" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">No-Gi – Wrestling Entries und moderne Submissions</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={nogiTrainImg} alt="No-Gi Grappling im Circle of Life Gym" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" style="object-position:center;" />
+          <figcaption>No-Gi Grappling</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={floImg} alt="Coach Flo und Marvin im Training" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Coaching – persönliche Betreuung</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={floImg} alt="Coach Flo und Marvin im Training" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" style="object-position:center top;" />
+          <figcaption>Coaching</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={sparringGiImg} alt="Gi Sparring in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Gi Sparring – levelgerechtes Rollen</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={sparringGiImg} alt="Gi Sparring in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" />
+          <figcaption>Gi Sparring</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={sparringNogiImg} alt="No-Gi Sparring" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">No-Gi Sparring – Technik und Kontrolle</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={sparringNogiImg} alt="No-Gi Sparring" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" />
+          <figcaption>No-Gi Sparring</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={kinderImg} alt="Kinder BJJ in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Kids &amp; Teens – Selbstvertrauen und Spaß</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={kinderImg} alt="Kinder BJJ in Ludwigshafen" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" style="object-position:center top;" />
+          <figcaption>Kids &amp; Teens</figcaption>
         </figure>
-        <figure style="margin:0;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);">
-          <Image src={technikImg} alt="Techniktraining Circle of Life" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 767px) 95vw, 50vw" style="width:100%;height:200px;object-fit:cover;" />
-          <figcaption style="padding:.5rem .75rem;font-size:.8rem;color:var(--color-text-muted);background:#fff;">Techniktraining – moderne Grundlagen</figcaption>
+        <figure class="ueber-gallery__item">
+          <Image src={technikImg} alt="Techniktraining Circle of Life" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" />
+          <figcaption>Techniktraining</figcaption>
+        </figure>
+        <figure class="ueber-gallery__item">
+          <Image src={halleImg} alt="Trainingshalle Circle of Life" loading="lazy" decoding="async" widths={[480, 800]} sizes="(max-width: 639px) 47vw, (max-width:1023px) 32vw, 22vw" class="ueber-gallery__img" style="object-position:center 30%;" />
+          <figcaption>Unsere Halle</figcaption>
         </figure>
       </div>
     </div>
   </section>
+
+  <style>
+    .ueber-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.625rem;
+    }
+    @media (min-width: 640px) {
+      .ueber-gallery { grid-template-columns: repeat(3, 1fr); gap: 0.875rem; }
+    }
+    @media (min-width: 1024px) {
+      .ueber-gallery { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    }
+    .ueber-gallery__item {
+      margin: 0;
+      border-radius: 0.875rem;
+      overflow: hidden;
+      position: relative;
+      background: var(--color-surface);
+    }
+    .ueber-gallery__item::after {
+      content: '';
+      position: absolute; inset: auto 0 0 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(20,24,43,0.62) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .ueber-gallery__img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .ueber-gallery__item:hover .ueber-gallery__img {
+      transform: scale(1.05);
+    }
+    .ueber-gallery__item figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 1;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.9);
+    }
+  </style>
 
   <!-- WARUM CIRCLE OF LIFE -->
   <section id="bjj-selbstvertrauen" style="padding:2.5em 0;" class="section-muted" data-aos="fade-up">

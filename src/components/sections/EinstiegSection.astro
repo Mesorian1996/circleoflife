@@ -26,33 +26,27 @@ const steps = [
 ];
 ---
 
-<section id="einstieg" class="cv-section" style="padding:2.5em 0;">
+<section id="einstieg" class="cv-section" style="padding:3.5em 0; background:#faf7f3;">
   <div class="container">
     <SectionHeader
       title="Be a part of the Circle"
-      subtitle={`Stärker werden – technisch, mental und als Team. Das ist unser Versprechen. Viele unserer Mitglieder kommen aus <strong>Ludwigshafen</strong>, <strong>Mannheim</strong>, <strong>Bad Dürkheim</strong> oder <strong>Frankenthal</strong>. Egal woher du kommst – sichere dir dein <a href="#probetraining" class="font-bold text-accent">kostenloses Probetraining</a>.`}
+      subtitle={`Stärker werden – technisch, mental und als Team. Das ist unser Versprechen. Viele unserer Mitglieder kommen aus <strong>Ludwigshafen</strong>, <strong>Mannheim</strong>, <strong>Bad Dürkheim</strong> oder <strong>Frankenthal</strong>. Egal woher du kommst – sichere dir dein <a href="#probetraining" style="color:var(--color-accent-text);font-weight:700;text-decoration:underline;text-underline-offset:2px;">kostenloses Probetraining</a>.`}
     />
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div class="einstieg-timeline" data-aos="fade-up">
       {steps.map((s) => (
-        <article
-          class="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-card) transition-all duration-200 hover:shadow-(--shadow-card-hover) hover:-translate-y-1"
-          data-aos="zoom-in"
-          data-aos-delay={s.delay}
-        >
-          <div class="mb-4 flex items-center gap-3">
-            <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-gold-2 to-accent text-sm font-extrabold text-primary shadow-sm">
-              {s.number}
-            </span>
-            <h3 class="text-base font-bold text-text">
+        <div class="einstieg-step">
+          <span class="einstieg-step__number">{s.number}</span>
+          <div>
+            <h3 class="einstieg-step__title">
               {s.href
-                ? <a href={s.href} class="text-text no-underline hover:text-accent transition-colors">{s.title}</a>
+                ? <a href={s.href} class="text-inherit no-underline hover:text-accent transition-colors">{s.title}</a>
                 : s.title
               }
             </h3>
+            <p class="einstieg-step__desc">{s.desc}</p>
           </div>
-          <p class="text-sm leading-relaxed text-text-muted">{s.desc}</p>
-        </article>
+        </div>
       ))}
     </div>
   </div>

@@ -12,6 +12,7 @@
     "@iconify-json/lucide": "^1.2.98",
     "aos": "^2.3.4",
     "astro-icon": "^1.1.5",
+    "gsap": "^3.15.0",
     "preline": "^4.1.2",
     "resend": "^4.8.0",
     "sharp": "^0.34.5"

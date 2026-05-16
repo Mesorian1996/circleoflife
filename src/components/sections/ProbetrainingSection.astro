@@ -64,17 +64,52 @@ const contacts = [
           ))}
         </ul>
 
-        <!-- Map embed -->
-        <div class="relative flex-1 overflow-hidden rounded-xl" style="padding-bottom:56.25%;min-height:180px;">
+        <!-- Map embed — 2-Klick-Lösung (DSGVO/TTDSG) -->
+        <div class="relative overflow-hidden rounded-xl bg-surface-dark" style="padding-bottom:56.25%;min-height:180px;">
+
+          <!-- Placeholder (sichtbar solange Karte nicht geladen) -->
+          <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-accent)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p class="text-sm font-semibold text-white">Am Herrschaftsweiher 17<br/>67071 Ludwigshafen</p>
+            <button
+              id="map-load-btn"
+              class="mt-1 rounded-lg px-4 py-2 text-xs font-bold transition-colors"
+              style="background:var(--color-accent);color:var(--color-primary);"
+            >
+              Karte von Google Maps laden
+            </button>
+            <p class="text-xs" style="color:rgba(255,255,255,0.4);">
+              Mit dem Laden stimmen Sie der Datenweitergabe an Google zu.
+            </p>
+          </div>
+
+          <!-- Iframe (wird erst nach Klick eingeblendet) -->
           <iframe
+            id="map-iframe"
             title="Standort Circle of Life Jiu-Jitsu"
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein&output=embed"
+            data-src="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein&output=embed"
             class="absolute inset-0 size-full border-0"
+            style="display:none;"
           ></iframe>
         </div>
+
+        <script>
+          const btn = document.getElementById('map-load-btn');
+          if (btn) {
+            btn.addEventListener('click', () => {
+              const iframe = document.getElementById('map-iframe') as HTMLIFrameElement;
+              const placeholder = document.getElementById('map-placeholder');
+              if (iframe && placeholder) {
+                iframe.src = iframe.dataset.src ?? '';
+                iframe.style.display = 'block';
+                placeholder.style.display = 'none';
+              }
+            });
+          }
+        </script>
 
         <p class="mt-3 flex items-center gap-2 text-xs text-text-faint">
           <SvgIcon icon={IconParking} class="w-5 h-5 shrink-0 text-accent" label="Parken" />

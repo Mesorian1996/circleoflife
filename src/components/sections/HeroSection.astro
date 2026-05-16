@@ -7,6 +7,7 @@ import heroImg from '../../assets/images/JJPro_League.webp';
 
 <section class="hero-modern" id="hero">
   <div class="container hero-content">
+
     <h1 class="hero-title-row">
       <span class="hero-join">Join the</span>
       <span class="hero-title-coin">
@@ -14,34 +15,65 @@ import heroImg from '../../assets/images/JJPro_League.webp';
       </span>
       <span class="hero-circle">Circle of Life</span>
     </h1>
-    <p class="hero-subtitle hero-subtitle--desktop">
-      Kampfsportakademie für Brazilian Jiu-Jitsu &amp; No-Gi in Ludwigshafen-Ruchheim – strukturierte Kurse, klare Lernpfade, starke Community.
-      Familiäre Atmosphäre, moderne Selbstverteidigung und Kampfsporttraining für Anfänger, Kids und Wettkämpfer gleichermaßen.
-    </p>
-    <p class="hero-subtitle hero-subtitle--mobile">
-      BJJ &amp; No-Gi in Ludwigshafen: sichere Lernpfade, familiäre Atmosphäre, moderne Selbstverteidigung – für Einsteiger, Kids und Wettkämpfer.
-    </p>
-    <p class="hero-note" style="font-size:.9rem;color:rgba(255,255,255,.7);margin:0;">
-      Kursplan, Preise und Probetraining findest du weiter unten auf dieser Seite.
-    </p>
-    <div class="hero-image-block">
-      <div class="hero-image-frame">
-        <Image
-          src={heroImg}
-          alt="BJJ Training Circle of Life"
-          title="BJJ Training Circle of Life"
-          class="hero-image"
-          loading="eager"
-          fetchpriority="high"
-          widths={[640, 960, 1280]}
-          sizes="(max-width: 991px) 95vw, (max-width: 1399px) 88vw, 82vw"
-        />
+
+    <div class="hero-body-split">
+
+      <div class="hero-body-split__copy">
+        <p class="hero-subtitle hero-subtitle--desktop">
+          Kampfsportakademie für Brazilian Jiu-Jitsu &amp; No-Gi in Ludwigshafen-Ruchheim – strukturierte Kurse, klare Lernpfade, starke Community.
+          Familiäre Atmosphäre, moderne Selbstverteidigung und Kampfsporttraining für Anfänger, Kids und Wettkämpfer gleichermaßen.
+        </p>
+        <p class="hero-subtitle hero-subtitle--mobile">
+          BJJ &amp; No-Gi in Ludwigshafen: sichere Lernpfade, familiäre Atmosphäre, moderne Selbstverteidigung – für Einsteiger, Kids und Wettkämpfer.
+        </p>
+        <p class="hero-note" style="font-size:.9rem;color:rgba(255,255,255,.6);margin:0;">
+          Kursplan, Preise und Probetraining findest du weiter unten auf dieser Seite.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn-brand btn-lg hero-btn hero-btn--highlight" href="#probetraining" title="Kostenloses Probetraining sichern">
+            Kostenloses Probetraining sichern
+          </a>
+          <a class="btn-outline-light btn-lg hero-btn" href="#kursplan">
+            Kursplan ansehen
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="hero-ctas">
-      <a class="btn-brand btn-lg hero-btn hero-btn--highlight" href="#probetraining" title="Kostenloses Probetraining sichern">
-        Kostenloses Probetraining sichern
-      </a>
+
+      <div class="hero-body-split__media">
+        <div class="hero-image-frame">
+          <Image
+            src={heroImg}
+            alt="BJJ Training Circle of Life"
+            title="BJJ Training Circle of Life"
+            class="hero-image"
+            loading="eager"
+            fetchpriority="high"
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 767px) 95vw, (max-width: 1199px) 50vw, 44vw"
+          />
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo('.hero-image',
+    { scale: 0.96 },
+    {
+      scale: 1.04,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-image-frame',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    }
+  );
+</script>

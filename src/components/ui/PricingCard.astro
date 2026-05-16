@@ -12,48 +12,55 @@ const { titel, preisText, periode, beschreibung,
 ---
 
 <div class:list={[
-  "relative flex flex-col rounded-xl border p-6 transition-all duration-300",
+  "relative flex flex-col rounded-2xl border p-6 transition-all duration-300",
   highlighted
-    ? "bg-white border-accent ring-2 ring-accent/30 shadow-(--shadow-card-hover) scale-[1.02]"
+    ? "bg-white border-accent/50 border-t-[3px] shadow-[0_12px_40px_rgba(191,162,74,0.16)] scale-[1.025]"
     : "bg-white border-border shadow-(--shadow-card) hover:shadow-(--shadow-card-hover) hover:-translate-y-1"
 ]}>
 
   <!-- Badge -->
   {badge && (
-    <span class="absolute -top-3 left-1/2 -translate-x-1/2
-                 px-3 py-1 rounded-full text-xs font-bold
-                 bg-accent text-primary whitespace-nowrap">
+    <span class:list={[
+      "absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold whitespace-nowrap tracking-wide",
+      highlighted ? "bg-accent text-primary" : "bg-primary text-white"
+    ]}>
       {badge}
     </span>
   )}
 
   <!-- Header -->
   <div class="mb-4">
-    <h3 class="font-heading font-bold text-lg text-primary mb-1">
+    <h3 class:list={[
+      "font-heading font-bold text-base mb-0.5",
+      "text-primary"
+    ]}>
       {titel}
     </h3>
-    <p class="text-text-muted text-sm">{beschreibung}</p>
+    <p class:list={[
+      "text-sm leading-relaxed",
+      "text-text-muted"
+    ]}>{beschreibung}</p>
   </div>
 
   <!-- Preis -->
   <div class="flex items-end gap-1 mb-5">
     <span class:list={[
-      "font-heading font-bold text-4xl leading-none",
-      highlighted ? "text-accent" : "text-primary"
+      "font-heading font-bold leading-none tracking-tight",
+      highlighted ? "text-5xl text-accent" : "text-4xl text-primary"
     ]}>
       {preisText}
     </span>
-    <span class="text-text-muted text-sm mb-1">{periode}</span>
+    <span class="text-sm mb-1 text-text-muted">{periode}</span>
   </div>
 
   <!-- Divider -->
-  <hr class="border-border mb-5" />
+  <hr class:list={["mb-5", highlighted ? "border-accent/20" : "border-border"]} />
 
   <!-- Features -->
-  <ul class="space-y-3 mb-6 flex-1">
+  <ul class="space-y-2.5 mb-6 flex-1">
     {features.map(f => (
       <li class="flex items-start gap-2.5 text-sm text-text-muted">
-        <svg class="w-4 h-4 shrink-0 mt-0.5 text-accent"
+        <svg class:list={["w-4 h-4 shrink-0 mt-0.5", highlighted ? "text-accent" : "text-accent-text"]}
              fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path fill-rule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -66,16 +73,16 @@ const { titel, preisText, periode, beschreibung,
 
   <!-- Hinweis -->
   {hinweis && (
-    <p class="text-text-faint text-xs mb-4 text-center">{hinweis}</p>
+    <p class="text-xs mb-4 text-center text-text-faint">{hinweis}</p>
   )}
 
   <!-- CTA -->
   <a href={ctaHref}
      class:list={[
-       "block w-full py-2.5 px-4 rounded-xl text-sm font-bold text-center transition-colors duration-200",
+       "block w-full py-2.5 px-4 rounded-xl text-sm font-bold text-center transition-all duration-200",
        highlighted
-         ? "bg-accent text-primary hover:bg-primary hover:text-white"
-         : "border border-border text-primary bg-white hover:bg-surface hover:border-accent"
+         ? "swipe-to-dark"
+         : "border border-border text-primary bg-white hover:bg-accent-light hover:border-accent"
      ]}>
     {ctaLabel}
   </a>

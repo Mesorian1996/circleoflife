@@ -4,39 +4,43 @@ import SectionHeader from '../ui/SectionHeader.astro';
 import trainerImg from '../../assets/images/Schwarzer_GI.jpeg';
 ---
 
-<section id="trainer" class="cv-section bg-surface" style="padding:2.5em 0;">
+<section id="trainer" class="cv-section bg-surface" style="padding:3em 0;">
   <div class="container">
     <SectionHeader
       title="Dein Trainer"
       subtitle="Erfahrung aus Wettkampf &amp; Lehre."
     />
 
-    <div class="flex justify-center">
-      <article
-        class="w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-white shadow-(--shadow-card) transition-all duration-200 hover:shadow-(--shadow-card-hover)"
-        data-aos="zoom-in"
-      >
+    <article class="trainer-split" data-aos="fade-up">
+
+      <div class="trainer-split__media">
         <Image
           src={trainerImg}
           alt="Headcoach Marvin Beck"
           title="Headcoach Marvin Beck"
-          class="w-full"
-          style="display:block; object-fit:contain;"
           loading="lazy"
           widths={[360, 720]}
-          sizes="384px"
+          sizes="(max-width: 767px) 95vw, 360px"
         />
-        <div class="p-6 text-center">
-          <h3 class="text-lg font-bold text-text">Headcoach Marvin Beck</h3>
-          <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-accent">Black Belt</p>
-          <p class="mt-3 text-sm leading-relaxed text-text-muted">
-            Unser Headcoach Marvin Beck bringt jahrelange Erfahrung aus Brazilian Jiu-Jitsu,
-            No-Gi Wettkämpfen und Martial Arts mit.<br /><br />
-            „Position before Submission – hier werden ganze Systeme beigebracht.
-            Guard-Game, Guard-Passing, Top-Game und Leg-Locks"
-          </p>
-        </div>
-      </article>
-    </div>
+      </div>
+
+      <div class="trainer-split__content">
+        <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--color-accent);">
+          Headcoach
+        </span>
+        <h3 class="trainer-split__name">Marvin Beck</h3>
+        <span class="trainer-split__belt">Black Belt</span>
+        <p class="trainer-split__bio">
+          Unser Headcoach Marvin Beck bringt jahrelange Erfahrung aus Brazilian Jiu-Jitsu,
+          No-Gi Wettkämpfen und Martial Arts mit. Als Black Belt vermittelt er nicht nur Techniken,
+          sondern ganze Systeme – von Guard-Game und Guard-Passing über Top-Control bis zu modernen Leg-Locks.
+        </p>
+        <blockquote class="trainer-split__quote">
+          „Position before Submission – hier werden ganze Systeme beigebracht.
+          Guard-Game, Guard-Passing, Top-Game und Leg-Locks."
+        </blockquote>
+      </div>
+
+    </article>
   </div>
 </section>

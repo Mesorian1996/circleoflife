@@ -68,24 +68,27 @@ const cards = [
       subtitle="In unserer Kampfsportakademie bieten wir <strong>Brazilian Jiu-Jitsu (BJJ)</strong>, <strong>No-Gi Grappling</strong>, Fitness und Zirkeltraining an – für Erwachsene, Kinder und die Generation 60+. Unser Standort befindet sich in <strong>Ludwigshafen-Ruchheim</strong>, wenige Minuten von Mannheim, Frankenthal und Bad Dürkheim."
     />
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {cards.map((c) => (
+    <div class="kursangebot-grid">
+      {cards.map((c, i) => (
         <a
           href={c.href}
-          class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-(--shadow-card) transition-all duration-300 hover:-translate-y-1 hover:shadow-(--shadow-card-hover)"
+          class:list={[
+            "group flex flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-(--shadow-card) transition-all duration-300 hover:-translate-y-1.5 hover:shadow-(--shadow-card-hover) hover:border-[var(--color-accent)]",
+            i < 2 ? "kursangebot-card--featured" : i < 4 ? "kursangebot-card--regular" : "kursangebot-card--last",
+          ]}
           data-aos="fade-up"
           data-aos-delay={c.delay}
         >
           <!-- Card image -->
-          <div class="h-48 overflow-hidden">
+          <div class="h-56 overflow-hidden">
             <Image
               src={c.img}
               alt={c.imgAlt}
               widths={[400, 700]}
               sizes="(max-width:639px) 95vw, (max-width:1023px) 46vw, 30vw"
               loading="lazy"
-              class="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="height:100%"
+              class="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              style={`height:100%;object-position:${i === 2 ? 'top center' : 'center'}`}
             />
           </div>
 
@@ -99,7 +102,7 @@ const cards = [
               <h3 class="text-lg font-bold text-text">{c.title}</h3>
             </div>
             <p class="flex-1 text-sm leading-relaxed text-text-muted">{c.description}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors group-hover:text-accent-muted">
+            <span class="kurs-more-link mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-colors">
               Mehr erfahren
               <SvgIcon icon={IconArrowRight} class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>

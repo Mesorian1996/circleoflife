@@ -1,21 +1,38 @@
 ---
 const stats = [
-  { value: '60+',         label: 'aktive Mitglieder' },
-  { value: '6×/Woche',   label: 'Training' },
-  { value: '1',          label: 'Headcoach' },
+  { value: '100+',         label: 'aktive Mitglieder' },
+  { value: '6×/Woche',    label: 'Training' },
+  { value: '1',           label: 'Headcoach' },
   { value: 'Top Hygiene', label: 'Desinfizierte Mattenfläche' },
 ];
 ---
 
-<section class="cv-section cv-section--compact bg-linear-to-r from-gold to-gold-2 py-12" aria-label="Statistiken">
+<section
+  class="cv-section cv-section--compact py-14"
+  aria-label="Statistiken"
+  style="background: linear-gradient(105deg, #eedfa5 0%, #f7f0d8 55%, #fdf4e4 100%);"
+>
   <div class="container">
-    <dl class="grid grid-cols-2 gap-8 sm:grid-cols-4 text-center">
+    <dl class="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4 text-center">
       {stats.map((s, i) => (
-        <div data-aos="zoom-in" data-aos-delay={i * 150}>
-          <dt class="text-4xl font-extrabold text-primary">{s.value}</dt>
-          <dd class="mt-1 text-sm font-medium text-primary/70">{s.label}</dd>
+        <div data-aos="zoom-in" data-aos-delay={i * 120} class="flex flex-col items-center gap-1">
+          <span class="stats-sep" aria-hidden="true"></span>
+          <dt class="text-4xl font-extrabold tracking-tight text-primary leading-none">{s.value}</dt>
+          <dd class="mt-1 text-xs font-semibold uppercase tracking-widest text-primary/60">{s.label}</dd>
         </div>
       ))}
     </dl>
   </div>
 </section>
+
+<style>
+  .stats-sep {
+    display: block;
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+</style>

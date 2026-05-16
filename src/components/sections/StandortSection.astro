@@ -35,7 +35,7 @@ const distances = [
         <ul class="space-y-2">
           {distances.map((d) => (
             <li class="flex items-center gap-2 text-sm text-text-muted">
-              <SvgIcon icon={IconMapPin} class="w-4 h-4 shrink-0 text-accent" label="Entfernung" />
+              <SvgIcon icon={IconMapPin} class="w-3.5 h-3.5 shrink-0" style="color:var(--color-accent-text)" label="Entfernung" />
               {d}
             </li>
           ))}
@@ -68,7 +68,7 @@ const distances = [
         <ul class="space-y-4">
 
           <li class="flex items-start gap-3">
-            <SvgIcon icon={IconMapPin} class="w-6 h-6 shrink-0 text-accent mt-0.5" />
+            <SvgIcon icon={IconMapPin} class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--color-accent-text)" />
             <div>
               <p class="font-semibold text-sm text-primary">Circle of Life Jiu-Jitsu</p>
               <p class="text-text-muted text-sm">
@@ -80,16 +80,16 @@ const distances = [
 
           <li>
             <a href="tel:+4917661990534"
-               class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors text-sm">
-              <SvgIcon icon={IconPhone} class="w-6 h-6 shrink-0 text-accent" />
+               class="flex items-center gap-3 text-text-muted hover:text-primary transition-colors text-sm">
+              <SvgIcon icon={IconPhone} class="w-5 h-5 shrink-0" style="color:var(--color-accent-text)" />
               0176 61990534
             </a>
           </li>
 
           <li>
             <a href="mailto:mail.circleoflife@gmx.de"
-               class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors text-sm">
-              <SvgIcon icon={IconEmail} class="w-6 h-6 shrink-0 text-accent" />
+               class="flex items-center gap-3 text-text-muted hover:text-primary transition-colors text-sm">
+              <SvgIcon icon={IconEmail} class="w-5 h-5 shrink-0" style="color:var(--color-accent-text)" />
               mail.circleoflife@gmx.de
             </a>
           </li>
@@ -97,8 +97,8 @@ const distances = [
           <li>
             <a href="https://wa.me/4917661990534"
                target="_blank" rel="noopener"
-               class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors text-sm">
-              <SvgIcon icon={IconWhatsApp} class="w-6 h-6 shrink-0 text-accent" />
+               class="flex items-center gap-3 text-text-muted hover:text-primary transition-colors text-sm">
+              <SvgIcon icon={IconWhatsApp} class="w-5 h-5 shrink-0" style="color:var(--color-accent-text)" />
               WhatsApp schreiben
             </a>
           </li>
@@ -119,15 +119,18 @@ const distances = [
 
         <div class="mt-auto flex flex-col gap-3">
           <a
-            class="inline-flex items-center justify-center rounded-xl bg-accent py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-white"
+            class="inline-flex items-center justify-center rounded-xl py-2.5 text-sm font-bold swipe-to-dark"
             href="#probetraining"
           >Formular öffnen</a>
           <a
-            class="inline-flex items-center justify-center rounded-xl border-2 border-white/50 py-2.5 text-sm font-bold text-white transition-all hover:border-white hover:bg-white/10"
+            class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 py-2 px-4 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10"
             target="_blank"
             href="https://www.google.com/maps?q=Am+Herrschaftsweiher+17,+67071+Ludwigshafen+am+Rhein"
             rel="noopener"
-          >Route planen</a>
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Route planen
+          </a>
         </div>
       </div>
     </div>
